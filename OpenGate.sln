@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2043
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenGate", "OpenGate\OpenGate.csproj", "{71DC66CA-1E90-41AD-9701-D2702B2B608E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenGate.Tests", "OpenGate.Tests\OpenGate.Tests.csproj", "{143E33BA-BF59-4D31-A6E0-7B96349BD1EF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{71DC66CA-1E90-41AD-9701-D2702B2B608E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71DC66CA-1E90-41AD-9701-D2702B2B608E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71DC66CA-1E90-41AD-9701-D2702B2B608E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71DC66CA-1E90-41AD-9701-D2702B2B608E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{143E33BA-BF59-4D31-A6E0-7B96349BD1EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{143E33BA-BF59-4D31-A6E0-7B96349BD1EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{143E33BA-BF59-4D31-A6E0-7B96349BD1EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{143E33BA-BF59-4D31-A6E0-7B96349BD1EF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D8392FEB-CAC8-487E-859A-85F141BB788F}
+	EndGlobalSection
+EndGlobal
