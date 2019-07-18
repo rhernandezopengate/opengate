@@ -1,0 +1,60 @@
+﻿@using OpenGate.Entidades
+@model List<kpistrafico>
+
+<table>
+    <thead>
+        <tr>
+            <th>Mes</th>
+            <th>Consecutivo Flete</th>
+            <th>Pallets Embarcados</th>
+            <th>Capacidad Pallets Unidad</th>
+            <th>%</th>
+            <th>Estado</th>
+            <th>Peso Inventario</th>
+            <th>Capacidad Unidad</th>
+            <th>%</th>
+            <th>Estado</th>
+            <th>Estado Total</th>
+        </tr>        
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @item.mescarga
+            </td>
+            <td>
+                @item.consecutivoflete
+            </td>
+            <td>
+                @item.palletsembarcados
+            </td>
+            <td>
+                @item.capasidadpalletsunidad
+            </td>
+            <td>
+                @item.porcentajeocupacionunidad
+            </td>
+            <td>
+                @item.Estado
+            </td>
+            <td>
+                @item.pesoinventario
+            </td>
+            <td>
+                @item.capasidadunidad
+            </td>
+            <td>
+                @item.porcentajepesounidad
+            </td>
+            <td>
+                @item.EstadoPeso
+            </td>
+            <td>
+                @item.EstadoTotal
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

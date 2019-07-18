@@ -1,0 +1,21 @@
+﻿<div id="chartEvalManiobras"></div>
+
+<script type="text/javascript">
+    var chartEvaluacionManiobras = new CanvasJS.Chart("chartEvalManiobras",{
+        animationEnabled: true,
+        title: {
+            text: "Porcentaje del Mes: " + "@ViewBag.MesEvalManiobras"
+        },
+        data: [{
+            type: "doughnut",
+            startAngle: 60,
+            indexLabelFontSize: 10,
+            indexLabel: "{label}-{y}%",
+            toolTipContent: "<b>{label}:</b> {y}%",
+            dataPoints: @Html.Raw(ViewBag.DataPointsManiobras),
+        }]
+    });
+    chartEvaluacionManiobras.render();
+</script>
+
+

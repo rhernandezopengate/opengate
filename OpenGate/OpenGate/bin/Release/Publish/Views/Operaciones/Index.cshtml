@@ -1,0 +1,126 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutTMS.cshtml";
+}
+
+<h2>Index</h2>
+
+Datos Generales
+<hr />
+
+Consecutivo <label>QRO-1</label>
+<br />
+Cliente
+<select>
+    <option>Herbalife</option>
+    <option>Ragasa</option>
+    <option>FEDEX</option>
+</select>
+<br />
+Tipo de Viaje
+<select>
+    <option>REABASTO REGULAR</option>
+    <option>ENVIO EXTRAORDINARIO</option>
+    <option>LOGISTICA INVERSA</option>
+    <option>ENVIO EVENTOS</option>
+    <option>RECOLECCION</option>
+</select>
+<br />
+Ruta
+<select>
+    <option>QR 1      </option>
+    <option>TAB 1     </option>
+    <option>VER 1     </option>
+</select>
+<br />
+Fecha Hora Posicionamiento
+<input type="text" value="@DateTime.Now" />
+<br />
+Fecha Hora Carga
+<input type="text" value="@DateTime.Now" />
+
+<br /><br />
+
+Proveedor
+<hr />
+Proveedor
+<input type="text" value="DISGLO" />
+<br />
+Operador
+<input type="text" value="RAUL" />
+<br />
+Unidad
+<input type="text" value="DSL-001-V" />
+<br />
+Tipo Unidad
+<select>
+    <option>TH        </option>
+    <option>Cam 1.5   </option>
+    <option>TR 53     </option>
+</select>
+<br />
+GPS Movil
+<input type="text" value="GPS-1000" />
+<br />
+<br />
+Informacion de Carga
+<hr />
+RO
+<input type="text" value="HLF-0001" />
+<br />
+# Piezas
+<input type="text" value="10000" />
+<br />
+# Cajas
+<input type="text" value="1000" />
+<br />
+# Pallets
+<input type="text" value="10" />
+<br />
+Peso Carga
+<input type="text" value="10" />
+<br />
+<br />
+Costos Extras
+<hr />
+Cargos OG
+<input type="text" value="1000" />
+<br />
+Cargos Cliente
+<input type="text" value="1000" />
+
+<table>
+    <thead>
+        <tr>
+            <th>Origen</th>
+            <th>Destino</th>
+            <th>Fecha Cita</th>
+            <th>Hora Cita</th>
+            <th>Sello</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Queretaro</td>
+            <td>Monterrey</td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+        </tr>
+        <tr>
+            <td>Moterrey</td>
+            <td>Tijuana</td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+        </tr>
+        <tr>
+            <td>Tijuana</td>
+            <td>Baja California</td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+            <td><input type="text" /></td>
+        </tr>
+    </tbody>
+</table>

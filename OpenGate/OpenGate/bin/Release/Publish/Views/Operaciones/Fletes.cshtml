@@ -1,0 +1,312 @@
+﻿
+@{
+    ViewBag.Title = "Fletes";
+    Layout = "~/Views/Shared/_LayoutTMS.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="x_panel">
+
+        <div class="x_content">
+
+            <section class="content invoice">
+                <!-- title row -->
+                <div class="row">
+                    <div class="col-xs-12 invoice-header">
+                        <h1>
+                            <i class="fa fa-globe"></i> QRO-1
+                            <small class="pull-right">Date: @DateTime.Now.ToShortDateString()</small>
+                        </h1>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- info row -->
+                <div class="row invoice-info">
+                    <div class="col-sm-4 invoice-col">
+                        <div class="input-group col-md-12">
+                            <select class="form-control" tabindex="1">
+                                <option>Cliente</option>
+                            </select>
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button>
+                            </span>
+                        </div>
+                        <div class="input-group col-md-12">
+                            <select class="form-control" tabindex="2">
+                                <option>Tipo Viaje</option>
+                            </select>
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button>
+                            </span>
+                        </div>
+                        <div class="input-group col-md-12">
+                            <select class="form-control" tabindex="3">
+                                <option>Ruta</option>
+                            </select>
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button>
+                            </span>
+                        </div>
+
+                        <div class="input-group col-md-12">
+                            <select class="form-control" tabindex="4">
+                                <option>Tipo Unidad&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                            </select>
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button>
+                            </span>
+                        </div>
+
+                        <div class="input-group col-md-12">
+                            <input type="text" class="form-control col-md-3" placeholder="# RO o Documento de Origen" tabindex="5">
+                        </div>
+
+
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-4 invoice-col">
+                        <div class="form-inline">
+                            <div class="input-group col-md-12">
+                                <input type="text" class="form-control" placeholder="Proveedor" tabindex="6">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button>
+                                </span>
+                            </div>
+
+                            <div class="input-group col-md-12">
+                                <input type="text" class="form-control" placeholder="Operador " tabindex="7">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button>
+                                </span>
+                            </div>
+                            <div class="input-group col-md-12">
+                                <input type="text" class="form-control" placeholder="Unidad " tabindex="8">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button>
+                                </span>
+                            </div>                            
+                            <div class="input-group col-md-12">
+                                <input type="text" class="form-control" placeholder="GPS Movil " tabindex="9">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button>
+                                </span>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-4 invoice-col">
+
+                        <div class="input-group col-md-12">
+                            <input type="text" class="form-control" placeholder="# Piezas">
+                        </div>
+                        <div class="input-group col-md-12">
+                            <input type="text" class="form-control" placeholder="# Cajas">
+                        </div>
+                        <div class="input-group col-md-12">
+                            <input type="text" class="form-control" placeholder="# Pallets">
+                        </div>
+                        <div class="input-group col-md-12">
+                            <input type="text" class="form-control" placeholder="Peso de Carga">
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+                <!-- Table row -->
+                <div class="row">
+
+                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Horarios de Rutas</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Descripcion de Gastos</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#tab_content3" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Costos Extra</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#tab_content4" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Observaciones</a>
+                            </li>
+                        </ul>
+                        <div id="myTabContent" class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                                <div class="col-xs-12 table">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Origen</th>
+                                                <th>Destino</th>
+                                                <th>Fecha Cita</th>
+                                                <th>Hora Cita</th>
+                                                <th>Sello</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Queretaro</td>
+                                                <td>Monterrey</td>
+                                                <td>05/04/2019</td>
+                                                <td>8:43 AM</td>
+                                                <td>123456789</td>
+                                                <th><button class="btn btn-primary"><i class="fa fa-edit"></i></button></th>
+                                            </tr>
+                                            <tr>
+                                                <td>Monterrey</td>
+                                                <td>Tijuana</td>
+                                                <td>06/04/2019</td>
+                                                <td>9:00 PM</td>
+                                                <td>987654321</td>
+                                                <th><button class="btn btn-primary"><i class="fa fa-edit"></i></button></th>
+                                            </tr>
+                                            <tr>
+                                                <td>Tijuana</td>
+                                                <td>Baja California</td>
+                                                <td>07/04/2019</td>
+                                                <td>4:00 PM</td>
+                                                <td>789456123</td>
+                                                <th><button class="btn btn-primary"><i class="fa fa-edit"></i></button></th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">                                
+                                <div class="form-group">
+                                    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">$</div>
+                                        <input type="text" class="form-control" id="exampleInputAmount" placeholder="Costos Flete">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">$</div>
+                                        <input type="text" class="form-control" id="exampleInputAmount" placeholder="Facturacion Felete">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">$</div>
+                                        <input type="text" class="form-control" id="exampleInputAmount" placeholder="Costos Maniobras">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">$</div>
+                                        <input type="text" class="form-control" id="exampleInputAmount" placeholder="Facturacion Maniobras">
+                                    </div>
+                                </div>                              
+
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
+                                <br />
+                                <div class="form-group">
+                                    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">$</div>
+                                        <input type="text" class="form-control" id="exampleInputAmount" placeholder="Costos Open Gate">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">$</div>
+                                        <input type="text" class="form-control" id="exampleInputAmount" placeholder="Costos Cliente">
+                                    </div>
+                                </div>
+                              
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="tab_content4" aria-labelledby="profile-tab">
+                                
+                                <div class="x_content">
+
+                                    @*<div id="editor-one" class="editor-wrapper placeholderText" contenteditable="true"></div>*@
+
+                                    <textarea></textarea>
+
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+
+                <div class="row">
+                    <!-- accepted payments column -->
+                    <div class="col-xs-6">
+
+                    </div>
+
+                    <!-- /.col -->
+                    <div class="col-xs-6">
+                        <br />
+
+                        <p class="lead">Desgloce de Costos</p>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th style="width:50%">Subtotal:</th>
+                                        <td>$250.30</td>
+                                    </tr>
+                                    <tr>
+                                        <th>IVA (16%)</th>
+                                        <td>$10.34</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Gastos Extra:</th>
+                                        <td>$5.80</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total:</th>
+                                        <td>$265.24</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+                <!-- this row will not appear when printing -->
+                <div class="row no-print">
+                    <div class="col-xs-12">
+                        <button class="btn btn-default" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
+                        <button class="btn btn-success pull-right"><i class="fa fa-floppy-o"></i> Guardar Flete</button>
+                        <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="~/vendors/jquery/dist/jquery.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="~/build/js/custom.min.js"></script>
+
+<!-- Text Area -->
+<script type="text/javascript" src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
+
+<script>
+    tinymce.init({ selector: 'textarea' });
+</script>

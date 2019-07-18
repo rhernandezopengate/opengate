@@ -1,0 +1,247 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutKpis.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2> Aplicaciones en Tiempo <small>Detalle</small></h2> &nbsp;&nbsp;&nbsp;
+                @if (User.IsInRole("admin") || User.IsInRole("coordinadorinventarios"))
+                {
+                    <a class="btn btn-success" href="@Url.Action("Create")"> <i class="glyphicon glyphicon-plus-sign"></i> Agregar Registros</a>
+                }
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="well" style="overflow: auto">
+                    <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+                        <select id="mes" name="mes" class="form-control has-feedback-left">
+                            <option value="">Seleccione un mes...</option>
+                            <option value="Enero">Enero</option>
+                            <option value="Febrero">Febrero</option>
+                            <option value="Marzo">Marzo</option>
+                            <option value="Abril">Abril</option>
+                            <option value="Mayo">Mayo</option>
+                            <option value="Junio">Junio</option>
+                            <option value="Julio">Julio</option>
+                            <option value="Agosto">Agosto</option>
+                            <option value="Septiembre">Septiembre</option>
+                            <option value="Octubre">Octubre</option>
+                            <option value="Noviembre">Noviembre</option>
+                            <option value="Diciembre">Diciembre</option>
+                        </select>
+                        <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>
+                    </div>                   
+                </div>
+                <table id="tblKpis" class="table table-bordered" width="100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                Id
+                            </th>
+                            <th>
+                                Mes
+                            </th>
+                            <th>
+                                Fecha Recibo Fisico
+                            </th>
+                            <th>
+                                Fecha Termino Validacion
+                            </th>
+                            <th>
+                                Dias Validacion
+                            </th>
+                            <th>
+                                Fecha Creacion Oracle
+                            </th>
+                            <th>
+                                Fecha Recibo Oracle
+                            </th>
+                            <th>
+                                Dias Oracle
+                            </th>
+                            <th>
+                                Folio Facturacion
+                            </th>
+                            <th>
+                                Observaciones
+                            </th>
+                            <th>
+                                CV
+                            </th>
+                            <th>
+                                Number
+                            </th>
+                            <th>
+                                Order Number
+                            </th>
+                            <th>
+                                Piezas Sistema
+                            </th>
+                            <th>
+                                Piezas Fisico
+                            </th>
+                            <th>
+                                Pallets Recibidos
+                            </th>
+                            <th>
+                                Monto Facturado
+                            </th>
+                            <th>
+                                Ingresado Por
+                            </th>
+                        </tr>
+                    </thead>
+                </table>          
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CSS Datatble -->
+<link href="~/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+<!-- JQuery Datatble -->
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.4/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+<script src="~/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+<!-- Custom Theme Style -->
+<script src="../build/js/custom.min.js"></script>
+
+<script type="text/javascript">
+
+    function DateFormat(data) {
+        var data1 = data.replace("/Date(", "").replace(")/", "");
+        var date = new Date(parseInt(data1));
+        var month = date.getMonth() + 1;
+        return date.getDate() + "/" + (month.toString().length > 1 ? month : "0" + month) + "/" + date.getFullYear();
+    }
+
+    $(document).ready(function () {
+
+        table = $('#tblKpis').DataTable({
+            "order": [[0, "desc"]],
+            "ordering": true,
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            "pagingType": "simple_numbers",
+            "dom": 'Blrtip', // Hides Default Search
+            "processing": true,
+            "serverSide": true,
+            "orderMulti": false,
+            "deferRender": true,
+            "responsive": true,
+            rowId: 'id',
+            select: true,
+            "ajax": {
+                "url": "/kpisinvaplontime/ListaKpis",
+                "type": "POST",
+                "datatype": "json"
+            },
+            buttons: [
+
+                {
+                    extend: 'copyHtml5',
+                    text: '<i class="fa fa-files-o"></i>',
+                    titleAttr: 'COPIAR',
+                    exportOptions: {
+                        columns: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+                    }
+                },               
+                {
+                    extend: 'excel',
+                    text: '<i class="fa fa-file-excel-o"></i>',
+                    titleAttr: 'EXCEL',
+                    exportOptions: {
+                        columns: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+                    }
+                }               
+            ],
+            "aoColumns": [
+                //0
+                { "data": "id", "autoWidth": true, "visible": false },
+                { "data": "Mes", "autoWidth": true },
+                {
+                    "data": "FechaReciboFisico",
+                    "name": "FechaReciboFisico",
+                    "render": function (data, type, full) {
+
+                        var data1 = data.replace("/Date(", "").replace(")/", "");
+                        var date = new Date(parseInt(data1));
+                        var month = date.getMonth() + 1;
+                        return date.getDate() + "-" + (month.toString().length > 1 ? month : "0" + month) + "-" + date.getFullYear();
+                    },
+                    "autoWidth": true
+                },
+                {
+                    "data": "FechaTerminoValidacion",
+                    "name": "FechaTerminoValidacion",
+                    "render": function (data, type, full) {
+
+                        var data1 = data.replace("/Date(", "").replace(")/", "");
+                        var date = new Date(parseInt(data1));
+                        var month = date.getMonth() + 1;
+                        return date.getDate() + "-" + (month.toString().length > 1 ? month : "0" + month) + "-" + date.getFullYear();
+                    },
+                    "autoWidth": true
+                },
+                { "data": "DiasValidacion", "autoWidth": true },
+                {
+                    "data": "FechaCreacionOracle",
+                    "name": "FechaCreacionOracle",
+                    "render": function (data, type, full) {
+
+                        var data1 = data.replace("/Date(", "").replace(")/", "");
+                        var date = new Date(parseInt(data1));
+                        var month = date.getMonth() + 1;
+                        return date.getDate() + "-" + (month.toString().length > 1 ? month : "0" + month) + "-" + date.getFullYear();
+                    },
+                    "autoWidth": true
+                },
+                {
+                    "data": "FechaReciboOracle",
+                    "name": "FechaReciboOracle",
+                    "render": function (data, type, full) {
+
+                        var data1 = data.replace("/Date(", "").replace(")/", "");
+                        var date = new Date(parseInt(data1));
+                        var month = date.getMonth() + 1;
+                        return date.getDate() + "-" + (month.toString().length > 1 ? month : "0" + month) + "-" + date.getFullYear();
+                    },
+                    "autoWidth": true
+                },
+                { "data": "DiasOracle", "autoWidth": true },
+                { "data": "FolioFacturacion", "autoWidth": true },
+                { "data": "Observaciones", "autoWidth": true },
+                { "data": "CV", "autoWidth": true },
+                { "data": "Number", "autoWidth": true },
+                { "data": "ordernumber", "autoWidth": true },
+                { "data": "piezassistema", "autoWidth": true },
+                { "data": "piezasfisico", "autoWidth": true },
+                { "data": "palletsrecibidos", "autoWidth": true },
+                { "data": "montofacturado", "autoWidth": true },
+                { "data": "ingresado", "autoWidth": true }
+            ]
+        });
+
+        $('#mes').on('change', function () {
+            table.columns(1).search(this.value).draw();
+        });       
+    });
+</script>

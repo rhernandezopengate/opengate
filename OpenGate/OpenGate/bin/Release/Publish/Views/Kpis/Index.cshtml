@@ -1,0 +1,225 @@
+﻿@{
+    ViewBag.Title = "WHEREHOUSE - OPEN GATE LOGISTICS";
+    Layout = "~/Views/Shared/_LayoutKpis.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Aplicaciones Generadas en Tiempo<small>Ultima Semana Registrada:</small>&nbsp; @ViewBag.semana</h2>&nbsp;
+                <a class="btn btn-dark" href='@Url.Action("Kpisplaneacion", "kpisplaneacion")'><i class="fa fa-book"></i> Detalles</a>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="row">
+                    <div class="col-md-7">
+                        @Html.Action("Resumen", "kpisplaneacion")
+                    </div>
+                    <div class="col-md-5">
+                        <div id="graphic">
+                            @Html.Action("Graficas", "kpisplaneacion", new { mes = DateTime.Now.Month })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Fill Rate Despacho <small>Ultima Semana Registrada: &nbsp; </small>@ViewBag.semanadespacho </h2>&nbsp;                
+                <a class="btn btn-dark" href='@Url.Action("Index", "kpisdespacho")'><i class="fa fa-book"></i> Detalles</a>                
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="row">
+                    <div class="col-md-7">
+                        @Html.Action("Resumen", "kpisdespacho")
+                    </div>
+                    <div class="col-md-5">
+                        <div id="graphic1">
+                            @Html.Action("Graficas", "kpisdespacho", new { mes = DateTime.Now.Month })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>On Time Producto Recibido <small>Ultima Semana Registrada: &nbsp; </small>@ViewBag.WkRecibo </h2>&nbsp;                
+                <a class="btn btn-dark" href='@Url.Action("Index", "kpisrecibo")'><i class="fa fa-book"></i> Detalles</a>                
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="row">
+                    <div class="col-md-7">
+                        @Html.Action("Resumen", "kpisrecibo")
+                    </div>
+                    <div class="col-md-5">
+                        <div id="graphic2">
+                            @Html.Action("Graficas", "kpisrecibo", new { mes = DateTime.Now.Month })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Aplicaciones Cerradas en Tiempo<small>Ultimo Mes Registrado:</small>&nbsp;@ViewBag.mesAplOntime</h2>&nbsp;
+                <a class="btn btn-dark" href='@Url.Action("Index", "kpisinvaplontime")'><i class="fa fa-book"></i> Detalles</a>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="row">
+                    <div class="col-md-7">
+                        @Html.Action("Resumen", "kpisinvaplontime")
+                    </div>
+                    <div class="col-md-5">
+                        <div id="graphicas">
+                            @Html.Action("Graficas", "kpisinvaplontime", new { mes = DateTime.Now.Month })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Exactitud de Inventarios<small>Ultimo Mes Registrado:</small>&nbsp;@ViewBag.mesExactitud</h2>&nbsp;                
+                <a class="btn btn-dark" href='@Url.Action("Index", "kpisinventariosexactitud")'><i class="fa fa-book"></i> Detalles</a>               
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="row">
+                    <div class="col-md-8">
+                        @Html.Action("Resumen", "kpisinventariosexactitud")
+                    </div>
+                    <div class="col-md-4 col-xs-6">
+                        <div id="graphic4">
+                            @Html.Action("Graficas", "kpisinventariosexactitud", new { mes = DateTime.Now.Month })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Desvaciones Conteos WtW<small>Ultimo Mes Registrado:</small>&nbsp;@ViewBag.mesCedis</h2>&nbsp;                
+                <a class="btn btn-dark" href='@Url.Action("Index", "kpisinventarios")'><i class="fa fa-book"></i> Detalles</a>               
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="row">
+                    @Html.Action("Resumen", "kpisinventarios")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Custom Theme Scripts -->
+<script src="../build/js/custom.min.js"></script>
+
+<script>
+
+    var Details = function (MES) {
+        $.ajax({
+            url: "/kpisplaneacion/Graficas/",
+            type: "GET",
+            data: { mes: MES },
+            success: function (result) {
+                $('#graphic').html(result);
+            },
+            error: function (error) {
+                console.log(error);
+                alert(error)
+            }
+        });
+    }
+
+    var DetailsRecibo = function (MES) {
+        $.ajax({
+            url: "/kpisrecibo/Graficas/",
+            type: "GET",
+            data: { mes: MES },
+            success: function (result) {
+                $('#graphic2').html(result);
+            },
+            error: function (error) {
+                console.log(error);
+                alert(error)
+            }
+        });
+    }
+
+    var DetailsInvAplOntime = function (MES) {
+        $.ajax({
+            url: "/kpisinvaplontime/Graficas/",
+            type: "GET",
+            data: { mes: MES },
+            success: function (result) {
+                $('#graphicas').html(result);
+            },
+            error: function (error) {
+                console.log(error);
+                alert(error)
+            }
+        });
+    }
+
+    var DetailsExactitud = function (MES) {
+        $.ajax({
+            url: "/kpisinventariosexactitud/Graficas/",
+            type: "GET",
+            data: { mes: MES },
+            success: function (result) {
+                $('#graphic4').html(result);
+            },
+            error: function (error) {
+                console.log(error);
+                alert(error)
+            }
+        });
+    }
+
+    $(function () {
+        $('#tbl_resumen tr').click(function () {
+            var mes = $(this).find("td").eq(0).html();
+            Details(mes);
+        });
+    });
+
+    $(function () {
+        $('#tablerecibo tr').click(function () {
+            var mes = $(this).find("td").eq(0).html();
+            DetailsRecibo(mes);
+        });
+    });
+
+    $(function () {
+        $('#tblInventariosAplOnTime tr').click(function () {
+            var mes = $(this).find("td").eq(0).html();
+            DetailsInvAplOntime(mes);
+        });
+    });
+
+    $(function () {
+        $('#tblexactitud tr').click(function () {
+            var mes = $(this).find("td").eq(0).html();
+            DetailsExactitud(mes);
+        });
+    });
+</script>

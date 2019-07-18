@@ -1,0 +1,46 @@
+﻿@model IEnumerable<OpenGate.Entidades.puesto>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutIT.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2> Puestos <small>Crear</small></h2> &nbsp;&nbsp;&nbsp;                
+                <a class="btn btn-success" href="@Url.Action("Create")"> <i class="glyphicon glyphicon-plus-sign"></i> Agregar Registros</a>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>
+                            Descripcion
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.descripcion)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Details", new { id = item.id })" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                                <a href="@Url.Action("Edit", new { id = item.id })" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                <a href="@Url.Action("Delete", new { id = item.id })" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/Scripts")
+@Scripts.Render("~/Custom")

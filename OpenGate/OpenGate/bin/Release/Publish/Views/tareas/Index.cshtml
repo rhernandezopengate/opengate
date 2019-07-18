@@ -1,0 +1,161 @@
+﻿@model IEnumerable<OpenGate.Entidades.tareas>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutIT.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2> @ViewBag.Controller <small>Index</small></h2> &nbsp;&nbsp;&nbsp;
+                <a class="btn btn-success" href="@Url.Action("Create")"> <i class="fa fa-plus-circle"></i> Agregar Registro</a>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="x_content">
+                <table id="tblareas" class="table jambo_table projects">
+                    <thead>
+                        <tr>
+                            <th style="width: 1%">#</th>
+                            <th style="width: 20%">Actividad</th>
+                            <th>Solicita</th>
+                            <th>Fecha Solicitud</th>
+                            <th>Hora Inicio</th>
+                            <th>Fecha Entrega</th>
+                            <th>Hora Fin</th>
+                            <th>Observaciones</th>
+                            <th>Avance</th>
+                            <th>Status</th>
+                            <th style="width: 20%">#Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>                        
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.folio</td>
+                                <td>
+                                    <a>@Html.DisplayFor(modelItem => item.Actividad)</a>
+                                    <br />
+                                    <small>Created @Html.DisplayFor(modelItem => item.FechaRegistro)</small>
+                                </td>
+                                <td>
+                                    <ul class="list-inline">
+                                        <li>
+                                            @Html.DisplayFor(modelItem => item.Solicita)
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Fecha)
+                                </td>
+                                <td>
+                                    @item.HoraInicio
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FechaEntrega)
+                                </td>
+                                <td>
+                                    @item.HoraFin
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Observaciones)
+                                </td>
+                                <td class="project_progress">
+                                    <div class="progress progress_sm">
+                                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="@item.PorcentajeCumplido"></div>
+                                    </div>
+                                    <small>@item.PorcentajeCumplido % Complete</small>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-success btn-xs">@item.statustarea.descripcion</button>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Details", new { id = item.id })" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                                    <a href="@Url.Action("Edit", new { id = item.id })" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                    <a href="@Url.Action("Delete", new { id = item.id })" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- CSS Datatble -->
+<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/buttons/1.5.4/css/buttons.bootstrap.min.css" rel="stylesheet" />
+
+<!-- JQuery Datatble -->
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.4/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.4/js/buttons.bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+
+@Scripts.Render("~/Progressbar")
+@Scripts.Render("~/Custom")
+
+<script>
+    $(document).ready(function () {
+        var table = $('#tblareas').DataTable({
+            "dom": "<'row'<'col-sm-6'l><'col-sm-6'f>>" +
+                "<'row'<'col-sm-12'tr>>" +
+                "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+            "processing": true,
+            "order": [[0, "desc"]]
+        });
+
+        new $.fn.dataTable.Buttons(table, {
+            buttons: [
+                {
+                    extend: 'copyHtml5',
+                    text: '<i class="fa fa-files-o"></i>',
+                    titleAttr: 'COPIAR',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'print',
+                    text: '<i class="fa fa-print"></i>',
+                    titleAttr: 'IMPRIMIR',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'excel',
+                    text: '<i class="fa fa-file-excel-o"></i>',
+                    titleAttr: 'EXCEL',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'pdf',
+                    text: '<i class="fa fa-file-pdf-o"></i>',
+                    titleAttr: 'PDF',
+                    orientation: 'landscape',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                }
+            ],
+        });
+
+        table.buttons().container().appendTo('.col-sm-6:eq(0)', table.table().container());
+
+    });
+</script>

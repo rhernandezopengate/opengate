@@ -1,0 +1,411 @@
+﻿@model IEnumerable<OpenGate.Entidades.factura>
+
+@{
+    ViewBag.Title = "AsignarBancos";
+    Layout = "~/Views/Shared/_LayoutPagoProveedores.cshtml";
+}
+
+<link href="~/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+    $(function () {
+        var ddlBancos = $("#ddlBancos");
+        ddlBancos.empty().append('<option selected="selected" value="0" disabled = "disabled">Loading ...</option>');
+        $.ajax({
+            type: "POST",
+            url: "/bancos/ddlBancos",
+            data: '{}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                ddlBancos.empty().append('<option selected="selected" value="0">Seleccione un banco...</option>');
+                $.each(response, function () {
+                    ddlBancos.append($("<option></option>").val(this['Value']).html(this['Text']));
+                });
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    });
+
+    $(function () {
+        var ddlCuenta = $("#ddlCuentaOrdenante");
+        ddlCuenta.empty().append('<option selected="selected" value="0" disabled = "disabled">Loading ...</option>');
+        $.ajax({
+            type: "POST",
+            url: "/cuentaordenantes/ddlCuentaOrdenante",
+            data: '{}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                ddlCuenta.empty().append('<option selected="selected" value="0">Seleccione una cuenta ordenante...</option>');
+                $.each(response, function () {
+                    ddlCuenta.append($("<option></option>").val(this['Value']).html(this['Text']));
+                });
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    });
+
+    $(function () {
+        $("#fechaPInicio").datepicker({
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            changeYear: true
+        });
+    });
+
+    $(function () {
+        $("#txtProveedor").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: '/proveedors/AutoComplete/',
+                    data: "{ 'prefix': '" + request.term + "'}",
+                    dataType: "json",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            return item;
+                        }));
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            },            
+            select: function (e, i) {
+                $("#hfCustomer").val(i.item.val);
+            },
+            minLength: 0
+        }).focus(function () {
+            $(this).autocomplete("search");
+        });
+    });
+
+    var Complemento = function () {
+
+        var VarFechaPago = $("#fechaPInicio").val();
+        var VarAutorizacion = $("#Autorizacion").val();
+        var VarProveedor = $("#hfCustomer").val();
+        var VarBancos = $("#ddlBancos").val();
+        var VarCuentaOrdenante = $("#ddlCuentaOrdenante").val();
+
+        $.ajax({
+            url: "/complementosfacturas/GenerarComplemento",
+            type: "POST",
+            data: {
+                FechaPago: VarFechaPago,
+                Proveedor_Id: VarProveedor,
+                Bancos_Id: VarBancos,
+                CuentaOrdenante_Id: VarCuentaOrdenante,
+                Autorizacion: VarAutorizacion
+            },
+            success: function (result) {
+
+                if (result === "Error") {
+                    toastr.error('Ha ocurrido un Error');
+                }
+                else if (result === "ErrorFactura") {
+                    toastr.error('La factura ya tiene asignado un cumplemento');
+                }
+                else {
+                    toastr.success('Complemento generado correctamente');
+                }
+
+                table.draw();
+            },
+            error: function (error) {
+                console.log(error);
+                alert(error)
+            }
+        });
+
+    }
+
+    $(document).ready(function () {
+        table = $('#tblFacturas').DataTable({
+            "order": [[0, "desc"]],
+            "ordering": true,
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            "pagingType": "simple_numbers",
+            "dom": 'Blrtip', // Hides Default Search
+            "processing": true,
+            "serverSide": true,
+            "orderMulti": false,
+            "deferRender": true,
+            rowId: 'id',
+            select: true,
+            "createdRow": function (row, data, index) {
+                if (data.IsComplemento == 0) {
+                    $('td', row).eq(1).addClass('alert alert-success');
+                }
+                else {
+                    $('td', row).eq(1).addClass('alert alert-danger');
+                }
+            },
+            "ajax": {
+                "url": "/complementosfacturas/CrearAsignacionComplementos",
+                "type": "POST",
+                "datatype": "json"
+            },            
+            buttons: [
+
+                {
+                    extend: 'copyHtml5',
+                    text: '<i class="fa fa-files-o"></i>',
+                    titleAttr: 'COPIAR',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'print',
+                    text: '<i class="fa fa-print"></i>',
+                    titleAttr: 'IMPRIMIR',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'excel',
+                    text: '<i class="fa fa-file-excel-o"></i>',
+                    titleAttr: 'EXCEL',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'pdf',
+                    text: '<i class="fa fa-file-pdf-o"></i>',
+                    titleAttr: 'PDF',
+                    orientation: 'landscape',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                }
+
+            ],
+            "aoColumns": [
+                //0
+                { "data": "id", "autoWidth": true, "visible": false },       
+                //1
+                { "data": "Numero", "autoWidth": true },
+                //2
+                { "data": "RazonSocial", "autoWidth": true },                
+                //3
+                { "data": "Concepto", "autoWidth": true },
+                //4
+                {
+                    "data": "FechaFactura",
+                    "name": "FechaFactura",
+                    "render": function (data, type, full) {
+
+                        var data1 = data.replace("/Date(", "").replace(")/", "");
+                        var date = new Date(parseInt(data1));
+                        var month = date.getMonth() + 1;
+                        return date.getDate() + "-" + (month.toString().length > 1 ? month : "0" + month) + "-" + date.getFullYear();
+                    },
+                    "autoWidth": true
+                },                     
+                //4
+                {
+                    "data": "FechaPago",
+                    "name": "FechaPago",
+                    "render": function (data, type, full) {
+
+                        var data1 = data.replace("/Date(", "").replace(")/", "");
+                        var date = new Date(parseInt(data1));
+                        var month = date.getMonth() + 1;
+                        return date.getDate() + "-" + (month.toString().length > 1 ? month : "0" + month) + "-" + date.getFullYear();
+                    },
+                    "autoWidth": true
+                },                 
+                //13
+                { "data": "Estado", "autoWidth": true },
+                //11
+                { "data": "SubTotalString", "autoWidth": true },
+                { "data": "IvaString", "autoWidth": true },
+                { "data": "DescuentoString", "autoWidth": true },
+                { "data": "RetencionString", "autoWidth": true },
+                { "data": "TotalString", "autoWidth": true },
+                { "data": "IsComplemento", "autoWidth": true }
+            ]            
+        });        
+
+        $('#txtProveedor').on('change', function () {
+            table.columns(2).search(this.value).draw();
+        });
+
+        $("#txtProveedor").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: '/proveedors/AutoComplete/',
+                    data: "{ 'prefix': '" + request.term + "'}",
+                    dataType: "json",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            return item;
+                        }))
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            },
+
+            select: function (e, i) {
+                $("#hfCustomer").val(i.item.val);
+                table.columns(2).search(i.item.val).draw();
+            },
+            minLength: 0
+        }).focus(function () {
+            $(this).autocomplete("search");
+        });
+
+        $('#fechaPInicio').on('change', function () {
+            table.columns(5).search(this.value).draw();
+        });   
+       
+    });
+</script>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Asignacion de Bancos <small>Asignacion</small></h2> &nbsp;&nbsp;&nbsp;
+                <button onclick="Complemento()" class="btn btn-dark"><i class="fa fa-book"></i> Generar Complemento</button>
+                <a class="btn btn-primary" href="@Url.Action("Index")"> <i class="fa fa-mail-reply"></i> Regresar</a>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="well" style="overflow: auto">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <div class="input-group date">
+                                <input type="text" id="fechaPInicio" name="FechaPago" class="form-control" placeholder="Fecha Pago" autocomplete="off"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <div class="input-group date">
+                                <input type="hidden" id="hfCustomer" name="Proveedor_Id" />
+                                <input type="text" id="txtProveedor" name="txtProveedor" class="form-control" placeholder="Proveedor" />
+                                <span class="input-group-addon">
+                                    <span class="fa fa-users"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                        <select class="form-control" id="ddlBancos" name="Bancos_Id"></select>
+                        <span class="form-control-feedback right" aria-hidden="true"></span>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                        <select class="form-control" id="ddlCuentaOrdenante" name="CuentaOrdenante_Id"></select>
+                        <span class="form-control-feedback right" aria-hidden="true"></span>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <div class="input-group date">
+                                <input type="text" id="Autorizacion" name="Autorizacion" class="form-control" placeholder="Autorizacion" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <table id="tblFacturas" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.id)</th>
+                            <th>
+                                Factura
+                            </th>
+                            <th>
+                                Proveedor
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Concepto)
+                            </th>
+                            <th>
+                                Fecha Factura
+                            </th>
+                            <th>
+                                Fecha Pago
+                            </th>
+                            <th>
+                                Estado
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Subtotal)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Iva)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Descuento)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Retencion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Total)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.IsComplemento)
+                            </th>
+                        </tr>
+                    </thead>    
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Custom Theme Style -->
+<script src="../build/js/custom.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.4/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+
+<script src="~/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>

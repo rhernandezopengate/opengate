@@ -1,0 +1,34 @@
+﻿@model List<OpenGate.Entidades.contactoproveedor>
+@{
+    ViewBag.Title = "Reload";
+    Layout = null;
+}
+<a class="btn btn-success" onclick="recargarContactos()"><i class="fa fa-refresh"></i> Actualizar Contactos</a>
+<a class="btn btn-primary" onclick="Create()"><i class="fa fa-plus-circle"></i> Agregar Contacto</a>
+<table id="table" class="table table-bordered" width="100%">
+    <thead>
+        <tr>
+            <td>Nombre</td>
+            <td>Telefono</td>
+            <td>Mail</td>
+            <td>Puesto</td>
+            <td></td>            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.Nombre</td>
+            <td>@item.Telefono</td>
+            <td>@item.Mail</td>
+            <td>@item.Puesto</td>
+            <td>
+            <button type="button" class="btn btn-primary" onclick="Edit(@item.id)"><i class="fa fa-edit"></i></button>
+            <button type="button" onclick="Details(@item.id)" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+            </td>
+            
+        </tr>
+        }
+    </tbody>
+</table> 

@@ -1,0 +1,180 @@
+﻿@model OpenGate.Entidades.tareas
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutIT.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="x_title">
+                    <h2> @ViewBag.Controller <small>Editar</small></h2> &nbsp;&nbsp;&nbsp;
+                    <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+                    <a class="btn btn-danger" href="@Url.Action("Index")"> <i class="glyphicon glyphicon-remove-circle"></i> Cancelar</a>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.id)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Actividad, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.EditorFor(model => model.Actividad, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                                @Html.ValidationMessageFor(model => model.Actividad, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.HoraInicio, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="input-group date" id="HoraInicioPicker" name="HoraInicioPicker">
+                                    @Html.EditorFor(model => model.HoraInicio, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                    @Html.ValidationMessageFor(model => model.HoraInicio, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Solicita, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.EditorFor(model => model.Solicita, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Solicita, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" id="Fecha" name="Fecha" value="@Model.Fecha.Value.ToShortDateString()" class="form-control" autocomplete="off"/>
+                                @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FechaEntrega, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" id="FechaEntrega" name="FechaEntrega" value="@Model.FechaEntrega.Value.ToShortDateString()" class="form-control" autocomplete="off" />
+                                @Html.ValidationMessageFor(model => model.FechaEntrega, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.HoraFin, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="input-group date" id="HoraFinPicker" name="HoraFinPicker">
+                                    @Html.EditorFor(model => model.HoraFin, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                    @Html.ValidationMessageFor(model => model.HoraFin, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PorcentajeCumplido, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <select id="PorcentajeCumplido" name="PorcentajeCumplido" class="form-control col-md-7 col-xs-12">
+                                    <option value="25" @(Model.PorcentajeCumplido == 25 ? "selected" : "")>25%</option>}
+                                    <option value="50" @(Model.PorcentajeCumplido == 50 ? "selected" : "")>50%</option>
+                                    <option value="75" @(Model.PorcentajeCumplido == 75 ? "selected" : "")>75%</option>
+                                    <option value="100" @(Model.PorcentajeCumplido == 100 ? "selected" : "")>100%</option>
+                                </select>
+                                @Html.ValidationMessageFor(model => model.PorcentajeCumplido, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Observaciones, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.EditorFor(model => model.Observaciones, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Observaciones, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FechaRegistro, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.EditorFor(model => model.FechaRegistro, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.FechaRegistro, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.StatusTarea_Id, "StatusTarea_Id", htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.DropDownList("StatusTarea_Id", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.StatusTarea_Id, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.AspNetUsers_Id, "AspNetUsers_Id", htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.DropDownList("AspNetUsers_Id", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.AspNetUsers_Id, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Notas, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.TextAreaFor(model => model.Notas, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Notas, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- Text Area -->
+<script type="text/javascript" src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+
+@Scripts.Render("~/Scripts")
+@Scripts.Render("~/Custom")
+@Scripts.Render("~/JQueryUI")
+@Scripts.Render("~/DateTimePcker")
+<script src="~/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+
+<script type="text/javascript">
+
+    tinymce.init({ selector: 'textarea' });
+
+    $('#HoraInicioPicker').datetimepicker({
+        format: 'hh:mm A'
+    });
+
+    $('#HoraFinPicker').datetimepicker({
+        format: 'hh:mm A'
+    });
+
+    $(function () {
+        $("#Fecha").datepicker({
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            changeYear: true
+        });
+
+        $("#FechaEntrega").datepicker({
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            changeYear: true
+        });
+    });
+
+</script>
+

@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+
+    <!-- Custom styling plus plugins -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+
+</head>
+<body class="nav-md">
+
+    <div class="container body">
+        <!-- /page content -->
+        <div class="main_container">
+            <!-- left navigation -->
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <br />
+                    <div class="navbar nav_title" style="border: 0; height:90px">
+                        <a href='@Url.Action("Index", "Home")' class="site_title img-responsive" style="height:auto; width:200px"><img src="~/images/LOGO.jpg" class="img-responsive" /></a>
+                    </div>
+                    <div class="clearfix"></div>
+                    <br />
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3>General</h3>
+                            <ul class="nav side-menu">
+                                <li><a href='#'><i class="fa fa-dashboard"></i>Dashboard</a></li>
+                                <li><a href='@Url.Action("Fletes", "Operaciones")'><i class="fa fa-globe"></i>Fletes</a></li>
+                                <li>
+                                    <a><i class="fa fa-cogs"></i> Configuraciones <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href='#'><i class="fa fa-user"></i>Operadores</a></li>
+                                        <li><a href='#'><i class="fa fa-truck"></i>Unidades</a></li>
+                                        <li><a href='#'><i class="fa fa-road"></i>Rutas</a></li>
+                                        <li><a href='#'><i class="fa fa-tags"></i>Tipo Unidad</a></li>
+                                        <li><a href='#'><i class="fa fa-map-marker"></i>GPS Movil</a></li>
+                                        <li><a href='#'><i class="fa fa-crosshairs"></i>Tipo Viaje</a></li>
+                                        <li><a href='#'><i class="fa fa-users"></i>Clientes</a></li>
+                                        <li><a href='@Url.Action("Index", "CarteraProveedores")'><i class="fa fa-list-alt"></i>Proveedores</a></li>
+                                    </ul>
+                                </li>
+
+
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /sidebar menu -->
+                </div>
+            </div>
+            <!-- /left navigation -->
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+                        @Html.Partial("_LoginPartial")
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+            <div class="right_col" role="main">
+                @RenderBody()
+            </div>
+        </div>
+        <!-- /page content -->
+        <!-- footer content -->
+        <footer>
+            <div class="pull-right">
+                <p>&copy; @DateTime.Now.Year - <a href="http://www.opengatelogistics.com/" target="_blank">OPEN GATE LOGISTICS</a> </p>
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+    </div>
+
+ 
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+</body>
+</html>

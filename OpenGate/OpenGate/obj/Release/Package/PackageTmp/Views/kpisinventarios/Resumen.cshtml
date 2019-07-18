@@ -1,0 +1,69 @@
+﻿@using  OpenGate.Entidades
+<table class="table table-bordered">     
+    <tr>
+        <td colspan="6">CEDIS</td>
+    </tr>
+    <tr>        
+        <td>SKU Variance</td>
+        <td>Monto</td>
+        <td>% Monto</td>
+        <td>Piezas</td>
+        <td>% Piezas</td>
+    </tr>
+
+    @foreach (var item in ViewData["CEDIS"] as IEnumerable<kpisinvetntarios>)
+    {
+        <tr>
+            <td>
+                @item.skuvariance
+            </td>
+            <td>
+                @item.monto
+            </td>
+            <td>
+                @item.porcentajemonto
+            </td>
+            <td>
+                @item.piezas
+            </td>
+            <td>
+                @item.porcentajepiezas
+            </td>
+        </tr>
+    }
+</table>
+
+<table class="table table-bordered">      
+    <tr>
+        <td colspan="6">Home Delivery</td>
+    </tr>
+    <tr>
+        
+        <td>SKU Variance</td>
+        <td>Monto</td>
+        <td>% Monto</td>
+        <td>Piezas</td>
+        <td>% Piezas</td>
+    </tr>
+
+    @foreach (var item in ViewData["HomeDelivery"] as IEnumerable<kpisinvetntarios>)
+    {
+        <tr>
+            <td>
+                @item.skuvariance
+            </td>
+            <td>
+                @item.monto
+            </td>
+            <td>
+                @item.porcentajemonto
+            </td>
+            <td>
+                @item.piezas
+            </td>
+            <td>
+                @item.porcentajepiezas
+            </td>
+        </tr>
+    }
+</table>

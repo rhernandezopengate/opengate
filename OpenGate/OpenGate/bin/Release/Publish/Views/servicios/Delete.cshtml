@@ -1,0 +1,105 @@
+﻿@model OpenGate.Entidades.servicios
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutIT.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>servicios</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fecharegistro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecharegistro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cctv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cctv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefonia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefonia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.alarmas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.alarmas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.correo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.correo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.antivirus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.antivirus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.respaldoaplicaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.respaldoaplicaciones)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usuarioswifi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuarioswifi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.internetcarga)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.internetcarga)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.internetdescarga)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.internetdescarga)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

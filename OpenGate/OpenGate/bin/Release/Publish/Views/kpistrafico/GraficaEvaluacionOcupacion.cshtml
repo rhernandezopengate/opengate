@@ -1,0 +1,20 @@
+﻿<div id="chartOcupacionG"></div>
+
+<script type="text/javascript">
+    var chartOcupacion = new CanvasJS.Chart("chartOcupacionG",{
+        animationEnabled: true,
+        title: {
+            text: "Porcentaje del Mes: " + "@ViewBag.MesOcupacion"
+        },
+        data: [{
+            type: "doughnut",
+            startAngle: 10,
+            indexLabelFontSize: 10,
+            indexLabel: "{label}-{y}%",
+            toolTipContent: "<b>{label}:</b> {y}%",
+            dataPoints: @Html.Raw(ViewBag.DataPointsEvalOcupacion),
+        }]
+    });
+    chartOcupacion.render();
+</script>
+

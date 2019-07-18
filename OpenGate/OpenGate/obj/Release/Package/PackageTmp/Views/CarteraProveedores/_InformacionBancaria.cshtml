@@ -1,0 +1,36 @@
+﻿@model IEnumerable<OpenGate.Entidades.informacionbancaria>
+
+<a class="btn btn-success" onclick="recargarInformacionBancaria()"><i class="fa fa-refresh"></i> Actualizar Contactos</a>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreBanco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CuentaBancaria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Clabe)
+        </th>       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreBanco)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CuentaBancaria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Clabe)
+        </td>       
+        <td>
+           <button type="button" class="btn btn-primary" onclick="EditarInformacionBancaria(@item.id)"><i class="fa fa-edit"></i> </button>      
+        </td>
+    </tr>
+}
+</table>
+
+

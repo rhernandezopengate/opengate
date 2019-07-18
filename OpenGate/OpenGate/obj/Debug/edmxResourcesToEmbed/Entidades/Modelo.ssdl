@@ -1,0 +1,1652 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_A3F19C_OGModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="area">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="asigancion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Folio" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="FechaRegistro" Type="datetime" />
+    <Property Name="AspNetUsers_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="asignacionordenes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FechaAlta" Type="datetime" />
+    <Property Name="Comentarios" Type="varchar(max)" />
+    <Property Name="AspNetUsers_Id" Type="nvarchar" MaxLength="128" />
+    <Property Name="Concentrado_Id" Type="int" />
+    <Property Name="NomenclaturaDHL_Id" Type="int" />
+    <Property Name="StatusAsignacion_Id" Type="int" />
+    <Property Name="FecuenciaDHL_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bancos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="250" />
+    <Property Name="rfc" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="categoriaorden">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="categoriaproveedor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="centrocostos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="clientes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="razonsocial" Type="varchar" MaxLength="500" />
+    <Property Name="rfc" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="complementosfacturas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Bancos_Id" Type="int" Nullable="false" />
+    <Property Name="CuentaOrdenante_Id" Type="int" Nullable="false" />
+    <Property Name="Factura_Id" Type="int" Nullable="false" />
+    <Property Name="Autorizacion" Type="varchar" MaxLength="50" />
+    <Property Name="StatusComplemento_Id" Type="int" Nullable="false" />
+    <Property Name="Asigancion_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="concentrado">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NTS_Id" Type="int" />
+    <Property Name="CSR_Id" Type="int" />
+    <Property Name="GuiasImpresas_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="contactoproveedor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="Telefono" Type="varchar" MaxLength="50" />
+    <Property Name="Mail" Type="varchar" MaxLength="50" />
+    <Property Name="Puesto" Type="varchar" MaxLength="50" />
+    <Property Name="Proveedores_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="csr">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NumeroCuenta" Type="varchar" MaxLength="50" />
+    <Property Name="Guia" Type="varchar" MaxLength="50" />
+    <Property Name="PieceID" Type="varchar" MaxLength="50" />
+    <Property Name="Referencia" Type="varchar" MaxLength="50" />
+    <Property Name="IATAOrigen" Type="varchar" MaxLength="50" />
+    <Property Name="CiudadOrigen" Type="varchar(max)" />
+    <Property Name="IATADestino" Type="varchar" MaxLength="50" />
+    <Property Name="CiudadDestino" Type="varchar" MaxLength="50" />
+    <Property Name="SVCSubIATA" Type="varchar" MaxLength="50" />
+    <Property Name="Ruta" Type="varchar" MaxLength="50" />
+    <Property Name="Piezas" Type="int" />
+    <Property Name="Peso" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="FechaRecoleccion" Type="date" />
+    <Property Name="FechaPrimerCheckpointTerminal" Type="date" />
+    <Property Name="HoraPrimerCheckpointTerminal" Type="varchar" MaxLength="50" />
+    <Property Name="PrimerCheckpointTerminal" Type="varchar" MaxLength="50" />
+    <Property Name="DescripcionPrimerCheckTerminal" Type="varchar" MaxLength="100" />
+    <Property Name="DetallesEntregaComentarios" Type="varchar(max)" />
+    <Property Name="TiempoTransitoEstimado" Type="int" />
+    <Property Name="TiempoTransitoRealizado" Type="int" />
+    <Property Name="IntentosEntrega" Type="int" />
+    <Property Name="CausaDemora" Type="varchar(max)" />
+    <Property Name="FechaIngresoCC" Type="date" />
+    <Property Name="DiasCC" Type="int" />
+    <Property Name="Producto" Type="varchar" MaxLength="50" />
+    <Property Name="ValorSeguro" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="NombreRemitente" Type="varchar" MaxLength="100" />
+    <Property Name="ContactoRemitente" Type="varchar" MaxLength="100" />
+    <Property Name="DireccionRemitente" Type="varchar(max)" />
+    <Property Name="CPRemitente" Type="varchar" MaxLength="50" />
+    <Property Name="NombreDestinatario" Type="varchar(max)" />
+    <Property Name="ContactoDestinatario" Type="varchar(max)" />
+    <Property Name="DireccionDestinatario" Type="varchar(max)" />
+    <Property Name="CPDestinatario" Type="varchar" MaxLength="50" />
+    <Property Name="UltimoCheckpoint" Type="varchar" MaxLength="50" />
+    <Property Name="FechaUltimoCheckpoint" Type="date" />
+    <Property Name="HoraUltimoCheckpoint" Type="varchar" MaxLength="50" />
+    <Property Name="detalleultimocheckpoint" Type="varchar(max)" />
+    <Property Name="FechaCarga" Type="date" />
+  </EntityType>
+  <EntityType Name="cuentaordenante">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="detalleordenproductos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrdenCompra_Id" Type="int" Nullable="false" />
+    <Property Name="Productos_Id" Type="int" Nullable="false" />
+    <Property Name="cantidad" Type="int" />
+    <Property Name="preciounitario" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="monto" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="empleado">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="ApellidoPaterno" Type="varchar" MaxLength="50" />
+    <Property Name="ApellidoMaterno" Type="varchar" MaxLength="50" />
+    <Property Name="FechaIngreso" Type="date" />
+    <Property Name="Direccion" Type="varchar" MaxLength="200" />
+    <Property Name="Puesto_Id" Type="int" Nullable="false" />
+    <Property Name="Area_Id" Type="int" Nullable="false" />
+    <Property Name="AspNetUsers_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="foto" Type="varbinary(max)" />
+    <Property Name="NameFile" Type="nvarchar" MaxLength="100" />
+    <Property Name="ExtFile" Type="nvarchar" MaxLength="100" />
+    <Property Name="Celular" Type="varchar" MaxLength="20" />
+    <Property Name="Telefono" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="envioshomedelivery">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tipoenvio" Type="varchar" MaxLength="50" />
+    <Property Name="solicitante" Type="varchar" MaxLength="50" />
+    <Property Name="mes" Type="varchar" MaxLength="50" />
+    <Property Name="fecharequerimiento" Type="date" />
+    <Property Name="sku" Type="varchar" MaxLength="50" />
+    <Property Name="descripcion" Type="varchar(max)" />
+    <Property Name="cantidad" Type="int" />
+    <Property Name="cv" Type="varchar" MaxLength="50" />
+    <Property Name="destino" Type="varchar(max)" />
+    <Property Name="cajas" Type="int" />
+    <Property Name="paqueteria" Type="varchar" MaxLength="100" />
+    <Property Name="referenciaguia" Type="varchar" MaxLength="50" />
+    <Property Name="numeroguia" Type="varchar" MaxLength="50" />
+    <Property Name="numerorequerimiento" Type="varchar" MaxLength="50" />
+    <Property Name="tiposalida" Type="varchar" MaxLength="50" />
+    <Property Name="aplicacion" Type="varchar" MaxLength="50" />
+    <Property Name="observaciones" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="equipomantenimiento">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="equiposcomputo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CPU" Type="varchar" MaxLength="50" />
+    <Property Name="RAM" Type="int" />
+    <Property Name="SistemaOperativo" Type="varchar" MaxLength="50" />
+    <Property Name="NombreEquipo" Type="varchar" MaxLength="50" />
+    <Property Name="Modelo" Type="varchar" MaxLength="50" />
+    <Property Name="Marca" Type="varchar" MaxLength="50" />
+    <Property Name="TipoEquipo" Type="varchar" MaxLength="50" />
+    <Property Name="Ubicacion" Type="varchar" MaxLength="50" />
+    <Property Name="ServiceTag" Type="varchar" MaxLength="50" />
+    <Property Name="ExpressServiceCode" Type="varchar" MaxLength="50" />
+    <Property Name="FechaEntrada" Type="date" />
+    <Property Name="FechaBaja" Type="int" />
+    <Property Name="Empleado_Id" Type="int" Nullable="false" />
+    <Property Name="EquipoMantenimiento_Id" Type="int" Nullable="false" />
+    <Property Name="HDD" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="factura">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FechaRegistro" Type="datetime" />
+    <Property Name="Numero" Type="char" MaxLength="10" />
+    <Property Name="FechaFactura" Type="date" />
+    <Property Name="FechaSello" Type="date" />
+    <Property Name="FechaVencimiento" Type="date" />
+    <Property Name="FechaPago" Type="date" />
+    <Property Name="Concepto" Type="varchar" MaxLength="500" />
+    <Property Name="Subtotal" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Iva" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Descuento" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Retencion" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Total" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Observaciones" Type="varchar" MaxLength="200" />
+    <Property Name="Proveedor_Id" Type="int" Nullable="false" />
+    <Property Name="StatusFactura_Id" Type="int" Nullable="false" />
+    <Property Name="AspNetUsers_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Clientes_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="fecuenciadhl">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="carrier" Type="varchar" MaxLength="100" />
+    <Property Name="postalcode" Type="varchar" MaxLength="10" />
+    <Property Name="freightcode" Type="varchar" MaxLength="10" />
+    <Property Name="frequency" Type="int" />
+    <Property Name="wharehouse" Type="varchar" MaxLength="10" />
+    <Property Name="statusfq" Type="varchar" MaxLength="50" />
+    <Property Name="descripcion" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityType Name="formapago">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="guiasimpresas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fecha" Type="date" />
+    <Property Name="numero" Type="varchar" MaxLength="50" />
+    <Property Name="orden" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="informacionbancaria">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NombreBanco" Type="varchar" MaxLength="100" />
+    <Property Name="CuentaBancaria" Type="varchar" MaxLength="50" />
+    <Property Name="Clabe" Type="varchar" MaxLength="50" />
+    <Property Name="Proveedores_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="kpisdespacho">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="diasemana" Type="int" />
+    <Property Name="wk" Type="int" />
+    <Property Name="mes" Type="varchar" MaxLength="50" />
+    <Property Name="cv" Type="varchar" MaxLength="200" />
+    <Property Name="mo" Type="varchar" MaxLength="200" />
+    <Property Name="tipoembarque" Type="varchar" MaxLength="50" />
+    <Property Name="fechaembarque" Type="date" />
+    <Property Name="qtypiezas" Type="int" />
+    <Property Name="qtycajas" Type="int" />
+    <Property Name="qtypallets" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="valordia" Type="int" />
+  </EntityType>
+  <EntityType Name="kpisinventariosaplontime">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Mes" Type="varchar" MaxLength="50" />
+    <Property Name="FechaReciboFisico" Type="date" />
+    <Property Name="FechaTerminoValidacion" Type="date" />
+    <Property Name="DiasValidacion" Type="int" />
+    <Property Name="FechaCreacionOracle" Type="date" />
+    <Property Name="FechaReciboOracle" Type="date" />
+    <Property Name="DiasOracle" Type="int" />
+    <Property Name="FolioFacturacion" Type="varchar" MaxLength="50" />
+    <Property Name="Observaciones" Type="varchar" MaxLength="500" />
+    <Property Name="CV" Type="varchar" MaxLength="200" />
+    <Property Name="Number" Type="varchar" MaxLength="50" />
+    <Property Name="ordernumber" Type="varchar" MaxLength="50" />
+    <Property Name="piezassistema" Type="int" />
+    <Property Name="piezasfisico" Type="int" />
+    <Property Name="palletsrecibidos" Type="int" />
+    <Property Name="montofacturado" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ingresado" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="kpisinventariosexactitud">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="subinventario" Type="varchar" MaxLength="50" />
+    <Property Name="mes" Type="varchar" MaxLength="50" />
+    <Property Name="absoluto" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="valorinventario" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="kpisinvetntarios">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="skuvariance" Type="varchar" MaxLength="50" />
+    <Property Name="monto" Type="int" />
+    <Property Name="porcentajemonto" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="piezas" Type="int" />
+    <Property Name="porcentajepiezas" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="mes" Type="varchar" MaxLength="50" />
+    <Property Name="area" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="kpisplaneacion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="mes" Type="varchar" MaxLength="50" />
+    <Property Name="ano" Type="varchar" MaxLength="50" />
+    <Property Name="fechaembarque" Type="date" />
+    <Property Name="wk" Type="int" />
+    <Property Name="cv" Type="varchar" MaxLength="50" />
+    <Property Name="mo" Type="varchar" MaxLength="50" />
+    <Property Name="subinventario" Type="varchar" MaxLength="50" />
+    <Property Name="requisicion" Type="varchar" MaxLength="50" />
+    <Property Name="orden" Type="varchar" MaxLength="50" />
+    <Property Name="aplicacion" Type="varchar" MaxLength="50" />
+    <Property Name="fechageneracion" Type="date" />
+    <Property Name="fechaentrega" Type="date" />
+    <Property Name="tipoembarque" Type="varchar" MaxLength="50" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="kpisrecibo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fecha" Type="date" />
+    <Property Name="wk" Type="int" />
+    <Property Name="mes" Type="varchar" MaxLength="50" />
+    <Property Name="proveedor" Type="varchar" MaxLength="50" />
+    <Property Name="ordenguia" Type="varchar" MaxLength="50" />
+    <Property Name="descarga" Type="varchar" MaxLength="50" />
+    <Property Name="fechahoradescarga" Type="datetime" />
+    <Property Name="fechahoraingresosistema" Type="datetime" />
+    <Property Name="tiempoaplicacionoracle" Type="varchar" MaxLength="50" />
+    <Property Name="evaluacioningreso" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="kpistrafico">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="remision" Type="varchar" MaxLength="50" />
+    <Property Name="consecutivoflete" Type="varchar" MaxLength="50" />
+    <Property Name="respnsableflete" Type="char" MaxLength="10" />
+    <Property Name="mescarga" Type="varchar" MaxLength="50" />
+    <Property Name="origen" Type="varchar" MaxLength="100" />
+    <Property Name="destino" Type="varchar" MaxLength="100" />
+    <Property Name="wh" Type="char" MaxLength="10" />
+    <Property Name="ruta" Type="char" MaxLength="10" />
+    <Property Name="tiporequerimiento" Type="varchar" MaxLength="100" />
+    <Property Name="wk" Type="int" />
+    <Property Name="fechacarga" Type="date" />
+    <Property Name="fechaentrega" Type="date" />
+    <Property Name="ro" Type="varchar" MaxLength="50" />
+    <Property Name="tipoenvio" Type="char" MaxLength="5" />
+    <Property Name="tipounidad" Type="char" MaxLength="10" />
+    <Property Name="capasidadpalletsunidad" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="palletsembarcados" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="porcentajeocupacionunidad" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="capasidadunidad" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="pesoinventario" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="porcentajepesounidad" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="evaluacionocupacionunidad" Type="char" MaxLength="5" />
+    <Property Name="numerocajas" Type="int" />
+    <Property Name="numeropiezas" Type="int" />
+    <Property Name="costoflete" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="costomaniobras" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="fhrequeridaposicionamiento" Type="datetime" />
+    <Property Name="fhrealpsocicionamiento" Type="datetime" />
+    <Property Name="evaluacionposicionamiento" Type="char" MaxLength="5" />
+    <Property Name="fhcita" Type="datetime" />
+    <Property Name="fharriboreal" Type="datetime" />
+    <Property Name="evaluacionentrega" Type="char" MaxLength="5" />
+    <Property Name="maniobristasrequeridos" Type="int" />
+    <Property Name="maniobristasatiempo" Type="int" />
+    <Property Name="evaluacionmaniobras" Type="char" MaxLength="5" />
+    <Property Name="observaciones" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="mo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Column_1" Type="varchar(max)" />
+    <Property Name="column_2" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="nacionalidadproveedor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="nomenclaturadhl">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tipocheckpoint" Type="varchar" MaxLength="50" />
+    <Property Name="codigo" Type="varchar" MaxLength="10" />
+    <Property Name="descripcion" Type="varchar" MaxLength="200" />
+    <Property Name="statusherbalife" Type="varchar" MaxLength="200" />
+    <Property Name="observaciones" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="nts">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NTSDate" Type="date" />
+    <Property Name="Order" Type="varchar" MaxLength="100" />
+    <Property Name="DSIdCliente" Type="varchar" MaxLength="100" />
+    <Property Name="DSNombreCliente" Type="varchar" MaxLength="100" />
+    <Property Name="OSACalleNumero" Type="varchar(max)" />
+    <Property Name="OSANull1" Type="varchar" MaxLength="50" />
+    <Property Name="OSAColonia" Type="varchar" MaxLength="500" />
+    <Property Name="OSADestinatario" Type="varchar" MaxLength="500" />
+    <Property Name="OSACiudad" Type="varchar" MaxLength="500" />
+    <Property Name="OSANull2" Type="varchar" MaxLength="50" />
+    <Property Name="OSAEstado" Type="varchar" MaxLength="500" />
+    <Property Name="OSACodigoPostal" Type="varchar" MaxLength="50" />
+    <Property Name="OSI" Type="varchar(max)" />
+    <Property Name="osp" Type="varchar" MaxLength="50" />
+    <Property Name="osh" Type="varchar" MaxLength="50" />
+    <Property Name="ofcodigopais" Type="varchar" MaxLength="50" />
+    <Property Name="oforigen" Type="varchar" MaxLength="200" />
+    <Property Name="fecharegistro" Type="date" />
+  </EntityType>
+  <EntityType Name="ordencompra">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="NombreProyecto" Type="varchar" MaxLength="100" />
+    <Property Name="Locacion" Type="varchar" MaxLength="100" />
+    <Property Name="LugarEntrega" Type="varchar" MaxLength="100" />
+    <Property Name="TiempoRespuesta" Type="int" />
+    <Property Name="FechaEntrega" Type="date" />
+    <Property Name="Justificacion" Type="varchar" MaxLength="200" />
+    <Property Name="Politicas" Type="varchar(max)" />
+    <Property Name="CentroCostos_Id" Type="int" Nullable="false" />
+    <Property Name="SubCentroCostos_Id" Type="int" Nullable="false" />
+    <Property Name="Proveedores_Id" Type="int" Nullable="false" />
+    <Property Name="CategoriaOrden_Id" Type="int" Nullable="false" />
+    <Property Name="TipoCompra_Id" Type="int" Nullable="false" />
+    <Property Name="StatusFinanzas_Id" Type="int" Nullable="false" />
+    <Property Name="StatusCompras_Id" Type="int" Nullable="false" />
+    <Property Name="StatusDireccion_Id" Type="int" Nullable="false" />
+    <Property Name="Solicitante_Id" Type="int" Nullable="false" />
+    <Property Name="Clientes_Id" Type="int" Nullable="false" />
+    <Property Name="FormaPago_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="pago">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FechaRegistro" Type="datetime" />
+    <Property Name="Numero" Type="int" />
+    <Property Name="FechaPago" Type="date" />
+    <Property Name="MontoTotal" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="AspNetUsers_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="StatusPago_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pagofacturas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Factura_Id" Type="int" Nullable="false" />
+    <Property Name="Pago_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="productos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Codigo" Type="varchar" MaxLength="100" />
+    <Property Name="Nombre" Type="varchar(max)" />
+    <Property Name="precio" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="UM" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="proveedor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RazonSocial" Type="varchar" MaxLength="500" />
+    <Property Name="RFC" Type="varchar" MaxLength="50" />
+    <Property Name="NacionalidadProveedor_Id" Type="int" Nullable="false" />
+    <Property Name="CategoriaProveedor_Id" Type="int" Nullable="false" />
+    <Property Name="StatusProveedor_Id" Type="int" Nullable="false" />
+    <Property Name="StatusProveedorVisible_Id" Type="int" />
+    <Property Name="Pais" Type="varchar" MaxLength="50" />
+    <Property Name="Estado" Type="varchar" MaxLength="100" />
+    <Property Name="Municipio" Type="varchar" MaxLength="100" />
+    <Property Name="Calle" Type="varchar" MaxLength="100" />
+    <Property Name="CodigoPostal" Type="varchar" MaxLength="50" />
+    <Property Name="ModenaFacturacion" Type="varchar" MaxLength="50" />
+    <Property Name="DiasCredito" Type="int" />
+    <Property Name="RepresentanteLegal" Type="varchar" MaxLength="50" />
+    <Property Name="ActividadEmpresarial" Type="varchar" MaxLength="100" />
+    <Property Name="NombreComercial" Type="varchar" MaxLength="255" />
+    <Property Name="Colonia" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="puesto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="servicios">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fecharegistro" Type="datetime" />
+    <Property Name="cctv" Type="bit" />
+    <Property Name="telefonia" Type="bit" />
+    <Property Name="alarmas" Type="bit" />
+    <Property Name="correo" Type="bit" />
+    <Property Name="antivirus" Type="bit" />
+    <Property Name="respaldoaplicaciones" Type="bit" />
+    <Property Name="usuarioswifi" Type="bit" />
+    <Property Name="internetcarga" Type="varchar" MaxLength="50" />
+    <Property Name="internetdescarga" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="solicitante">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="AspNetUsers_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Supervisor_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="statusasignacion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="statuscomplemento">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="statuscompras">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="statusdireccion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="statusfactura">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="statusfinanzas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="statuspago">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="statusproveedor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="statusproveedorvisible">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="statustarea">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="subcentrocostos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="supervisor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="AspNetUsers_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tareas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Actividad" Type="varchar" MaxLength="500" />
+    <Property Name="HoraInicio" Type="varchar" MaxLength="50" />
+    <Property Name="Solicita" Type="varchar" MaxLength="200" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="FechaEntrega" Type="date" />
+    <Property Name="HoraFin" Type="varchar" MaxLength="50" />
+    <Property Name="PorcentajeCumplido" Type="int" />
+    <Property Name="Observaciones" Type="varchar" MaxLength="200" />
+    <Property Name="Notas" Type="varchar(max)" />
+    <Property Name="FechaRegistro" Type="datetime" />
+    <Property Name="StatusTarea_Id" Type="int" Nullable="false" />
+    <Property Name="AspNetUsers_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tipocompra">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="asigancion_aspnetusers_fk">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="asigancion" Type="Self.asigancion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="asigancion">
+        <PropertyRef Name="AspNetUsers_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="asigancionordenes_aspnetusers_fk">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="asignacionordenes" Type="Self.asignacionordenes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="asignacionordenes">
+        <PropertyRef Name="AspNetUsers_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="asignacionordenes_concentrado_fk">
+    <End Role="concentrado" Type="Self.concentrado" Multiplicity="0..1" />
+    <End Role="asignacionordenes" Type="Self.asignacionordenes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="concentrado">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="asignacionordenes">
+        <PropertyRef Name="Concentrado_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="asignacionordenes_fecuenciadhl_fk">
+    <End Role="fecuenciadhl" Type="Self.fecuenciadhl" Multiplicity="1" />
+    <End Role="asignacionordenes" Type="Self.asignacionordenes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fecuenciadhl">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="asignacionordenes">
+        <PropertyRef Name="FecuenciaDHL_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="asignacionordenes_nomenclaturadhl_fk">
+    <End Role="nomenclaturadhl" Type="Self.nomenclaturadhl" Multiplicity="0..1" />
+    <End Role="asignacionordenes" Type="Self.asignacionordenes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nomenclaturadhl">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="asignacionordenes">
+        <PropertyRef Name="NomenclaturaDHL_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="asignacionordenes_statusasignacion_fk">
+    <End Role="statusasignacion" Type="Self.statusasignacion" Multiplicity="0..1" />
+    <End Role="asignacionordenes" Type="Self.asignacionordenes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="statusasignacion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="asignacionordenes">
+        <PropertyRef Name="StatusAsignacion_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="complementosfacturas_asigancion_fk">
+    <End Role="asigancion" Type="Self.asigancion" Multiplicity="1" />
+    <End Role="complementosfacturas" Type="Self.complementosfacturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="asigancion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="complementosfacturas">
+        <PropertyRef Name="Asigancion_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="complementosfacturas_bancos_fk">
+    <End Role="bancos" Type="Self.bancos" Multiplicity="1" />
+    <End Role="complementosfacturas" Type="Self.complementosfacturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bancos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="complementosfacturas">
+        <PropertyRef Name="Bancos_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="complementosfacturas_cuentaordenante_fk">
+    <End Role="cuentaordenante" Type="Self.cuentaordenante" Multiplicity="1" />
+    <End Role="complementosfacturas" Type="Self.complementosfacturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cuentaordenante">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="complementosfacturas">
+        <PropertyRef Name="CuentaOrdenante_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="complementosfacturas_factura_fk">
+    <End Role="factura" Type="Self.factura" Multiplicity="1" />
+    <End Role="complementosfacturas" Type="Self.complementosfacturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="factura">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="complementosfacturas">
+        <PropertyRef Name="Factura_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="complementosfacturas_statuscomplemento_fk">
+    <End Role="statuscomplemento" Type="Self.statuscomplemento" Multiplicity="1" />
+    <End Role="complementosfacturas" Type="Self.complementosfacturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="statuscomplemento">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="complementosfacturas">
+        <PropertyRef Name="StatusComplemento_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="concentrado_csr_fk">
+    <End Role="csr" Type="Self.csr" Multiplicity="0..1" />
+    <End Role="concentrado" Type="Self.concentrado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="csr">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="concentrado">
+        <PropertyRef Name="CSR_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="concentrado_guiasimpresas_fk">
+    <End Role="guiasimpresas" Type="Self.guiasimpresas" Multiplicity="0..1" />
+    <End Role="concentrado" Type="Self.concentrado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="guiasimpresas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="concentrado">
+        <PropertyRef Name="GuiasImpresas_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="concentrado_nts_fk">
+    <End Role="nts" Type="Self.nts" Multiplicity="0..1" />
+    <End Role="concentrado" Type="Self.concentrado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nts">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="concentrado">
+        <PropertyRef Name="NTS_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="contactoproveedor_proveedores_fk">
+    <End Role="proveedor" Type="Self.proveedor" Multiplicity="1" />
+    <End Role="contactoproveedor" Type="Self.contactoproveedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedor">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="contactoproveedor">
+        <PropertyRef Name="Proveedores_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="detalleordenproductos_ordencompra_fk">
+    <End Role="ordencompra" Type="Self.ordencompra" Multiplicity="1" />
+    <End Role="detalleordenproductos" Type="Self.detalleordenproductos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ordencompra">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="detalleordenproductos">
+        <PropertyRef Name="OrdenCompra_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="detalleordenproductos_productos_fk">
+    <End Role="productos" Type="Self.productos" Multiplicity="1" />
+    <End Role="detalleordenproductos" Type="Self.detalleordenproductos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="productos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="detalleordenproductos">
+        <PropertyRef Name="Productos_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="empleado_area_fk">
+    <End Role="area" Type="Self.area" Multiplicity="1" />
+    <End Role="empleado" Type="Self.empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="area">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="empleado">
+        <PropertyRef Name="Area_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="empleado_aspnetusers_fk">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="empleado" Type="Self.empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="empleado">
+        <PropertyRef Name="AspNetUsers_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="empleado_puesto_fk">
+    <End Role="puesto" Type="Self.puesto" Multiplicity="1" />
+    <End Role="empleado" Type="Self.empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="puesto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="empleado">
+        <PropertyRef Name="Puesto_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="equiposcomputo_empleado_fk">
+    <End Role="empleado" Type="Self.empleado" Multiplicity="1" />
+    <End Role="equiposcomputo" Type="Self.equiposcomputo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empleado">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="equiposcomputo">
+        <PropertyRef Name="Empleado_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="equiposcomputo_equipomantenimiento_fk">
+    <End Role="equipomantenimiento" Type="Self.equipomantenimiento" Multiplicity="1" />
+    <End Role="equiposcomputo" Type="Self.equiposcomputo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="equipomantenimiento">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="equiposcomputo">
+        <PropertyRef Name="EquipoMantenimiento_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="factura_aspnetusers_fk">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="factura" Type="Self.factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="factura">
+        <PropertyRef Name="AspNetUsers_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="factura_clientes_fk">
+    <End Role="clientes" Type="Self.clientes" Multiplicity="1" />
+    <End Role="factura" Type="Self.factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clientes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="factura">
+        <PropertyRef Name="Clientes_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="factura_proveedor_fk">
+    <End Role="proveedor" Type="Self.proveedor" Multiplicity="1" />
+    <End Role="factura" Type="Self.factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedor">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="factura">
+        <PropertyRef Name="Proveedor_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="factura_statusfactura_fk">
+    <End Role="statusfactura" Type="Self.statusfactura" Multiplicity="1" />
+    <End Role="factura" Type="Self.factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="statusfactura">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="factura">
+        <PropertyRef Name="StatusFactura_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="informacionbancaria_proveedores_fk">
+    <End Role="proveedor" Type="Self.proveedor" Multiplicity="1" />
+    <End Role="informacionbancaria" Type="Self.informacionbancaria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedor">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="informacionbancaria">
+        <PropertyRef Name="Proveedores_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ordencompra_categoriaorden_fk">
+    <End Role="categoriaorden" Type="Self.categoriaorden" Multiplicity="1" />
+    <End Role="ordencompra" Type="Self.ordencompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categoriaorden">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ordencompra">
+        <PropertyRef Name="CategoriaOrden_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ordencompra_centrocostos_fk">
+    <End Role="centrocostos" Type="Self.centrocostos" Multiplicity="1" />
+    <End Role="ordencompra" Type="Self.ordencompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="centrocostos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ordencompra">
+        <PropertyRef Name="CentroCostos_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ordencompra_clientes_fk">
+    <End Role="clientes" Type="Self.clientes" Multiplicity="1" />
+    <End Role="ordencompra" Type="Self.ordencompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clientes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ordencompra">
+        <PropertyRef Name="Clientes_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ordencompra_formapago_fk">
+    <End Role="formapago" Type="Self.formapago" Multiplicity="0..1" />
+    <End Role="ordencompra" Type="Self.ordencompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="formapago">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ordencompra">
+        <PropertyRef Name="FormaPago_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ordencompra_proveedores_fk">
+    <End Role="proveedor" Type="Self.proveedor" Multiplicity="1" />
+    <End Role="ordencompra" Type="Self.ordencompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedor">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ordencompra">
+        <PropertyRef Name="Proveedores_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ordencompra_solicitante_fk">
+    <End Role="solicitante" Type="Self.solicitante" Multiplicity="1" />
+    <End Role="ordencompra" Type="Self.ordencompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="solicitante">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ordencompra">
+        <PropertyRef Name="Solicitante_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ordencompra_statuscompras_fk">
+    <End Role="statuscompras" Type="Self.statuscompras" Multiplicity="1" />
+    <End Role="ordencompra" Type="Self.ordencompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="statuscompras">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ordencompra">
+        <PropertyRef Name="StatusCompras_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ordencompra_statusdireccion_fk">
+    <End Role="statusdireccion" Type="Self.statusdireccion" Multiplicity="1" />
+    <End Role="ordencompra" Type="Self.ordencompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="statusdireccion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ordencompra">
+        <PropertyRef Name="StatusDireccion_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ordencompra_statusfinanzas_fk">
+    <End Role="statusfinanzas" Type="Self.statusfinanzas" Multiplicity="1" />
+    <End Role="ordencompra" Type="Self.ordencompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="statusfinanzas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ordencompra">
+        <PropertyRef Name="StatusFinanzas_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ordencompra_subcentrocostos_fk">
+    <End Role="subcentrocostos" Type="Self.subcentrocostos" Multiplicity="1" />
+    <End Role="ordencompra" Type="Self.ordencompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="subcentrocostos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ordencompra">
+        <PropertyRef Name="SubCentroCostos_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ordencompra_tipocompra_fk">
+    <End Role="tipocompra" Type="Self.tipocompra" Multiplicity="1" />
+    <End Role="ordencompra" Type="Self.ordencompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipocompra">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ordencompra">
+        <PropertyRef Name="TipoCompra_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pago_aspnetusers_fk">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="pago" Type="Self.pago" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="pago">
+        <PropertyRef Name="AspNetUsers_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pago_statuspago_fk">
+    <End Role="statuspago" Type="Self.statuspago" Multiplicity="1" />
+    <End Role="pago" Type="Self.pago" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="statuspago">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pago">
+        <PropertyRef Name="StatusPago_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pagofacturas_factura_fk">
+    <End Role="factura" Type="Self.factura" Multiplicity="1" />
+    <End Role="pagofacturas" Type="Self.pagofacturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="factura">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pagofacturas">
+        <PropertyRef Name="Factura_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pagofacturas_pago_fk">
+    <End Role="pago" Type="Self.pago" Multiplicity="1" />
+    <End Role="pagofacturas" Type="Self.pagofacturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pago">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pagofacturas">
+        <PropertyRef Name="Pago_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="proveedor_categoriaproveedor_fk">
+    <End Role="categoriaproveedor" Type="Self.categoriaproveedor" Multiplicity="1" />
+    <End Role="proveedor" Type="Self.proveedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categoriaproveedor">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="proveedor">
+        <PropertyRef Name="CategoriaProveedor_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="proveedor_nacionalidadproveedor_fk">
+    <End Role="nacionalidadproveedor" Type="Self.nacionalidadproveedor" Multiplicity="1" />
+    <End Role="proveedor" Type="Self.proveedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nacionalidadproveedor">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="proveedor">
+        <PropertyRef Name="NacionalidadProveedor_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="proveedor_statusproveedor_fk">
+    <End Role="statusproveedor" Type="Self.statusproveedor" Multiplicity="1" />
+    <End Role="proveedor" Type="Self.proveedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="statusproveedor">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="proveedor">
+        <PropertyRef Name="StatusProveedor_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="proveedores_statusproveedorvisible_fk">
+    <End Role="statusproveedorvisible" Type="Self.statusproveedorvisible" Multiplicity="0..1" />
+    <End Role="proveedor" Type="Self.proveedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="statusproveedorvisible">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="proveedor">
+        <PropertyRef Name="StatusProveedorVisible_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="solicitante_aspnetusers_fk">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="solicitante" Type="Self.solicitante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="solicitante">
+        <PropertyRef Name="AspNetUsers_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="solicitante_supervisor_fk">
+    <End Role="supervisor" Type="Self.supervisor" Multiplicity="1" />
+    <End Role="solicitante" Type="Self.solicitante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="supervisor">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="solicitante">
+        <PropertyRef Name="Supervisor_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="supervisor_aspnetusers_fk">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="supervisor" Type="Self.supervisor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="supervisor">
+        <PropertyRef Name="AspNetUsers_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tareas_aspnetusers_fk">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="tareas" Type="Self.tareas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tareas">
+        <PropertyRef Name="AspNetUsers_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tareas_statustarea_fk">
+    <End Role="statustarea" Type="Self.statustarea" Multiplicity="1" />
+    <End Role="tareas" Type="Self.tareas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="statustarea">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tareas">
+        <PropertyRef Name="StatusTarea_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_A3F19C_OGModelStoreContainer">
+    <EntitySet Name="area" EntityType="Self.area" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="asigancion" EntityType="Self.asigancion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="asignacionordenes" EntityType="Self.asignacionordenes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="bancos" EntityType="Self.bancos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="categoriaorden" EntityType="Self.categoriaorden" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="categoriaproveedor" EntityType="Self.categoriaproveedor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="centrocostos" EntityType="Self.centrocostos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="clientes" EntityType="Self.clientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="complementosfacturas" EntityType="Self.complementosfacturas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="concentrado" EntityType="Self.concentrado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="contactoproveedor" EntityType="Self.contactoproveedor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="csr" EntityType="Self.csr" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cuentaordenante" EntityType="Self.cuentaordenante" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="detalleordenproductos" EntityType="Self.detalleordenproductos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="empleado" EntityType="Self.empleado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="envioshomedelivery" EntityType="Self.envioshomedelivery" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="equipomantenimiento" EntityType="Self.equipomantenimiento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="equiposcomputo" EntityType="Self.equiposcomputo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="factura" EntityType="Self.factura" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fecuenciadhl" EntityType="Self.fecuenciadhl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="formapago" EntityType="Self.formapago" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="guiasimpresas" EntityType="Self.guiasimpresas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="informacionbancaria" EntityType="Self.informacionbancaria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kpisdespacho" EntityType="Self.kpisdespacho" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kpisinventariosaplontime" EntityType="Self.kpisinventariosaplontime" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kpisinventariosexactitud" EntityType="Self.kpisinventariosexactitud" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kpisinvetntarios" EntityType="Self.kpisinvetntarios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kpisplaneacion" EntityType="Self.kpisplaneacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kpisrecibo" EntityType="Self.kpisrecibo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kpistrafico" EntityType="Self.kpistrafico" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="mo" EntityType="Self.mo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="nacionalidadproveedor" EntityType="Self.nacionalidadproveedor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="nomenclaturadhl" EntityType="Self.nomenclaturadhl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="nts" EntityType="Self.nts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ordencompra" EntityType="Self.ordencompra" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="pago" EntityType="Self.pago" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="pagofacturas" EntityType="Self.pagofacturas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="productos" EntityType="Self.productos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="proveedor" EntityType="Self.proveedor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="puesto" EntityType="Self.puesto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="servicios" EntityType="Self.servicios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="solicitante" EntityType="Self.solicitante" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="statusasignacion" EntityType="Self.statusasignacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="statuscomplemento" EntityType="Self.statuscomplemento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="statuscompras" EntityType="Self.statuscompras" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="statusdireccion" EntityType="Self.statusdireccion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="statusfactura" EntityType="Self.statusfactura" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="statusfinanzas" EntityType="Self.statusfinanzas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="statuspago" EntityType="Self.statuspago" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="statusproveedor" EntityType="Self.statusproveedor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="statusproveedorvisible" EntityType="Self.statusproveedorvisible" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="statustarea" EntityType="Self.statustarea" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="subcentrocostos" EntityType="Self.subcentrocostos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="supervisor" EntityType="Self.supervisor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tareas" EntityType="Self.tareas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tipocompra" EntityType="Self.tipocompra" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="asigancion_aspnetusers_fk" Association="Self.asigancion_aspnetusers_fk">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="asigancion" EntitySet="asigancion" />
+    </AssociationSet>
+    <AssociationSet Name="asigancionordenes_aspnetusers_fk" Association="Self.asigancionordenes_aspnetusers_fk">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="asignacionordenes" EntitySet="asignacionordenes" />
+    </AssociationSet>
+    <AssociationSet Name="asignacionordenes_concentrado_fk" Association="Self.asignacionordenes_concentrado_fk">
+      <End Role="concentrado" EntitySet="concentrado" />
+      <End Role="asignacionordenes" EntitySet="asignacionordenes" />
+    </AssociationSet>
+    <AssociationSet Name="asignacionordenes_fecuenciadhl_fk" Association="Self.asignacionordenes_fecuenciadhl_fk">
+      <End Role="fecuenciadhl" EntitySet="fecuenciadhl" />
+      <End Role="asignacionordenes" EntitySet="asignacionordenes" />
+    </AssociationSet>
+    <AssociationSet Name="asignacionordenes_nomenclaturadhl_fk" Association="Self.asignacionordenes_nomenclaturadhl_fk">
+      <End Role="nomenclaturadhl" EntitySet="nomenclaturadhl" />
+      <End Role="asignacionordenes" EntitySet="asignacionordenes" />
+    </AssociationSet>
+    <AssociationSet Name="asignacionordenes_statusasignacion_fk" Association="Self.asignacionordenes_statusasignacion_fk">
+      <End Role="statusasignacion" EntitySet="statusasignacion" />
+      <End Role="asignacionordenes" EntitySet="asignacionordenes" />
+    </AssociationSet>
+    <AssociationSet Name="complementosfacturas_asigancion_fk" Association="Self.complementosfacturas_asigancion_fk">
+      <End Role="asigancion" EntitySet="asigancion" />
+      <End Role="complementosfacturas" EntitySet="complementosfacturas" />
+    </AssociationSet>
+    <AssociationSet Name="complementosfacturas_bancos_fk" Association="Self.complementosfacturas_bancos_fk">
+      <End Role="bancos" EntitySet="bancos" />
+      <End Role="complementosfacturas" EntitySet="complementosfacturas" />
+    </AssociationSet>
+    <AssociationSet Name="complementosfacturas_cuentaordenante_fk" Association="Self.complementosfacturas_cuentaordenante_fk">
+      <End Role="cuentaordenante" EntitySet="cuentaordenante" />
+      <End Role="complementosfacturas" EntitySet="complementosfacturas" />
+    </AssociationSet>
+    <AssociationSet Name="complementosfacturas_factura_fk" Association="Self.complementosfacturas_factura_fk">
+      <End Role="factura" EntitySet="factura" />
+      <End Role="complementosfacturas" EntitySet="complementosfacturas" />
+    </AssociationSet>
+    <AssociationSet Name="complementosfacturas_statuscomplemento_fk" Association="Self.complementosfacturas_statuscomplemento_fk">
+      <End Role="statuscomplemento" EntitySet="statuscomplemento" />
+      <End Role="complementosfacturas" EntitySet="complementosfacturas" />
+    </AssociationSet>
+    <AssociationSet Name="concentrado_csr_fk" Association="Self.concentrado_csr_fk">
+      <End Role="csr" EntitySet="csr" />
+      <End Role="concentrado" EntitySet="concentrado" />
+    </AssociationSet>
+    <AssociationSet Name="concentrado_guiasimpresas_fk" Association="Self.concentrado_guiasimpresas_fk">
+      <End Role="guiasimpresas" EntitySet="guiasimpresas" />
+      <End Role="concentrado" EntitySet="concentrado" />
+    </AssociationSet>
+    <AssociationSet Name="concentrado_nts_fk" Association="Self.concentrado_nts_fk">
+      <End Role="nts" EntitySet="nts" />
+      <End Role="concentrado" EntitySet="concentrado" />
+    </AssociationSet>
+    <AssociationSet Name="contactoproveedor_proveedores_fk" Association="Self.contactoproveedor_proveedores_fk">
+      <End Role="proveedor" EntitySet="proveedor" />
+      <End Role="contactoproveedor" EntitySet="contactoproveedor" />
+    </AssociationSet>
+    <AssociationSet Name="detalleordenproductos_ordencompra_fk" Association="Self.detalleordenproductos_ordencompra_fk">
+      <End Role="ordencompra" EntitySet="ordencompra" />
+      <End Role="detalleordenproductos" EntitySet="detalleordenproductos" />
+    </AssociationSet>
+    <AssociationSet Name="detalleordenproductos_productos_fk" Association="Self.detalleordenproductos_productos_fk">
+      <End Role="productos" EntitySet="productos" />
+      <End Role="detalleordenproductos" EntitySet="detalleordenproductos" />
+    </AssociationSet>
+    <AssociationSet Name="empleado_area_fk" Association="Self.empleado_area_fk">
+      <End Role="area" EntitySet="area" />
+      <End Role="empleado" EntitySet="empleado" />
+    </AssociationSet>
+    <AssociationSet Name="empleado_aspnetusers_fk" Association="Self.empleado_aspnetusers_fk">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="empleado" EntitySet="empleado" />
+    </AssociationSet>
+    <AssociationSet Name="empleado_puesto_fk" Association="Self.empleado_puesto_fk">
+      <End Role="puesto" EntitySet="puesto" />
+      <End Role="empleado" EntitySet="empleado" />
+    </AssociationSet>
+    <AssociationSet Name="equiposcomputo_empleado_fk" Association="Self.equiposcomputo_empleado_fk">
+      <End Role="empleado" EntitySet="empleado" />
+      <End Role="equiposcomputo" EntitySet="equiposcomputo" />
+    </AssociationSet>
+    <AssociationSet Name="equiposcomputo_equipomantenimiento_fk" Association="Self.equiposcomputo_equipomantenimiento_fk">
+      <End Role="equipomantenimiento" EntitySet="equipomantenimiento" />
+      <End Role="equiposcomputo" EntitySet="equiposcomputo" />
+    </AssociationSet>
+    <AssociationSet Name="factura_aspnetusers_fk" Association="Self.factura_aspnetusers_fk">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="factura" EntitySet="factura" />
+    </AssociationSet>
+    <AssociationSet Name="factura_clientes_fk" Association="Self.factura_clientes_fk">
+      <End Role="clientes" EntitySet="clientes" />
+      <End Role="factura" EntitySet="factura" />
+    </AssociationSet>
+    <AssociationSet Name="factura_proveedor_fk" Association="Self.factura_proveedor_fk">
+      <End Role="proveedor" EntitySet="proveedor" />
+      <End Role="factura" EntitySet="factura" />
+    </AssociationSet>
+    <AssociationSet Name="factura_statusfactura_fk" Association="Self.factura_statusfactura_fk">
+      <End Role="statusfactura" EntitySet="statusfactura" />
+      <End Role="factura" EntitySet="factura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="informacionbancaria_proveedores_fk" Association="Self.informacionbancaria_proveedores_fk">
+      <End Role="proveedor" EntitySet="proveedor" />
+      <End Role="informacionbancaria" EntitySet="informacionbancaria" />
+    </AssociationSet>
+    <AssociationSet Name="ordencompra_categoriaorden_fk" Association="Self.ordencompra_categoriaorden_fk">
+      <End Role="categoriaorden" EntitySet="categoriaorden" />
+      <End Role="ordencompra" EntitySet="ordencompra" />
+    </AssociationSet>
+    <AssociationSet Name="ordencompra_centrocostos_fk" Association="Self.ordencompra_centrocostos_fk">
+      <End Role="centrocostos" EntitySet="centrocostos" />
+      <End Role="ordencompra" EntitySet="ordencompra" />
+    </AssociationSet>
+    <AssociationSet Name="ordencompra_clientes_fk" Association="Self.ordencompra_clientes_fk">
+      <End Role="clientes" EntitySet="clientes" />
+      <End Role="ordencompra" EntitySet="ordencompra" />
+    </AssociationSet>
+    <AssociationSet Name="ordencompra_formapago_fk" Association="Self.ordencompra_formapago_fk">
+      <End Role="formapago" EntitySet="formapago" />
+      <End Role="ordencompra" EntitySet="ordencompra" />
+    </AssociationSet>
+    <AssociationSet Name="ordencompra_proveedores_fk" Association="Self.ordencompra_proveedores_fk">
+      <End Role="proveedor" EntitySet="proveedor" />
+      <End Role="ordencompra" EntitySet="ordencompra" />
+    </AssociationSet>
+    <AssociationSet Name="ordencompra_solicitante_fk" Association="Self.ordencompra_solicitante_fk">
+      <End Role="solicitante" EntitySet="solicitante" />
+      <End Role="ordencompra" EntitySet="ordencompra" />
+    </AssociationSet>
+    <AssociationSet Name="ordencompra_statuscompras_fk" Association="Self.ordencompra_statuscompras_fk">
+      <End Role="statuscompras" EntitySet="statuscompras" />
+      <End Role="ordencompra" EntitySet="ordencompra" />
+    </AssociationSet>
+    <AssociationSet Name="ordencompra_statusdireccion_fk" Association="Self.ordencompra_statusdireccion_fk">
+      <End Role="statusdireccion" EntitySet="statusdireccion" />
+      <End Role="ordencompra" EntitySet="ordencompra" />
+    </AssociationSet>
+    <AssociationSet Name="ordencompra_statusfinanzas_fk" Association="Self.ordencompra_statusfinanzas_fk">
+      <End Role="statusfinanzas" EntitySet="statusfinanzas" />
+      <End Role="ordencompra" EntitySet="ordencompra" />
+    </AssociationSet>
+    <AssociationSet Name="ordencompra_subcentrocostos_fk" Association="Self.ordencompra_subcentrocostos_fk">
+      <End Role="subcentrocostos" EntitySet="subcentrocostos" />
+      <End Role="ordencompra" EntitySet="ordencompra" />
+    </AssociationSet>
+    <AssociationSet Name="ordencompra_tipocompra_fk" Association="Self.ordencompra_tipocompra_fk">
+      <End Role="tipocompra" EntitySet="tipocompra" />
+      <End Role="ordencompra" EntitySet="ordencompra" />
+    </AssociationSet>
+    <AssociationSet Name="pago_aspnetusers_fk" Association="Self.pago_aspnetusers_fk">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="pago" EntitySet="pago" />
+    </AssociationSet>
+    <AssociationSet Name="pago_statuspago_fk" Association="Self.pago_statuspago_fk">
+      <End Role="statuspago" EntitySet="statuspago" />
+      <End Role="pago" EntitySet="pago" />
+    </AssociationSet>
+    <AssociationSet Name="pagofacturas_factura_fk" Association="Self.pagofacturas_factura_fk">
+      <End Role="factura" EntitySet="factura" />
+      <End Role="pagofacturas" EntitySet="pagofacturas" />
+    </AssociationSet>
+    <AssociationSet Name="pagofacturas_pago_fk" Association="Self.pagofacturas_pago_fk">
+      <End Role="pago" EntitySet="pago" />
+      <End Role="pagofacturas" EntitySet="pagofacturas" />
+    </AssociationSet>
+    <AssociationSet Name="proveedor_categoriaproveedor_fk" Association="Self.proveedor_categoriaproveedor_fk">
+      <End Role="categoriaproveedor" EntitySet="categoriaproveedor" />
+      <End Role="proveedor" EntitySet="proveedor" />
+    </AssociationSet>
+    <AssociationSet Name="proveedor_nacionalidadproveedor_fk" Association="Self.proveedor_nacionalidadproveedor_fk">
+      <End Role="nacionalidadproveedor" EntitySet="nacionalidadproveedor" />
+      <End Role="proveedor" EntitySet="proveedor" />
+    </AssociationSet>
+    <AssociationSet Name="proveedor_statusproveedor_fk" Association="Self.proveedor_statusproveedor_fk">
+      <End Role="statusproveedor" EntitySet="statusproveedor" />
+      <End Role="proveedor" EntitySet="proveedor" />
+    </AssociationSet>
+    <AssociationSet Name="proveedores_statusproveedorvisible_fk" Association="Self.proveedores_statusproveedorvisible_fk">
+      <End Role="statusproveedorvisible" EntitySet="statusproveedorvisible" />
+      <End Role="proveedor" EntitySet="proveedor" />
+    </AssociationSet>
+    <AssociationSet Name="solicitante_aspnetusers_fk" Association="Self.solicitante_aspnetusers_fk">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="solicitante" EntitySet="solicitante" />
+    </AssociationSet>
+    <AssociationSet Name="solicitante_supervisor_fk" Association="Self.solicitante_supervisor_fk">
+      <End Role="supervisor" EntitySet="supervisor" />
+      <End Role="solicitante" EntitySet="solicitante" />
+    </AssociationSet>
+    <AssociationSet Name="supervisor_aspnetusers_fk" Association="Self.supervisor_aspnetusers_fk">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="supervisor" EntitySet="supervisor" />
+    </AssociationSet>
+    <AssociationSet Name="tareas_aspnetusers_fk" Association="Self.tareas_aspnetusers_fk">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="tareas" EntitySet="tareas" />
+    </AssociationSet>
+    <AssociationSet Name="tareas_statustarea_fk" Association="Self.tareas_statustarea_fk">
+      <End Role="statustarea" EntitySet="statustarea" />
+      <End Role="tareas" EntitySet="tareas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

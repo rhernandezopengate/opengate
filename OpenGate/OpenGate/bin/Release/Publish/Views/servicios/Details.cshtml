@@ -1,0 +1,99 @@
+﻿@model OpenGate.Entidades.servicios
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutIT.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>servicios</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fecharegistro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecharegistro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cctv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cctv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefonia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefonia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.alarmas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.alarmas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.correo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.correo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.antivirus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.antivirus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.respaldoaplicaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.respaldoaplicaciones)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usuarioswifi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuarioswifi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.internetcarga)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.internetcarga)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.internetdescarga)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.internetdescarga)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,198 @@
+﻿
+@{
+    ViewBag.Title = "Trafico";
+    Layout = "~/Views/Shared/_LayoutKpis.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>On Time Entregas<small>Ultimo Mes Registrado:</small>&nbsp; @ViewBag.MesOnTime</h2>&nbsp;
+                <a class="btn btn-dark" href='@Url.Action("Index", "kpistrafico")'><i class="fa fa-book"></i> Detalles</a>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="row">
+                    <div class="col-md-7">
+                        @Html.Action("ResumenOnTimeEntregas", "kpistrafico")
+                    </div>
+                    <div class="col-md-5">
+                        <div id="graphicontime">
+                            @Html.Action("GraficaOnTimeEntregas", "kpistrafico", new { mes = DateTime.Now.Month })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Maniobras<small>Ultimo Mes Registrado:</small>&nbsp; @ViewBag.MesEvalOcupacion</h2>&nbsp;
+                <a class="btn btn-dark" href='@Url.Action("Index", "kpistrafico")'><i class="fa fa-book"></i> Detalles</a>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="row">
+                    <div class="col-md-7">
+                        @Html.Action("ResumenEvaluacionManiobras", "kpistrafico")
+                    </div>
+                    <div class="col-md-5">
+                        <div id="graphicevalmaniobras">
+                            @Html.Action("GraficaEvaluacionManiobras", "kpistrafico", new { mes = DateTime.Now.Month })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Ocupacion Unidades<small>Ultimo Mes Registrado:</small>&nbsp; @ViewBag.MesEvalOcupacion</h2>&nbsp;
+                <a class="btn btn-dark" href='@Url.Action("Index", "kpistrafico")'><i class="fa fa-book"></i> Detalles</a>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.Action("ResumenEvaluacionOcupacion", "kpistrafico")
+                    </div>
+                    <div class="col-md-6">
+                        <div id="graphicevalocupacion">
+                            @Html.Action("GraficaEvaluacionOcupacion", "kpistrafico", new { mes = DateTime.Now.Month })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>On Time Posicionamiento<small>Ultimo Mes Registrado:</small>&nbsp; @ViewBag.MesEvalOcupacion</h2>&nbsp;
+                <a class="btn btn-dark" href='@Url.Action("Index", "kpistrafico")'><i class="fa fa-book"></i> Detalles</a>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.Action("ResumenOnTimePosicionamiento", "kpistrafico")
+                    </div>
+                    <div class="col-md-6">
+                        <div id="graphicontimeposicionamiento">
+                            @Html.Action("GraficaEvaluacionPosicionamiento", "kpistrafico", new { mes = DateTime.Now.Month })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Facturacion X Tipo Rquerimiento<small>Ultimo Mes Registrado:</small>&nbsp; @ViewBag.MesEvalOcupacion</h2>&nbsp;
+                <a class="btn btn-dark" href='@Url.Action("Index", "kpistrafico")'><i class="fa fa-book"></i> Detalles</a>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.Action("ResumenFacturacionRequirimiento", "kpistrafico")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Suma de Movimientos<small>Ultimo Mes Registrado:</small>&nbsp; @ViewBag.MesEvalOcupacion</h2>&nbsp;
+                <a class="btn btn-dark" href='@Url.Action("Index", "kpistrafico")'><i class="fa fa-book"></i> Detalles</a>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.Action("ResumenSumaMovimientos", "kpistrafico")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Custom Theme Scripts -->
+<script src="../build/js/custom.min.js"></script>
+
+
+<script type="text/javascript">
+    $(function () {
+        $('#tblEvaluacionOcupacion tr').click(function () {
+            var mes = $(this).find("td").eq(0).html();
+            DetailsEvaluacionOcupacion(mes);
+        });
+    });
+
+    var DetailsEvaluacionOcupacion = function (MES) {
+        $.ajax({
+            url: "/kpistrafico/GraficaEvaluacionOcupacion/",
+            type: "GET",
+            data: { mes: MES },
+            success: function (result) {
+                $('#graphicevalocupacion').html(result);
+            },
+            error: function (error) {
+                console.log(error);
+                alert(error)
+            }
+        });
+    }
+
+    $(function () {
+        $('#tblEvaluacionManiobras tr').click(function () {
+            var mes = $(this).find("td").eq(0).html();
+            DetailsEvaluacionManiobras(mes);
+        });
+    });
+
+    var DetailsEvaluacionManiobras = function (MES) {
+        $.ajax({
+            url: "/kpistrafico/GraficaEvaluacionManiobras/",
+            type: "GET",
+            data: { mes: MES },
+            success: function (result) {
+                $('#graphicevalmaniobras').html(result);
+            },
+            error: function (error) {
+                console.log(error);
+                alert(error)
+            }
+        });
+    }
+
+    $(function () {
+        $('#tblOnTimePosicionamiento tr').click(function () {
+            var mes = $(this).find("td").eq(0).html();
+            DetailsEvaluacionPosicionamiento(mes);
+        });
+    });
+
+    var DetailsEvaluacionPosicionamiento = function (MES) {
+        $.ajax({
+            url: "/kpistrafico/GraficaEvaluacionPosicionamiento/",
+            type: "GET",
+            data: { mes: MES },
+            success: function (result) {
+                $('#graphicontimeposicionamiento').html(result);
+            },
+            error: function (error) {
+                console.log(error);
+                alert(error)
+            }
+        });
+    }
+
+</script>
+

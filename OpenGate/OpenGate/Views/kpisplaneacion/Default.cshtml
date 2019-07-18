@@ -1,0 +1,280 @@
+﻿
+@{
+    ViewBag.Title = "Default";
+    Layout = "~/Views/Shared/_LayoutKpis.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-6 col-sm-4 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2> KPIs Planeacion <small>Resumen</small> </h2> &nbsp;&nbsp;&nbsp;
+                <a class="btn btn-dark" href="@Url.Action("Kpisplaneacion")"> <i class="fa fa-book"></i> Detalles</a>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <td>
+                                        Mes
+                                    </td>
+                                    <td>
+                                        Aplicaciones
+                                    </td>
+                                    <td>
+                                        Ok
+                                    </td>
+                                    <td>
+                                        Desv
+                                    </td>
+                                    <td>
+                                        Eficiencia
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Enero
+                                    </td>
+                                    <td>
+                                        @ViewBag.RegistrosEnero
+                                    </td>
+                                    <td>
+                                        @ViewBag.OkEnero
+                                    </td>
+                                    <td>
+                                        @ViewBag.DesviacionEnero
+                                    </td>
+                                    <td>
+                                        @ViewBag.PorcentajeOkEnero%
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Febrero
+                                    </td>
+                                    <td>
+                                        @ViewBag.RegistrosFebrero
+                                    </td>
+                                    <td>
+                                        @ViewBag.OkFebrero
+                                    </td>
+                                    <td>
+                                        @ViewBag.DesviacionFebrero
+                                    </td>
+                                    <td>
+                                        @ViewBag.PorcentajeOkFebrero%
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Marzo
+                                    </td>
+                                    <td>
+                                        @ViewBag.RegistrosMarzo
+                                    </td>
+                                    <td>
+                                        @ViewBag.OkMarzo
+                                    </td>
+                                    <td>
+                                        @ViewBag.DesviacionMarzo
+                                    </td>
+                                    <td>
+                                        @ViewBag.PorcentajeOkMarzo%
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Abril
+                                    </td>
+                                    <td>
+                                        @ViewBag.RegistrosAbril
+                                    </td>
+                                    <td>
+                                        @ViewBag.OkAbril
+                                    </td>
+                                    <td>
+                                        @ViewBag.DesviacionAbril
+                                    </td>
+                                    <td>
+                                        @ViewBag.PorcentajeOkAbril%
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Mayo
+                                    </td>
+                                    <td>
+                                        0
+                                    </td>
+                                    <td>
+                                        0
+                                    </td>
+                                    <td>
+                                        0
+                                    </td>
+                                    <td>
+                                        0%
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Junio
+                                    </td>
+                                    <td>
+                                        0
+                                    </td>
+                                    <td>
+                                        0
+                                    </td>
+                                    <td>
+                                        0
+                                    </td>
+                                    <td>
+                                        0%
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Julio
+                                    </td>
+                                    <td>
+                                        0
+                                    </td>
+                                    <td>
+                                        0
+                                    </td>
+                                    <td>
+                                        0
+                                    </td>
+                                    <td>
+                                        0%
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Agosto
+                                    </td>
+                                    <td>
+                                        0
+                                    </td>
+                                    <td>
+                                        0
+                                    </td>
+                                    <td>
+                                        0
+                                    </td>
+                                    <td>
+                                        0%
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Septiembre
+                                    </td>
+                                    <td>
+                                        0
+                                    </td>
+                                    <td>
+                                        0
+                                    </td>
+                                    <td>
+                                        0
+                                    </td>
+                                    <td>
+                                        0%
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Octubre
+                                    </td>
+                                    <td>
+                                        0
+                                    </td>
+                                    <td>
+                                        0
+                                    </td>
+                                    <td>
+                                        0
+                                    </td>
+                                    <td>
+                                        0%
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Noviembre
+                                    </td>
+                                    <td>
+                                        0
+                                    </td>
+                                    <td>
+                                        0
+                                    </td>
+                                    <td>
+                                        0
+                                    </td>
+                                    <td>
+                                        0%
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Diciembre
+                                    </td>
+                                    <td>
+                                        0
+                                    </td>
+                                    <td>
+                                        0
+                                    </td>
+                                    <td>
+                                        0
+                                    </td>
+                                    <td>
+                                        0%
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        @*<div id="chartContainer" style="height: 370px; width: 100%;"></div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Custom Theme Scripts -->
+<script src="../build/js/custom.min.js"></script>
+
+@*<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+<script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	title: {
+		text: "KPIs Planeacion"
+	},
+	data: [{
+		type: "doughnut",
+		startAngle: 60,
+		indexLabelFontSize: 16,
+		indexLabel: "{label} - {y}%",
+		toolTipContent: "<b>{label}:</b> {y}%",
+		dataPoints: @Html.Raw(ViewBag.DataPoints)
+	}]
+});
+chart.render();
+
+}
+</script>*@

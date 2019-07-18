@@ -1,0 +1,33 @@
+﻿@model OpenGate.Entidades.puesto
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutIT.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2> Puesto <small>Details</small></h2> &nbsp;&nbsp;&nbsp;
+                <a class="btn btn-dark" href="@Url.Action("Index")"> <i class="glyphicon glyphicon-remove-circle"></i> Cancelar</a>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.descripcion)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.descripcion)
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/Scripts")
+@Scripts.Render("~/Custom")

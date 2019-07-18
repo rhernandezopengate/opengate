@@ -1,0 +1,77 @@
+﻿@model OpenGate.Entidades.asignacionordenes
+
+@{
+    /**/
+
+    ViewBag.Title = "AsignarOrdenes";
+    Layout = "~/Views/Shared/_LayoutHD.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2> Asignar Ordenes <small>Asignacion</small></h2> &nbsp;&nbsp;&nbsp;
+                    <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+                    <a class="btn btn-dark" href="@Url.Action("Index")"> <i class="fa fa-reply"></i> Cancelar</a>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="row">
+                        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="tile-stats">
+                                <div class="icon">
+                                    <i class="fa fa-caret-square-o-right"></i>
+                                </div>
+                                <div class="count">@ViewBag.ConteoSinAsignar</div>
+
+                                <h3>Ordenes Sin Asignar</h3>
+                                <p>Conteo de Ordenes</p>
+                            </div>
+                        </div>
+                        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="tile-stats">
+                                <label>Cantidad De Ordenes Por Asignar</label>
+                                <input class="form-control" value="0" id="Cantidad" name="Cantidad" />
+                                <label>Usuario Asignado</label>
+                                <select class="form-control" id="ddlUsuarios" name="ddlUsuarios"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<!-- Custom Theme Scripts -->
+<script src="~/build/js/custom.min.js"></script>
+
+<script>
+    $(function () {
+        var ddlUsuarios = $("#ddlUsuarios");
+        ddlUsuarios.empty().append('<option selected="selected" value="0" disabled = "disabled">Loading ...</option>');
+        $.ajax({
+            type: "POST",
+            url: "/asignacionordenes/ListaUsuarios",
+            data: '{}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                ddlUsuarios.empty().append('<option selected="selected" value="0">Seleccione una opcion...</option>');
+                $.each(response, function () {
+                    ddlUsuarios.append($("<option></option>").val(this['Value']).html(this['Text']));
+                });
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    });
+</script>

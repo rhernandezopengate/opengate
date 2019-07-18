@@ -1,0 +1,94 @@
+﻿@model IEnumerable<OpenGate.Entidades.nomenclaturadhl>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutHD.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2> Nomenclatura DHL <small>Index</small></h2> &nbsp;&nbsp;&nbsp;
+                <a class="btn btn-success" href="@Url.Action("Create")"> <i class="fa fa-plus-circle"></i> Agregar Nuevo Registro</a>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <table id="table" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tipocheckpoint)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.codigo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.descripcion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.statusherbalife)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.observaciones)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>                    
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tipocheckpoint)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.codigo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.descripcion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.statusherbalife)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.observaciones)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CSS Datatble -->
+<link href="~/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css" rel="stylesheet" />
+
+<!-- JQuery Datatble -->
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.4/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+<script src="~/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="~/build/js/custom.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        table = $('#table').DataTable();
+    });
+</script>

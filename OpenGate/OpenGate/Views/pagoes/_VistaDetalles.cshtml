@@ -1,0 +1,133 @@
+﻿@model IEnumerable<OpenGate.Entidades.pagofacturas>
+
+<div class="modal-content">
+    <div class="modal-header text-center">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Detalle del Pago Numero: @ViewBag.numero</h4>
+    </div>
+    <div class="modal-body">
+        <div class="well text-center" style="overflow: auto">
+            <div class="col-md-4">
+                <label>Fecha de Pago</label>
+                <br />
+                <label>@ViewBag.fechapago</label>
+            </div>
+            <div class="col-md-4">
+                <label>Total Pagado</label>
+                <br />
+                <label>@ViewBag.montototal</label>
+            </div>
+            <div class="col-md-4">
+                <label>Estado del pago</label>
+                <br />
+                <label>@ViewBag.descripcion</label>
+            </div>
+        </div>
+        <table id="datatable" class="table table-bordered jambo_table">
+            <thead>
+                <tr>
+                    <th>
+                        Numero
+                    </th>
+                    <th>
+                        Fecha Factura
+                    </th>
+                    <th>
+                        Fecha Pago
+                    </th>
+                    <th>
+                        Razon Social
+                    </th>
+                    <th>
+                        Concepto
+                    </th>
+                    <th>
+                        Observaciones
+                    </th>
+                    <th>
+                        Estado
+                    </th>
+                    <th>
+                        Total
+                    </th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@item.factura.Numero</td>
+                <td>@item.factura.FechaFactura.Value.ToShortDateString()</td>
+                @if (item.factura.FechaPago == null)
+                {
+                    <td></td>
+                }
+                else
+                {
+                    <td>@item.factura.FechaPago.Value.ToShortDateString()</td>        
+                }               
+                <td>@item.factura.proveedor.RazonSocial</td>
+                <td>@item.factura.Concepto</td>
+                <td>@item.factura.Observaciones</td>
+                <td>@item.factura.statusfactura.descripcion</td>
+                <td>@item.factura.Total</td>
+            </tr>
+            }
+        </table>
+        <br />
+        <br />
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times-circle"></i> Cerrar</button>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {        
+        table = $('#datatable').DataTable({
+            "order": [[0, "desc"]],
+            "ordering": true,
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            "pagingType": "simple_numbers",
+            "dom": 'Blrtip', // Hides Default Search
+            "processing": true,            
+            select: true,            
+            buttons: [
+
+                {
+                    extend: 'copyHtml5',
+                    text: '<i class="fa fa-files-o"></i>',
+                    titleAttr: 'COPIAR',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'print',
+                    text: '<i class="fa fa-print"></i>',
+                    titleAttr: 'IMPRIMIR',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'excel',
+                    text: '<i class="fa fa-file-excel-o"></i>',
+                    titleAttr: 'EXCEL',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'pdf',
+                    text: '<i class="fa fa-file-pdf-o"></i>',
+                    titleAttr: 'PDF',
+                    orientation: 'landscape',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                }
+
+            ]            
+        });
+    });
+</script>

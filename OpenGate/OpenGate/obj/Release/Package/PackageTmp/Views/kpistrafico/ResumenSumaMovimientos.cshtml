@@ -1,0 +1,24 @@
+﻿@using OpenGate.Entidades
+@model List<kpistrafico>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Tipo Rquerimiento</th>
+            <th>Pallet Embarcados</th>
+            <th>Cajas Embarcadas</th>
+            <th>Piezas Embarcadas</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.tiporequerimiento</td>
+            <td>@Html.DisplayFor(modelItem => item.palletsembarcados)</td>
+            <td>@Html.DisplayFor(modelItem => item.numerocajas)</td>
+            <td>@Html.DisplayFor(modelItem => item.numeropiezas)</td>
+        </tr>
+        }
+    </tbody>
+</table>

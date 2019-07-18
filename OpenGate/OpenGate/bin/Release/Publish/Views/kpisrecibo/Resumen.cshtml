@@ -1,0 +1,53 @@
+﻿@using OpenGate.Entidades
+@model List<kpisrecibo>
+
+<table id="tablerecibo" class="table table-bordered" style="cursor:pointer;">
+    <thead>
+        <tr>
+            <th>
+                Mes
+            </th>
+            <th>
+                Recibos
+            </th>
+            <th>
+                ATiempo
+            </th>
+            <th>
+                Tarde
+            </th>
+            <th>
+                %
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @item.mes
+            </td>
+            <td>
+                @item.Total
+            </td>
+            <td>
+                @item.TotalOks
+            </td>
+            <td>
+                @item.TotalDesv
+            </td>
+            <td>
+                @item.procentaje%
+            </td>
+        </tr>
+        }
+        <tr>
+            <td>Total</td>
+            <td>@ViewBag.TotalAplicaciones</td>
+            <td>@ViewBag.TotalOk</td>
+            <td>@ViewBag.TotalDesv</td>
+            <td>@ViewBag.PorcentajeOk%</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,1719 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_A3F19C_OGModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="dbOpenGateLogisticsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AspNetUsers" EntityType="DB_A3F19C_OGModel.AspNetUsers" />
+    <EntitySet Name="bancos" EntityType="DB_A3F19C_OGModel.bancos" />
+    <EntitySet Name="categoriaproveedor" EntityType="DB_A3F19C_OGModel.categoriaproveedor" />
+    <EntitySet Name="clientes" EntityType="DB_A3F19C_OGModel.clientes" />
+    <EntitySet Name="cuentaordenante" EntityType="DB_A3F19C_OGModel.cuentaordenante" />
+    <EntitySet Name="factura" EntityType="DB_A3F19C_OGModel.factura" />
+    <EntitySet Name="nacionalidadproveedor" EntityType="DB_A3F19C_OGModel.nacionalidadproveedor" />
+    <EntitySet Name="pago" EntityType="DB_A3F19C_OGModel.pago" />
+    <EntitySet Name="pagofacturas" EntityType="DB_A3F19C_OGModel.pagofacturas" />
+    <EntitySet Name="statusfactura" EntityType="DB_A3F19C_OGModel.statusfactura" />
+    <EntitySet Name="statuspago" EntityType="DB_A3F19C_OGModel.statuspago" />
+    <AssociationSet Name="factura_aspnetusers_fk" Association="DB_A3F19C_OGModel.factura_aspnetusers_fk">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="factura" EntitySet="factura" />
+    </AssociationSet>
+    <AssociationSet Name="pago_aspnetusers_fk" Association="DB_A3F19C_OGModel.pago_aspnetusers_fk">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="pago" EntitySet="pago" />
+    </AssociationSet>
+    <AssociationSet Name="factura_clientes_fk" Association="DB_A3F19C_OGModel.factura_clientes_fk">
+      <End Role="clientes" EntitySet="clientes" />
+      <End Role="factura" EntitySet="factura" />
+    </AssociationSet>
+    <AssociationSet Name="factura_statusfactura_fk" Association="DB_A3F19C_OGModel.factura_statusfactura_fk">
+      <End Role="statusfactura" EntitySet="statusfactura" />
+      <End Role="factura" EntitySet="factura" />
+    </AssociationSet>
+    <AssociationSet Name="pagofacturas_factura_fk" Association="DB_A3F19C_OGModel.pagofacturas_factura_fk">
+      <End Role="factura" EntitySet="factura" />
+      <End Role="pagofacturas" EntitySet="pagofacturas" />
+    </AssociationSet>
+    <AssociationSet Name="pago_statuspago_fk" Association="DB_A3F19C_OGModel.pago_statuspago_fk">
+      <End Role="statuspago" EntitySet="statuspago" />
+      <End Role="pago" EntitySet="pago" />
+    </AssociationSet>
+    <AssociationSet Name="pagofacturas_pago_fk" Association="DB_A3F19C_OGModel.pagofacturas_pago_fk">
+      <End Role="pago" EntitySet="pago" />
+      <End Role="pagofacturas" EntitySet="pagofacturas" />
+    </AssociationSet>
+    <EntitySet Name="asigancion" EntityType="DB_A3F19C_OGModel.asigancion" />
+    <EntitySet Name="complementosfacturas" EntityType="DB_A3F19C_OGModel.complementosfacturas" />
+    <EntitySet Name="statuscomplemento" EntityType="DB_A3F19C_OGModel.statuscomplemento" />
+    <AssociationSet Name="asigancion_aspnetusers_fk" Association="DB_A3F19C_OGModel.asigancion_aspnetusers_fk">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="asigancion" EntitySet="asigancion" />
+    </AssociationSet>
+    <AssociationSet Name="complementosfacturas_asigancion_fk" Association="DB_A3F19C_OGModel.complementosfacturas_asigancion_fk">
+      <End Role="asigancion" EntitySet="asigancion" />
+      <End Role="complementosfacturas" EntitySet="complementosfacturas" />
+    </AssociationSet>
+    <AssociationSet Name="complementosfacturas_bancos_fk" Association="DB_A3F19C_OGModel.complementosfacturas_bancos_fk">
+      <End Role="bancos" EntitySet="bancos" />
+      <End Role="complementosfacturas" EntitySet="complementosfacturas" />
+    </AssociationSet>
+    <AssociationSet Name="complementosfacturas_cuentaordenante_fk" Association="DB_A3F19C_OGModel.complementosfacturas_cuentaordenante_fk">
+      <End Role="cuentaordenante" EntitySet="cuentaordenante" />
+      <End Role="complementosfacturas" EntitySet="complementosfacturas" />
+    </AssociationSet>
+    <AssociationSet Name="complementosfacturas_factura_fk" Association="DB_A3F19C_OGModel.complementosfacturas_factura_fk">
+      <End Role="factura" EntitySet="factura" />
+      <End Role="complementosfacturas" EntitySet="complementosfacturas" />
+    </AssociationSet>
+    <AssociationSet Name="complementosfacturas_statuscomplemento_fk" Association="DB_A3F19C_OGModel.complementosfacturas_statuscomplemento_fk">
+      <End Role="statuscomplemento" EntitySet="statuscomplemento" />
+      <End Role="complementosfacturas" EntitySet="complementosfacturas" />
+    </AssociationSet>
+    <EntitySet Name="statustarea" EntityType="DB_A3F19C_OGModel.statustarea" />
+    <EntitySet Name="kpisplaneacion" EntityType="DB_A3F19C_OGModel.kpisplaneacion" />
+    <EntitySet Name="tareas" EntityType="DB_A3F19C_OGModel.tareas" />
+    <AssociationSet Name="tareas_aspnetusers_fk" Association="DB_A3F19C_OGModel.tareas_aspnetusers_fk">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="tareas" EntitySet="tareas" />
+    </AssociationSet>
+    <AssociationSet Name="tareas_statustarea_fk" Association="DB_A3F19C_OGModel.tareas_statustarea_fk">
+      <End Role="statustarea" EntitySet="statustarea" />
+      <End Role="tareas" EntitySet="tareas" />
+    </AssociationSet>
+    <EntitySet Name="AspNetRoles" EntityType="DB_A3F19C_OGModel.AspNetRoles" />
+    <AssociationSet Name="AspNetUserRoles" Association="DB_A3F19C_OGModel.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <EntitySet Name="kpisdespacho" EntityType="DB_A3F19C_OGModel.kpisdespacho" />
+    <EntitySet Name="kpisrecibo" EntityType="DB_A3F19C_OGModel.kpisrecibo" />
+    <EntitySet Name="kpisinvetntarios" EntityType="DB_A3F19C_OGModel.kpisinvetntarios" />
+    <EntitySet Name="kpisinventariosaplontime" EntityType="DB_A3F19C_OGModel.kpisinventariosaplontime" />
+    <EntitySet Name="kpisinventariosexactitud" EntityType="DB_A3F19C_OGModel.kpisinventariosexactitud" />
+    <EntitySet Name="servicios" EntityType="DB_A3F19C_OGModel.servicios" />
+    <EntitySet Name="kpistrafico" EntityType="DB_A3F19C_OGModel.kpistrafico" />
+    <EntitySet Name="area" EntityType="DB_A3F19C_OGModel.area" />
+    <EntitySet Name="puesto" EntityType="DB_A3F19C_OGModel.puesto" />
+    <EntitySet Name="empleado" EntityType="DB_A3F19C_OGModel.empleado" />
+    <AssociationSet Name="empleado_area_fk" Association="DB_A3F19C_OGModel.empleado_area_fk">
+      <End Role="area" EntitySet="area" />
+      <End Role="empleado" EntitySet="empleado" />
+    </AssociationSet>
+    <AssociationSet Name="empleado_aspnetusers_fk" Association="DB_A3F19C_OGModel.empleado_aspnetusers_fk">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="empleado" EntitySet="empleado" />
+    </AssociationSet>
+    <AssociationSet Name="empleado_puesto_fk" Association="DB_A3F19C_OGModel.empleado_puesto_fk">
+      <End Role="puesto" EntitySet="puesto" />
+      <End Role="empleado" EntitySet="empleado" />
+    </AssociationSet>
+    <EntitySet Name="envioshomedelivery" EntityType="DB_A3F19C_OGModel.envioshomedelivery" />
+    <EntitySet Name="equipomantenimiento" EntityType="DB_A3F19C_OGModel.equipomantenimiento" />
+    <EntitySet Name="equiposcomputo" EntityType="DB_A3F19C_OGModel.equiposcomputo" />
+    <AssociationSet Name="equiposcomputo_empleado_fk" Association="DB_A3F19C_OGModel.equiposcomputo_empleado_fk">
+      <End Role="empleado" EntitySet="empleado" />
+      <End Role="equiposcomputo" EntitySet="equiposcomputo" />
+    </AssociationSet>
+    <AssociationSet Name="equiposcomputo_equipomantenimiento_fk" Association="DB_A3F19C_OGModel.equiposcomputo_equipomantenimiento_fk">
+      <End Role="equipomantenimiento" EntitySet="equipomantenimiento" />
+      <End Role="equiposcomputo" EntitySet="equiposcomputo" />
+    </AssociationSet>
+    <EntitySet Name="mo" EntityType="DB_A3F19C_OGModel.mo" />
+    <EntitySet Name="statusproveedor" EntityType="DB_A3F19C_OGModel.statusproveedor" />
+    <EntitySet Name="statusproveedorvisible" EntityType="DB_A3F19C_OGModel.statusproveedorvisible" />
+    <EntitySet Name="contactoproveedor" EntityType="DB_A3F19C_OGModel.contactoproveedor" />
+    <EntitySet Name="informacionbancaria" EntityType="DB_A3F19C_OGModel.informacionbancaria" />
+    <EntitySet Name="proveedor" EntityType="DB_A3F19C_OGModel.proveedor" />
+    <AssociationSet Name="proveedor_categoriaproveedor_fk" Association="DB_A3F19C_OGModel.proveedor_categoriaproveedor_fk">
+      <End Role="categoriaproveedor" EntitySet="categoriaproveedor" />
+      <End Role="proveedor" EntitySet="proveedor" />
+    </AssociationSet>
+    <AssociationSet Name="contactoproveedor_proveedores_fk" Association="DB_A3F19C_OGModel.contactoproveedor_proveedores_fk">
+      <End Role="proveedor" EntitySet="proveedor" />
+      <End Role="contactoproveedor" EntitySet="contactoproveedor" />
+    </AssociationSet>
+    <AssociationSet Name="factura_proveedor_fk" Association="DB_A3F19C_OGModel.factura_proveedor_fk">
+      <End Role="proveedor" EntitySet="proveedor" />
+      <End Role="factura" EntitySet="factura" />
+    </AssociationSet>
+    <AssociationSet Name="informacionbancaria_proveedores_fk" Association="DB_A3F19C_OGModel.informacionbancaria_proveedores_fk">
+      <End Role="proveedor" EntitySet="proveedor" />
+      <End Role="informacionbancaria" EntitySet="informacionbancaria" />
+    </AssociationSet>
+    <AssociationSet Name="proveedor_nacionalidadproveedor_fk" Association="DB_A3F19C_OGModel.proveedor_nacionalidadproveedor_fk">
+      <End Role="nacionalidadproveedor" EntitySet="nacionalidadproveedor" />
+      <End Role="proveedor" EntitySet="proveedor" />
+    </AssociationSet>
+    <AssociationSet Name="proveedor_statusproveedor_fk" Association="DB_A3F19C_OGModel.proveedor_statusproveedor_fk">
+      <End Role="statusproveedor" EntitySet="statusproveedor" />
+      <End Role="proveedor" EntitySet="proveedor" />
+    </AssociationSet>
+    <AssociationSet Name="proveedores_statusproveedorvisible_fk" Association="DB_A3F19C_OGModel.proveedores_statusproveedorvisible_fk">
+      <End Role="statusproveedorvisible" EntitySet="statusproveedorvisible" />
+      <End Role="proveedor" EntitySet="proveedor" />
+    </AssociationSet>
+    <EntitySet Name="centrocostos" EntityType="DB_A3F19C_OGModel.centrocostos" />
+    <EntitySet Name="statuscompras" EntityType="DB_A3F19C_OGModel.statuscompras" />
+    <EntitySet Name="statusdireccion" EntityType="DB_A3F19C_OGModel.statusdireccion" />
+    <EntitySet Name="statusfinanzas" EntityType="DB_A3F19C_OGModel.statusfinanzas" />
+    <EntitySet Name="subcentrocostos" EntityType="DB_A3F19C_OGModel.subcentrocostos" />
+    <EntitySet Name="categoriaorden" EntityType="DB_A3F19C_OGModel.categoriaorden" />
+    <EntitySet Name="tipocompra" EntityType="DB_A3F19C_OGModel.tipocompra" />
+    <EntitySet Name="productos" EntityType="DB_A3F19C_OGModel.productos" />
+    <EntitySet Name="detalleordenproductos" EntityType="DB_A3F19C_OGModel.detalleordenproductos" />
+    <AssociationSet Name="detalleordenproductos_productos_fk" Association="DB_A3F19C_OGModel.detalleordenproductos_productos_fk">
+      <End Role="productos" EntitySet="productos" />
+      <End Role="detalleordenproductos" EntitySet="detalleordenproductos" />
+    </AssociationSet>
+    <EntitySet Name="formapago" EntityType="DB_A3F19C_OGModel.formapago" />
+    <EntitySet Name="supervisor" EntityType="DB_A3F19C_OGModel.supervisor" />
+    <AssociationSet Name="supervisor_aspnetusers_fk" Association="DB_A3F19C_OGModel.supervisor_aspnetusers_fk">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="supervisor" EntitySet="supervisor" />
+    </AssociationSet>
+    <EntitySet Name="solicitante" EntityType="DB_A3F19C_OGModel.solicitante" />
+    <AssociationSet Name="solicitante_aspnetusers_fk" Association="DB_A3F19C_OGModel.solicitante_aspnetusers_fk">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="solicitante" EntitySet="solicitante" />
+    </AssociationSet>
+    <AssociationSet Name="solicitante_supervisor_fk" Association="DB_A3F19C_OGModel.solicitante_supervisor_fk">
+      <End Role="supervisor" EntitySet="supervisor" />
+      <End Role="solicitante" EntitySet="solicitante" />
+    </AssociationSet>
+    <EntitySet Name="ordencompra" EntityType="DB_A3F19C_OGModel.ordencompra" />
+    <AssociationSet Name="ordencompra_categoriaorden_fk" Association="DB_A3F19C_OGModel.ordencompra_categoriaorden_fk">
+      <End Role="categoriaorden" EntitySet="categoriaorden" />
+      <End Role="ordencompra" EntitySet="ordencompra" />
+    </AssociationSet>
+    <AssociationSet Name="ordencompra_centrocostos_fk" Association="DB_A3F19C_OGModel.ordencompra_centrocostos_fk">
+      <End Role="centrocostos" EntitySet="centrocostos" />
+      <End Role="ordencompra" EntitySet="ordencompra" />
+    </AssociationSet>
+    <AssociationSet Name="ordencompra_clientes_fk" Association="DB_A3F19C_OGModel.ordencompra_clientes_fk">
+      <End Role="clientes" EntitySet="clientes" />
+      <End Role="ordencompra" EntitySet="ordencompra" />
+    </AssociationSet>
+    <AssociationSet Name="detalleordenproductos_ordencompra_fk" Association="DB_A3F19C_OGModel.detalleordenproductos_ordencompra_fk">
+      <End Role="ordencompra" EntitySet="ordencompra" />
+      <End Role="detalleordenproductos" EntitySet="detalleordenproductos" />
+    </AssociationSet>
+    <AssociationSet Name="ordencompra_formapago_fk" Association="DB_A3F19C_OGModel.ordencompra_formapago_fk">
+      <End Role="formapago" EntitySet="formapago" />
+      <End Role="ordencompra" EntitySet="ordencompra" />
+    </AssociationSet>
+    <AssociationSet Name="ordencompra_proveedores_fk" Association="DB_A3F19C_OGModel.ordencompra_proveedores_fk">
+      <End Role="proveedor" EntitySet="proveedor" />
+      <End Role="ordencompra" EntitySet="ordencompra" />
+    </AssociationSet>
+    <AssociationSet Name="ordencompra_solicitante_fk" Association="DB_A3F19C_OGModel.ordencompra_solicitante_fk">
+      <End Role="solicitante" EntitySet="solicitante" />
+      <End Role="ordencompra" EntitySet="ordencompra" />
+    </AssociationSet>
+    <AssociationSet Name="ordencompra_statuscompras_fk" Association="DB_A3F19C_OGModel.ordencompra_statuscompras_fk">
+      <End Role="statuscompras" EntitySet="statuscompras" />
+      <End Role="ordencompra" EntitySet="ordencompra" />
+    </AssociationSet>
+    <AssociationSet Name="ordencompra_statusdireccion_fk" Association="DB_A3F19C_OGModel.ordencompra_statusdireccion_fk">
+      <End Role="statusdireccion" EntitySet="statusdireccion" />
+      <End Role="ordencompra" EntitySet="ordencompra" />
+    </AssociationSet>
+    <AssociationSet Name="ordencompra_statusfinanzas_fk" Association="DB_A3F19C_OGModel.ordencompra_statusfinanzas_fk">
+      <End Role="statusfinanzas" EntitySet="statusfinanzas" />
+      <End Role="ordencompra" EntitySet="ordencompra" />
+    </AssociationSet>
+    <AssociationSet Name="ordencompra_subcentrocostos_fk" Association="DB_A3F19C_OGModel.ordencompra_subcentrocostos_fk">
+      <End Role="subcentrocostos" EntitySet="subcentrocostos" />
+      <End Role="ordencompra" EntitySet="ordencompra" />
+    </AssociationSet>
+    <AssociationSet Name="ordencompra_tipocompra_fk" Association="DB_A3F19C_OGModel.ordencompra_tipocompra_fk">
+      <End Role="tipocompra" EntitySet="tipocompra" />
+      <End Role="ordencompra" EntitySet="ordencompra" />
+    </AssociationSet>
+    <EntitySet Name="csr" EntityType="DB_A3F19C_OGModel.csr" />
+    <EntitySet Name="nts" EntityType="DB_A3F19C_OGModel.nts" />
+    <EntitySet Name="guiasimpresas" EntityType="DB_A3F19C_OGModel.guiasimpresas" />
+    <EntitySet Name="fecuenciadhl" EntityType="DB_A3F19C_OGModel.fecuenciadhl" />
+    <EntitySet Name="nomenclaturadhl" EntityType="DB_A3F19C_OGModel.nomenclaturadhl" />
+    <EntitySet Name="statusasignacion" EntityType="DB_A3F19C_OGModel.statusasignacion" />
+    <EntitySet Name="concentrado" EntityType="DB_A3F19C_OGModel.concentrado" />
+    <AssociationSet Name="concentrado_csr_fk" Association="DB_A3F19C_OGModel.concentrado_csr_fk">
+      <End Role="csr" EntitySet="csr" />
+      <End Role="concentrado" EntitySet="concentrado" />
+    </AssociationSet>
+    <AssociationSet Name="concentrado_guiasimpresas_fk" Association="DB_A3F19C_OGModel.concentrado_guiasimpresas_fk">
+      <End Role="guiasimpresas" EntitySet="guiasimpresas" />
+      <End Role="concentrado" EntitySet="concentrado" />
+    </AssociationSet>
+    <AssociationSet Name="concentrado_nts_fk" Association="DB_A3F19C_OGModel.concentrado_nts_fk">
+      <End Role="nts" EntitySet="nts" />
+      <End Role="concentrado" EntitySet="concentrado" />
+    </AssociationSet>
+    <EntitySet Name="asignacionordenes" EntityType="DB_A3F19C_OGModel.asignacionordenes" />
+    <AssociationSet Name="asigancionordenes_aspnetusers_fk" Association="DB_A3F19C_OGModel.asigancionordenes_aspnetusers_fk">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="asignacionordenes" EntitySet="asignacionordenes" />
+    </AssociationSet>
+    <AssociationSet Name="asignacionordenes_concentrado_fk" Association="DB_A3F19C_OGModel.asignacionordenes_concentrado_fk">
+      <End Role="concentrado" EntitySet="concentrado" />
+      <End Role="asignacionordenes" EntitySet="asignacionordenes" />
+    </AssociationSet>
+    <AssociationSet Name="asignacionordenes_fecuenciadhl_fk" Association="DB_A3F19C_OGModel.asignacionordenes_fecuenciadhl_fk">
+      <End Role="fecuenciadhl" EntitySet="fecuenciadhl" />
+      <End Role="asignacionordenes" EntitySet="asignacionordenes" />
+    </AssociationSet>
+    <AssociationSet Name="asignacionordenes_nomenclaturadhl_fk" Association="DB_A3F19C_OGModel.asignacionordenes_nomenclaturadhl_fk">
+      <End Role="nomenclaturadhl" EntitySet="nomenclaturadhl" />
+      <End Role="asignacionordenes" EntitySet="asignacionordenes" />
+    </AssociationSet>
+    <AssociationSet Name="asignacionordenes_statusasignacion_fk" Association="DB_A3F19C_OGModel.asignacionordenes_statusasignacion_fk">
+      <End Role="statusasignacion" EntitySet="statusasignacion" />
+      <End Role="asignacionordenes" EntitySet="asignacionordenes" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="factura" Relationship="DB_A3F19C_OGModel.factura_aspnetusers_fk" FromRole="AspNetUsers" ToRole="factura" />
+    <NavigationProperty Name="pago" Relationship="DB_A3F19C_OGModel.pago_aspnetusers_fk" FromRole="AspNetUsers" ToRole="pago" />
+    <NavigationProperty Name="asigancion" Relationship="DB_A3F19C_OGModel.asigancion_aspnetusers_fk" FromRole="AspNetUsers" ToRole="asigancion" />
+    <NavigationProperty Name="tareas" Relationship="DB_A3F19C_OGModel.tareas_aspnetusers_fk" FromRole="AspNetUsers" ToRole="tareas" />
+    <NavigationProperty Name="AspNetRoles" Relationship="DB_A3F19C_OGModel.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+    <NavigationProperty Name="empleado" Relationship="DB_A3F19C_OGModel.empleado_aspnetusers_fk" FromRole="AspNetUsers" ToRole="empleado" />
+    <NavigationProperty Name="supervisor" Relationship="DB_A3F19C_OGModel.supervisor_aspnetusers_fk" FromRole="AspNetUsers" ToRole="supervisor" />
+    <NavigationProperty Name="solicitante" Relationship="DB_A3F19C_OGModel.solicitante_aspnetusers_fk" FromRole="AspNetUsers" ToRole="solicitante" />
+    <NavigationProperty Name="asignacionordenes" Relationship="DB_A3F19C_OGModel.asigancionordenes_aspnetusers_fk" FromRole="AspNetUsers" ToRole="asignacionordenes" />
+  </EntityType>
+  <EntityType Name="bancos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="rfc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="complementosfacturas" Relationship="DB_A3F19C_OGModel.complementosfacturas_bancos_fk" FromRole="bancos" ToRole="complementosfacturas" />
+  </EntityType>
+  <EntityType Name="categoriaproveedor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="proveedor" Relationship="DB_A3F19C_OGModel.proveedor_categoriaproveedor_fk" FromRole="categoriaproveedor" ToRole="proveedor" />
+  </EntityType>
+  <EntityType Name="clientes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="razonsocial" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="rfc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="factura" Relationship="DB_A3F19C_OGModel.factura_clientes_fk" FromRole="clientes" ToRole="factura" />
+    <NavigationProperty Name="ordencompra" Relationship="DB_A3F19C_OGModel.ordencompra_clientes_fk" FromRole="clientes" ToRole="ordencompra" />
+  </EntityType>
+  <EntityType Name="cuentaordenante">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="complementosfacturas" Relationship="DB_A3F19C_OGModel.complementosfacturas_cuentaordenante_fk" FromRole="cuentaordenante" ToRole="complementosfacturas" />
+  </EntityType>
+  <EntityType Name="factura">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
+    <Property Name="Numero" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="FechaFactura" Type="DateTime" Precision="0" />
+    <Property Name="FechaSello" Type="DateTime" Precision="0" />
+    <Property Name="FechaVencimiento" Type="DateTime" Precision="0" />
+    <Property Name="FechaPago" Type="DateTime" Precision="0" />
+    <Property Name="Concepto" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Subtotal" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Iva" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Descuento" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Retencion" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Observaciones" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Proveedor_Id" Type="Int32" Nullable="false" />
+    <Property Name="StatusFactura_Id" Type="Int32" Nullable="false" />
+    <Property Name="AspNetUsers_Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Clientes_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="DB_A3F19C_OGModel.factura_aspnetusers_fk" FromRole="factura" ToRole="AspNetUsers" />
+    <NavigationProperty Name="clientes" Relationship="DB_A3F19C_OGModel.factura_clientes_fk" FromRole="factura" ToRole="clientes" />
+    <NavigationProperty Name="statusfactura" Relationship="DB_A3F19C_OGModel.factura_statusfactura_fk" FromRole="factura" ToRole="statusfactura" />
+    <NavigationProperty Name="pagofacturas" Relationship="DB_A3F19C_OGModel.pagofacturas_factura_fk" FromRole="factura" ToRole="pagofacturas" />
+    <NavigationProperty Name="complementosfacturas" Relationship="DB_A3F19C_OGModel.complementosfacturas_factura_fk" FromRole="factura" ToRole="complementosfacturas" />
+    <NavigationProperty Name="proveedor" Relationship="DB_A3F19C_OGModel.factura_proveedor_fk" FromRole="factura" ToRole="proveedor" />
+  </EntityType>
+  <EntityType Name="nacionalidadproveedor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="proveedor" Relationship="DB_A3F19C_OGModel.proveedor_nacionalidadproveedor_fk" FromRole="nacionalidadproveedor" ToRole="proveedor" />
+  </EntityType>
+  <EntityType Name="pago">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
+    <Property Name="Numero" Type="Int32" />
+    <Property Name="FechaPago" Type="DateTime" Precision="0" />
+    <Property Name="MontoTotal" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="AspNetUsers_Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="StatusPago_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="DB_A3F19C_OGModel.pago_aspnetusers_fk" FromRole="pago" ToRole="AspNetUsers" />
+    <NavigationProperty Name="statuspago" Relationship="DB_A3F19C_OGModel.pago_statuspago_fk" FromRole="pago" ToRole="statuspago" />
+    <NavigationProperty Name="pagofacturas" Relationship="DB_A3F19C_OGModel.pagofacturas_pago_fk" FromRole="pago" ToRole="pagofacturas" />
+  </EntityType>
+  <EntityType Name="pagofacturas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Factura_Id" Type="Int32" Nullable="false" />
+    <Property Name="Pago_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="factura" Relationship="DB_A3F19C_OGModel.pagofacturas_factura_fk" FromRole="pagofacturas" ToRole="factura" />
+    <NavigationProperty Name="pago" Relationship="DB_A3F19C_OGModel.pagofacturas_pago_fk" FromRole="pagofacturas" ToRole="pago" />
+  </EntityType>
+  <EntityType Name="statusfactura">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="factura" Relationship="DB_A3F19C_OGModel.factura_statusfactura_fk" FromRole="statusfactura" ToRole="factura" />
+  </EntityType>
+  <EntityType Name="statuspago">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="pago" Relationship="DB_A3F19C_OGModel.pago_statuspago_fk" FromRole="statuspago" ToRole="pago" />
+  </EntityType>
+  <Association Name="factura_aspnetusers_fk">
+    <End Type="DB_A3F19C_OGModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.factura" Role="factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="factura">
+        <PropertyRef Name="AspNetUsers_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pago_aspnetusers_fk">
+    <End Type="DB_A3F19C_OGModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.pago" Role="pago" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="pago">
+        <PropertyRef Name="AspNetUsers_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="factura_clientes_fk">
+    <End Type="DB_A3F19C_OGModel.clientes" Role="clientes" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.factura" Role="factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clientes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="factura">
+        <PropertyRef Name="Clientes_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="factura_statusfactura_fk">
+    <End Type="DB_A3F19C_OGModel.statusfactura" Role="statusfactura" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.factura" Role="factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="statusfactura">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="factura">
+        <PropertyRef Name="StatusFactura_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pagofacturas_factura_fk">
+    <End Type="DB_A3F19C_OGModel.factura" Role="factura" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.pagofacturas" Role="pagofacturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="factura">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pagofacturas">
+        <PropertyRef Name="Factura_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pago_statuspago_fk">
+    <End Type="DB_A3F19C_OGModel.statuspago" Role="statuspago" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.pago" Role="pago" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="statuspago">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pago">
+        <PropertyRef Name="StatusPago_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pagofacturas_pago_fk">
+    <End Type="DB_A3F19C_OGModel.pago" Role="pago" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.pagofacturas" Role="pagofacturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pago">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="pagofacturas">
+        <PropertyRef Name="Pago_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="asigancion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Folio" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
+    <Property Name="AspNetUsers_Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="DB_A3F19C_OGModel.asigancion_aspnetusers_fk" FromRole="asigancion" ToRole="AspNetUsers" />
+    <NavigationProperty Name="complementosfacturas" Relationship="DB_A3F19C_OGModel.complementosfacturas_asigancion_fk" FromRole="asigancion" ToRole="complementosfacturas" />
+  </EntityType>
+  <EntityType Name="complementosfacturas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Bancos_Id" Type="Int32" Nullable="false" />
+    <Property Name="CuentaOrdenante_Id" Type="Int32" Nullable="false" />
+    <Property Name="Factura_Id" Type="Int32" Nullable="false" />
+    <Property Name="Autorizacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StatusComplemento_Id" Type="Int32" Nullable="false" />
+    <Property Name="Asigancion_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="asigancion" Relationship="DB_A3F19C_OGModel.complementosfacturas_asigancion_fk" FromRole="complementosfacturas" ToRole="asigancion" />
+    <NavigationProperty Name="bancos" Relationship="DB_A3F19C_OGModel.complementosfacturas_bancos_fk" FromRole="complementosfacturas" ToRole="bancos" />
+    <NavigationProperty Name="cuentaordenante" Relationship="DB_A3F19C_OGModel.complementosfacturas_cuentaordenante_fk" FromRole="complementosfacturas" ToRole="cuentaordenante" />
+    <NavigationProperty Name="factura" Relationship="DB_A3F19C_OGModel.complementosfacturas_factura_fk" FromRole="complementosfacturas" ToRole="factura" />
+    <NavigationProperty Name="statuscomplemento" Relationship="DB_A3F19C_OGModel.complementosfacturas_statuscomplemento_fk" FromRole="complementosfacturas" ToRole="statuscomplemento" />
+  </EntityType>
+  <EntityType Name="statuscomplemento">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="complementosfacturas" Relationship="DB_A3F19C_OGModel.complementosfacturas_statuscomplemento_fk" FromRole="statuscomplemento" ToRole="complementosfacturas" />
+  </EntityType>
+  <Association Name="asigancion_aspnetusers_fk">
+    <End Type="DB_A3F19C_OGModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.asigancion" Role="asigancion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="asigancion">
+        <PropertyRef Name="AspNetUsers_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="complementosfacturas_asigancion_fk">
+    <End Type="DB_A3F19C_OGModel.asigancion" Role="asigancion" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.complementosfacturas" Role="complementosfacturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="asigancion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="complementosfacturas">
+        <PropertyRef Name="Asigancion_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="complementosfacturas_bancos_fk">
+    <End Type="DB_A3F19C_OGModel.bancos" Role="bancos" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.complementosfacturas" Role="complementosfacturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="bancos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="complementosfacturas">
+        <PropertyRef Name="Bancos_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="complementosfacturas_cuentaordenante_fk">
+    <End Type="DB_A3F19C_OGModel.cuentaordenante" Role="cuentaordenante" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.complementosfacturas" Role="complementosfacturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cuentaordenante">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="complementosfacturas">
+        <PropertyRef Name="CuentaOrdenante_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="complementosfacturas_factura_fk">
+    <End Type="DB_A3F19C_OGModel.factura" Role="factura" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.complementosfacturas" Role="complementosfacturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="factura">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="complementosfacturas">
+        <PropertyRef Name="Factura_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="complementosfacturas_statuscomplemento_fk">
+    <End Type="DB_A3F19C_OGModel.statuscomplemento" Role="statuscomplemento" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.complementosfacturas" Role="complementosfacturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="statuscomplemento">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="complementosfacturas">
+        <PropertyRef Name="StatusComplemento_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="statustarea">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tareas" Relationship="DB_A3F19C_OGModel.tareas_statustarea_fk" FromRole="statustarea" ToRole="tareas" />
+  </EntityType>
+  <EntityType Name="kpisplaneacion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="mes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ano" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fechaembarque" Type="DateTime" Precision="0" />
+    <Property Name="wk" Type="Int32" />
+    <Property Name="cv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="mo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="subinventario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="requisicion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="orden" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="aplicacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fechageneracion" Type="DateTime" Precision="0" />
+    <Property Name="fechaentrega" Type="DateTime" Precision="0" />
+    <Property Name="tipoembarque" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tareas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Actividad" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="HoraInicio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Solicita" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="FechaEntrega" Type="DateTime" Precision="0" />
+    <Property Name="HoraFin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PorcentajeCumplido" Type="Int32" />
+    <Property Name="Observaciones" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Notas" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
+    <Property Name="StatusTarea_Id" Type="Int32" Nullable="false" />
+    <Property Name="AspNetUsers_Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="DB_A3F19C_OGModel.tareas_aspnetusers_fk" FromRole="tareas" ToRole="AspNetUsers" />
+    <NavigationProperty Name="statustarea" Relationship="DB_A3F19C_OGModel.tareas_statustarea_fk" FromRole="tareas" ToRole="statustarea" />
+  </EntityType>
+  <Association Name="tareas_aspnetusers_fk">
+    <End Type="DB_A3F19C_OGModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.tareas" Role="tareas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tareas">
+        <PropertyRef Name="AspNetUsers_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tareas_statustarea_fk">
+    <End Type="DB_A3F19C_OGModel.statustarea" Role="statustarea" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.tareas" Role="tareas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="statustarea">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tareas">
+        <PropertyRef Name="StatusTarea_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="DB_A3F19C_OGModel.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <Association Name="AspNetUserRoles">
+    <End Type="DB_A3F19C_OGModel.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
+    <End Type="DB_A3F19C_OGModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
+  </Association>
+  <EntityType Name="kpisdespacho">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="diasemana" Type="Int32" />
+    <Property Name="wk" Type="Int32" />
+    <Property Name="mes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cv" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="mo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="tipoembarque" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fechaembarque" Type="DateTime" Precision="0" />
+    <Property Name="qtypiezas" Type="Int32" />
+    <Property Name="qtycajas" Type="Int32" />
+    <Property Name="qtypallets" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="valordia" Type="Int32" />
+  </EntityType>
+  <EntityType Name="kpisrecibo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecha" Type="DateTime" Precision="0" />
+    <Property Name="wk" Type="Int32" />
+    <Property Name="mes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="proveedor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ordenguia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="descarga" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fechahoradescarga" Type="DateTime" Precision="3" />
+    <Property Name="fechahoraingresosistema" Type="DateTime" Precision="3" />
+    <Property Name="tiempoaplicacionoracle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="evaluacioningreso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="kpisinvetntarios">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="skuvariance" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="monto" Type="Int32" />
+    <Property Name="porcentajemonto" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="piezas" Type="Int32" />
+    <Property Name="porcentajepiezas" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="mes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="kpisinventariosaplontime">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Mes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaReciboFisico" Type="DateTime" Precision="0" />
+    <Property Name="FechaTerminoValidacion" Type="DateTime" Precision="0" />
+    <Property Name="DiasValidacion" Type="Int32" />
+    <Property Name="FechaCreacionOracle" Type="DateTime" Precision="0" />
+    <Property Name="FechaReciboOracle" Type="DateTime" Precision="0" />
+    <Property Name="DiasOracle" Type="Int32" />
+    <Property Name="FolioFacturacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Observaciones" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CV" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ordernumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="piezassistema" Type="Int32" />
+    <Property Name="piezasfisico" Type="Int32" />
+    <Property Name="palletsrecibidos" Type="Int32" />
+    <Property Name="montofacturado" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ingresado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="kpisinventariosexactitud">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="subinventario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="mes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="absoluto" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="valorinventario" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="servicios">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecharegistro" Type="DateTime" Precision="3" />
+    <Property Name="cctv" Type="Boolean" />
+    <Property Name="telefonia" Type="Boolean" />
+    <Property Name="alarmas" Type="Boolean" />
+    <Property Name="correo" Type="Boolean" />
+    <Property Name="antivirus" Type="Boolean" />
+    <Property Name="respaldoaplicaciones" Type="Boolean" />
+    <Property Name="usuarioswifi" Type="Boolean" />
+    <Property Name="internetcarga" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="internetdescarga" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="kpistrafico">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="remision" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="consecutivoflete" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="respnsableflete" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="mescarga" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="origen" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="destino" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="wh" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="ruta" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="tiporequerimiento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="wk" Type="Int32" />
+    <Property Name="fechacarga" Type="DateTime" Precision="0" />
+    <Property Name="fechaentrega" Type="DateTime" Precision="0" />
+    <Property Name="ro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tipoenvio" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="tipounidad" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="capasidadpalletsunidad" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="palletsembarcados" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="porcentajeocupacionunidad" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="capasidadunidad" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="pesoinventario" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="porcentajepesounidad" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="evaluacionocupacionunidad" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="numerocajas" Type="Int32" />
+    <Property Name="numeropiezas" Type="Int32" />
+    <Property Name="costoflete" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="costomaniobras" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="fhrequeridaposicionamiento" Type="DateTime" Precision="3" />
+    <Property Name="fhrealpsocicionamiento" Type="DateTime" Precision="3" />
+    <Property Name="evaluacionposicionamiento" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="fhcita" Type="DateTime" Precision="3" />
+    <Property Name="fharriboreal" Type="DateTime" Precision="3" />
+    <Property Name="evaluacionentrega" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="maniobristasrequeridos" Type="Int32" />
+    <Property Name="maniobristasatiempo" Type="Int32" />
+    <Property Name="evaluacionmaniobras" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="observaciones" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="area">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="empleado" Relationship="DB_A3F19C_OGModel.empleado_area_fk" FromRole="area" ToRole="empleado" />
+  </EntityType>
+  <EntityType Name="puesto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="empleado" Relationship="DB_A3F19C_OGModel.empleado_puesto_fk" FromRole="puesto" ToRole="empleado" />
+  </EntityType>
+  <EntityType Name="empleado">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ApellidoPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ApellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaIngreso" Type="DateTime" Precision="0" />
+    <Property Name="Direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Puesto_Id" Type="Int32" Nullable="false" />
+    <Property Name="Area_Id" Type="Int32" Nullable="false" />
+    <Property Name="AspNetUsers_Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="NameFile" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ExtFile" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Celular" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="area" Relationship="DB_A3F19C_OGModel.empleado_area_fk" FromRole="empleado" ToRole="area" />
+    <NavigationProperty Name="AspNetUsers" Relationship="DB_A3F19C_OGModel.empleado_aspnetusers_fk" FromRole="empleado" ToRole="AspNetUsers" />
+    <NavigationProperty Name="puesto" Relationship="DB_A3F19C_OGModel.empleado_puesto_fk" FromRole="empleado" ToRole="puesto" />
+    <NavigationProperty Name="equiposcomputo" Relationship="DB_A3F19C_OGModel.equiposcomputo_empleado_fk" FromRole="empleado" ToRole="equiposcomputo" />
+  </EntityType>
+  <Association Name="empleado_area_fk">
+    <End Type="DB_A3F19C_OGModel.area" Role="area" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.empleado" Role="empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="area">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="empleado">
+        <PropertyRef Name="Area_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="empleado_aspnetusers_fk">
+    <End Type="DB_A3F19C_OGModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.empleado" Role="empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="empleado">
+        <PropertyRef Name="AspNetUsers_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="empleado_puesto_fk">
+    <End Type="DB_A3F19C_OGModel.puesto" Role="puesto" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.empleado" Role="empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="puesto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="empleado">
+        <PropertyRef Name="Puesto_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="envioshomedelivery">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tipoenvio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="solicitante" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="mes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fecharequerimiento" Type="DateTime" Precision="0" />
+    <Property Name="sku" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="cantidad" Type="Int32" />
+    <Property Name="cv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="destino" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="cajas" Type="Int32" />
+    <Property Name="paqueteria" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="referenciaguia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="numeroguia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="numerorequerimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tiposalida" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="aplicacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="equipomantenimiento">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="equiposcomputo" Relationship="DB_A3F19C_OGModel.equiposcomputo_equipomantenimiento_fk" FromRole="equipomantenimiento" ToRole="equiposcomputo" />
+  </EntityType>
+  <EntityType Name="equiposcomputo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CPU" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RAM" Type="Int32" />
+    <Property Name="SistemaOperativo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NombreEquipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TipoEquipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ubicacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ServiceTag" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ExpressServiceCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaEntrada" Type="DateTime" Precision="0" />
+    <Property Name="FechaBaja" Type="Int32" />
+    <Property Name="Empleado_Id" Type="Int32" Nullable="false" />
+    <Property Name="EquipoMantenimiento_Id" Type="Int32" Nullable="false" />
+    <Property Name="HDD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="empleado" Relationship="DB_A3F19C_OGModel.equiposcomputo_empleado_fk" FromRole="equiposcomputo" ToRole="empleado" />
+    <NavigationProperty Name="equipomantenimiento" Relationship="DB_A3F19C_OGModel.equiposcomputo_equipomantenimiento_fk" FromRole="equiposcomputo" ToRole="equipomantenimiento" />
+  </EntityType>
+  <Association Name="equiposcomputo_empleado_fk">
+    <End Type="DB_A3F19C_OGModel.empleado" Role="empleado" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.equiposcomputo" Role="equiposcomputo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empleado">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="equiposcomputo">
+        <PropertyRef Name="Empleado_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="equiposcomputo_equipomantenimiento_fk">
+    <End Type="DB_A3F19C_OGModel.equipomantenimiento" Role="equipomantenimiento" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.equiposcomputo" Role="equiposcomputo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="equipomantenimiento">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="equiposcomputo">
+        <PropertyRef Name="EquipoMantenimiento_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="mo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Column_1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="column_2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="statusproveedor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="proveedor" Relationship="DB_A3F19C_OGModel.proveedor_statusproveedor_fk" FromRole="statusproveedor" ToRole="proveedor" />
+  </EntityType>
+  <EntityType Name="statusproveedorvisible">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="proveedor" Relationship="DB_A3F19C_OGModel.proveedores_statusproveedorvisible_fk" FromRole="statusproveedorvisible" ToRole="proveedor" />
+  </EntityType>
+  <EntityType Name="contactoproveedor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Puesto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Proveedores_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="proveedor" Relationship="DB_A3F19C_OGModel.contactoproveedor_proveedores_fk" FromRole="contactoproveedor" ToRole="proveedor" />
+  </EntityType>
+  <EntityType Name="informacionbancaria">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreBanco" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CuentaBancaria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Clabe" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Proveedores_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="proveedor" Relationship="DB_A3F19C_OGModel.informacionbancaria_proveedores_fk" FromRole="informacionbancaria" ToRole="proveedor" />
+  </EntityType>
+  <EntityType Name="proveedor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RazonSocial" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="RFC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NacionalidadProveedor_Id" Type="Int32" Nullable="false" />
+    <Property Name="CategoriaProveedor_Id" Type="Int32" Nullable="false" />
+    <Property Name="StatusProveedor_Id" Type="Int32" Nullable="false" />
+    <Property Name="StatusProveedorVisible_Id" Type="Int32" />
+    <Property Name="Pais" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Municipio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Calle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CodigoPostal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ModenaFacturacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DiasCredito" Type="Int32" />
+    <Property Name="RepresentanteLegal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ActividadEmpresarial" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="NombreComercial" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Colonia" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="categoriaproveedor" Relationship="DB_A3F19C_OGModel.proveedor_categoriaproveedor_fk" FromRole="proveedor" ToRole="categoriaproveedor" />
+    <NavigationProperty Name="contactoproveedor" Relationship="DB_A3F19C_OGModel.contactoproveedor_proveedores_fk" FromRole="proveedor" ToRole="contactoproveedor" />
+    <NavigationProperty Name="factura" Relationship="DB_A3F19C_OGModel.factura_proveedor_fk" FromRole="proveedor" ToRole="factura" />
+    <NavigationProperty Name="informacionbancaria" Relationship="DB_A3F19C_OGModel.informacionbancaria_proveedores_fk" FromRole="proveedor" ToRole="informacionbancaria" />
+    <NavigationProperty Name="nacionalidadproveedor" Relationship="DB_A3F19C_OGModel.proveedor_nacionalidadproveedor_fk" FromRole="proveedor" ToRole="nacionalidadproveedor" />
+    <NavigationProperty Name="statusproveedor" Relationship="DB_A3F19C_OGModel.proveedor_statusproveedor_fk" FromRole="proveedor" ToRole="statusproveedor" />
+    <NavigationProperty Name="statusproveedorvisible" Relationship="DB_A3F19C_OGModel.proveedores_statusproveedorvisible_fk" FromRole="proveedor" ToRole="statusproveedorvisible" />
+    <NavigationProperty Name="ordencompra" Relationship="DB_A3F19C_OGModel.ordencompra_proveedores_fk" FromRole="proveedor" ToRole="ordencompra" />
+  </EntityType>
+  <Association Name="proveedor_categoriaproveedor_fk">
+    <End Type="DB_A3F19C_OGModel.categoriaproveedor" Role="categoriaproveedor" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.proveedor" Role="proveedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categoriaproveedor">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="proveedor">
+        <PropertyRef Name="CategoriaProveedor_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="contactoproveedor_proveedores_fk">
+    <End Type="DB_A3F19C_OGModel.proveedor" Role="proveedor" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.contactoproveedor" Role="contactoproveedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedor">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="contactoproveedor">
+        <PropertyRef Name="Proveedores_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="factura_proveedor_fk">
+    <End Type="DB_A3F19C_OGModel.proveedor" Role="proveedor" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.factura" Role="factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedor">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="factura">
+        <PropertyRef Name="Proveedor_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="informacionbancaria_proveedores_fk">
+    <End Type="DB_A3F19C_OGModel.proveedor" Role="proveedor" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.informacionbancaria" Role="informacionbancaria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedor">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="informacionbancaria">
+        <PropertyRef Name="Proveedores_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="proveedor_nacionalidadproveedor_fk">
+    <End Type="DB_A3F19C_OGModel.nacionalidadproveedor" Role="nacionalidadproveedor" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.proveedor" Role="proveedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nacionalidadproveedor">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="proveedor">
+        <PropertyRef Name="NacionalidadProveedor_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="proveedor_statusproveedor_fk">
+    <End Type="DB_A3F19C_OGModel.statusproveedor" Role="statusproveedor" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.proveedor" Role="proveedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="statusproveedor">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="proveedor">
+        <PropertyRef Name="StatusProveedor_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="proveedores_statusproveedorvisible_fk">
+    <End Type="DB_A3F19C_OGModel.statusproveedorvisible" Role="statusproveedorvisible" Multiplicity="0..1" />
+    <End Type="DB_A3F19C_OGModel.proveedor" Role="proveedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="statusproveedorvisible">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="proveedor">
+        <PropertyRef Name="StatusProveedorVisible_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="centrocostos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ordencompra" Relationship="DB_A3F19C_OGModel.ordencompra_centrocostos_fk" FromRole="centrocostos" ToRole="ordencompra" />
+  </EntityType>
+  <EntityType Name="statuscompras">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ordencompra" Relationship="DB_A3F19C_OGModel.ordencompra_statuscompras_fk" FromRole="statuscompras" ToRole="ordencompra" />
+  </EntityType>
+  <EntityType Name="statusdireccion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ordencompra" Relationship="DB_A3F19C_OGModel.ordencompra_statusdireccion_fk" FromRole="statusdireccion" ToRole="ordencompra" />
+  </EntityType>
+  <EntityType Name="statusfinanzas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ordencompra" Relationship="DB_A3F19C_OGModel.ordencompra_statusfinanzas_fk" FromRole="statusfinanzas" ToRole="ordencompra" />
+  </EntityType>
+  <EntityType Name="subcentrocostos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ordencompra" Relationship="DB_A3F19C_OGModel.ordencompra_subcentrocostos_fk" FromRole="subcentrocostos" ToRole="ordencompra" />
+  </EntityType>
+  <EntityType Name="categoriaorden">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ordencompra" Relationship="DB_A3F19C_OGModel.ordencompra_categoriaorden_fk" FromRole="categoriaorden" ToRole="ordencompra" />
+  </EntityType>
+  <EntityType Name="tipocompra">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ordencompra" Relationship="DB_A3F19C_OGModel.ordencompra_tipocompra_fk" FromRole="tipocompra" ToRole="ordencompra" />
+  </EntityType>
+  <EntityType Name="productos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="precio" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="UM" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="detalleordenproductos" Relationship="DB_A3F19C_OGModel.detalleordenproductos_productos_fk" FromRole="productos" ToRole="detalleordenproductos" />
+  </EntityType>
+  <EntityType Name="detalleordenproductos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrdenCompra_Id" Type="Int32" Nullable="false" />
+    <Property Name="Productos_Id" Type="Int32" Nullable="false" />
+    <Property Name="cantidad" Type="Int32" />
+    <Property Name="preciounitario" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="monto" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="productos" Relationship="DB_A3F19C_OGModel.detalleordenproductos_productos_fk" FromRole="detalleordenproductos" ToRole="productos" />
+    <NavigationProperty Name="ordencompra" Relationship="DB_A3F19C_OGModel.detalleordenproductos_ordencompra_fk" FromRole="detalleordenproductos" ToRole="ordencompra" />
+  </EntityType>
+  <Association Name="detalleordenproductos_productos_fk">
+    <End Type="DB_A3F19C_OGModel.productos" Role="productos" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.detalleordenproductos" Role="detalleordenproductos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="productos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="detalleordenproductos">
+        <PropertyRef Name="Productos_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="formapago">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ordencompra" Relationship="DB_A3F19C_OGModel.ordencompra_formapago_fk" FromRole="formapago" ToRole="ordencompra" />
+  </EntityType>
+  <EntityType Name="supervisor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AspNetUsers_Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="DB_A3F19C_OGModel.supervisor_aspnetusers_fk" FromRole="supervisor" ToRole="AspNetUsers" />
+    <NavigationProperty Name="solicitante" Relationship="DB_A3F19C_OGModel.solicitante_supervisor_fk" FromRole="supervisor" ToRole="solicitante" />
+  </EntityType>
+  <Association Name="supervisor_aspnetusers_fk">
+    <End Type="DB_A3F19C_OGModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.supervisor" Role="supervisor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="supervisor">
+        <PropertyRef Name="AspNetUsers_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="solicitante">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AspNetUsers_Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Supervisor_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="DB_A3F19C_OGModel.solicitante_aspnetusers_fk" FromRole="solicitante" ToRole="AspNetUsers" />
+    <NavigationProperty Name="supervisor" Relationship="DB_A3F19C_OGModel.solicitante_supervisor_fk" FromRole="solicitante" ToRole="supervisor" />
+    <NavigationProperty Name="ordencompra" Relationship="DB_A3F19C_OGModel.ordencompra_solicitante_fk" FromRole="solicitante" ToRole="ordencompra" />
+  </EntityType>
+  <Association Name="solicitante_aspnetusers_fk">
+    <End Type="DB_A3F19C_OGModel.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.solicitante" Role="solicitante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="solicitante">
+        <PropertyRef Name="AspNetUsers_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="solicitante_supervisor_fk">
+    <End Type="DB_A3F19C_OGModel.supervisor" Role="supervisor" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.solicitante" Role="solicitante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="supervisor">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="solicitante">
+        <PropertyRef Name="Supervisor_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ordencompra">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="NombreProyecto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Locacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LugarEntrega" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TiempoRespuesta" Type="Int32" />
+    <Property Name="FechaEntrega" Type="DateTime" Precision="0" />
+    <Property Name="Justificacion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Politicas" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CentroCostos_Id" Type="Int32" Nullable="false" />
+    <Property Name="SubCentroCostos_Id" Type="Int32" Nullable="false" />
+    <Property Name="Proveedores_Id" Type="Int32" Nullable="false" />
+    <Property Name="CategoriaOrden_Id" Type="Int32" Nullable="false" />
+    <Property Name="TipoCompra_Id" Type="Int32" Nullable="false" />
+    <Property Name="StatusFinanzas_Id" Type="Int32" Nullable="false" />
+    <Property Name="StatusCompras_Id" Type="Int32" Nullable="false" />
+    <Property Name="StatusDireccion_Id" Type="Int32" Nullable="false" />
+    <Property Name="Solicitante_Id" Type="Int32" Nullable="false" />
+    <Property Name="Clientes_Id" Type="Int32" Nullable="false" />
+    <Property Name="FormaPago_Id" Type="Int32" />
+    <NavigationProperty Name="categoriaorden" Relationship="DB_A3F19C_OGModel.ordencompra_categoriaorden_fk" FromRole="ordencompra" ToRole="categoriaorden" />
+    <NavigationProperty Name="centrocostos" Relationship="DB_A3F19C_OGModel.ordencompra_centrocostos_fk" FromRole="ordencompra" ToRole="centrocostos" />
+    <NavigationProperty Name="clientes" Relationship="DB_A3F19C_OGModel.ordencompra_clientes_fk" FromRole="ordencompra" ToRole="clientes" />
+    <NavigationProperty Name="detalleordenproductos" Relationship="DB_A3F19C_OGModel.detalleordenproductos_ordencompra_fk" FromRole="ordencompra" ToRole="detalleordenproductos" />
+    <NavigationProperty Name="formapago" Relationship="DB_A3F19C_OGModel.ordencompra_formapago_fk" FromRole="ordencompra" ToRole="formapago" />
+    <NavigationProperty Name="proveedor" Relationship="DB_A3F19C_OGModel.ordencompra_proveedores_fk" FromRole="ordencompra" ToRole="proveedor" />
+    <NavigationProperty Name="solicitante" Relationship="DB_A3F19C_OGModel.ordencompra_solicitante_fk" FromRole="ordencompra" ToRole="solicitante" />
+    <NavigationProperty Name="statuscompras" Relationship="DB_A3F19C_OGModel.ordencompra_statuscompras_fk" FromRole="ordencompra" ToRole="statuscompras" />
+    <NavigationProperty Name="statusdireccion" Relationship="DB_A3F19C_OGModel.ordencompra_statusdireccion_fk" FromRole="ordencompra" ToRole="statusdireccion" />
+    <NavigationProperty Name="statusfinanzas" Relationship="DB_A3F19C_OGModel.ordencompra_statusfinanzas_fk" FromRole="ordencompra" ToRole="statusfinanzas" />
+    <NavigationProperty Name="subcentrocostos" Relationship="DB_A3F19C_OGModel.ordencompra_subcentrocostos_fk" FromRole="ordencompra" ToRole="subcentrocostos" />
+    <NavigationProperty Name="tipocompra" Relationship="DB_A3F19C_OGModel.ordencompra_tipocompra_fk" FromRole="ordencompra" ToRole="tipocompra" />
+  </EntityType>
+  <Association Name="ordencompra_categoriaorden_fk">
+    <End Type="DB_A3F19C_OGModel.categoriaorden" Role="categoriaorden" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.ordencompra" Role="ordencompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="categoriaorden">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ordencompra">
+        <PropertyRef Name="CategoriaOrden_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ordencompra_centrocostos_fk">
+    <End Type="DB_A3F19C_OGModel.centrocostos" Role="centrocostos" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.ordencompra" Role="ordencompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="centrocostos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ordencompra">
+        <PropertyRef Name="CentroCostos_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ordencompra_clientes_fk">
+    <End Type="DB_A3F19C_OGModel.clientes" Role="clientes" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.ordencompra" Role="ordencompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clientes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ordencompra">
+        <PropertyRef Name="Clientes_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="detalleordenproductos_ordencompra_fk">
+    <End Type="DB_A3F19C_OGModel.ordencompra" Role="ordencompra" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.detalleordenproductos" Role="detalleordenproductos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ordencompra">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="detalleordenproductos">
+        <PropertyRef Name="OrdenCompra_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ordencompra_formapago_fk">
+    <End Type="DB_A3F19C_OGModel.formapago" Role="formapago" Multiplicity="0..1" />
+    <End Type="DB_A3F19C_OGModel.ordencompra" Role="ordencompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="formapago">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ordencompra">
+        <PropertyRef Name="FormaPago_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ordencompra_proveedores_fk">
+    <End Type="DB_A3F19C_OGModel.proveedor" Role="proveedor" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.ordencompra" Role="ordencompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proveedor">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ordencompra">
+        <PropertyRef Name="Proveedores_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ordencompra_solicitante_fk">
+    <End Type="DB_A3F19C_OGModel.solicitante" Role="solicitante" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.ordencompra" Role="ordencompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="solicitante">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ordencompra">
+        <PropertyRef Name="Solicitante_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ordencompra_statuscompras_fk">
+    <End Type="DB_A3F19C_OGModel.statuscompras" Role="statuscompras" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.ordencompra" Role="ordencompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="statuscompras">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ordencompra">
+        <PropertyRef Name="StatusCompras_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ordencompra_statusdireccion_fk">
+    <End Type="DB_A3F19C_OGModel.statusdireccion" Role="statusdireccion" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.ordencompra" Role="ordencompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="statusdireccion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ordencompra">
+        <PropertyRef Name="StatusDireccion_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ordencompra_statusfinanzas_fk">
+    <End Type="DB_A3F19C_OGModel.statusfinanzas" Role="statusfinanzas" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.ordencompra" Role="ordencompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="statusfinanzas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ordencompra">
+        <PropertyRef Name="StatusFinanzas_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ordencompra_subcentrocostos_fk">
+    <End Type="DB_A3F19C_OGModel.subcentrocostos" Role="subcentrocostos" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.ordencompra" Role="ordencompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="subcentrocostos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ordencompra">
+        <PropertyRef Name="SubCentroCostos_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ordencompra_tipocompra_fk">
+    <End Type="DB_A3F19C_OGModel.tipocompra" Role="tipocompra" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.ordencompra" Role="ordencompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipocompra">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ordencompra">
+        <PropertyRef Name="TipoCompra_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="csr">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NumeroCuenta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Guia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PieceID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Referencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IATAOrigen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CiudadOrigen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IATADestino" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CiudadDestino" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SVCSubIATA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ruta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Piezas" Type="Int32" />
+    <Property Name="Peso" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="FechaRecoleccion" Type="DateTime" Precision="0" />
+    <Property Name="FechaPrimerCheckpointTerminal" Type="DateTime" Precision="0" />
+    <Property Name="HoraPrimerCheckpointTerminal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PrimerCheckpointTerminal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DescripcionPrimerCheckTerminal" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DetallesEntregaComentarios" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="TiempoTransitoEstimado" Type="Int32" />
+    <Property Name="TiempoTransitoRealizado" Type="Int32" />
+    <Property Name="IntentosEntrega" Type="Int32" />
+    <Property Name="CausaDemora" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FechaIngresoCC" Type="DateTime" Precision="0" />
+    <Property Name="DiasCC" Type="Int32" />
+    <Property Name="Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ValorSeguro" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="NombreRemitente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ContactoRemitente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DireccionRemitente" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CPRemitente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NombreDestinatario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ContactoDestinatario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DireccionDestinatario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CPDestinatario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UltimoCheckpoint" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaUltimoCheckpoint" Type="DateTime" Precision="0" />
+    <Property Name="HoraUltimoCheckpoint" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="detalleultimocheckpoint" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCarga" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="concentrado" Relationship="DB_A3F19C_OGModel.concentrado_csr_fk" FromRole="csr" ToRole="concentrado" />
+  </EntityType>
+  <EntityType Name="nts">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NTSDate" Type="DateTime" Precision="0" />
+    <Property Name="Order" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DSIdCliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DSNombreCliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OSACalleNumero" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="OSANull1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OSAColonia" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="OSADestinatario" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="OSACiudad" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="OSANull2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OSAEstado" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="OSACodigoPostal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OSI" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="osp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="osh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ofcodigopais" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="oforigen" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="fecharegistro" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="concentrado" Relationship="DB_A3F19C_OGModel.concentrado_nts_fk" FromRole="nts" ToRole="concentrado" />
+  </EntityType>
+  <EntityType Name="guiasimpresas">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecha" Type="DateTime" Precision="0" />
+    <Property Name="numero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="orden" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="concentrado" Relationship="DB_A3F19C_OGModel.concentrado_guiasimpresas_fk" FromRole="guiasimpresas" ToRole="concentrado" />
+  </EntityType>
+  <EntityType Name="fecuenciadhl">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="carrier" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="postalcode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="freightcode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="frequency" Type="Int32" />
+    <Property Name="wharehouse" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="statusfq" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="asignacionordenes" Relationship="DB_A3F19C_OGModel.asignacionordenes_fecuenciadhl_fk" FromRole="fecuenciadhl" ToRole="asignacionordenes" />
+  </EntityType>
+  <EntityType Name="nomenclaturadhl">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tipocheckpoint" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="statusherbalife" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="observaciones" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="asignacionordenes" Relationship="DB_A3F19C_OGModel.asignacionordenes_nomenclaturadhl_fk" FromRole="nomenclaturadhl" ToRole="asignacionordenes" />
+  </EntityType>
+  <EntityType Name="statusasignacion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="asignacionordenes" Relationship="DB_A3F19C_OGModel.asignacionordenes_statusasignacion_fk" FromRole="statusasignacion" ToRole="asignacionordenes" />
+  </EntityType>
+  <EntityType Name="concentrado">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NTS_Id" Type="Int32" />
+    <Property Name="CSR_Id" Type="Int32" />
+    <Property Name="GuiasImpresas_Id" Type="Int32" />
+    <NavigationProperty Name="csr" Relationship="DB_A3F19C_OGModel.concentrado_csr_fk" FromRole="concentrado" ToRole="csr" />
+    <NavigationProperty Name="guiasimpresas" Relationship="DB_A3F19C_OGModel.concentrado_guiasimpresas_fk" FromRole="concentrado" ToRole="guiasimpresas" />
+    <NavigationProperty Name="nts" Relationship="DB_A3F19C_OGModel.concentrado_nts_fk" FromRole="concentrado" ToRole="nts" />
+    <NavigationProperty Name="asignacionordenes" Relationship="DB_A3F19C_OGModel.asignacionordenes_concentrado_fk" FromRole="concentrado" ToRole="asignacionordenes" />
+  </EntityType>
+  <Association Name="concentrado_csr_fk">
+    <End Type="DB_A3F19C_OGModel.csr" Role="csr" Multiplicity="0..1" />
+    <End Type="DB_A3F19C_OGModel.concentrado" Role="concentrado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="csr">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="concentrado">
+        <PropertyRef Name="CSR_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="concentrado_guiasimpresas_fk">
+    <End Type="DB_A3F19C_OGModel.guiasimpresas" Role="guiasimpresas" Multiplicity="0..1" />
+    <End Type="DB_A3F19C_OGModel.concentrado" Role="concentrado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="guiasimpresas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="concentrado">
+        <PropertyRef Name="GuiasImpresas_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="concentrado_nts_fk">
+    <End Type="DB_A3F19C_OGModel.nts" Role="nts" Multiplicity="0..1" />
+    <End Type="DB_A3F19C_OGModel.concentrado" Role="concentrado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nts">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="concentrado">
+        <PropertyRef Name="NTS_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="asignacionordenes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaAlta" Type="DateTime" Precision="3" />
+    <Property Name="Comentarios" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AspNetUsers_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Concentrado_Id" Type="Int32" />
+    <Property Name="NomenclaturaDHL_Id" Type="Int32" />
+    <Property Name="StatusAsignacion_Id" Type="Int32" />
+    <Property Name="FecuenciaDHL_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="DB_A3F19C_OGModel.asigancionordenes_aspnetusers_fk" FromRole="asignacionordenes" ToRole="AspNetUsers" />
+    <NavigationProperty Name="concentrado" Relationship="DB_A3F19C_OGModel.asignacionordenes_concentrado_fk" FromRole="asignacionordenes" ToRole="concentrado" />
+    <NavigationProperty Name="fecuenciadhl" Relationship="DB_A3F19C_OGModel.asignacionordenes_fecuenciadhl_fk" FromRole="asignacionordenes" ToRole="fecuenciadhl" />
+    <NavigationProperty Name="nomenclaturadhl" Relationship="DB_A3F19C_OGModel.asignacionordenes_nomenclaturadhl_fk" FromRole="asignacionordenes" ToRole="nomenclaturadhl" />
+    <NavigationProperty Name="statusasignacion" Relationship="DB_A3F19C_OGModel.asignacionordenes_statusasignacion_fk" FromRole="asignacionordenes" ToRole="statusasignacion" />
+  </EntityType>
+  <Association Name="asigancionordenes_aspnetusers_fk">
+    <End Type="DB_A3F19C_OGModel.AspNetUsers" Role="AspNetUsers" Multiplicity="0..1" />
+    <End Type="DB_A3F19C_OGModel.asignacionordenes" Role="asignacionordenes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="asignacionordenes">
+        <PropertyRef Name="AspNetUsers_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="asignacionordenes_concentrado_fk">
+    <End Type="DB_A3F19C_OGModel.concentrado" Role="concentrado" Multiplicity="0..1" />
+    <End Type="DB_A3F19C_OGModel.asignacionordenes" Role="asignacionordenes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="concentrado">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="asignacionordenes">
+        <PropertyRef Name="Concentrado_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="asignacionordenes_fecuenciadhl_fk">
+    <End Type="DB_A3F19C_OGModel.fecuenciadhl" Role="fecuenciadhl" Multiplicity="1" />
+    <End Type="DB_A3F19C_OGModel.asignacionordenes" Role="asignacionordenes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fecuenciadhl">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="asignacionordenes">
+        <PropertyRef Name="FecuenciaDHL_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="asignacionordenes_nomenclaturadhl_fk">
+    <End Type="DB_A3F19C_OGModel.nomenclaturadhl" Role="nomenclaturadhl" Multiplicity="0..1" />
+    <End Type="DB_A3F19C_OGModel.asignacionordenes" Role="asignacionordenes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nomenclaturadhl">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="asignacionordenes">
+        <PropertyRef Name="NomenclaturaDHL_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="asignacionordenes_statusasignacion_fk">
+    <End Type="DB_A3F19C_OGModel.statusasignacion" Role="statusasignacion" Multiplicity="0..1" />
+    <End Type="DB_A3F19C_OGModel.asignacionordenes" Role="asignacionordenes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="statusasignacion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="asignacionordenes">
+        <PropertyRef Name="StatusAsignacion_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

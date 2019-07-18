@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutKpis.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            @using (Html.BeginForm())
+            {
+                <div class="x_title">
+                    <h2> Eliminar Registros Por Semana <small>Eliminar</small></h2> &nbsp;&nbsp;&nbsp;
+                    <button type="submit" class="btn btn-danger"><i class="glyphicon glyphicon-remove-sign"></i> Eliminar</button>
+                    <a class="btn btn-dark" href="@Url.Action("Index")"> <i class="fa fa-reply"></i> Cancelar</a>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <label>Semana a eliminar</label>
+                    <input class="form-control" id="semana" name="semana" />
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- Custom Theme Scripts -->
+<script src="../build/js/custom.min.js"></script>

@@ -1,0 +1,125 @@
+﻿@model OpenGate.Entidades.factura
+
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = null;
+}
+
+<script src="~/ScriptsDB/PeticionesFacturas.js"></script>
+
+<div class="modal-header text-center">
+    <button type="button" class="close" data-dismiss="modal">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h4 class="modal-title" id="myModalLabel">Editar Facturas</h4>
+    <label>@Request.Url.Query.ToString()</label>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="modal-body">
+        <div class="form-horizontal form-label-left input_mask">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.id)
+            @Html.HiddenFor(model => model.FechaRegistro, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.HiddenFor(Model => Model.AspNetUsers_Id, null)
+
+            <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+                <input type="text" class="form-control" id="FechaFactura" required name="FechaFactura" placeholder="Fecha Factura" autocomplete="off" value="@Model.FechaFactura.Value.ToShortDateString()">
+                <span class="fa fa-calendar form-control-feedback right" aria-hidden="true"></span>
+            </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+                <input type="text" class="form-control has-feedback-right" required id="FechaSello" name="FechaSello" placeholder="Fecha Sello" autocomplete="off" onchange="fechaVencimiento()" value="@Model.FechaSello.Value.ToShortDateString()">
+                <span class="fa fa-calendar form-control-feedback right" aria-hidden="true"></span>
+            </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+                <input type="text" class="form-control" id="FechaVencimiento" required name="FechaVencimiento" placeholder="Fecha Vencimiento" autocomplete="off" value="@Model.FechaVencimiento.Value.ToShortDateString()">
+                <span class="fa fa-calendar form-control-feedback right" aria-hidden="true"></span>
+            </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+                <input type="text" class="form-control has-feedback-right" required id="Numero" name="Numero" placeholder="Numero" autocomplete="off" value="@Model.Numero">
+                <span class="fa fa-tags form-control-feedback right" aria-hidden="true"></span>
+            </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+                @Html.DropDownList("StatusFactura_Id", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.StatusFactura_Id, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                <input type="hidden" id="hfCustomer" name="Proveedor_Id" value="@Model.Proveedor_Id" />
+                <input type="text" class="form-control" id="txtProveedor" required name="Proveedor" placeholder="Proveedor" value="@Model.proveedorString">
+                <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+            </div>
+
+            <table class="table table-striped jambo_table bulk_action">
+                <thead>
+                    <tr class="text-center">
+                        <td>  <strong>Concepto</strong>  </td>
+                        <td> <strong>Subtotal</strong>  </td>
+                        <td> <strong>Iva</strong></td>
+                        <td> <strong>Descuento</strong></td>
+                        <td> <strong>Retencion</strong></td>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" id="Concepto" name="Concepto" placeholder="Concepto" value="@Model.Concepto">
+                    </td>
+                    <td class="col-lg-1">
+                        <input type="text" class="form-control" placeholder="$0.0" id="Subtotal" name="Subtotal" onchange="sumar()" value="@Model.Subtotal">
+                        @Html.ValidationMessageFor(model => model.Subtotal, "", new { @class = "text-danger" })
+                    </td>
+                    <td class="col-lg-1">
+                        <input type="text" class="form-control" placeholder="$0.0" id="Iva" name="Iva" readonly value="@Model.Iva">
+                        @Html.ValidationMessageFor(model => model.Iva, "", new { @class = "text-danger" })
+                    </td>
+                    <td class="col-lg-1">
+                        <input type="text" class="form-control" placeholder="$0.0" id="Descuento" name="Descuento" onchange="sumar()" value="@Model.Descuento">
+                        @Html.ValidationMessageFor(model => model.Descuento, "", new { @class = "text-danger" })
+                    </td>
+                    <td class="col-lg-1">
+                        <input type="text" class="form-control" placeholder="$0.0" id="Retencion" name="Retencion" onchange="sumar()" value="@Model.Retencion">
+                        @Html.ValidationMessageFor(model => model.Retencion, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3"></td>
+                    <td style="text-align:right;" class="center"><b>Total</b> </td>
+                    <td>
+                        <input type="text" class="form-control" id="Total" name="Total" readonly placeholder="$0.0" value="@Model.Total" />
+                    </td>
+                </tr>
+            </table>
+
+            <table class="table table-striped jambo_table bulk_action">
+                <thead>
+                    <tr class="text-center">
+                        <td> <strong> Observaciones</strong>    </td>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" id="Observaciones" name="Observaciones" placeholder="Observaciones" value="@Model.Observaciones">
+                    </td>
+                </tr>
+            </table>
+
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="Cerrar(@Model.id)">Close</button>
+        <input type="submit" value="Save" class="btn btn-primary" />        
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

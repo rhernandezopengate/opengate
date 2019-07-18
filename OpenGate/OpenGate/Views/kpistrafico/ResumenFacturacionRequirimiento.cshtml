@@ -1,0 +1,22 @@
+﻿@using OpenGate.Entidades
+@model List<kpistrafico>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Tipo Rquerimiento</th>
+            <th>Facturacion Flete</th>
+            <th>Facturacion Maniobras</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.tiporequerimiento</td>
+                <td>@item.FacturacionFleteString</td>
+                <td>@item.FacturacionManiobrasString</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,44 @@
+﻿@using OpenGate.Entidades
+@model List<kpistrafico>
+
+<table id="tblResumenOnTime" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Mes
+            </th>
+            <th>
+                Entregas
+            </th>
+            <th>
+                Ok
+            </th>
+            <th>
+                Desv
+            </th>
+            <th>
+                %
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="width:10px">@item.mescarga</td>
+                <td style="width:10px">@item.Total</td>
+                <td>@item.TotalOks</td>
+                <td>@item.TotalDesv</td>
+                <td>@item.procentaje%</td>
+            </tr>
+        }
+        <tr>
+            <td>Total</td>
+            <td>@ViewBag.TotalOnTime</td>
+            <td>@ViewBag.TotalOkOnTime</td>
+            <td>@ViewBag.TotalDesvOnTime</td>
+            <td>@ViewBag.PorcentajeOkOnTime%</td>
+        </tr>
+    </tbody>
+</table>
+

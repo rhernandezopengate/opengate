@@ -1,0 +1,19 @@
+﻿<div id="chartContainer3"></div>
+
+<script type="text/javascript">
+    var chart3 = new CanvasJS.Chart("chartContainer3",{
+        animationEnabled: true,
+        title: {
+            text: "Porcentaje del Mes"
+        },
+        data: [{
+            type: "doughnut",
+            startAngle: 90,
+            indexLabelFontSize: 10,
+            indexLabel: "{label}-{y}%",
+            toolTipContent: "<b>{label}:</b> {y}%",
+            dataPoints: @Html.Raw(ViewBag.DataPointsRecibo),
+        }]
+    });
+    chart3.render();
+</script>

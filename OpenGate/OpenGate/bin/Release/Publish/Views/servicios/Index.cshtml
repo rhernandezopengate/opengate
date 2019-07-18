@@ -1,0 +1,179 @@
+﻿@model IEnumerable<OpenGate.Entidades.servicios>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutIT.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2> Servicios Administrados <small>Index</small></h2> &nbsp;&nbsp;&nbsp;
+                <a class="btn btn-success" href="@Url.Action("Create")"> <i class="glyphicon glyphicon-plus-sign"></i> Agregar Registros</a>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <table id="tblServicios" class="table table-bordered table-striped" align="center">
+                    <thead>
+                        <tr class="center">
+                            <th>
+                                @Html.DisplayNameFor(model => model.fecharegistro)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.cctv)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.telefonia)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.alarmas)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.correo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.antivirus)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.respaldoaplicaciones)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.usuarioswifi)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.internetcarga)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.internetdescarga)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.fecharegistro)
+                            </td>
+                            <td>
+                                <input type="checkbox" name="telefonia" id="telefonia" class="icheckbox_flat-green checked flat" checked="@item.cctv" />
+                            </td>
+                            <td>
+                                <input type="checkbox" name="telefonia" id="telefonia" class="icheckbox_flat-green checked flat" checked="@item.telefonia" />
+                            </td>
+                            <td>
+                                <input type="checkbox" name="alarmas" id="alarmas" class="icheckbox_flat-green checked flat" checked="@item.alarmas" />
+                            </td>
+                            <td>
+                                <input type="checkbox" name="correo" id="correo" class="icheckbox_flat-green checked flat" checked="@item.correo" />
+                            </td>
+                            <td>
+                                <input type="checkbox" name="antivirus" id="antivirus" class="icheckbox_flat-green checked flat" checked="@item.antivirus" />
+                            </td>
+                            <td>
+                                <input type="checkbox" name="respaldoaplicaciones" id="respaldoaplicaciones" class="icheckbox_flat-green checked flat" checked="@item.respaldoaplicaciones" />
+                            </td>
+                            <td>
+                                <input type="checkbox" name="usuarioswifi" id="usuarioswifi" class="icheckbox_flat-green checked flat" checked="@item.usuarioswifi" />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.internetcarga)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.internetdescarga)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Details", new { id = item.id })" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                                <a href="@Url.Action("Edit", new { id = item.id })" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                                <a href="@Url.Action("Delete", new { id = item.id })" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link href="~/Content/CenterTable/CenterTable.css" rel="stylesheet" />
+
+@Scripts.Render("~/Scripts")
+@Scripts.Render("~/Custom")
+
+<!-- iCheck -->
+<link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+
+<!-- CSS Datatble -->
+<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/buttons/1.5.4/css/buttons.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/select/1.2.7/css/select.dataTables.min.css" rel="stylesheet" />
+
+<!-- JQuery Datatble -->
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.4/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.4/js/buttons.bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        var table = $('#tblServicios').DataTable({
+            //order: [[0, 'desc']],
+            columnDefs: [{
+                orderable: false,
+                targets: [1, 2, 3, 4, 5, 6, 7, 10]
+            }],
+            "processing": true,
+        });
+
+        new $.fn.dataTable.Buttons(table, {
+            buttons: [
+                {
+                    extend: 'copyHtml5',
+                    text: '<i class="fa fa-files-o"></i>',
+                    titleAttr: 'COPIAR',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'print',
+                    text: '<i class="fa fa-print"></i>',
+                    titleAttr: 'IMPRIMIR',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'excel',
+                    text: '<i class="fa fa-file-excel-o"></i>',
+                    titleAttr: 'EXCEL',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'pdf',
+                    text: '<i class="fa fa-file-pdf-o"></i>',
+                    titleAttr: 'PDF',
+                    orientation: 'landscape',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                }
+            ],
+        });
+
+        table.buttons().container().appendTo('.col-sm-6:eq(0)', table.table().container());
+    });
+</script>

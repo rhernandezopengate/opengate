@@ -1,0 +1,455 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutHD.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2> Asignacion de Ordenes <small>Index</small></h2> &nbsp;&nbsp;&nbsp;
+                <a class="btn btn-primary" href="@Url.Action("AsignarOrdenes")"> <i class="fa fa-share-alt"></i> Asignar Guias</a>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="well" style="overflow: auto">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <div class="input-group date">
+                                <input placeholder="Orden" type="text" id="orden" name="orden" class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="fa fa-globe"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <div class="input-group date">
+                                <input placeholder="Guia" type="text" id="guia" name="guia" class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="fa fa-map-marker"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <div class="input-group date">
+                                <select id="ddlStatus" name="ddlStatus" class="form-control"></select>
+                                <span class="input-group-addon">
+                                    <span class="fa fa-flag"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <div class="input-group date">
+                                <select id="ddlUsuario" name="ddlUsuario" class="form-control"></select>
+                                <span class="input-group-addon">
+                                    <span class="fa fa-user"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <div class="input-group date">
+                                <input placeholder="Fecha Probable De Entrega" type="text" id="fpe" name="fpe" class="form-control" autocomplete="off" />
+                                <span class="input-group-addon">
+                                    <span class="fa fa-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <label id="alerta" class="form-control"></label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-primary" id="button"><i class="fa fa-print"></i> Obtener Guias</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-primary" id="btncerrar"><i class="fa fa-print"></i> Cerrar Ordenes</button>
+                </div>                
+
+                <table id="table" class="table table-bordered jambo_table" style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                IdAsignacion
+                            </th>
+                            <th>
+                                IsVencido
+                            </th>
+                            <th>
+                                Referencia CSR
+                            </th>
+                            <th>
+                                Guia
+                            </th>
+                            <th>
+                                Orden
+                            </th>
+                            <th>
+                                DS ID Cliente
+                            </th>
+                            <th>
+                                Status DHL
+                            </th>
+                            <th>
+                                Status Manual
+                            </th>
+                            <th>
+                                FR
+                            </th>
+                            <th>
+                                FPE
+                            </th>
+                            <th>
+                                Comentarios
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                </table>
+                <br />
+                <br />
+                <br />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="MyModal" class="modal fade in">
+    <div class="modal-dialog modal-lg" id="mdialTamanio">
+        <div class="modal-content">
+            <div id="MyModalContent"></div>
+        </div>
+    </div>
+</div>
+
+<!-- CSS Datatble -->
+<link href="~/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css" rel="stylesheet" />
+
+<!-- JQuery Datatble -->
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.4/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+<script src="~/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="~/build/js/custom.min.js"></script>
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<script>
+    $(document).ready(function () {
+        table = $('#table').DataTable({
+            "order": [[0, "desc"]],
+            "ordering": true,
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            "pagingType": "simple_numbers",
+            "dom": 'Blrtip', // Hides Default Search
+            "processing": true,
+            "serverSide": true,
+            "orderMulti": false,
+            "deferRender": true,
+            rowId: 'id',
+            select: true,
+            "ajax": {
+                "url": "/asignacionordenes/ObtenerAsignaciones",
+                "type": "POST",
+                "datatype": "json"
+            },
+            buttons: [
+
+                {
+                    extend: 'copyHtml5',
+                    text: '<i class="fa fa-files-o"></i>',
+                    titleAttr: 'COPIAR',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'print',
+                    text: '<i class="fa fa-print"></i>',
+                    titleAttr: 'IMPRIMIR',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'excel',
+                    text: '<i class="fa fa-file-excel-o"></i>',
+                    titleAttr: 'EXCEL',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'pdf',
+                    text: '<i class="fa fa-file-pdf-o"></i>',
+                    titleAttr: 'PDF',
+                    orientation: 'landscape',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                }
+
+            ],
+            "rowCallback": function (row, data, index) {
+                if (data.IsVencido == 2) {
+                    $('td:eq(8)', row).css('background-color', 'Yellow');
+                    $('td:eq(8)', row).css('color', 'black');
+                }
+                else if (data.IsVencido == 3) {
+                    $('td:eq(8)', row).css('background-color', 'Red');
+                    $('td:eq(8)', row).css('color', 'black');
+                }
+            },
+            "aoColumns": [
+                //0
+                { "data": "id", "autoWidth": true, "visible": false },
+                { "data": "IsVencido", "autoWidth": true },
+                { "data": "Referencia", "autoWidth": true },
+                { "data": "Guia", "autoWidth": true },
+                { "data": "Orden", "autoWidth": true },
+                { "data": "DSIDCliente", "autoWidth": true },
+                { "data": "StatusDHL", "autoWidth": true },
+                { "data": "StatusManual", "autoWidth": true },
+                {
+                    "data": "FechaRecoleccion",
+                    "name": "FechaRecoleccion",
+                    "render": function (data, type, full) {
+
+                        var data1 = data.replace("/Date(", "").replace(")/", "");
+                        var date = new Date(parseInt(data1));
+                        var month = date.getMonth() + 1;
+                        return date.getDate() + "-" + (month.toString().length > 1 ? month : "0" + month) + "-" + date.getFullYear();
+                    },
+                    "autoWidth": true
+                },
+                {
+                    "data": "FechaProbableEntrega",
+                    "name": "FechaProbableEntrega",
+                    "render": function (data, type, full) {
+
+                        var data1 = data.replace("/Date(", "").replace(")/", "");
+                        var date = new Date(parseInt(data1));
+                        var month = date.getMonth() + 1;
+                        return date.getDate() + "-" + (month.toString().length > 1 ? month : "0" + month) + "-" + date.getFullYear();
+                    },
+                    "autoWidth": true
+                },
+                { "data": "Comentarios", "autoWidth": true },
+                {
+                    "data": null,
+                    "targets": -1,
+                    "render": function (data, type, full) {
+                        return "<a  onclick='Edit(" + full['id'] + ")' id='btnEdit" + full['id'] + "' class='btn btn-success'><i class='glyphicon glyphicon-pencil'></i></a>";
+                    },
+                    "bSearchable": false,
+                    "sortable": false,
+                    "autoWidth": true,
+                    "sWidth": "100px"
+                }
+            ]
+        });            
+
+        $('#button').click(function () {
+            var dataArr = [];
+            var rows = $('tr.selected');
+            var rowData = table.rows(rows).data();
+            $.each($(rowData), function (key, value) {
+                dataArr.push(value["Guia"]); //"name" being the value of your first column.
+            });
+
+            $("#alerta").text(dataArr);
+
+            copyToClipboard($("#alerta"));
+        });
+
+        $('#btncerrar').click(function () {
+            var dataArr = [];
+            var rows = $('tr.selected');
+            var rowData = table.rows(rows).data();
+            $.each($(rowData), function (key, value) {
+                dataArr.push(value["Guia"]); //"name" being the value of your first column.
+            });
+
+            Cerrar(dataArr);
+        });
+
+        $('#guia').on('keyup', function () {
+            table.columns(4).search(this.value).draw();
+        });
+
+        $('#ddlStatus').on('change', function () {
+            table.columns(1).search(this.value).draw();
+        });
+
+        $('#ddlUsuario').on('change', function () {
+            table.columns(2).search(this.value).draw();
+        });
+
+        $('#fpe').on('change', function () {
+            table.columns(3).search(this.value).draw();
+        });
+
+        $('#orden').on('keyup', function () {
+            table.columns(0).search(this.value).draw();
+        });
+    });
+
+    function copyToClipboard(elemento) {
+        var $temp = $("<input>")
+        $("#alerta").append($temp);
+        $temp.val($(elemento).text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+    }
+
+    $(function () {
+        var ddlStatus = $("#ddlStatus");
+        ddlStatus.empty().append('<option selected="selected" value="0" disabled = "disabled">Loading ...</option>');
+        $.ajax({
+            type: "POST",
+            url: "/asignacionordenes/ListaStatus",
+            data: '{}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                ddlStatus.empty().append('<option selected="selected" value="0">Seleccione Status DHL...</option>');
+                $.each(response, function () {
+                    ddlStatus.append($("<option></option>").val(this['Value']).html(this['Text']));
+                });
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    });
+
+    $(function () {
+        var ddlUsuario = $("#ddlUsuario");
+        ddlUsuario.empty().append('<option selected="selected" value="0" disabled = "disabled">Loading ...</option>');
+        $.ajax({
+            type: "POST",
+            url: "/asignacionordenes/ListaUsuarios",
+            data: '{}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                ddlUsuario.empty().append('<option selected="selected" value="0">Seleccione Usuario...</option>');
+                $.each(response, function () {
+                    ddlUsuario.append($("<option></option>").val(this['Value']).html(this['Text']));
+                });
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    });
+
+    $(function () {
+        $("#fpe").datepicker({
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            changeYear: true
+        });
+    });
+
+    var Edit = function (ID) {
+        $.ajaxSetup({ cache: false });
+        var EditUrl = "/asignacionordenes/Edit/" + ID;
+        $("#MyModalContent").load(EditUrl, function () {
+            $("#MyModal").modal({
+                //backdrop: 'static',
+                keyboard: false
+            }, 'show');
+            bindForm(this);
+        });
+        return false;
+    }
+
+    function alerta() {
+        
+        document.getElementById("ejemplo").innerHTML = mensaje;
+    }
+
+    var Cerrar = function (Dato) {
+
+        var mensaje;
+        var opcion = confirm("¿Desea Cerrar Estas Ordenes?");
+        if (opcion == true)
+        {
+            $.ajax({
+                url: "/asignacionordenes/CerrarOrdenes",
+                type: "POST",
+                data: { dato: JSON.stringify(Dato) },
+                success: function (success) {
+                    if (success) {
+                        toastr.success('Ordenes Cerrados Correctamente.');
+                    }
+                    else {
+                        toastr.error('Esta factura ya esta pagada');
+                    }
+
+                    table.draw();
+                },
+                error: function (error) {
+                    console.log(error);
+                    alert(error)
+                }
+            });   
+        }
+        else
+        {
+            mensaje = "Has clickado Cancelar";
+        }
+
+             
+    }
+
+    function bindForm(dialog) {
+        $('form', dialog).submit(function () {
+            $.ajax({
+                url: this.action,
+                type: this.method,
+                data: $(this).serialize(),
+                success: function (result) {
+                    if (result.success) {
+                        $("#MyModal").modal('hide');
+                        toastr.success(result.message);
+                        table.draw();
+                    }
+                    else {
+                        $("#MyModal").modal('show');
+                        toastr.error(result.ErrorMessage);
+                        bindForm(dialog);
+                    }
+                },
+                error: function (xml, message, text) {
+                    toastr.error("Msg: " + message + ", Text: " + text);
+                }
+            });
+            return false;
+        });
+    }
+</script>

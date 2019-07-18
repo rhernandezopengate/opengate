@@ -1,0 +1,38 @@
+﻿@model OpenGate.Entidades.ntsCE
+
+@{
+    ViewBag.Title = "CargarNTS";
+    Layout = "~/Views/Shared/_LayoutHD.cshtml";
+}
+
+<h2>CargarNTS</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Cargar"/>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>asd</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        @for (int i = 0; i < Model.NTSNuevos.Count; i++)
+        {
+            <tr>
+                <td>
+                    <label>@Model.NTSNuevos[i].nts.Order</label>
+                </td>
+            </tr>
+        }
+
+    </table>
+
+}
+
+
+

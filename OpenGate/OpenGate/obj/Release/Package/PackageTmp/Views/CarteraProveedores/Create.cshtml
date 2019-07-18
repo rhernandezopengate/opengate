@@ -1,0 +1,205 @@
+﻿@model OpenGate.Entidades.ProveedoresViewModel
+
+@{
+                /**/
+
+                ViewBag.Title = "Create";
+                Layout = "~/Views/Shared/_LayoutPagoProveedores.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div class="row">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Proveedores <small>Crear</small></h2>&nbsp;&nbsp;
+                    <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+                    <a class="btn btn-danger" href="@Url.Action("IndexView")"> <i class="glyphicon glyphicon-remove-circle"></i> Cancelar</a>                    
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                        <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Datos Generales</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Informacion Bancaria</a>
+                            </li>
+                            <li role="presentation" class="">
+                                <a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Contactos</a>
+                            </li>
+                        </ul>
+                        <div id="myTabContent" class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                                <p>
+                                    <div class="form-horizontal form-label-left input_mask">
+                                        <h3>Informacion General</h3>
+                                        <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                                            @Html.EditorFor(model => model.Proveedores.RazonSocial, new { htmlAttributes = new { @class = "form-control", placeholder = "Razon Social", required = "required" } })
+                                        </div>
+
+                                        <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                                            @Html.EditorFor(model => model.Proveedores.NombreComercial, new { htmlAttributes = new { @class = "form-control", placeholder = "NombreComercial", required = "required" } })
+                                        </div>
+
+                                        <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                                            @Html.EditorFor(model => model.Proveedores.RFC, new { htmlAttributes = new { @class = "form-control", placeholder = "RFC", required = "required" } })
+                                        </div>
+
+                                        <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                                            @Html.EditorFor(model => model.Proveedores.DiasCredito, new { htmlAttributes = new { @class = "form-control", placeholder = "Dias Credito" } })
+                                        </div>
+
+                                        <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                                            @Html.EditorFor(model => model.Proveedores.ActividadEmpresarial, new { htmlAttributes = new { @class = "form-control", placeholder = "Actividad Empresarial", required = "required" } })
+                                        </div>
+
+                                        <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                                            @Html.EditorFor(model => model.Proveedores.RepresentanteLegal, new { htmlAttributes = new { @class = "form-control", placeholder = "Representante Legal", required = "required" } })
+                                        </div>
+
+                                        <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                                            @Html.EditorFor(model => model.Proveedores.ModenaFacturacion, new { htmlAttributes = new { @class = "form-control", placeholder = "Modena Facturacion", required = "required" } })
+                                        </div>
+
+                                        <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                                            @Html.DropDownList("NacionalidadProveedor_Id", null, htmlAttributes: new { @class = "form-control" })
+                                        </div>
+
+                                        <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                                            @Html.DropDownList("CategoriaProveedor_Id", null, htmlAttributes: new { @class = "form-control" })
+                                        </div>
+                                        <hr />
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <h3>Direccion Fiscal</h3>
+                                        <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                                            @Html.EditorFor(model => model.Proveedores.Pais, new { htmlAttributes = new { @class = "form-control", placeholder = "Pais", required = "required" } })
+                                        </div>
+
+                                        <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                                            @Html.EditorFor(model => model.Proveedores.Estado, new { htmlAttributes = new { @class = "form-control", placeholder = "Estado", required = "required" } })
+                                        </div>
+
+                                        <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                                            @Html.EditorFor(model => model.Proveedores.Municipio, new { htmlAttributes = new { @class = "form-control", placeholder = "Municipio o Delegacion", required = "required" } })
+                                        </div>
+
+                                        <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                                            @Html.EditorFor(model => model.Proveedores.Colonia, new { htmlAttributes = new { @class = "form-control", placeholder = "Colonia", required = "required" } })
+                                        </div>
+
+                                        <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                                            @Html.EditorFor(model => model.Proveedores.Calle, new { htmlAttributes = new { @class = "form-control", placeholder = "Calle y Numero", required = "required" } })
+                                        </div>
+
+                                        <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                                            @Html.EditorFor(model => model.Proveedores.CodigoPostal, new { htmlAttributes = new { @class = "form-control", placeholder = "Codigo Postal", required = "required" } })
+
+                                        </div>
+                                    </div>
+                                </p>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+                                <p>
+                                    <div class="form-horizontal form-label-left input_mask">
+                                        <h3>Datos del Banco</h3>
+                                        <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                                            @Html.EditorFor(model => model.Informacionbancaria.NombreBanco, new { htmlAttributes = new { @class = "form-control", placeholder = "Nombre Banco", required = "required" } })
+                                        </div>
+
+                                        <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                                            @Html.EditorFor(model => model.Informacionbancaria.CuentaBancaria, new { htmlAttributes = new { @class = "form-control", placeholder = "Cuenta Bancaria", required = "required" } })
+                                        </div>
+
+                                        <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                                            @Html.EditorFor(model => model.Informacionbancaria.Clabe, new { htmlAttributes = new { @class = "form-control", placeholder = "Cuenta Bancaria", required = "required" } })
+
+                                        </div>
+                                    </div>
+                                </p>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
+                                <button id="btnAdd" type="button" class="btn btn-primary" onclick="AddTextBox()"><i class="fa fa-plus"></i> Nuevo</button>
+                                <br />
+                                <br />
+                                <div id="TextBoxContainer">
+                                    <!--Textboxes will be added here -->
+                                </div>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    if (ViewBag.Mensaje != "Sin Error")
+    {      
+        <div class="alert alert-danger alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+            <strong><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>&nbsp; @ViewBag.Mensaje</strong>
+        </div>
+    }
+}
+
+<script type="text/javascript">
+
+    function GetDynamicTextBox(value) {
+            var div = $("<div class='form-horizontal form-label-left input_mask'/>");
+
+            var textBox = $("<input />").attr("type", "textbox").attr("name", "DynamicTextBox").attr("placeholder", "Nombre (s)").attr("class", "form-group col-md-2 col-xs-12");
+            textBox.val(value);
+            div.append(textBox);
+
+            var textBox1 = $("<input />").attr("type", "textbox").attr("name", "DynamicTextTelefono").attr("placeholder", "Telefono").attr("class", "form-group col-md-2 col-xs-12");
+            textBox1.val(value);
+            div.append(textBox1);
+
+            var textBox2 = $("<input />").attr("type", "textbox").attr("name", "DynamicTextMail").attr("placeholder", "Email").attr("class", "form-group col-md-2 col-xs-12");
+            textBox2.val(value);
+            div.append(textBox2);
+
+            var textBox3 = $("<input />").attr("type", "textbox").attr("name", "DynamicTextPuesto").attr("placeholder", "Puesto").attr("class", "form-group col-md-2 col-xs-12");
+            textBox3.val(value);
+            div.append(textBox3);
+
+            var button = $("<input />").attr("type", "button").attr("value", "Remove").attr("class", "btn btn-primary");
+            button.attr("onclick", "RemoveTextBox(this)");
+            div.append(button);
+
+            return div;
+        }
+
+    function AddTextBox() {
+            var div = GetDynamicTextBox("");
+            $("#TextBoxContainer").append(div);
+        }
+
+    function RemoveTextBox(button) {
+            $(button).parent().remove();
+        }
+
+    $(function () {
+        var values = eval('@Html.Raw(ViewBag.Values)');
+        if (values != null) {
+                $("#TextBoxContainer").html("");
+                $(values).each(function () {
+                    $("#TextBoxContainer").append(GetDynamicTextBox(this));
+                });
+            }
+    });
+
+</script>
+
+<!-- Custom Theme Scripts -->
+<script src="~/build/js/custom.min.js"></script>

@@ -1,0 +1,169 @@
+﻿@model OpenGate.Entidades.factura
+
+<div class="modal-header text-center">
+    <button type="button" class="close" data-dismiss="modal">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h4 class="modal-title" id="myModalLabel">Editar Factura No. @Model.Numero</h4>
+</div>
+<script src="~/ScriptsDB/PeticionesFacturas.js"></script>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "id" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="modal-body">
+        <div class="form-horizontal form-label-left">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.id)
+            @Html.HiddenFor(model => model.FechaRegistro)
+            @Html.HiddenFor(Model => Model.AspNetUsers_Id, null)
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Numero de Factura</label>
+                        <input type="text" value="@Model.Numero" class="form-control" name="Numero" id="Numero" />
+                        @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Fecha de Factura</label>
+                        <input id="FechaFactura" type="text" value="@Model.FechaFactura.Value.ToShortDateString()" class="form-control" name="FechaFactura" />
+                        @Html.ValidationMessageFor(model => model.FechaFactura, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Fecha de Sello</label>
+                        <input id="FechaSello" type="text" value="@Model.FechaSello.Value.ToShortDateString()" class="form-control" name="FechaSello" />
+                        @Html.ValidationMessageFor(model => model.FechaSello, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Fecha de Vencimiento</label>
+                        <input id="FechaVencimiento" type="text" value="@Model.FechaVencimiento.Value.ToShortDateString()" class="form-control" name="FechaVencimiento" />
+                        @Html.ValidationMessageFor(model => model.FechaVencimiento, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Fecha de Pago</label>
+                        @if (Model.FechaPago != null)
+                        {
+                            <input type="text" value="@Model.FechaPago.Value.ToShortDateString()" class="form-control" name="FechaPago" id="FechaPago" autocomplete="off" />
+                        }
+                        else
+                        {
+                            <input type="text" class="form-control" name="FechaPago" id="FechaPago" autocomplete="off" readonly />
+                        }
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Estado de Factura</label>
+                        @Html.DropDownList("StatusFactura_Id", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.StatusFactura_Id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Proveedor</label>
+                        <input type="hidden" value="@Model.Proveedor_Id" id="hfCustomer" name="Proveedor_Id" />
+                        <input type="text" class="form-control" value="@Model.proveedor.RazonSocial" id="txtProveedor" name="txtProveedor" />
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Estado de Factura</label>
+                        @Html.DropDownList("Clientes_Id", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Clientes_Id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <table class="table table-striped jambo_table bulk_action">
+                <thead>
+                    <tr class="text-center">
+                        <td>  <strong>Concepto</strong>  </td>
+                        <td> <strong>Subtotal</strong>  </td>
+                        <td> <strong>Descuento</strong></td>
+                        <td> <strong>Retencion</strong></td>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>
+                        @Html.EditorFor(model => model.Concepto, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Concepto, "", new { @class = "text-danger" })
+                    </td>
+                    <td class="col-lg-2">
+                        <input type="text" id="Subtotal" name="Subtotal" value="@Model.Subtotal" class="form-control" onchange="sumar()" />
+                        @Html.ValidationMessageFor(model => model.Subtotal, "", new { @class = "text-danger" })
+                    </td>
+                    <td class="col-lg-2">
+                        <input type="text" id="Descuento" name="Descuento" value="@Model.Descuento" class="form-control" onchange="sumar()" />
+                        @Html.ValidationMessageFor(model => model.Descuento, "", new { @class = "text-danger" })
+                    </td>
+                    <td class="col-lg-2">
+                        <input type="text" id="Retencion" name="Retencion" value="@Model.Retencion" class="form-control" onchange="sumar()" />
+                        @Html.ValidationMessageFor(model => model.Retencion, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                    <td style="text-align:right;" class="center"><b>Iva</b> </td>
+                    <td>
+                        <input type="text" id="Iva" name="Iva" value="@Model.Iva" class="form-control" readonly />
+                        @Html.ValidationMessageFor(model => model.Iva, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                    <td style="text-align:right;" class="center"><b>Total</b> </td>
+                    <td>
+                        <input type="text" id="Total" name="Total" value="@Model.Total" class="form-control" readonly />
+                        @Html.ValidationMessageFor(model => model.Total, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+            </table>
+
+            <table class="table table-striped jambo_table bulk_action">
+                <thead>
+                    <tr class="text-center">
+                        <td> <strong> Observaciones</strong>    </td>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>
+                        @Html.EditorFor(model => model.Observaciones, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Observaciones, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn" data-dismiss="modal">Cancel</button>
+        <input type="submit" class="btn btn-primary" value="Save" id="btnSubmit" />
+    </div>
+}
+
+<script>
+    $(function () {
+        $("#FechaSello").change(function () {
+            var url = "@Url.Action("CalcularFechaVencimiento", "facturas")";
+            var fecha = $(this).val();
+            var data = { fechaSello: fecha };
+
+            $.post(url, data).done(function (data) {
+                $("#FechaVencimiento").val(data);
+            }).fail(errorAjax);
+
+
+            function errorAjax(error) {
+                alert(error.responseText);
+            }
+        });
+    });
+</script>

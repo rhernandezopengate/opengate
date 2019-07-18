@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/images/LOGO TRANSPARENTE.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/vendors/nprogress/nprogress.css" rel="stylesheet" />
+    <link href="~/vendors/iCheck/skins/flat/green.css" rel="stylesheet" />
+    <link href="~/build/css/custom.min.css" rel="stylesheet" />
+
+    <script src="~/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="~/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="~/vendors/fastclick/lib/fastclick.js"></script>
+    <script src="~/vendors/nprogress/nprogress.js"></script>
+    <script src="~/vendors/iCheck/icheck.min.js"></script>
+
+    <!-- Toastr -->
+    <script src="~/Scripts/toastr.js"></script>
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+
+    <!-- Bootbox -->
+    <script src="~/Scripts/bootbox.js"></script>
+
+    <link href="~/Content/bigModal.css" rel="stylesheet" />
+</head>
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <br />
+                    <div class="navbar nav_title" style="border: 0; height:90px">
+                        <a href='@Url.Action("Index", "Home")' class="site_title img-responsive" style="height:auto; width:200px"><img src="~/images/LOGO.jpg" class="img-responsive" /></a>
+                    </div>
+
+                    <div class="clearfix"></div>                   
+
+                    <br />
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3>General</h3>
+                            <ul class="nav side-menu">                                
+                                <li>
+                                    <a><i class="fa fa-dashboard"></i> Dashboard <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu" style="display: none;">
+                                        <li><a href='@Url.Action("Index", "Kpis")'>Wharehouse</a></li>
+                                        <li><a href='@Url.Action("Trafico", "kpis")'>Trafico</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href='@Url.Action("Kpisplaneacion", "kpisplaneacion")'><i class="fa fa-list-alt"></i>Planeacion</a></li>
+                                <li><a href='@Url.Action("Index", "kpisdespacho")'><i class="fa fa-tasks"></i>Despacho</a></li>
+                                <li><a href='@Url.Action("Index", "kpisrecibo")'><i class="fa fa-cubes"></i>Recibo</a></li>                                
+                                <li>
+                                    <a><i class="fa fa-barcode"></i> Inventarios <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu" style="display: none;">
+                                        <li><a href='@Url.Action("Index", "kpisinventarios")'>Conteos Fisicos</a></li>
+                                        <li><a href='@Url.Action("Index", "kpisinvaplontime")'>Aplicaciones en Tiempo</a></li>
+                                        <li><a href='@Url.Action("Index", "kpisinventariosexactitud")'>Exactitud de Inventarios</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href='@Url.Action("Index", "kpistrafico")'><i class="fa fa-truck"></i>Tráfico</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /sidebar menu -->
+                </div>
+            </div>
+
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+                        @Html.Partial("_LoginPartial")
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+            <!-- page content -->
+            <div class="right_col" role="main">
+
+
+                @RenderBody()
+
+
+            </div>
+        </div>
+        <!-- /page content -->
+        <!-- footer content -->
+        <footer>
+            <div class="pull-right">
+                <p>&copy; @DateTime.Now.Year - <a href="http://www.opengatelogistics.com/" target="_blank">OPEN GATE LOGISTICS</a> </p>
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+    </div>
+</body>
+</html>

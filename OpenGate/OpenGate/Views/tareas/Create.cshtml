@@ -1,0 +1,141 @@
+﻿@model OpenGate.Entidades.tareas
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutIT.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            @using (Html.BeginForm())
+            {
+                <div class="x_title">
+                    <h2> @ViewBag.Controller <small>Crear</small></h2> &nbsp;&nbsp;&nbsp;
+                    <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+                    <a class="btn btn-danger" href="@Url.Action("Index")"> <i class="glyphicon glyphicon-remove-circle"></i> Cancelar</a>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    @Html.AntiForgeryToken()
+
+                    <div id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Actividad, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.EditorFor(model => model.Actividad, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                                @Html.ValidationMessageFor(model => model.Actividad, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.HoraInicio, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="input-group date" id="HoraInicioPicker" name="HoraInicioPicker">
+                                    <input id="HoraInicio" name="HoraInicio" type="text" class="form-control col-md-7 col-xs-12" autocomplete="off">
+                                    <span class="input-group-addon">
+                                        <span class="fa fa-calendar-o"></span>
+                                    </span>
+                                    @Html.ValidationMessageFor(model => model.HoraInicio, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Solicita, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.EditorFor(model => model.Solicita, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                                @Html.ValidationMessageFor(model => model.Solicita, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input id="Fecha" name="Fecha" class="form-control col-md-7 col-xs-12" type="text" autocomplete="off" />
+                                @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FechaEntrega, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input id="FechaEntrega" name="FechaEntrega" class="form-control col-md-7 col-xs-12" type="text" autocomplete="off" />
+                                @Html.ValidationMessageFor(model => model.FechaEntrega, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.HoraFin, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="input-group date" id="HoraFinPicker" name="HoraFinPicker">
+                                    <input id="HoraFin" name="HoraFin" type="text" class="form-control col-md-7 col-xs-12" autocomplete="off">
+                                    <span class="input-group-addon">
+                                        <span class="fa fa-calendar-o"></span>
+                                    </span>
+                                    @Html.ValidationMessageFor(model => model.HoraInicio, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PorcentajeCumplido, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <select id="PorcentajeCumplido" name="PorcentajeCumplido" class="form-control col-md-7 col-xs-12">
+                                    <option value="25">25%</option>
+                                    <option value="50">50%</option>
+                                    <option value="75">75%</option>
+                                    <option value="100">100%</option>
+                                </select>
+                                @Html.ValidationMessageFor(model => model.PorcentajeCumplido, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Observaciones, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.EditorFor(model => model.Observaciones, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                                @Html.ValidationMessageFor(model => model.Observaciones, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.StatusTarea_Id, "StatusTarea_Id", htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.DropDownList("StatusTarea_Id", null, htmlAttributes: new { @class = "form-control col-md-7 col-xs-12" })
+                                @Html.ValidationMessageFor(model => model.StatusTarea_Id, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.AspNetUsers_Id, "AspNetUsers_Id", htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.DropDownList("AspNetUsers_Id", null, htmlAttributes: new { @class = "form-control col-md-7 col-xs-12" })
+                                @Html.ValidationMessageFor(model => model.AspNetUsers_Id, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Notas, htmlAttributes: new { @class = "control-label col-md-3 col-sm-3 col-xs-12" })
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                @Html.TextAreaFor(model => model.Notas, new { htmlAttributes = new { @class = "form-control col-md-7 col-xs-12" } })
+                                @Html.ValidationMessageFor(model => model.Notas, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/Custom")
+@Scripts.Render("~/JQueryUI")
+@Scripts.Render("~/DateTimePcker")
+
+<!-- Text Area -->
+<script type="text/javascript" src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
+
+<script src="~/ScriptsDB/PeticionesTareas.js"></script>

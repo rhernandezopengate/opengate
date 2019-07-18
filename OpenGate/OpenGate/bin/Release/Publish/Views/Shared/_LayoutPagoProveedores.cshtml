@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link href="~/images/LOGO TRANSPARENTE.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/vendors/nprogress/nprogress.css" rel="stylesheet" />
+    <link href="~/vendors/iCheck/skins/flat/green.css" rel="stylesheet" />
+    <link href="~/build/css/custom.min.css" rel="stylesheet" />
+
+    <script src="~/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="~/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="~/vendors/fastclick/lib/fastclick.js"></script>
+    <script src="~/vendors/nprogress/nprogress.js"></script>
+    <script src="~/vendors/iCheck/icheck.min.js"></script>
+
+    <!-- Toastr -->
+    <script src="~/Scripts/toastr.js"></script>
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+
+    <!-- Bootbox -->
+    <script src="~/Scripts/bootbox.js"></script>
+
+    <link href="~/Content/bigModal.css" rel="stylesheet" />
+
+</head>
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <!-- left navigation -->
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <br />
+                    <div class="navbar nav_title" style="border: 0; height:90px">
+                        <a href='@Url.Action("Index", "Home")' class="site_title img-responsive" style="height:auto; width:200px"><img src="~/images/LOGO.jpg" class="img-responsive" /></a>
+                    </div>
+                    <div class="clearfix"></div>
+                    <br />
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3>General</h3>
+                            <ul class="nav side-menu">
+                                <li><a href='@Url.Action("Default", "facturas")'><i class="fa fa-dashboard"></i>Dashboard</a></li>
+                                <li><a href='@Url.Action("Index", "facturas")'><i class="fa fa-usd"></i>Facturas</a></li>
+                                <li><a href='@Url.Action("Index", "pagoes")'><i class="fa fa-credit-card-alt"></i>Pagos</a></li>
+                                <li><a href='@Url.Action("ReporteDesglozado", "facturas")'><i class="fa fa-area-chart"></i>Reporte desglosado</a></li>
+                                <li><a href='@Url.Action("Index", "complementosfacturas")'><i class="fa fa-bank"></i>Asignacion de Bancos</a></li>
+                                <li>
+                                    <a><i class="fa fa-cogs"></i> Configuracion <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href='@Url.Action("IndexView", "CarteraProveedores")'>Proveedor</a></li>
+                                        <li><a href='@Url.Action("Index", "clientes")'>Clientes</a></li>
+                                        <li><a href='@Url.Action("Index", "bancos")'>Bancos</a></li>
+                                        <li><a href='@Url.Action("Index", "cuentaordenantes")'>Cuenta Ordenante</a></li>
+                                        <li><a href='@Url.Action("Index", "nacionalidadproveedors")'>Nacionalidad proveedor</a></li>
+                                        <li><a href='@Url.Action("Index", "categoriaproveedors")'>Categoria proveedor</a></li>
+                                        <li><a href='@Url.Action("Index", "statusfacturas")'>Estado Factura</a></li>
+                                        <li><a href='@Url.Action("Index", "statuspagoes")'>Estado Pago</a></li>
+                                        <li><a href='@Url.Action("Index", "statusproveedors")'>Estado Proveedor</a></li>
+                                        <li><a href='@Url.Action("Index", "statuscomplementoes")'>Estado Complemento</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /sidebar menu -->
+                </div>
+            </div>
+            <!-- /left navigation -->
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+                        @Html.Partial("_LoginPartial")
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="">
+                    @RenderBody()
+                </div>
+            </div>
+            <!-- /page content -->
+        </div>
+    </div>
+    <!-- footer content -->
+    <footer>
+        <div class="pull-right">
+            <p>&copy; @DateTime.Now.Year - <a href="http://www.opengatelogistics.com/" target="_blank">OPEN GATE LOGISTICS</a> </p>
+        </div>
+        <div class="clearfix"></div>
+    </footer>
+    <!-- /footer content -->
+
+    @RenderSection("scripts", required: false)
+   
+</body>
+</html>

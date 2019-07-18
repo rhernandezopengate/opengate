@@ -1,0 +1,409 @@
+﻿@{
+    /**/
+    ViewBag.Title = "Home Page";
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_content">
+            <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Mision</a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Vision</a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Servicios</a>
+                    </li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                        <div class="col-lg-4">
+                            <br />
+                            <blockquote>
+                                <p>
+                                    "Lograr en conjunto con nuestros clientes el éxito en el almacenamiento y movimiento de las mercancías a través de integrar los mejores servicios logísticos y personal."
+                                </p>
+                            </blockquote>
+                        </div>
+                        <div class="col-lg-8">
+                            <img src="~/images/servicios-opengate.jpg" class="img-thumbnail" alt="Servicios" width="100%">
+                        </div>
+
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+                        <div class="col-lg-4">
+                            <br />
+                            <blockquote>
+                                <p>
+                                    Contribuir con nuestros clientes en lograr la excelencia en la cadena de suministro a través de una administración exitosa de inventarios, movimientos de mercancías y evidencias, maximizando la relación costo beneficio.
+                                </p>
+                            </blockquote>
+                        </div>
+                        <div class="col-lg-8">
+                            <img src="~/images/home-opengate.jpg" class="img-thumbnail" alt="Servicios" width="100%">
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
+                        <div class="col-lg-5">
+                            <br />
+                            <blockquote>
+                                <p>
+                                    Los servicios que ofrecemos son:
+                                    <ul>
+                                        <li>
+                                            Diseño de Modelos Logisticos
+                                        </li>
+                                        <li>
+                                            Almacenaje, distribucion y administracion de inventarios.
+                                        </li>
+                                        <li>
+                                            Servicios aduanales y de comercio exterior.
+                                        </li>
+                                        <li>
+                                            Servicios logisticos nacionales e internacionales
+                                        </li>
+                                        <li>
+                                            Armado, etiquetado y personalizacion de productos / paquetes
+                                        </li>
+                                        <li>
+                                            Almacenes  IN-SITE y Fiscales
+                                        </li>
+                                        <li>
+                                            Transporte seco y refrigerado (Door to Door)
+                                        </li>
+                                    </ul>
+                                </p>
+                            </blockquote>
+                        </div>
+                        <div class="col-lg-7">
+                            <img src="~/images/quienessomos-opengate.jpg" class="img-thumbnail" alt="Servicios" width="100%">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (User.IsInRole("admin"))
+{
+    //Facturas
+    <div class="col-md-3 col-sm-3 col-xs-12" style="text-align:center">
+        <div class="x_panel tile fixed_height_320">
+            <div class="x_title">
+                <h2>Pago a Proveedores</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <a href='@Url.Action("Default", "facturas")'>
+                    <img src='@Url.Content("~/images/bigstock-invoice-with-envelope-12260726.jpg")' width="240" />
+                </a>
+            </div>
+        </div>
+    </div>
+    //KPIS
+    <div class="col-md-3 col-sm-3 col-xs-12" style="text-align:center">
+        <div class="x_panel tile fixed_height_320">
+            <div class="x_title">
+                <h2>Dashboard OG QRO. </h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <a href='@Url.Action("Index", "Kpis")'>
+                    <img src='@Url.Content("~/images/kpi.png")' width="230" />
+                </a>
+            </div>
+        </div>
+    </div>
+    //Vista Trafico
+    <div class="col-md-3 col-sm-3 col-xs-12" style="text-align:center">
+        <div class="x_panel tile fixed_height_320">
+            <div class="x_title">
+                <h2>Trafico</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <a href='@Url.Action("VistaTrafico", "facturas")'>
+                    <br />
+                    <br />
+                    <img src='@Url.Content("~/images/camion.png")' height="120" />
+                </a>
+            </div>
+        </div>
+    </div>
+    //Orden de Compra
+    <div class="col-md-3 col-sm-3 col-xs-12" style="text-align:center">
+        <div class="x_panel tile fixed_height_320">
+            <div class="x_title">
+                <h2>Orden de Compra</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                
+                <a href='@Url.Action("Index", "productos")'>
+                    <img src='@Url.Content("~/images/purchase-order-291x300.png")' height="250" />
+                </a>
+            </div>
+        </div>
+    </div>
+    //Tareas
+    <div class="col-md-3 col-sm-3 col-xs-12" style="text-align:center">
+        <div class="x_panel tile fixed_height_320">
+            <div class="x_title">
+                <h2>Sistemas</h2>
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <a href='@Url.Action("Index", "servicios")'>
+                    <img src='@Url.Content("~/images/web_maintenance.png")' height="140" />
+                </a>
+            </div>
+        </div>
+    </div>
+    //Home Delivery
+    <div class="col-md-3 col-sm-3 col-xs-12" style="text-align:center">
+        <div class="x_panel tile fixed_height_320">
+            <div class="x_title">
+                <h2>Paqueterias HD Qro</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <br />
+                <a href='@Url.Action("Index", "envios")'>
+                    <img src='@Url.Content("~/images/c7.jpg")' height="170" />
+                </a>
+            </div>
+        </div>
+    </div>
+}
+
+@if (User.IsInRole("coordinadoroperaciones") || User.IsInRole("coordinadorplaneacion"))
+{
+    <div class="col-md-3 col-sm-3 col-xs-12" style="text-align:center">
+        <div class="x_panel tile fixed_height_320">
+            <div class="x_title">
+                <h2>Dashboard OG QRO. </h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <a href='@Url.Action("Index", "Kpis")'>
+                    <img src='@Url.Content("~/images/kpi.png")' height="200" />
+                </a>
+            </div>
+        </div>
+    </div>
+}
+
+@if (User.IsInRole("herbalife"))
+{
+    <div class="col-md-3 col-sm-3 col-xs-12" style="text-align:center">
+        <div class="x_panel tile fixed_height_320">
+            <div class="x_title">
+                <h2>Dashboard OG QRO. </h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <a href='@Url.Action("Index", "Kpis")'>
+                    <img src='@Url.Content("~/images/kpi.png")' height="200" />
+                </a>
+            </div>
+        </div>
+    </div>
+}
+
+@if (User.IsInRole("gerentegeneral"))
+{
+    <div class="col-md-3 col-sm-3 col-xs-12" style="text-align:center">
+        <div class="x_panel tile fixed_height_320">
+            <div class="x_title">
+                <h2>Dashboard OG QRO. </h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <a href='@Url.Action("Index", "Kpis")'>
+                    <img src='@Url.Content("~/images/kpi.png")' height="200" />
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-12" style="text-align:center">
+        <div class="x_panel tile fixed_height_320">
+            <div class="x_title">
+                <h2>Trafico</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <a href='@Url.Action("VistaTrafico", "facturas")'>
+                    <br />
+                    <br />
+                    <img src='@Url.Content("~/images/camion.png")' height="120" />
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-12" style="text-align:center">
+        <div class="x_panel tile fixed_height_320">
+            <div class="x_title">
+                <h2>Paqueterias HD Qro</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <br />
+                <a href='@Url.Action("Index", "envios")'>
+                    <img src='@Url.Content("~/images/c7.jpg")' height="170" />
+                </a>
+            </div>
+        </div>
+    </div>
+}
+
+@if (User.IsInRole("trafico"))
+{
+    <div class="col-md-3 col-sm-3 col-xs-12" style="text-align:center">
+        <div class="x_panel tile fixed_height_320">
+            <div class="x_title">
+                <h2>Trafico</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <a href='@Url.Action("VistaTrafico", "facturas")'>
+                    <br />
+                    <img src='@Url.Content("~/images/truck.png")' height="150" />
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-12" style="text-align:center">
+        <div class="x_panel tile fixed_height_320">
+            <div class="x_title">
+                <h2>Dashboard OG QRO. </h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <a href='@Url.Action("Index", "Kpis")'>
+                    <img src='@Url.Content("~/images/kpi.png")' height="200" />
+                </a>
+            </div>
+        </div>
+    </div>
+}
+
+@if (User.IsInRole("finanzas") || User.IsInRole("direcciongeneral"))
+{
+    <div class="col-md-4 col-sm-4 col-xs-12" style="text-align:center">
+        <div class="x_panel tile fixed_height_320">
+            <div class="x_title">
+                <h2>Pago a Proveedores</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <a href='@Url.Action("Default", "facturas")'>
+                    <img src='@Url.Content("~/images/bigstock-invoice-with-envelope-12260726.jpg")' height="200" />
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-12" style="text-align:center">
+        <div class="x_panel tile fixed_height_320">
+            <div class="x_title">
+                <h2>Dashboard OG QRO. </h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <a href='@Url.Action("Index", "Kpis")'>
+                    <img src='@Url.Content("~/images/kpi.png")' height="200" />
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-12" style="text-align:center">
+        <div class="x_panel tile fixed_height_320">
+            <div class="x_title">
+                <h2>Sistemas</h2>
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <a href='@Url.Action("Index", "servicios")'>
+                    <img src='@Url.Content("~/images/web_maintenance.png")' height="140" />
+                </a>
+            </div>
+        </div>
+    </div>
+}
+
+@if (User.IsInRole("tesoreria") || User.IsInRole("contabilidad"))
+{
+    <div class="col-md-4 col-sm-4 col-xs-12" style="text-align:center">
+        <div class="x_panel tile fixed_height_320">
+            <div class="x_title">
+                <h2>Pago a Proveedores</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <a href='@Url.Action("Default", "facturas")'>
+                    <img src='@Url.Content("~/images/bigstock-invoice-with-envelope-12260726.jpg")' height="200" />
+                </a>
+            </div>
+        </div>
+    </div>
+}
+
+@if (User.IsInRole("coordinadorinventarios"))
+{
+    <div class="col-md-3 col-sm-3 col-xs-12" style="text-align:center">
+        <div class="x_panel tile fixed_height_320">
+            <div class="x_title">
+                <h2>Dashboard OG QRO. </h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <a href='@Url.Action("Index", "Kpis")'>
+                    <img src='@Url.Content("~/images/kpi.png")' height="200" />
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-12" style="text-align:center">
+        <div class="x_panel tile fixed_height_320">
+            <div class="x_title">
+                <h2>Paqueterias HD Qro</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <br />
+                <a href='@Url.Action("Index", "envios")'>
+                    <img src='@Url.Content("~/images/c7.jpg")' height="170" />
+                </a>
+            </div>
+        </div>
+    </div>
+}
+
+@if (User.IsInRole("homedeliveryherbalife") || User.IsInRole("homedeliveryqro"))
+{
+    <div class="col-md-3 col-sm-3 col-xs-12" style="text-align:center">
+        <div class="x_panel tile fixed_height_320">
+            <div class="x_title">
+                <h2>Paqueterias HD Qro</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <br />
+                <a href='@Url.Action("Index", "envios")'>
+                    <img src='@Url.Content("~/images/c7.jpg")' height="170" />
+                </a>
+            </div>
+        </div>
+    </div>
+}
+
+<script src="~/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="~/build/js/custom.min.js"></script>

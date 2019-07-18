@@ -1,0 +1,71 @@
+﻿@model IEnumerable<OpenGate.Entidades.lineasmo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutIT.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div class="row">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Linea</th>
+                <th>SKU</th>
+                <th>Lote</th>
+                <th>Lote Qty</th>
+                <th>Exp Date</th>
+                <th>WH</th>
+                <th>Qty</th>
+                <th>Ubicacion</th>
+                <th>Tranfer</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>
+                        @item.linea
+                    </td>
+                    <td>
+                        @item.sku
+                    </td>
+                    <td>
+                        @item.lotNumber
+                    </td>
+                    <td>
+                        @item.lotQty
+                    </td>
+                    <td>
+                        @item.ExpDate
+                    </td>
+                    <td>
+                        @item.wh
+                    </td>
+                    <td>
+                        @item.qty
+                    </td>
+                    <td>
+                        @item.ubicacion
+                    </td>
+                    <td>
+                        @item.tranfer
+                    </td>
+
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>
+
+
+
+
+<!-- Custom Theme Scripts -->
+<script src="../build/js/custom.min.js"></script>

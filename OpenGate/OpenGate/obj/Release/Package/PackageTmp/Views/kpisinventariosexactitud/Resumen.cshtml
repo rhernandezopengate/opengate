@@ -1,0 +1,47 @@
+﻿@using  OpenGate.Entidades
+@model List<kpisinventariosexactitud>
+
+<table id="tblexactitud" class="table table-bordered" style="cursor:pointer;">
+    <thead>
+        <tr>
+            <th>
+                Mes
+            </th>
+            <th>
+                Absoluto
+            </th>
+            <th>
+                Valor Inventario
+            </th>
+            <th>
+                %
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @item.mes
+            </td>
+            <td>
+                @item.absolutoString
+            </td>
+            <td>
+                @item.valorString
+            </td>
+            <td>
+                @item.Porcentaje%
+            </td>
+        </tr>
+        }
+        <tr>
+            <td>Total</td>
+            <td>@ViewBag.Absoluto</td>
+            <td>@ViewBag.ValorInventario</td>
+            <td>@ViewBag.PorcentajeExactitud%</td>
+        </tr>
+    </tbody>
+    
+</table>

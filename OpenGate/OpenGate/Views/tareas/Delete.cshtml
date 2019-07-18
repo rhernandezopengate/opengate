@@ -1,0 +1,136 @@
+﻿@model OpenGate.Entidades.tareas
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutIT.cshtml";
+}
+
+<div class="col-md-3 col-sm-4 col-xs-12"></div>
+<div class="col-md-5 col-sm-4 col-xs-12">
+    <div class="x_panel tile">
+        <div class="x_title">
+            <h2>Estas Seguro de eliminar el Registro?</h2>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+
+            <div>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Actividad)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Actividad)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.HoraInicio)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.HoraInicio)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Solicita)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Solicita)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Fecha)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Fecha)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.FechaEntrega)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.FechaEntrega)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.HoraFin)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.HoraFin)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PorcentajeCumplido)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.PorcentajeCumplido)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Observaciones)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Observaciones)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Notas)
+                    </dt>
+
+                    <dd>
+                        @Html.Raw(Model.Notas)                        
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.FechaRegistro)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.FechaRegistro)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.AspNetUsers.Email)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.AspNetUsers.Email)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.statustarea.descripcion)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.statustarea.descripcion)
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Delete" class="btn btn-default" /> |
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>
+                }
+
+            </div>
+
+
+        </div>
+    </div>
+</div>    
+    
+
+    @Scripts.Render("~/Scripts")
+    @Scripts.Render("~/Custom")

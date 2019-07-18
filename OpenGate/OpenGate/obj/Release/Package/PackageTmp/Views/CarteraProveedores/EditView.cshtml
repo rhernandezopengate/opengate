@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Proveedores - Index";
+    Layout = "~/Views/Shared/_LayoutPagoProveedores.cshtml";
+}
+
+<div id="CargaEditarReg">
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        myfunction();
+    });
+
+    function myfunction() {
+
+       var urledit = "/CarteraProveedores/Edit/" + @ViewBag.Id;
+        $.get(urledit).done(function (response) {
+            $("#CargaEditarReg").html(response);
+        });
+    }
+</script>
+
+
+<!-- Custom Theme Scripts -->
+<script src="~/build/js/custom.min.js"></script>
+

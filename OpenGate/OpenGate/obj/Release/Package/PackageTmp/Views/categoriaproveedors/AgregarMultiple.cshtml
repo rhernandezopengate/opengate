@@ -1,0 +1,19 @@
+﻿@model IEnumerable<OpenGate.Entidades.categoriaproveedor>
+
+@{
+    ViewBag.Title = "AgregarMultiple";
+    Layout = "~/Views/Shared/_LayoutPagoProveedores.cshtml";
+}
+
+<h2>AgregarMultiple</h2>
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+@Html.Action("AgregarInformacionGeneral", "categoriaproveedors")
+<br />
+<br />
+@Html.Action("AgregarInformacionBancaria", "categoriaproveedors")
+<br />
+<br />
+@Html.Action("AgregarContacto", "categoriaproveedors")

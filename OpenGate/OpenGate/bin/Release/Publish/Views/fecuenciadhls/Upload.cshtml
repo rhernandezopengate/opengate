@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Upload";
+    Layout = "~/Views/Shared/_LayoutHD.cshtml";
+}
+
+@using (Html.BeginForm("Import", "fecuenciadhls", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Frecuencia DHL <small>Upload</small></h2> &nbsp;&nbsp;&nbsp;
+                    <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar en la base de datos</button>
+                    <a class="btn btn-dark" href="@Url.Action("Index")"> <i class="fa fa-reply"></i> Cancelar</a>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <input type="file" name="postedFileBase" class="form-control" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Custom Theme Scripts -->
+<script src="~/build/js/custom.min.js"></script>

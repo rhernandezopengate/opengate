@@ -1,0 +1,325 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutOrdenCompra.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Proveedores <small>Crear</small></h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+
+                <!-- Smart Wizard -->
+                <p>Capture la informaci&oacute;n requerida para el alta del proveedor.</p>
+                <div id="wizard" class="form_wizard wizard_horizontal">
+                    <ul class="wizard_steps">
+                        <li>
+                            <a href="#step-1">
+                                <span class="step_no">1</span>
+                                <span class="step_descr">
+                                    Paso 1<br />
+                                    <small>Datos del Solicitante</small>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#step-2">
+                                <span class="step_no">2</span>
+                                <span class="step_descr">
+                                    Paso 2<br />
+                                    <small>Paso 2 Informaci&oacute;n del Proveedor</small>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#step-3">
+                                <span class="step_no">3</span>
+                                <span class="step_descr">
+                                    Paso 3<br />
+                                    <small>Paso 3 Informacion Bancaria</small>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#step-4">
+                                <span class="step_no">4</span>
+                                <span class="step_descr">
+                                    Paso 4<br />
+                                    <small>Paso 4 Contactos</small>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div id="step-1">
+                        <div class="form-horizontal form-label-left">
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Solicitante
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12" value="@User.Identity.Name" readonly>
+                                </div>
+                            </div>                            
+                            <div class="form-group">
+                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de Solicitud</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="fhSolicitud" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" value="@DateTime.Now.ToShortDateString()" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="step-2">    
+                        <div class="form-horizontal form-label-left">
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Razon Social
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                    Nombre Comercial
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                    Representante Legal
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                    Actividad Empresarial
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    RFC
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Dias de Credito
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Facturacion En:
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <select class="form-control col-md-7 col-xs-12">
+                                        <option>MXN</option>
+                                        <option>USD</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Pais
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Estado
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Ciudad
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Colonia
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Calle
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Codigo Postal
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="step-3">
+                        <h2 class="StepTitle">Paso 3 Informacion Bancaria</h2>
+                        <div class="form-horizontal form-label-left">
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Nombre del Banco
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                    Cuenta Bancaria
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Nombre Plaza
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Sucursal
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                    Clabe
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                    Pais
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Estado
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Ciudad
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Codigo Postal
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="step-4">
+                        <h2 class="StepTitle">Paso 4 Contactos</h2>
+                        <div class="x_content">                            
+                            <h2 class="StepTitle">Contacto de Facturacion</h2>
+                            <div class="form-horizontal form-label-left input_mask">
+                                <div class="well" style="overflow: auto">
+                                    <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+                                        <input type="text" class="form-control has-feedback-left" id="nombreFacturacion" placeholder="Nombre(s) del Contacto">
+                                        <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+                                        <input type="text" class="form-control has-feedback-left" id="telefonoFacturacion" placeholder="Telefono del Contacto">
+                                        <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+                                        <input type="text" class="form-control has-feedback-left" id="emailFacturacion" placeholder="Email del Contacto">
+                                        <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <h2 class="StepTitle">Contacto de Cobranza</h2>
+                            <div class="form-horizontal form-label-left input_mask">
+                                <div class="well" style="overflow: auto">
+                                    <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+                                        <input type="text" class="form-control has-feedback-left" id="nombreFacturacion" placeholder="Nombre(s) del Contacto">
+                                        <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+                                        <input type="text" class="form-control has-feedback-left" id="telefonoFacturacion" placeholder="Telefono del Contacto">
+                                        <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+                                        <input type="text" class="form-control has-feedback-left" id="emailFacturacion" placeholder="Email del Contacto">
+                                        <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End SmartWizard Content -->
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/Scripts")
+
+<!-- Custom Theme Scripts -->
+<script src="../build/js/custom.min.js"></script>
+
+<script src="~/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>

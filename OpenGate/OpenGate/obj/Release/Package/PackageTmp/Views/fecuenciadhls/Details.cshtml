@@ -1,0 +1,75 @@
+﻿@model OpenGate.Entidades.fecuenciadhl
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutHD.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>fecuenciadhl</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.carrier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.carrier)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.postalcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.postalcode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.freightcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.freightcode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.frequency)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.frequency)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.wharehouse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.wharehouse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.statusfq)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.statusfq)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

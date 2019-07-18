@@ -1,0 +1,67 @@
+﻿@model OpenGate.Entidades.complementosfacturas
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPagoProveedores.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>complementosfacturas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Autorizacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Autorizacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.asigancion.Folio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.asigancion.Folio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bancos.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bancos.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cuentaordenante.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cuentaordenante.descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.factura.Numero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.factura.Numero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.statuscomplemento.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.statuscomplemento.descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

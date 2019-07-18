@@ -1,0 +1,78 @@
+﻿@using OpenGate.Entidades
+@model List<Group<string, pagofacturas>>
+
+@foreach (var item in Model)
+{
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Proveedor: @item.Key - Total a pagar: @string.Format("{0:C}", item.TotalPagado) </h2>                       
+            
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+                <li>
+                    <a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td>
+                            Numero
+                        </td>
+                        <td>
+                            Fecha Factura
+                        </td>
+                        <td>
+                            Fecha Pago
+                        </td>
+                        <td>
+                            Concepto
+                        </td>
+                        <td>
+                            Observaciones
+                        </td>
+                        <td>
+                            Estado
+                        </td>
+                        <td style="text-align:right">
+                            Total
+                        </td>
+                    </tr>
+                </thead>
+                <thead>                    
+                    @foreach (var pago in item.Values)
+                    {
+                        <tr>
+                            <td>
+                                @pago.factura.Numero
+                            </td>
+                            <td>
+                                @pago.factura.FechaFactura.Value.ToShortDateString()
+                            </td>
+                            <td>
+                                @pago.factura.FechaPago.Value.ToShortDateString()
+                            </td>
+                            <td>
+                                @pago.factura.Concepto
+                            </td>
+                            <td>
+                                @pago.factura.Observaciones
+                            </td>
+                            <td>
+                                @pago.factura.statusfactura.descripcion
+                            </td>
+                            <td style="text-align:right">
+                                @string.Format("{0:C}", pago.factura.Total)                                
+                            </td>
+                        </tr>                           
+                    }
+                </thead>
+            </table>
+        </div>
+    </div>
+}

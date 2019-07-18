@@ -1,0 +1,430 @@
+﻿@model OpenGate.Entidades.proveedor
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = null;
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="x_panel">
+        <div class="x_title">
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="#">Settings 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Settings 2</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+            </ul>
+            <h2> Proveedores <small>Editar</small></h2> &nbsp;&nbsp;&nbsp;
+            <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+            <a class="btn btn-danger" href="@Url.Action("IndexView")"> <i class="glyphicon glyphicon-remove-circle"></i> Cancelar</a>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Datos Generales</a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Informacion Bancaria</a>
+                    </li>
+                    <li role="presentation" class="">
+                        <a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Contactos</a>
+                    </li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                        <div class="form-horizontal form-label-left">
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.id)
+
+                            <h3>Informacion General</h3>
+
+
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                @Html.LabelFor(model => model.RazonSocial, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.RazonSocial, new { htmlAttributes = new { @class = "form-control col-md-12 col-xs-12" } })
+                                @Html.ValidationMessageFor(model => model.RazonSocial, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                @Html.LabelFor(model => model.RFC, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.RFC, new { htmlAttributes = new { @class = "form-control col-md-12 col-xs-12" } })
+                                @Html.ValidationMessageFor(model => model.RFC, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <label class="control-label">Nombre Comercial</label>
+                                @Html.EditorFor(model => model.NombreComercial, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.NombreComercial, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <label class="control-label">Nacionalidad</label>
+                                @Html.DropDownList("NacionalidadProveedor_Id", null, htmlAttributes: new { @class = "form-control col-md-12 col-xs-12" })
+                                @Html.ValidationMessageFor(model => model.NacionalidadProveedor_Id, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                @Html.LabelFor(model => model.DiasCredito, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.DiasCredito, new { htmlAttributes = new { @class = "form-control col-md-12 col-xs-12" } })
+                                @Html.ValidationMessageFor(model => model.DiasCredito, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <label class="control-label">Moneda</label>
+                                @Html.EditorFor(model => model.ModenaFacturacion, new { htmlAttributes = new { @class = "form-control col-md-12 col-xs-12" } })
+                                @Html.ValidationMessageFor(model => model.ModenaFacturacion, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <label class="control-label">Categoria</label>
+                                @Html.DropDownList("CategoriaProveedor_Id", null, htmlAttributes: new { @class = "form-control col-md-12 col-xs-12" })
+                                @Html.ValidationMessageFor(model => model.CategoriaProveedor_Id, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <label class="control-label">Status Pago</label>
+                                @Html.DropDownList("StatusProveedor_Id", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.StatusProveedor_Id, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <label class="control-label">Representante Legal</label>
+                                @Html.EditorFor(model => model.RepresentanteLegal, new { htmlAttributes = new { @class = "form-control col-md-12 col-xs-12  " } })
+                                @Html.ValidationMessageFor(model => model.RepresentanteLegal, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <label class="control-label">Actividad Empresarial</label>
+                                @Html.EditorFor(model => model.ActividadEmpresarial, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ActividadEmpresarial, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <label class="control-label">Status</label>
+                                @Html.DropDownList("StatusProveedorVisible_Id", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.StatusProveedorVisible_Id, "", new { @class = "text-danger" })
+                            </div>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <h3>Direccion</h3>
+
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                @Html.LabelFor(model => model.Pais, htmlAttributes: new { @class = "control-label col-md-1" })
+                                @Html.EditorFor(model => model.Pais, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Pais, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-1" })
+                                @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <label class="control-label">Municipio o Delegacion</label>
+                                @Html.EditorFor(model => model.Municipio, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Municipio, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                @Html.LabelFor(model => model.Colonia, htmlAttributes: new { @class = "control-label col-md-1" })
+                                @Html.EditorFor(model => model.Colonia, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Colonia, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                @Html.LabelFor(model => model.Calle, htmlAttributes: new { @class = "control-label col-md-1" })
+                                @Html.EditorFor(model => model.Calle, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Calle, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                @Html.LabelFor(model => model.CodigoPostal, htmlAttributes: new { @class = "control-label col-md-1" })
+                                @Html.EditorFor(model => model.CodigoPostal, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CodigoPostal, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+                        <div class="form-horizontal form-label-left">                            
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div id="reloaddivinformacionbancaria">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div id="reloaddiv">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<div id="MyModal" class="modal fade in">
+    <div class="modal-dialog modal-lg" id="mdialTamanio">
+        <div class="modal-content">
+            <div id="MyModalContent"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var url = "/CarteraProveedores/Reload/" + @Model.id;
+        var urlinformacionbancaria = "/CarteraProveedores/ReloadInformacionBancaria/" + @Model.id;
+        $.get(url).done(function (response) {
+            $("#reloaddiv").html(response);
+        });
+
+        $.get(urlinformacionbancaria).done(function (response) {
+            $("#reloaddivinformacionbancaria").html(response);
+        });
+    });
+</script>
+
+<script>
+
+
+
+
+    function recargarContactos()
+    {
+        var url = "/CarteraProveedores/Reload/" + @Model.id;
+        $.get(url).done(function (response) {
+            $("#reloaddiv").html(response);
+        });
+    }
+
+    var Edit = function (ID) {
+        $.ajaxSetup({ cache: false });
+        var EditUrl = "/CarteraProveedores/EditarContactosProveedores/" + ID;
+        $("#MyModalContent").load(EditUrl, function () {
+            $("#MyModal").modal({
+                //backdrop: 'static',
+                keyboard: false
+            }, 'show');
+        });
+        return false;
+    }
+
+    function editarContacto(ID) {
+        var nombre = $("#Nombres").val();
+        var telefono = $("#Telefonos").val();
+        var mail = $("#Mails").val();
+        var puesto = $("#Puestos").val();
+
+        $.ajax({
+            url: "/CarteraProveedores/EditarContactosProveedor",
+            type: "POST",
+            data: { id: ID, nombreContacto: nombre, telefonoContacto: telefono, mailContacto: mail, puestoContacto: puesto },
+            success: function (result) {
+                if (result === "Error") {
+                    toastr.error('Error al Editar');
+                }
+                else {
+                    toastr.success('Edicion Correcta.');
+                    $("#MyModal").modal('hide');
+                }
+                table.draw();
+            },
+            error: function (error) {
+                console.log(error);
+                alert(error);
+                $("#MyModal").modal('show');
+            }
+        });
+    }
+
+    var Details = function (ID) {
+        var Msg = "";
+        $.ajax({
+            url: "/CarteraProveedores/DetalleProveedor/" + ID,
+            type: "GET",
+            data: { id: ID },
+            success: function (result) {
+
+                detailsMessage = "<div class='col-sm-12 invoice-col'>";
+                detailsMessage += "<address> Nombre: <strong>" + result[0].Nombre + "</strong>";
+                detailsMessage += "</address>";
+
+                detailsMessage += "<address> Telefono: <strong>" + result[0].Telefono + "</strong>";
+                detailsMessage += "</address>";
+
+                detailsMessage += "<address> Mail: <strong>" + result[0].Mail + "</strong>";
+                detailsMessage += "</address>";
+
+                detailsMessage += "<address> Puesto: <strong>" + result[0].Puesto + "</strong>";
+                detailsMessage += "</address>";
+
+                detailsMessage += "</div><br /><br /><br /><br /><br /><br /><br />";
+
+                bootbox.confirm({
+                    title: "<div class='text-center'>Eliminar Contacto </div>",
+                    message: detailsMessage,
+                    buttons: {
+                        confirm: {
+                            label: "<i class='fa fa-trash'></i> Eliminar",
+                            className: 'btn-danger'
+                        },
+                        cancel: {
+                            label: "<i class='fa fa-times-circle'></i> Cerrar",
+                            className: 'btn-default'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result) {
+                            deleteConfirmed(ID);
+                        }
+                    }
+                });
+            },
+            error: function (error) {
+                console.log(error);
+                alert(error)
+            }
+        });
+    }
+
+    var deleteConfirmed = function (ID) {
+        $.ajax({
+            url: "/CarteraProveedores/DeleteContactoProveedor/" + ID,
+            type: "POST",
+            data: { id: ID },
+            success: function (result) {
+
+                if (result === "Success") {
+                    toastr.success('Contacto Eliminado.');
+                }
+                else {
+                    toastr.error('Error al Eliminar');
+                }
+
+                table.draw();
+            },
+            error: function (error) {
+                console.log(error);
+                alert(error)
+            }
+        });
+    }
+
+    var Create = function () {
+        $.ajaxSetup({ cache: false });
+        var EditUrl = "/CarteraProveedores/CreateContactoProveedor/";
+        $("#MyModalContent").load(EditUrl, function () {
+            $("#MyModal").modal({
+                //backdrop: 'static',
+                keyboard: false
+            }, 'show');
+        });
+        return false;
+    }
+
+    function crearContacto() {
+        var nombreContacto = $("#NombreC").val();
+        var telefonoContacto = $("#TelefonoC").val();
+        var mailContacto = $("#MailC").val();
+        var puestoContacto = $("#PuestoC").val();
+
+        $.ajax({
+            url: "/CarteraProveedores/CreateContactoProveedor",
+            type: "POST",
+            data: { id: @Model.id, nombre: nombreContacto, telefono: telefonoContacto, mail: mailContacto, puesto: puestoContacto },
+            success: function (result) {
+                if (result === "Success") {
+                    toastr.success('Contacto Agregado Correctamente');
+                    $("#MyModal").modal('hide');
+                }
+                else {
+                    toastr.error('Error al Crear Contacto.');
+                }
+                table.draw();
+            },
+            error: function (error) {
+                console.log(error);
+                alert(error);
+                $("#MyModal").modal('show');
+            }
+        });
+    }
+
+    var EditarInformacionBancaria = function (ID) {
+        $.ajaxSetup({ cache: false });
+        var EditUrl = "/CarteraProveedores/EditarInformacionBancaria/" + ID;
+        $("#MyModalContent").load(EditUrl, function () {
+            $("#MyModal").modal({
+                //backdrop: 'static',
+                keyboard: false
+            }, 'show');
+        });
+        return false;
+    }
+
+    function editarInformacionBancaria(ID) {
+        var banco = $("#NombreBancoC").val();
+        var cbancaria = $("#CuentaBancariaC").val();
+        var cclabe = $("#ClabeC").val();
+
+        $.ajax({
+            url: "/CarteraProveedores/EditInformacionBancaria",
+            type: "POST",
+            data: { id: ID, NombreBanco: banco, CuentaBancaria: cbancaria, Clabe: cclabe },
+            success: function (result) {
+                if (result === "Error") {
+                    toastr.error('Error al Editar');
+                }
+                else {
+                    toastr.success('Edicion Correcta.');
+                    $("#MyModal").modal('hide');
+                }
+                table.draw();
+            },
+            error: function (error) {
+                console.log(error);
+                alert(error);
+                $("#MyModal").modal('show');
+            }
+        });
+    }
+
+    function recargarInformacionBancaria()
+    {
+        var urlinformacionbancaria = "/CarteraProveedores/ReloadInformacionBancaria/" + @Model.id;
+        $.get(urlinformacionbancaria).done(function (response) {
+            $("#reloaddivinformacionbancaria").html(response);
+        });
+    }
+</script>

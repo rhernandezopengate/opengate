@@ -1,0 +1,114 @@
+﻿@model OpenGate.Entidades.factura
+<script src="~/ScriptsDB/PeticionesFacturas.js"></script>
+<div class="modal-header text-center">
+    <button type="button" class="close" data-dismiss="modal">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h4 class="modal-title" id="myModalLabel">Pago de Factura</h4>
+</div>
+<div class="modal-body">
+    <div class="x_panel">            
+            
+        <div class="x_content">
+                
+            <section class="content invoice">
+                    <!-- title row -->
+                    <div class="row">
+                        <div class="col-xs-12 invoice-header">
+                            <h2>
+                                <i class="fa fa-globe"></i> Factura. @Model.Numero                                
+                            </h2>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- info row -->
+                    <div class="row invoice-info">
+                        <div class="col-sm-6 invoice-col">
+                            Datos de Pago
+                            <address>
+                                <strong>Proveedor: @Model.proveedor.RazonSocial</strong>
+                                <br><strong>Estado: @Model.statusfactura.descripcion</strong>
+                                <br><strong>Fecha Pago:</strong> <input type="text" value="@DateTime.Now.ToShortDateString()" id="FechaPagoTemp" name="FechaPagoTemp"/>
+                            </address>
+                        </div>
+                        <div class="col-sm-4 invoice-col">
+                            Datos Generales
+                            <address>
+                                <strong> Fecha Factura: @Model.FechaFactura.Value.ToShortDateString()</strong>
+                                <br><strong>Fecha Sello: @Model.FechaSello.Value.ToShortDateString()</strong>
+                                <br><strong>Fecha Vencimiento: @Model.FechaVencimiento.Value.ToShortDateString()</strong>
+
+                            </address>
+                        </div>
+
+                    </div>
+                    <!-- /.row -->
+                    <!-- Table row -->
+                    <div class="row">
+                        <div class="col-xs-12 table">
+                            <table class="table table-striped jambo_table">
+                                <thead>
+                                    <tr>
+                                        <th>Concepto</th>
+                                        <th class="text-right">Subtotal</th>
+                                        <th class="text-right">Descuento</th>
+                                        <th class="text-right">Retencion</th>
+                                        <th class="text-right">IVA</th>
+                                        <th class="text-right">Total</th>
+                                    </tr>                                    
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            @Model.Concepto
+                                        </td>
+                                        <td class="text-right">@Model.Subtotal</td>
+                                        <td class="text-right">@Model.Descuento</td>
+                                        <td class="text-right">@Model.Retencion</td>
+                                        <td class="text-right">@Model.Iva</td>
+                                        <td class="text-right">
+                                            <span>@Model.Total</span>
+                                            <input type="hidden" value="@Model.Total" name="Total" id="Total"/>
+                                        </td>
+                                    </tr>                                    
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                                      
+                    <!-- Table row -->
+                    <div class="row">
+                        <div class="col-xs-12 table">
+                            <table class="table table-striped jambo_table">
+                                <thead>
+                                    <tr>
+                                        <th>Observaciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            @Model.Observaciones
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                    <input type="hidden" id="id" name="id" value="@Model.id"/>
+                </section>
+        
+        </div>
+        
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn" data-dismiss="modal">Cancel</button>
+    <button class="btn btn-primary" onclick="PagoIndividual()"> pagar </button>
+</div>
+
+

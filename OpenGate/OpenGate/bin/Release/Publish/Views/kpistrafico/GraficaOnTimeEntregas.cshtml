@@ -1,0 +1,19 @@
+﻿<div id="chartOnTimeEntregas"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script type="text/javascript">
+    var chartOnTimeEntregas = new CanvasJS.Chart("chartOnTimeEntregas",{
+        animationEnabled: true,             
+        axisY: {
+            title: "Porcentaje Mensual",
+            scaleBreaks: {
+                type: "line",                
+            }
+        },        
+        data: [{
+            type: "column",  
+            toolTipContent: "<b>{label}:</b> {y}%",
+            dataPoints: @Html.Raw(ViewBag.DataPoints),
+        }]
+    });
+    chartOnTimeEntregas.render();
+</script>

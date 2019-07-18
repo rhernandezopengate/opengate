@@ -1,0 +1,44 @@
+﻿@using OpenGate.Entidades
+@model List<kpistrafico>
+
+<table id="tblEvaluacionOcupacion" class="table table-bordered" style="cursor:pointer;">
+    <thead>
+        <tr>
+            <th>
+                Mes
+            </th>
+            <th>
+                Fletes 
+            </th>
+            <th>
+                Ok
+            </th>
+            <th>
+                No
+            </th>
+            <th>
+                %
+            </th>            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td style="width:10px">@item.mescarga</td>
+            <td>@item.Total</td>
+            <td>@item.TotalOks</td>
+            <td>@item.TotalDesv</td>
+            <td>@item.Porcentaje%</td>
+        </tr>
+        }
+        <tr>
+            <td>Total</td>
+            <td>@ViewBag.TotalOcupacion</td>
+            <td>@ViewBag.TotalOkOcupacion</td>
+            <td>@ViewBag.TotalNoOcupacion</td>
+            <td>@ViewBag.PorcentajeOcupacion%</td>
+        </tr>      
+    </tbody>
+</table>
+

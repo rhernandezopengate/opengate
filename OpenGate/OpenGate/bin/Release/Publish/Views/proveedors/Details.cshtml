@@ -1,0 +1,59 @@
+﻿@model OpenGate.Entidades.proveedor
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPagoProveedores.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>proveedor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.razonsocial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.razonsocial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rfc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rfc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.categoriaproveedor.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.categoriaproveedor.descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nacionalidadproveedor.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nacionalidadproveedor.descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.statusproveedor.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.statusproveedor.descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,42 @@
+﻿@model OpenGate.Entidades.empleado
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutIT.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-md-4 col-sm-4 col-xs-12 profile_details">
+        <div class="well profile_view">
+            <div class="col-sm-12">
+                <h4 class="brief"><i>Puesto: @Html.DisplayFor(model => model.puesto.descripcion)</i></h4>
+                <div class="left col-xs-7">
+                    <h2>@Html.DisplayFor(model => model.Nombre) @Html.DisplayFor(model => model.ApellidoPaterno)</h2>
+                    <p><strong>Area: </strong> @Html.DisplayFor(model => model.area.descripcion) </p>
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-building"></i> Direccion: @Html.DisplayFor(model => model.Direccion)</li>
+                        <li><i class="fa fa-mobile-phone"></i> Celular: @Html.DisplayFor(model => model.Celular)</li>
+                        <li><i class="fa fa-phone-square"></i> Telefono: @Html.DisplayFor(model => model.Telefono)</li>
+                        <li><i class="fa fa-calendar"></i> Fech de Ingreso: @Html.DisplayFor(model => model.FechaIngreso)</li>
+                        <li><i class="fa fa-at"></i> Mail: @Html.DisplayFor(model => model.AspNetUsers.Email)</li>
+                    </ul>
+                </div>
+                <div class="right col-xs-5 text-center">
+                    <img src="@Url.Action("ImagenEmpleado", "empleados", new { id = Model.AspNetUsers_Id })" alt="" class="img-circle img-responsive">
+                </div>
+            </div>
+            <div class="col-xs-12 bottom text-center">
+                <div class="col-xs-12 col-sm-6 emphasis">
+                    <a class="btn btn-success" href="@Url.Action("Edit", new { id = Model.id })"><i class="fa fa-edit"></i>Editar</a>
+                    <a class="btn btn-dark" href="@Url.Action("Index")"><i class="fa fa-reply"> </i> Regresar </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/Scripts")
+@Scripts.Render("~/Custom")

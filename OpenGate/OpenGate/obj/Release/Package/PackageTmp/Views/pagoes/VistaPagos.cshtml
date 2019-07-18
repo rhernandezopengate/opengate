@@ -1,0 +1,92 @@
+﻿@model IEnumerable<OpenGate.Entidades.pago>
+
+@{
+    ViewBag.Title = "VistaPagos";
+    Layout = "~/Views/Shared/_LayoutPagoProveedores.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2> Pagos <small>Index</small></h2> &nbsp;&nbsp;&nbsp;
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <table class="table table-bordered" id="pagos">
+                    <thead>
+                        <tr>
+                            <th style="width:30px">
+
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Numero)
+                            </th>
+                            <th>
+                                Fecha Pago
+                            </th>
+                            <th>
+                                Monto Total
+                            </th>
+                            <th>
+                                Estado
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th style="text-align:center">
+                                    <img src="~/images/Add.png" pagoId="@item.id" style="cursor:pointer" height="30" />
+                                </th>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Numero)
+                                </td>
+                                <td>
+                                    @item.FechaPago.Value.ToShortDateString()
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MontoTotal)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.statuspago.descripcion)
+                                </td>
+                            </tr>
+                            <tr id="fila-@item.id" style="display:none">
+                                <td></td>
+                                <td colspan="4">
+                                    @Html.Action("Detalle", new { idPago = item.id })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+        {
+        <script type="text/javascript">
+                $(function () {
+                    $("#pagos tbody img").click(function () {
+                        var pagosId = $(this).attr("pagoId");
+                        var fila = $("#fila-" + pagosId);
+                        if (fila.css("display") == "none")
+                        {
+                            fila.css("display", "table-row");
+                            $(this).attr("src", "@Url.Content("~/images/Remove.png")");
+                        }
+                        else {
+                            fila.css("display", "none");
+                            $(this).attr("src", "@Url.Content("~/images/Add.png")");
+                        }
+                    });
+                });
+        </script>
+    }
+
+<!-- Custom Theme Scripts -->
+<script src="../build/js/custom.min.js"></script>

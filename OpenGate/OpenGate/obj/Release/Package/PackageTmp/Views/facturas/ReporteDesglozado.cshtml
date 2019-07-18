@@ -1,0 +1,397 @@
+﻿@model IEnumerable<OpenGate.Entidades.factura>
+
+@{
+    ViewBag.Title = "ReporteDesglozado";
+    Layout = "~/Views/Shared/_LayoutPagoProveedores.cshtml";
+}
+<!-- CSS Datatble -->
+<link href="~/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="//cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css" rel="stylesheet" />
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Pago a Proveedores <small>Index</small></h2>&nbsp;&nbsp;&nbsp;
+                <button class="btn btn-warning" onclick="limpiar()"><i class="fa fa-trash-o"></i> Quitar Filtros</button>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="well" style="overflow: auto">
+                    <div class="col-sm-4">
+                        Numero Factura
+                        <div class="form-group">
+                            <div class="input-group date">
+                                <input type="text" id="numeroFactura" name="numeroFactura" class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="fa fa-qrcode"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        Fecha Factura Inicio
+                        <div class="form-group">
+                            <div class="input-group date">
+                                <input id="fechaFacturaInicio" name="fechaFacturaInicio" class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        Fecha Factura Fin
+                        <div class="form-group">
+                            <div class="input-group date">
+                                <input type="text" id="fechaFacturaFin" name="fechaFacturaFin" class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        Fecha Pago Inicio
+                        <div class="form-group">
+                            <div class="input-group date">
+                                <input id="fechaPInicio" name="fechaPInicio" class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        Fecha Pago Fin
+                        <div class="form-group">
+                            <div class="input-group date">
+                                <input type="text" id="fechaPFin" name="fechaPFin" class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        Concepto
+                        <div class="form-group">
+                            <div class="input-group date">
+                                <input type="text" id="concepto" name="concepto" class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            Proveedor
+                            <div class="input-group date">
+                                <input type="hidden" id="hfCustomer" name="Proveedor_Id" />
+                                <input type="text" id="proveedor" name="proveedor" class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="fa fa-users"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <table id="tblFacturastrafico" class="table table-bordered jambo_table" width="100%">
+                    <thead>
+                        <tr>
+                            <th>
+                                id
+                            </th>
+                            <th>
+                                Numero
+                            </th>
+                            <th>
+                                Fecha Factura
+                            </th>
+                            <th>
+                                Fecha Fin
+                            </th>
+                            <th>
+                                Fecha Pago
+                            </th>
+                            <th>
+                                Fecha Pago Fin
+                            </th>
+                            <th>
+                                Proveedor
+                            </th>
+                            <th>
+                                Concepto
+                            </th>
+                            <th>
+                                Estado
+                            </th>
+                            <th>
+                                Subtotal
+                            </th>
+                            <th>
+                                IVA
+                            </th>
+                            <th>
+                                Descuento
+                            </th>
+                            <th>
+                                Retencion
+                            </th>
+                            <th>
+                                Total
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Custom Theme Scripts -->
+<script src="~/build/js/custom.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.4/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+
+<script src="~/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<script type="text/javascript">
+    var table;
+    $(document).ready(function () {
+        table = $('#tblFacturastrafico').DataTable({
+            "order": [[0, "desc"]],
+            "ordering": true,
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            "pagingType": "simple_numbers",
+            "processing": true,
+            "serverSide": true,
+            "orderMulti": false,
+            "deferRender": true,
+            "select": true,
+            "dom": 'Blrtip', // Hides Default Search
+            "ajax": {
+                "url": "/facturas/VistaContabilidad",
+                "type": "POST",
+                "datatype": "json"
+            },
+            buttons: [
+
+                {
+                    extend: 'copyHtml5',
+                    text: '<i class="fa fa-files-o"></i>',
+                    titleAttr: 'COPIAR',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'print',
+                    text: '<i class="fa fa-print"></i>',
+                    titleAttr: 'IMPRIMIR',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'excel',
+                    text: '<i class="fa fa-file-excel-o"></i>',
+                    titleAttr: 'EXCEL',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'pdf',
+                    text: '<i class="fa fa-file-pdf-o"></i>',
+                    titleAttr: 'PDF',
+                    orientation: 'landscape',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                }
+
+            ],
+            "aoColumns": [
+                //0
+                { "data": "id", "autoWidth": true, "visible": false },
+                //1
+                { "data": "Numero", "autoWidth": true },
+                //2
+                {
+                    "data": "FechaFactura",
+                    "name": "FechaFactura",
+                    "render": function (data, type, full) {
+
+                        var data1 = data.replace("/Date(", "").replace(")/", "");
+                        var date = new Date(parseInt(data1));
+                        var month = date.getMonth() + 1;
+                        return date.getDate() + "-" + (month.toString().length > 1 ? month : "0" + month) + "-" + date.getFullYear();
+                    },
+                    "autoWidth": true
+                },
+                //3
+                {
+                    "data": "FechaFacturaFin",
+                    "name": "FechaFacturaFin",
+                    "visible": false,
+                    "render": function (data, type, full) {
+
+                        var data1 = data.replace("/Date(", "").replace(")/", "");
+                        var date = new Date(parseInt(data1));
+                        var month = date.getMonth() + 1;
+                        return date.getDate() + "-" + (month.toString().length > 1 ? month : "0" + month) + "-" + date.getFullYear();
+                    },
+                    "autoWidth": true
+                },
+                //4
+                {
+                    "data": "FechaPago",
+                    "name": "FechaPago",
+                    "render": function (data, type, full) {
+
+                        var data1 = data.replace("/Date(", "").replace(")/", "");
+                        var date = new Date(parseInt(data1));
+                        var month = date.getMonth() + 1;
+                        return date.getDate() + "-" + (month.toString().length > 1 ? month : "0" + month) + "-" + date.getFullYear();
+                    },
+                    "autoWidth": true
+                },
+                //5
+                {
+                    "data": "FechaPagoFin",
+                    "name": "FechaPagoFin",
+                    "visible": false,
+                    "render": function (data, type, full) {
+
+                        var data1 = data.replace("/Date(", "").replace(")/", "");
+                        var date = new Date(parseInt(data1));
+                        var month = date.getMonth() + 1;
+                        return date.getDate() + "-" + (month.toString().length > 1 ? month : "0" + month) + "-" + date.getFullYear();
+                    },
+                    "autoWidth": true
+                },
+                //6
+                { "data": "RazonSocial", "autoWidth": true },
+                //7
+                { "data": "Concepto", "autoWidth": true },
+                { "data": "Estado", "autoWidth": true, "orderable": false },
+                { "data": "SubTotalString", "autoWidth": true, "orderable": false },
+                { "data": "IvaString", "autoWidth": true, "orderable": false },
+                { "data": "DescuentoString", "autoWidth": true, "orderable": false },
+                { "data": "RetencionString", "autoWidth": true, "orderable": false },
+                { "data": "TotalString", "autoWidth": true, "orderable": false }
+            ]
+        });
+
+        $('#numeroFactura').on('keyup', function () {
+            table.columns(1).search(this.value).draw();
+        });
+
+        $('#fechaFacturaInicio').on('change', function () {
+            table.columns(2).search(this.value).draw();
+        });
+
+        $('#fechaFacturaFin').on('change', function () {
+            table.columns(3).search(this.value).draw();
+        });
+
+        $('#fechaPInicio').on('change', function () {
+            table.columns(4).search(this.value).draw();
+        });
+
+        $('#fechaPFin').on('change', function () {
+            table.columns(5).search(this.value).draw();
+        });
+
+        $('#concepto').on('keyup', function () {
+            table.columns(7).search(this.value).draw();
+        });
+
+        $('#proveedor').on('change', function () {
+            table.columns(6).search(this.value).draw();
+        });
+
+        $("#proveedor").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: '/proveedors/AutoComplete/',
+                    data: "{ 'prefix': '" + request.term + "'}",
+                    dataType: "json",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            return item;
+                        }))
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            },
+
+            select: function (e, i) {
+                $("#hfCustomer").val(i.item.val);
+                table.columns(6).search(i.item.val).draw();
+            },
+            minLength: 0
+        }).focus(function () {
+            $(this).autocomplete("search");
+        });
+    });
+
+    $(function () {
+
+        $(function () {
+            $("#fechaFacturaInicio").datepicker({
+                dateFormat: 'dd/mm/yy',
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+
+        $(function () {
+            $("#fechaFacturaFin").datepicker({
+                dateFormat: 'dd/mm/yy',
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+
+        $(function () {
+            $("#fechaPInicio").datepicker({
+                dateFormat: 'dd/mm/yy',
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+
+        $(function () {
+            $("#fechaPFin").datepicker({
+                dateFormat: 'dd/mm/yy',
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+    });
+
+    function limpiar() {
+        location.href = "/facturas/ReporteDesglozado";
+    }
+</script>

@@ -1,0 +1,37 @@
+﻿@model OpenGate.Entidades.contactoproveedor
+
+
+<div class="modal-header text-center">
+    <button type="button" class="close" data-dismiss="modal">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h4 class="modal-title" id="myModalLabel">Editar Contacto</h4>
+</div>
+
+<div class="modal-body">
+    <div class="form-horizontal form-label-left">
+        <div class="col-md-3 col-sm-3 col-xs-12">
+            @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label" })
+            <input type="text" class="form-control col-md-12 col-xs-12" value="@Model.Nombre" id="Nombres" name="Nombres"/>            
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-12">
+            @Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "control-label" })
+            <input type="text" class="form-control col-md-12 col-xs-12" value="@Model.Telefono" id="Telefonos" name="Telefonos" />
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-12">
+            @Html.LabelFor(model => model.Mail, htmlAttributes: new { @class = "control-label" })
+            <input type="text" class="form-control col-md-12 col-xs-12" value="@Model.Mail" id="Mails" name="Mails" />
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-12">
+            @Html.LabelFor(model => model.Puesto, htmlAttributes: new { @class = "control-label" })
+            <input type="text" class="form-control col-md-12 col-xs-12" value="@Model.Puesto" id="Puestos" name="Puestos" />
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<br />
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <input type="button" value="Save" class="btn btn-primary" onclick="editarContacto(@Model.id)"/>    
+</div>

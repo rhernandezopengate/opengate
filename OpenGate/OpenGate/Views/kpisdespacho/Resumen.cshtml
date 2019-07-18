@@ -1,0 +1,52 @@
+﻿@using OpenGate.Entidades
+@model List<kpisdespacho>
+
+@{
+    ViewBag.Title = "Resumen";
+    Layout = null;
+}
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Mes
+            </th>
+            <th>
+                QTY Pall
+            </th>
+            <th>
+                Hrs Lab
+            </th>
+            <th>
+                Pall/Hrs Lab
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.mes</td>
+                <td>@item.qtypallets</td>
+                <td>@item.valordia</td>
+                <td>@item.sumadias</td>
+            </tr>
+        }
+            <tr>
+                <td>
+                    Total
+                </td>
+                <td>
+                    @ViewBag.SumaPallets
+                </td>
+                <td>
+                    @ViewBag.SumaHoras    
+                </td>
+                <td>
+                    @ViewBag.TotalDivision
+                </td>
+            </tr>
+    </tbody>
+</table>

@@ -1,0 +1,172 @@
+﻿@model OpenGate.Entidades.factura
+
+@{
+    /**/
+
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutPagoProveedores.cshtml";
+}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script src="~/ScriptsDB/PeticionesFacturas.js"></script>
+
+<script>
+    $(function () {
+        var ddlCustomers = $("#ddlClientes");
+        ddlCustomers.empty().append('<option selected="selected" value="0" disabled = "disabled">Loading ...</option>');
+        $.ajax({
+            type: "POST",
+            url: "/clientes/ListaClientes",
+            data: '{}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                ddlCustomers.empty().append('<option selected="selected" value="0">Seleccione una opcion...</option>');
+                $.each(response, function () {
+                    ddlCustomers.append($("<option></option>").val(this['Value']).html(this['Text']));
+                });
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    });
+</script>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            @using (Html.BeginForm())
+            {
+            <div class="x_title">
+                <h2>Facturas <small>Crear</small></h2>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="submit" value="Create" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar </button>
+                <button type="button" onclick="retencion()" class="btn btn-info"><i class="fa fa-asterisk"></i> Retencion</button>
+                <button type="button" onclick="tazaCero()" class="btn btn-warning"><i class="fa fa-exclamation"></i> Taza Cero</button>                
+                <a href="@Url.Action("Index", "facturas")" class="btn btn-danger"><i class="fa fa-remove"></i> Cancelar</a>
+                <div class="clearfix"></div>
+            </div>
+                @Html.AntiForgeryToken()
+                <div class="x_content">
+                    <div class="form-horizontal form-label-left input_mask">
+                        <div class="well" style="overflow: auto">
+                            <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" required id="Numero" name="Numero" placeholder="Numero" onchange="validarfacturaproveedor()" autocomplete="off">
+                                <span class="fa fa-qrcode form-control-feedback right" aria-hidden="true"></span>
+                            </div>
+
+                            <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control" id="FechaFactura" required name="FechaFactura" placeholder="Fecha Factura" autocomplete="off">
+                                <span class="fa fa-calendar form-control-feedback right" aria-hidden="true"></span>
+                            </div>
+
+                            <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control has-feedback-right" required id="FechaSello" name="FechaSello" placeholder="Fecha Sello" autocomplete="off" onchange="fechaVencimiento()">
+                                <span class="fa fa-calendar form-control-feedback right" aria-hidden="true"></span>
+                            </div>
+
+                            <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                                <input type="text" class="form-control" id="FechaVencimiento" required name="FechaVencimiento" placeholder="Fecha Vencimiento" autocomplete="off">
+                                <span class="fa fa-calendar form-control-feedback right" aria-hidden="true"></span>
+                            </div>
+                            <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                                <input type="hidden" id="hfCustomer" name="Proveedor_Id" />
+                                <input type="text" class="form-control" id="txtProveedor" required name="Proveedor" placeholder="Proveedor">
+                                <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                            </div>                            
+                            <div class="col-md-3 col-sm-6 col-xs-12 form-group has-feedback">
+                                <select class="form-control" id="ddlClientes" name="Clientes_Id"></select>
+                                <span class="form-control-feedback right" aria-hidden="true"></span>
+                            </div>
+                        </div>
+
+                        <table class="table table-striped jambo_table bulk_action">
+                            <thead>
+                                <tr class="text-center">
+                                    <td>  <strong>Concepto</strong>  </td>
+                                    <td> <strong>Subtotal</strong>  </td>
+                                    <td> <strong>Descuento</strong></td>
+                                    <td> <strong>Retencion</strong></td>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td>
+                                    <input type="text" class="form-control" required id="Concepto" name="Concepto" placeholder="Concepto">
+                                </td>
+                                <td class="col-lg-2">
+                                    <input type="text" class="form-control" required placeholder="$0.0" id="Subtotal" name="Subtotal" onkeyup="sumar()" autocomplete="off" />
+                                </td>
+
+                                <td class="col-lg-2">
+                                    <input type="text" class="form-control" required placeholder="$0.0" id="Descuento" name="Descuento" onkeyup="sumar()" value="0" autocomplete="off" />
+                                </td>
+                                <td class="col-lg-2">
+                                    <input type="text" class="form-control" required placeholder="$0.0" id="Retencion" name="Retencion" onkeyup="sumar()" value="0" autocomplete="off" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td style="text-align:right;" class="center"><b>Iva</b> </td>
+                                <td>
+                                    <input type="text" class="form-control" placeholder="$0.0" id="Iva" name="Iva" readonly>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td style="text-align:right;" class="center"><b>Total</b> </td>
+                                <td>
+                                    <input type="text" class="form-control" id="Total" name="Total" readonly placeholder="$0.0" />
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table class="table table-striped jambo_table bulk_action">
+                            <thead>
+                                <tr class="text-center">
+                                    <td> <strong> Observaciones</strong>    </td>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td>
+                                    <input type="text" class="form-control" id="Observaciones" name="Observaciones" placeholder="Observaciones">
+                                </td>
+                            </tr>
+                        </table>
+                        <div id="mensaje"></div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- Custom Theme Scripts -->
+<script src="~/build/js/custom.min.js"></script>
+
+<script>
+    $(function () {
+        $("#FechaSello").change(function () {
+            var url = "@Url.Action("CalcularFechaVencimiento", "facturas")";
+            var fecha = $(this).val();
+            var data = { fechaSello: fecha };
+
+            $.post(url, data).done(function (data) {
+                $("#FechaVencimiento").val(data);
+            }).fail(errorAjax);
+
+
+            function errorAjax(error) {
+                alert(error.responseText);
+            }
+        });
+               
+
+    });
+</script>

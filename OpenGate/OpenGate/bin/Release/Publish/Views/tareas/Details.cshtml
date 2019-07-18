@@ -1,0 +1,80 @@
+﻿@model OpenGate.Entidades.tareas
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutIT.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2> @ViewBag.Controller <small>Details</small></h2> &nbsp;&nbsp;&nbsp;
+                <a class="btn btn-primary" href="@Url.Action("Edit", new { id = Model.id })"> <i class="fa fa-edit"></i> Editar</a>
+                <a class="btn btn-dark" href="@Url.Action("Index")"> <i class="fa fa-reply"></i> Regresar</a>
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="col-md-3 col-sm-3 col-xs-12 profile_details">
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 profile_details">
+                    <div class="well profile_view">
+                        <div class="col-sm-12">
+                            <h4 class="brief"><i>Actividad: @Html.DisplayFor(model => model.Actividad)</i></h4>
+                            <br />
+                            <br />
+                            <table class="table-responsive" width="100%">
+                                <tr>
+                                    <td><h2>Solicita: @Html.DisplayFor(model => model.Solicita)</h2></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><h2>Fecha Solicitud: @Html.DisplayFor(model => model.Fecha)</h2></td>
+                                    <td><h2>Hora Inicio: @Html.DisplayFor(model => model.HoraInicio)</h2></td>
+                                </tr>
+                                <tr>
+                                    <td><h2>Fecha Entrega: @Html.DisplayFor(model => model.FechaEntrega)</h2></td>
+                                    <td><h2>Hora Fin: @Html.DisplayFor(model => model.HoraFin)</h2></td>
+                                </tr>
+                                <tr>
+                                    <td><h2>Porcentaje Cumplido: @Html.DisplayFor(model => model.PorcentajeCumplido)%</h2></td>
+                                </tr>
+                                <tr>
+                                    <td><h2>Observaciones: @Html.DisplayFor(model => model.Observaciones)</h2></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <h2>Asignado a: @Html.DisplayFor(model => model.AspNetUsers.Email)</h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <h2>Estado de la Tarea: @Html.DisplayFor(model => model.statustarea.descripcion)</h2>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <br />
+                                        <h2>Notas: @Html.Raw(Model.Notas)</h2>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-xs-12 bottom text-center">
+                            <div class="col-xs-12 col-sm-12 emphasis">
+                                @Html.DisplayNameFor(model => model.FechaRegistro)
+                                @Html.DisplayFor(model => model.FechaRegistro)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/Scripts")
+@Scripts.Render("~/Custom")

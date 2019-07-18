@@ -1,0 +1,61 @@
+﻿<h1>Agregar Contactos</h1>
+
+<input id="btnAdd" type="button" value="Add" onclick="AddTextBox()" />
+<br />
+<br />
+<div id="TextBoxContainer">
+    <!--Textboxes will be added here -->
+</div>
+<br />
+
+<script type="text/javascript">
+        function GetDynamicTextBox(value) {
+            var div = $("<div />");
+
+            var textBox = $("<input />").attr("type", "textbox").attr("name", "DynamicTextBox").attr("placeholder", "Nombre (s)");
+            textBox.val(value);
+            div.append(textBox);
+
+            var textBox1 = $("<input />").attr("type", "textbox").attr("name", "DynamicTextContacto").attr("placeholder", "Telefono");
+            textBox1.val(value);
+            div.append(textBox1);
+
+            var textBox2 = $("<input />").attr("type", "textbox").attr("name", "DynamicTextContacto").attr("placeholder", "Email");
+            textBox2.val(value);
+            div.append(textBox2);
+
+            var button = $("<input />").attr("type", "button").attr("value", "Remove");
+            button.attr("onclick", "RemoveTextBox(this)");
+            div.append(button);
+
+            return div;
+        }
+
+        function AddTextBox() {
+            var div = GetDynamicTextBox("");
+            $("#TextBoxContainer").append(div);
+        }
+
+        function RemoveTextBox(button) {
+            $(button).parent().remove();
+        }
+
+        $(function () {
+            var values = eval('@Html.Raw(ViewBag.Values)');
+            if (values != null) {
+                $("#TextBoxContainer").html("");
+                $(values).each(function () {
+                    $("#TextBoxContainer").append(GetDynamicTextBox(this));
+                });
+            }
+        });
+</script>
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+            $(function () {
+                alert("@ViewBag.Message")
+            });
+    </script>
+}

@@ -1,0 +1,208 @@
+﻿@model OpenGate.Entidades.facturasCE
+@{
+    ViewBag.Title = "PagoFacturas";
+    Layout = "~/Views/Shared/_LayoutPagoProveedores.cshtml";
+
+}
+
+<!-- PNotify -->
+<link href="~/vendors/pnotify/dist/pnotify.css" rel="stylesheet">
+<link href="~/vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
+<link href="~/vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
+
+@using (Html.BeginForm())
+{
+    <div class="col-md-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Pagar Facturas</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="well">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            Fecha Pago
+                            <div class="form-group">
+                                <div class="input-group date">
+                                    <input type="text" name="fechaPago" id="fechaPago" required class="form-control" autocomplete="off" value="@DateTime.Now.ToShortDateString()"/>
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            Monto Total A Pagar
+                            <div class="form-group">
+                                <div class="input-group date">
+                                    <input id="totalSumar" name="totalSumar" type="text" value="0.0" readonly class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                            <input id="totalFactura" name="totalFactura" type="hidden" />
+                        </div>
+                        <div class="col-sm-3">
+                            <br />
+                            <div class="form-group">
+                                <div class="input-group date">
+                                    <button type="submit" class="btn btn-success"><i class="fa fa-credit-card-alt"></i> Pagar Facturas </button>
+                                    <a class="btn btn-danger" href="@Url.Action("Index")"><i class="glyphicon glyphicon-remove-circle"></i>&nbsp;Cancelar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <table id="datatablepago" class="table jambo_table">
+                    <thead>
+                        <tr class="headings">
+                            <th>
+                            </th>
+                            <th class="column-title">
+                                Factura
+                            </th>
+                            <th class="column-title">
+                                Proveedor
+                            </th>
+                            <th class="column-title">
+                                Fecha Factura
+                            </th>
+                            <th class="column-title">
+                                Fecha Vencimiento
+                            </th>
+                            <th class="column-title">
+                                Total
+                            </th>
+                            <th class="column-title">
+                                DV
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.FacturasPorPagar.Count; i++)
+                        {
+                        <tr>
+                            <td>
+                                @Html.CheckBoxFor(m => m.FacturasPorPagar[i].IsChecked, new { @onclick = "setCompleteStatus(this, " + Model.FacturasPorPagar[i].Total + ")", @class = "icheckbox_flat-green" })
+                                @Html.HiddenFor(model => model.FacturasPorPagar[i].id)
+                            </td>
+                            <td>
+                                <label>@Model.FacturasPorPagar[i].Numero</label>
+                            </td>
+                            <td>
+                                <label>@Model.FacturasPorPagar[i].proveedor.RazonSocial</label>
+                            </td>
+                            <td>
+                                <label>@Model.FacturasPorPagar[i].FechaFactura.Value.ToShortDateString()</label>
+                            </td>
+                            <td>
+                                <label>@Model.FacturasPorPagar[i].FechaVencimiento.Value.ToShortDateString()</label>
+                            </td>
+                            <td>
+                                <label>@Model.FacturasPorPagar[i].Total</label>
+                            </td>
+                            <td>
+                                <label>@Model.FacturasPorPagar[i].dv</label>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- CSS Datatble -->
+<link href="~/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css" rel="stylesheet" />
+
+<!-- JQuery Datatble -->
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.4/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+<script src="~/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+<script src="~/vendors/pnotify/dist/pnotify.js"></script>
+<script src="~/vendors/pnotify/dist/pnotify.buttons.js"></script>
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<script src="~/build/js/custom.min.js"></script>
+
+<script type="text/javascript">
+    function setCompleteStatus(checked, id) {
+        if (checked.checked) {            
+            sumatoria(id);
+        }
+        else {
+            resta(id);
+        }
+    }
+
+    function sumatoria(total) {
+        $('#totalFactura').val(total);
+        var subtotal = $('#totalFactura').val();
+        var final = $('#totalSumar').val();
+        var total = parseFloat(subtotal) + parseFloat(final);
+        $('#totalSumar').val(total.toFixed(2));
+        $("#notification").text(total.toFixed(2));
+        
+    }
+
+    function resta(total) {
+        $('#totalFactura').val(total);
+        var subtotal = $('#totalFactura').val();
+        var final = $('#totalSumar').val();
+        var total = parseFloat(final) - parseFloat(subtotal);
+        $("#totalSumar").val(total.toFixed(2));
+        $("#notification").text(total.toFixed(2));      
+    }
+
+    $(function () {
+        $("#fechaPago").datepicker({
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            changeYear: true
+        });     
+    });
+
+    $(function () {
+
+        PNotify.removeAll();
+
+        new PNotify({
+            title: 'Total a pagar por las facturas:',
+            type: 'info',
+            text: '<h1> <span id="notification">0</span> </h1>',
+            nonblock: {
+                nonblock: true
+            },
+            styling: 'bootstrap3',
+            addclass: 'dark',
+            hide: false
+        });
+    });
+
+    $(document).ready(function () {
+        var table = $('#datatablepago');
+        table = $('#datatablepago').DataTable({
+            "processing": true,
+            select: true,
+            "lengthMenu": [[-1], ["All"]]            
+        });
+    });
+</script>
+
+
+

@@ -1,0 +1,64 @@
+﻿@using  OpenGate.Entidades
+@model List<kpisinventariosaplontime>
+
+<table id="tblInventariosAplOnTime" class="table table-bordered" style="cursor:pointer;">
+    <thead>
+        <tr>
+            <th>
+                Mes
+            </th>
+            <th>
+                Aplicaciones
+            </th>
+            <th>
+                Ok
+            </th>
+            <th>
+                Desv
+            </th>
+            <th>
+                %
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @item.Mes
+
+            </td>
+            <td style="width:10px">
+                @item.Total
+            </td>
+            <td>
+                @item.TotalOks
+            </td>
+            <td>
+                @item.TotalDesv
+            </td>
+            <td>
+                @item.procentaje%
+            </td>
+        </tr>
+        }
+        <tr>
+            <td>
+                Total
+            </td>
+            <td>
+                @ViewBag.TotalAp
+            </td>
+            <td>
+                @ViewBag.TotalOkAp
+            </td>
+            <td>
+                @ViewBag.TotalDesvAp
+            </td>
+            <td>
+                @ViewBag.PorcentajeOkAp%
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,261 @@
+﻿
+@{
+    ViewBag.Title = "Kpisplaneacion";
+    Layout = "~/Views/Shared/_LayoutKpis.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2> KPIS Planeacion <small>Detalle</small></h2> &nbsp;&nbsp;&nbsp;
+                @if (User.IsInRole("admin") || User.IsInRole("coordinadorplaneacion"))
+                {
+                    <a class="btn btn-success" href="@Url.Action("Create")"> <i class="glyphicon glyphicon-plus-sign"></i> Agregar Registros</a>
+                    <a class="btn btn-danger" href="@Url.Action("Delete")"> <i class="glyphicon glyphicon-remove-sign"></i> Eliminar Registros</a>
+                }
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="well" style="overflow: auto">
+                    <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+                        <select id="mes" name="mes" class="form-control has-feedback-left">
+                            <option value="">Seleccione un mes...</option>
+                            <option value="Enero">Enero</option>
+                            <option value="Febrero">Febrero</option>
+                            <option value="Marzo">Marzo</option>
+                            <option value="Abril">Abril</option>
+                            <option value="Mayo">Mayo</option>
+                            <option value="Junio">Junio</option>
+                            <option value="Julio">Julio</option>
+                            <option value="Agosto">Agosto</option>
+                            <option value="Septiembre">Septiembre</option>
+                            <option value="Octubre">Octubre</option>
+                            <option value="Noviembre">Noviembre</option>
+                            <option value="Diciembre">Diciembre</option>
+                        </select>
+                        <span class="fa fa-calendar form-control-feedback left" aria-hidden="true"></span>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+                        <input type="text" class="form-control has-feedback-left" id="wk" name="wk" placeholder="WK">
+                        <span class="fa fa-calendar-minus-o form-control-feedback left" aria-hidden="true"></span>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-xs-12 form-group has-feedback">
+                        <input type="text" class="form-control has-feedback-left" id="req" name="req" placeholder="Requisicion">
+                        <span class="fa fa-list-alt form-control-feedback left" aria-hidden="true"></span>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+                <div class="table-responsive">
+                    <table id="tblKpis" class="table table-bordered" width="100%">
+                        <thead>
+                            <tr>
+                                <th>
+                                    id
+                                </th>
+                                <th>
+                                    Mes
+                                </th>
+                                <th>
+                                    Año
+                                </th>
+                                <th>
+                                    FechaEmbarque
+                                </th>
+                                <th>
+                                    WK
+                                </th>
+                                <th>
+                                    CV
+                                </th>
+                                <th>
+                                    MO
+                                </th>
+                                <th>
+                                    Subinventario
+                                </th>
+                                <th>
+                                    Requisicion
+                                </th>
+                                <th>
+                                    Orden
+                                </th>
+                                <th>
+                                    Aplicacion
+                                </th>
+                                <th>
+                                    Fecha Generacion
+                                </th>
+                                <th>
+                                    Fecha Entrega
+                                </th>
+                                <th>
+                                    Tipo Embarque
+                                </th>
+                                <th>
+                                    Status
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CSS Datatble -->
+<link href="~/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+<!-- JQuery Datatble -->
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.4/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+<script src="~/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="../build/js/custom.min.js"></script>
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<!-- Column Filter -->
+<script src="~/Scripts/jquery.dataTables.columnFilter.js"></script>
+
+<script type="text/javascript">
+
+    function DateFormat(data) {
+        var data1 = data.replace("/Date(", "").replace(")/", "");
+        var date = new Date(parseInt(data1));
+        var month = date.getMonth() + 1;
+        return date.getDate() + "/" + (month.toString().length > 1 ? month : "0" + month) + "/" + date.getFullYear();
+    }
+
+    $(document).ready(function () {
+
+        table = $('#tblKpis').DataTable({
+            "order": [[0, "desc"]],
+            "ordering": true,
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            "pagingType": "simple_numbers",
+            "dom": 'Blrtip', // Hides Default Search
+            "processing": true,
+            "serverSide": true,
+            "orderMulti": false,
+            "responsive": true,
+            "deferRender": true,
+            rowId: 'id',
+            select: true,
+            "ajax": {
+                "url": "/kpisplaneacion/ListaKpis",
+                "type": "POST",
+                "datatype": "json"
+            },
+            buttons: [
+
+                {
+                    extend: 'copyHtml5',
+                    text: '<i class="fa fa-files-o"></i>',
+                    titleAttr: 'COPIAR',
+                    exportOptions: {
+                        columns: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+                    }
+                },                
+                {
+                    extend: 'excel',
+                    text: '<i class="fa fa-file-excel-o"></i>',
+                    titleAttr: 'EXCEL',
+                    exportOptions: {
+                        columns: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+                    }
+                }               
+            ],
+            "aoColumns": [
+                //0
+                { "data": "id", "autoWidth": true, "visible": false },
+                //1
+                { "data": "mes", "autoWidth": true },
+                //2
+                { "data": "ano", "autoWidth": true },
+                //3
+                {
+                    "data": "fechaembarque",
+                    "name": "fechaembarque",
+                    "render": function (data, type, full) {
+
+                        var data1 = data.replace("/Date(", "").replace(")/", "");
+                        var date = new Date(parseInt(data1));
+                        var month = date.getMonth() + 1;
+                        return date.getDate() + "-" + (month.toString().length > 1 ? month : "0" + month) + "-" + date.getFullYear();
+                    },
+                    "autoWidth": true
+                },
+                //4
+                { "data": "wk", "autoWidth": true },
+                //5
+                { "data": "cv", "autoWidth": true },
+                //6
+                { "data": "mo", "autoWidth": true },
+                //7
+                { "data": "subinventario", "autoWidth": true },
+                //8
+                { "data": "requisicion", "autoWidth": true },
+                { "data": "orden", "autoWidth": true },
+                { "data": "aplicacion", "autoWidth": true },
+                //9
+                {
+                    "data": "fechageneracion",
+                    "name": "fechageneracion",
+                    "render": function (data, type, full) {
+
+                        var data1 = data.replace("/Date(", "").replace(")/", "");
+                        var date = new Date(parseInt(data1));
+                        var month = date.getMonth() + 1;
+                        return date.getDate() + "-" + (month.toString().length > 1 ? month : "0" + month) + "-" + date.getFullYear();
+                    },
+                    "autoWidth": true
+                },
+                //10
+                {
+                    "data": "fechaentrega",
+                    "name": "fechaentrega",
+                    "render": function (data, type, full) {
+
+                        var data1 = data.replace("/Date(", "").replace(")/", "");
+                        var date = new Date(parseInt(data1));
+                        var month = date.getMonth() + 1;
+                        return date.getDate() + "-" + (month.toString().length > 1 ? month : "0" + month) + "-" + date.getFullYear();
+                    },
+                    "autoWidth": true
+                },
+                //11
+                { "data": "tipoembarque", "autoWidth": true },
+                //12
+                { "data": "status", "autoWidth": true }
+            ]
+        });
+
+        $('#mes').on('change', function () {
+            table.columns(1).search(this.value).draw();
+        });
+
+        $('#wk').on('keyup', function () {
+            table.columns(4).search(this.value).draw();
+        });
+
+        $('#req').on('keyup', function () {
+            table.columns(8).search(this.value).draw();
+        });
+    });
+</script>

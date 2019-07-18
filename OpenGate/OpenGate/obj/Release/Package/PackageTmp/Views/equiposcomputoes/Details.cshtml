@@ -1,0 +1,139 @@
+﻿@model OpenGate.Entidades.equiposcomputo
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutIT.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>equiposcomputo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CPU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPU)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RAM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RAM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SistemaOperativo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SistemaOperativo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreEquipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreEquipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modelo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Marca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoEquipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoEquipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ubicacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ubicacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceTag)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceTag)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpressServiceCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpressServiceCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaEntrada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaEntrada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaBaja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaBaja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HDD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HDD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.empleado.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.empleado.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.equipomantenimiento.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.equipomantenimiento.descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

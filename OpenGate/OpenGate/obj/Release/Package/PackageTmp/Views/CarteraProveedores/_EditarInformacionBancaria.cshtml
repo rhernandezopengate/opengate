@@ -1,0 +1,46 @@
+﻿@model OpenGate.Entidades.informacionbancaria
+
+<div class="modal-header text-center">
+    <button type="button" class="close" data-dismiss="modal">
+        <span aria-hidden="true">×</span>
+    </button>
+    <h4 class="modal-title" id="myModalLabel">Editar Informacion Bancaria</h4>
+</div>
+
+<div class="modal-body">
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id)
+        @Html.HiddenFor(model => model.Proveedores_Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NombreBanco, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input id="NombreBancoC" name="NombreBancoC" class="form-control" value="@Model.NombreBanco"/>               
+                @Html.ValidationMessageFor(model => model.NombreBanco, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CuentaBancaria, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input id="CuentaBancariaC" name="CuentaBancariaC" class="form-control" value="@Model.CuentaBancaria"/>                
+                @Html.ValidationMessageFor(model => model.CuentaBancaria, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Clabe, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input id="ClabeC" name="ClabeC" class="form-control" value="@Model.Clabe"/>                
+                @Html.ValidationMessageFor(model => model.Clabe, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <input type="button" value="Save" class="btn btn-primary" onclick="editarInformacionBancaria(@Model.id)" />
+</div>

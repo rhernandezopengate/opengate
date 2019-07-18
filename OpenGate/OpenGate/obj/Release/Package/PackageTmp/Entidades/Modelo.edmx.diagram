@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="259501229a7b47a9949c88b502916866" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.AspNetUsers" Width="1.5" PointX="0.5" PointY="5.5" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.bancos" Width="1.5" PointX="11.375" PointY="7" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.categoriaproveedor" Width="1.75" PointX="6.875" PointY="19.875" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.clientes" Width="1.5" PointX="3.75" PointY="3.625" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.cuentaordenante" Width="1.5" PointX="11.375" PointY="5.25" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.factura" Width="1.5" PointX="6" PointY="3.25" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.nacionalidadproveedor" Width="1.75" PointX="5.875" PointY="18.125" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.pago" Width="1.5" PointX="2.75" PointY="6.625" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.pagofacturas" Width="1.5" PointX="8.25" PointY="5.5" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.statusfactura" Width="1.5" PointX="4.5" PointY="14.625" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.statuspago" Width="1.5" PointX="0.75" PointY="3.375" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.factura_aspnetusers_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.pago_aspnetusers_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.factura_clientes_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.factura_statusfactura_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.pagofacturas_factura_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.pago_statuspago_fk" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="DB_A3F19C_OGModel.pagofacturas_pago_fk" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.asigancion" Width="1.5" PointX="10.75" PointY="10.25" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.complementosfacturas" Width="1.5" PointX="14.375" PointY="6" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.statuscomplemento" Width="1.875" PointX="17" PointY="10.5" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.asigancion_aspnetusers_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.complementosfacturas_asigancion_fk" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="DB_A3F19C_OGModel.complementosfacturas_bancos_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.complementosfacturas_cuentaordenante_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.complementosfacturas_factura_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.complementosfacturas_statuscomplemento_fk" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.statustarea" Width="1.5" PointX="1.5" PointY="11.625" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.kpisplaneacion" Width="1.5" PointX="8.5" PointY="0.5" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.tareas" Width="1.5" PointX="3.875" PointY="9.875" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.tareas_aspnetusers_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.tareas_statustarea_fk" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="0.75" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.AspNetUserRoles" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.kpisdespacho" Width="1.5" PointX="10.125" PointY="0.5" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.kpisrecibo" Width="2" PointX="11.75" PointY="0.5" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.kpisinvetntarios" Width="1.5" PointX="13.875" PointY="0.5" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.kpisinventariosaplontime" Width="1.875" PointX="15.5" PointY="0.5" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.kpisinventariosexactitud" Width="1.5" PointX="17.5" PointY="0.5" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.servicios" Width="1.5" PointX="7.125" PointY="9.875" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.kpistrafico" Width="1.5" PointX="19.125" PointY="0.5" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.area" Width="1.5" PointX="22.625" PointY="3.5" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.puesto" Width="1.5" PointX="22.625" PointY="5.375" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.empleado" Width="1.5" PointX="24.625" PointY="4.5" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.empleado_area_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.empleado_aspnetusers_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.empleado_puesto_fk" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.envioshomedelivery" Width="1.5" PointX="20.75" PointY="0.5" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.equipomantenimiento" Width="1.5" PointX="29" PointY="6" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.equiposcomputo" Width="1.5" PointX="27" PointY="4.5" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.equiposcomputo_empleado_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.equiposcomputo_equipomantenimiento_fk" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.mo" Width="1.5" PointX="6.75" PointY="0.5" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.statusproveedor" Width="1.875" PointX="11.75" PointY="19.875" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.statusproveedorvisible" Width="1.875" PointX="11.75" PointY="18.125" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.contactoproveedor" Width="1.75" PointX="6.875" PointY="21.625" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.informacionbancaria" Width="1.875" PointX="11.75" PointY="21.625" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.proveedor" Width="1.5" PointX="9.375" PointY="17.625" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.proveedor_categoriaproveedor_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.contactoproveedor_proveedores_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.factura_proveedor_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.informacionbancaria_proveedores_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.proveedor_nacionalidadproveedor_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.proveedor_statusproveedor_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.proveedores_statusproveedorvisible_fk" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.centrocostos" Width="1.5" PointX="37.625" PointY="5.75" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.statuscompras" Width="1.5" PointX="32.5" PointY="1.25" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.statusdireccion" Width="1.5" PointX="32.5" PointY="3" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.statusfinanzas" Width="1.5" PointX="32.5" PointY="4.75" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.subcentrocostos" Width="1.5" PointX="37.625" PointY="7.5" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.categoriaorden" Width="1.5" PointX="37.625" PointY="1.25" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.tipocompra" Width="1.5" PointX="32.5" PointY="6.5" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.productos" Width="1.5" PointX="39.75" PointY="3.125" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.detalleordenproductos" Width="1.5" PointX="37.625" PointY="3" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.detalleordenproductos_productos_fk" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.formapago" Width="1.5" PointX="37.625" PointY="9.375" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.supervisor" Width="1.5" PointX="30.75" PointY="13.75" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.supervisor_aspnetusers_fk" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.solicitante" Width="1.5" PointX="30.75" PointY="10.5" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.solicitante_aspnetusers_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.solicitante_supervisor_fk" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.ordencompra" Width="1.5" PointX="35" PointY="0.5" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.ordencompra_categoriaorden_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.ordencompra_centrocostos_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.ordencompra_clientes_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.detalleordenproductos_ordencompra_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.ordencompra_formapago_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.ordencompra_proveedores_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.ordencompra_solicitante_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.ordencompra_statuscompras_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.ordencompra_statusdireccion_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.ordencompra_statusfinanzas_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.ordencompra_subcentrocostos_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.ordencompra_tipocompra_fk" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.csr" Width="1.5" PointX="42.625" PointY="0.5" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.nts" Width="1.5" PointX="46.875" PointY="3" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.guiasimpresas" Width="1.5" PointX="46.875" PointY="0.5" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.fecuenciadhl" Width="1.5" PointX="49.625" PointY="5.875" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.nomenclaturadhl" Width="1.5" PointX="52.375" PointY="3.5" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.statusasignacion" Width="1.5" PointX="52.375" PointY="1.625" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.concentrado" Width="1.5" PointX="49.5" PointY="2.75" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.concentrado_csr_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.concentrado_guiasimpresas_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.concentrado_nts_fk" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.asignacionordenes" Width="1.5" PointX="55.25" PointY="4.375" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.asigancionordenes_aspnetusers_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.asignacionordenes_concentrado_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.asignacionordenes_fecuenciadhl_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.asignacionordenes_nomenclaturadhl_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.asignacionordenes_statusasignacion_fk" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
