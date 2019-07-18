@@ -141,3 +141,7 @@ C:\Users\Administrador-OG\source\repos\OpenGate\OpenGate\obj\Debug\OpenGate.cspr
 C:\Users\Administrador-OG\source\repos\OpenGate\OpenGate\obj\Debug\OpenGate.dll
 C:\Users\Administrador-OG\source\repos\OpenGate\OpenGate\obj\Debug\OpenGate.pdb
 C:\Users\Administrador-OG\source\repos\OpenGate\OpenGate\obj\Debug\OpenGate.csprojAssemblyReference.cache
+C:\Users\rhern\OneDrive\Documentos\GitHub\opengate\OpenGate\OpenGate\obj\Debug\OpenGate.csprojAssemblyReference.cache
+C:\Users\rhern\OneDrive\Documentos\GitHub\opengate\OpenGate\OpenGate\obj\Debug\OpenGate.csproj.CoreCompileInputs.cache
+C:\Users\rhern\OneDrive\Documentos\GitHub\opengate\OpenGate\OpenGate\obj\Debug\OpenGate.dll
+C:\Users\rhern\OneDrive\Documentos\GitHub\opengate\OpenGate\OpenGate\obj\Debug\OpenGate.pdb

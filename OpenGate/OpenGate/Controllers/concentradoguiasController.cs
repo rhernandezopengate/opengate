@@ -109,7 +109,8 @@ namespace OpenGate.Controllers
                 return Json(new { draw = Draw, recordsFiltered = TotalRecords, recordsTotal = TotalRecords, data = NewItems }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception _ex)
-            {                
+            {
+                Console.WriteLine(_ex.Message.ToString());
                 return null;                
             }            
         }
@@ -160,7 +161,8 @@ namespace OpenGate.Controllers
                 return ActualizarConcentrado() == true ? Json("Success", JsonRequestBehavior.AllowGet) : Json("Error", JsonRequestBehavior.AllowGet);
             }
             catch (Exception _ex)
-            {                
+            {
+                Console.WriteLine(_ex.Message.ToString());
                 return Json("Error", JsonRequestBehavior.AllowGet);
             }            
         }
@@ -226,6 +228,7 @@ namespace OpenGate.Controllers
             }
             catch (Exception _ex)
             {
+                Console.WriteLine(_ex.Message.ToString());
                 return false;
             }
         }

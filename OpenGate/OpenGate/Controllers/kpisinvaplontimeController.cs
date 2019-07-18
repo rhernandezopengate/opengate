@@ -210,6 +210,7 @@ namespace OpenGate.Controllers
             }
             catch (Exception _ex)
             {
+                Console.WriteLine(_ex.Message.ToString());
                 ViewBag.Error = "Ha ocurrido un error. Contacte al administrador del sistema";
                 return RedirectToAction("Error500", "Errores");
             }
@@ -345,6 +346,7 @@ namespace OpenGate.Controllers
             }
             catch (Exception _ex)
             {
+                Console.WriteLine(_ex.Message.ToString());
                 throw;
             }
             return PartialView();

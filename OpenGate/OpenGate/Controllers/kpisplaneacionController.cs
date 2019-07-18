@@ -78,6 +78,7 @@ namespace OpenGate.Controllers
             }
             catch (Exception _ex)
             {
+                Console.WriteLine(_ex.Message.ToString());
                 return null;
             }
         }
@@ -263,6 +264,7 @@ namespace OpenGate.Controllers
             }
             catch (Exception _ex)
             {
+                Console.WriteLine(_ex.Message.ToString());
                 throw;
             }
             return PartialView();
@@ -470,6 +472,7 @@ namespace OpenGate.Controllers
             }
             catch (Exception _ex)
             {
+                Console.WriteLine(_ex.Message.ToString());
                 throw;
             }
         }

@@ -350,6 +350,7 @@ namespace OpenGate.Controllers
             }
             catch (Exception _ex)
             {
+                Console.WriteLine(_ex.Message.ToString());
                 ViewBag.Error = IdError;
                 return null;
             }
@@ -454,8 +455,7 @@ namespace OpenGate.Controllers
         }
 
         public ActionResult DividirRegistros()
-        {
-            dividirlista();
+        {            
             return View();
         }
 
