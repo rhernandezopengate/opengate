@@ -121,7 +121,11 @@ namespace OpenGate.Controllers
             {
                 //Se validan las guias que no existen en el concentrado
                 var query = from guias in db.guiasimpresas  where !(from con in db.concentrado select con.id ).Contains(guias.id) select guias;
-                
+
+                //DateTime fecha = DateTime.Parse("2019/07/17");
+
+                //var query = from guias in db.guiasimpresas where guias.fecha == fecha select guias;
+
                 foreach (var item in query)
                 {
                     concentrado concentrados = new concentrado();
@@ -152,7 +156,7 @@ namespace OpenGate.Controllers
 
                     if (validacion == null)
                     {
-                        db.concentrado.Add(concentrados);                        
+                        db.concentrado.Add(concentrados);               
                     }                    
                 }
 
