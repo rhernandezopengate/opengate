@@ -120,11 +120,11 @@ namespace OpenGate.Controllers
             try
             {
                 //Se validan las guias que no existen en el concentrado
-                var query = from guias in db.guiasimpresas  where !(from con in db.concentrado select con.id ).Contains(guias.id) select guias;
+                //var query = from guias in db.guiasimpresas  where !(from con in db.concentrado select con.id ).Contains(guias.id) select guias;
 
-                //DateTime fecha = DateTime.Parse("2019/07/17");
+                DateTime fecha = DateTime.Parse("2019/07/19");
 
-                //var query = from guias in db.guiasimpresas where guias.fecha == fecha select guias;
+                var query = from guias in db.guiasimpresas where guias.fecha == fecha select guias;
 
                 foreach (var item in query)
                 {
