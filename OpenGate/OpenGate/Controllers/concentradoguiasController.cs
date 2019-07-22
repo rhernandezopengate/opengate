@@ -116,21 +116,30 @@ namespace OpenGate.Controllers
         }
 
         public ActionResult CargarNTS()
-        {            
+        {
             try
             {
                 //Se validan las guias que no existen en el concentrado
-                //var query = from guias in db.guiasimpresas  where !(from con in db.concentrado select con.id ).Contains(guias.id) select guias;
 
-                DateTime fecha = DateTime.Parse("2019/07/19");
+                var ids = from c in db.concentrado
+                          select c.GuiasImpresas_Id;
 
-                var query = from guias in db.guiasimpresas where guias.fecha == fecha select guias;
+
+                var query = from item in db.guiasimpresas
+                            where !ids.Contains(item.id)
+                            select item;
+
+                List<csr> csrData = db.csr.ToList(); 
+                List<nts> ntsData = db.nts.ToList();
+                List<concentrado> concentradoData = db.concentrado.ToList();
+
+                int cantidad = query.Count();    
 
                 foreach (var item in query)
                 {
                     concentrado concentrados = new concentrado();
                     concentrados.GuiasImpresas_Id = item.id;
-                    var csrs = db.csr.Where(x => x.Referencia.Contains(item.orden)).FirstOrDefault();
+                    var csrs = csrData.Where(x => x.Referencia.Contains(item.orden)).FirstOrDefault();
 
                     if (csrs != null)
                     {
@@ -141,7 +150,7 @@ namespace OpenGate.Controllers
                         concentrados.csr = null;
                     }
 
-                    var nts = db.nts.Where(x => x.Order.Contains(item.orden)).FirstOrDefault();
+                    var nts = ntsData.Where(x => x.Order.Contains(item.orden)).FirstOrDefault();
 
                     if (nts != null)
                     {
@@ -152,12 +161,12 @@ namespace OpenGate.Controllers
                         concentrados.NTS_Id = null;
                     }
 
-                    var validacion = db.concentrado.Where(x => x.GuiasImpresas_Id == item.id).FirstOrDefault();                    
+                    var validacion = concentradoData.Where(x => x.GuiasImpresas_Id == item.id).FirstOrDefault();
 
                     if (validacion == null)
                     {
-                        db.concentrado.Add(concentrados);               
-                    }                    
+                        db.concentrado.Add(concentrados);
+                    }
                 }
 
                 db.SaveChanges();
@@ -175,6 +184,11 @@ namespace OpenGate.Controllers
         {
             try
             {
+                List<concentrado> listaTemp = new List<concentrado>();
+                List<csr> csrData = db.csr.ToList();
+                List<nts> ntsData = db.nts.ToList();
+                List<concentrado> concentradoData = db.concentrado.ToList();
+
                 var concentradoactualizar = from c in db.concentrado
                                             join csrst in db.csr 
                                             on c.CSR_Id equals csrst.id into cGroup
@@ -184,30 +198,25 @@ namespace OpenGate.Controllers
                                                 conentradoId = c.id,
                                                 referenciaCsr = d == null ? "NA" : d.Referencia,
                                                 statusCsr = d == null ? "NA" : d.UltimoCheckpoint
-                                            };
-
-                int cantidad = concentradoactualizar.Count();                
-                List<concentrado> listaTemp = new List<concentrado>();
-                int contador = 0;
+                                            };                       
+                
                 foreach (var item in concentradoactualizar)
                 {
                     if (item.statusCsr != "OK" || item.statusCsr == "NA")
                     {                        
-                        concentrado concentrado = db.concentrado.Where(x => x.id == item.conentradoId).FirstOrDefault();
-                        concentrado.ReferenciaCSR = item.referenciaCsr;
-                        contador++;
+                        concentrado concentrado = concentradoData.Where(x => x.id == item.conentradoId).FirstOrDefault();
+                        concentrado.ReferenciaCSR = item.referenciaCsr;                
                         listaTemp.Add(concentrado);
                     }             
-                }
+                }              
 
-                int conteo = contador;
                 foreach (var item in listaTemp)
                 {
-                    concentrado concentrado = db.concentrado.Where(x => x.id == item.id).FirstOrDefault();
+                    concentrado concentrado = concentradoData.Where(x => x.id == item.id).FirstOrDefault();
                     string orden = concentrado.guiasimpresas.orden.ToString();
 
-                    var csr = db.csr.Where(x => x.Referencia.Contains(orden)).FirstOrDefault();
-                    var nts = db.nts.Where(x => x.Order.Contains(orden)).FirstOrDefault();
+                    var csr = csrData.Where(x => x.Referencia.Contains(orden)).FirstOrDefault();
+                    var nts = ntsData.Where(x => x.Order.Contains(orden)).FirstOrDefault();
 
                     if (concentrado.csr == null)
                     {
@@ -226,7 +235,7 @@ namespace OpenGate.Controllers
                     }
 
                     db.SaveChanges();
-                }               
+                }    
                 
                 return true;
             }
