@@ -22,11 +22,21 @@ namespace OpenGate.Controllers
 
         public ActionResult AsignarOrdenes()
         {
+            var ids = from c in db.asignacionordenes
+                      select c.Concentrado_Id;
+
+
+            var query2 = from item in db.concentrado
+                         join c in db.csr on item.CSR_Id equals c.id
+                        where !ids.Contains(item.id) && c.UltimoCheckpoint != "OK"
+                        select item;
+
+
             var query = from c in db.concentrado.Where(x => x.csr.UltimoCheckpoint != "OK")
                         where !(from a in db.asignacionordenes select a.Concentrado_Id ).Contains(c.id)
                         select c;
 
-            ViewBag.ConteoSinAsignar = query.Count() <= 0 ? 0 : query.Count();
+            ViewBag.ConteoSinAsignar = query2.Count() <= 0 ? 0 : query.Count();
             
             return View();
         }

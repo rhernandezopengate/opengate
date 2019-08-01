@@ -11,6 +11,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Linq.Dynamic;
 using System.Globalization;
+using System.Net.Mime;
+using System.Windows.Forms.Design.Behavior;
 
 namespace OpenGate.Controllers
 {
@@ -138,11 +140,14 @@ namespace OpenGate.Controllers
                 TotalRecords = listaKPIS.ToList().Count();
                 var NewItems = listaKPIS.Skip(Skip).Take(PageSize == -1 ? TotalRecords : PageSize).ToList();
 
-                return Json(new { draw = Draw, recordsFiltered = TotalRecords, recordsTotal = TotalRecords, data = NewItems }, JsonRequestBehavior.AllowGet);
+                return new JsonResult()
+                {                    
+                    Data = new { draw = Draw, recordsFiltered = TotalRecords, recordsTotal = TotalRecords, data = NewItems },                    
+                    MaxJsonLength = Int32.MaxValue
+                };
             }
             catch (Exception)
             {
-
                 throw;
             }
         }

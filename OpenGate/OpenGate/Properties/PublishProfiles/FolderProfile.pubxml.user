@@ -160,157 +160,157 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>08/03/2014 20:33:56</publishTime>
     </File>
     <File Include="bin/OpenGate.dll">
-      <publishTime>07/23/2019 08:09:16</publishTime>
+      <publishTime>08/01/2019 09:05:48</publishTime>
     </File>
     <File Include="bin/OpenGate.pdb">
-      <publishTime>07/23/2019 08:09:16</publishTime>
+      <publishTime>08/01/2019 09:05:48</publishTime>
     </File>
     <File Include="bin/Owin.dll">
       <publishTime>11/27/2012 12:00:52</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe.config">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/csc.rsp">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/csi.exe">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/csi.exe.config">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/csi.rsp">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.Scripting.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.Scripting.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.amd64.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.DiaSymReader.Native.x86.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/Microsoft.Win32.Primitives.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.AppContext.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Collections.Immutable.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Console.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Diagnostics.FileVersionInfo.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Diagnostics.Process.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Diagnostics.StackTrace.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.Compression.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.FileSystem.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.FileSystem.DriveInfo.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.FileSystem.Primitives.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.IO.Pipes.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Reflection.Metadata.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.AccessControl.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Claims.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Cryptography.Algorithms.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Cryptography.Encoding.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Cryptography.Primitives.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Cryptography.X509Certificates.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Security.Principal.Windows.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Text.Encoding.CodePages.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Threading.Thread.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.ValueTuple.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Xml.ReaderWriter.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Xml.XmlDocument.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Xml.XPath.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/System.Xml.XPath.XDocument.dll">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/vbc.exe">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/vbc.exe.config">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/vbc.rsp">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/VBCSCompiler.exe">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/roslyn/VBCSCompiler.exe.config">
-      <publishTime>09/21/2017 23:42:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/System.Linq.Dynamic.dll">
       <publishTime>10/15/2016 20:49:24</publishTime>
@@ -340,10 +340,10 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>09/10/2013 17:28:38</publishTime>
     </File>
     <File Include="build/css/custom.css">
-      <publishTime>04/27/2018 16:34:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="build/css/custom.min.css">
-      <publishTime>04/27/2018 16:34:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="build/images/back_disabled.png">
       <publishTime>11/14/2018 16:49:50</publishTime>
@@ -367,10 +367,10 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>11/14/2018 16:49:50</publishTime>
     </File>
     <File Include="build/js/custom.js">
-      <publishTime>04/27/2018 16:34:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="build/js/custom.min.js">
-      <publishTime>04/27/2018 16:34:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Content/bigModal.css">
       <publishTime>11/05/2018 17:14:30</publishTime>
@@ -1042,7 +1042,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>12/03/2018 10:26:24</publishTime>
     </File>
     <File Include="ScriptsDB/PeticionesFacturas.js">
-      <publishTime>04/24/2019 17:30:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="ScriptsDB/PeticionesTareas.js">
       <publishTime>02/27/2019 08:45:26</publishTime>
@@ -3304,169 +3304,169 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>11/14/2018 16:46:58</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/ca-ES.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/cs-CZ.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/cy-GB.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/da-DK.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/de-AT.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/de-CH.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/de-DE.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/de-LI.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/de-LU.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/dv-MV.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/el-GR.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/en-029.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/en-AU.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/en-BZ.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/en-CA.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/en-GB.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/en-IE.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/en-JM.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/en-NZ.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/en-PH.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/en-TT.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/en-ZA.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/en-ZW.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/es-AR.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/es-BO.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/es-CL.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/es-CO.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/es-CR.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/es-DO.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/es-EC.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/es-ES.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/es-GT.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/es-HN.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/es-MX.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/es-NI.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/es-PA.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/es-PE.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/es-PR.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/es-PY.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/es-SV.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/es-UY.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/es-VE.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/et-EE.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/eu-ES.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/fa-IR.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/fi-FI.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/fo-FO.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/fr-BE.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/fr-CA.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/fr-CH.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/fr-FR.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/fr-LU.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/fr-MC.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/gl-ES.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/gu-IN.js">
-      <publishTime>11/14/2018 16:47:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/DateJS/build/i18n/he-IL.js">
       <publishTime>11/14/2018 16:47:02</publishTime>
@@ -6901,121 +6901,121 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>11/14/2018 16:47:58</publishTime>
     </File>
     <File Include="vendors/echarts/test/treemap-simple.html">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/.jshintrc">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/config.js">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/configure">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/core/uiHelper.js">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/core/utHelper.js">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/lib/canteen.js">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/lib/imagediff.js">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/lib/jasmine-2.3.4/boot.js">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/lib/jasmine-2.3.4/console.js">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/lib/jasmine-2.3.4/jasmine-html.js">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/lib/jasmine-2.3.4/jasmine.css">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/lib/jasmine-2.3.4/jasmine.js">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/lib/jasmine-2.3.4/jasmine_favicon.png">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/MIT.LICENSE">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/spec/component/visualMap/setOption.js">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/spec/data/List.js">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/spec/model/Component.js">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/spec/model/Global.js">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/spec/model/timelineOptions.js">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/spec/ui/config.js">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/spec/ui/legend.js">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/spec/ui/title.js">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/spec/ui/title.subtextStyle.js">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/spec/ui/title.textStyle.js">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/spec/util/graphic.js">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/spec/util/model.js">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/spec/util/number.js">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/ui.html">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/ut.html">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/ut/ut.js">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/visualMap-categories.html">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/visualMap-continuous.html">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/visualMap-layout.html">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/visualMap-opacity.html">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/visualMap-pieces.html">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/visualMap-scatter-colorAndSymbol.html">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/visualMap-scatter-symbolSize.html">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/webkit-dep.html">
-      <publishTime>11/14/2018 16:48:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/echarts/test/worldPopulationBubble.html">
       <publishTime>11/14/2018 16:48:02</publishTime>
@@ -10249,73 +10249,73 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>11/14/2018 16:48:58</publishTime>
     </File>
     <File Include="vendors/moment/min/moment.min.js">
-      <publishTime>11/14/2018 16:49:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/moment/min/tests.js">
-      <publishTime>11/14/2018 16:49:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/moment/moment.js">
-      <publishTime>11/14/2018 16:49:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/moment/README.md">
-      <publishTime>11/14/2018 16:49:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/moment/src/lib/create/check-overflow.js">
-      <publishTime>11/14/2018 16:49:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/moment/src/lib/create/date-from-array.js">
-      <publishTime>11/14/2018 16:49:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/moment/src/lib/create/from-anything.js">
-      <publishTime>11/14/2018 16:49:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/moment/src/lib/create/from-array.js">
-      <publishTime>11/14/2018 16:49:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/moment/src/lib/create/from-object.js">
-      <publishTime>11/14/2018 16:49:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/moment/src/lib/create/from-string-and-array.js">
-      <publishTime>11/14/2018 16:49:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/moment/src/lib/create/from-string-and-format.js">
-      <publishTime>11/14/2018 16:49:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/moment/src/lib/create/from-string.js">
-      <publishTime>11/14/2018 16:49:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/moment/src/lib/create/local.js">
-      <publishTime>11/14/2018 16:49:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/moment/src/lib/create/parsing-flags.js">
-      <publishTime>11/14/2018 16:49:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/moment/src/lib/create/utc.js">
-      <publishTime>11/14/2018 16:49:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/moment/src/lib/create/valid.js">
-      <publishTime>11/14/2018 16:49:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/moment/src/lib/duration/abs.js">
-      <publishTime>11/14/2018 16:49:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/moment/src/lib/duration/add-subtract.js">
-      <publishTime>11/14/2018 16:49:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/moment/src/lib/duration/as.js">
-      <publishTime>11/14/2018 16:49:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/moment/src/lib/duration/bubble.js">
-      <publishTime>11/14/2018 16:49:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/moment/src/lib/duration/constructor.js">
-      <publishTime>11/14/2018 16:49:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/moment/src/lib/duration/create.js">
-      <publishTime>11/14/2018 16:49:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/moment/src/lib/duration/duration.js">
-      <publishTime>11/14/2018 16:49:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="vendors/moment/src/lib/duration/get.js">
       <publishTime>11/14/2018 16:49:02</publishTime>
@@ -14218,7 +14218,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>05/30/2019 12:55:44</publishTime>
     </File>
     <File Include="Views/guiasimpresas/Delete.cshtml">
-      <publishTime>05/30/2019 12:56:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/guiasimpresas/Details.cshtml">
       <publishTime>05/30/2019 12:56:08</publishTime>
@@ -14239,7 +14239,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>03/12/2019 17:18:12</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>05/27/2019 11:34:44</publishTime>
+      <publishTime>08/01/2019 08:54:32</publishTime>
     </File>
     <File Include="Views/Kpis/Index.cshtml">
       <publishTime>02/19/2019 13:46:48</publishTime>
@@ -14302,7 +14302,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>01/24/2019 17:05:44</publishTime>
     </File>
     <File Include="Views/kpisplaneacion/Default.cshtml">
-      <publishTime>01/16/2019 13:33:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/kpisplaneacion/Delete.cshtml">
       <publishTime>01/19/2019 17:22:40</publishTime>
@@ -14566,7 +14566,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>03/12/2019 10:04:42</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutHD.cshtml">
-      <publishTime>06/15/2019 12:27:00</publishTime>
+      <publishTime>08/01/2019 08:53:42</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutIT.cshtml">
       <publishTime>05/24/2019 09:58:12</publishTime>
@@ -14785,19 +14785,19 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>02/27/2019 10:07:18</publishTime>
     </File>
     <File Include="Views/tareas/Index.cshtml">
-      <publishTime>04/30/2019 12:23:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>12/06/2018 09:49:28</publishTime>
     </File>
     <File Include="Views/_LayoutAdmin.cshtml">
-      <publishTime>03/19/2019 16:05:00</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
       <publishTime>12/06/2018 09:49:28</publishTime>
     </File>
     <File Include="Web.Config">
-      <publishTime>07/23/2019 08:09:31</publishTime>
+      <publishTime>08/01/2019 09:05:52</publishTime>
     </File>
     <File Include="Webforms/frmFacturas.aspx">
       <publishTime>01/07/2019 12:39:36</publishTime>

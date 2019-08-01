@@ -283,4 +283,3 @@ C:\Users\rhern\OneDrive\Documentos\GitHub\opengate\OpenGate\OpenGate\obj\Debug\O
 C:\Users\rhern\OneDrive\Documentos\GitHub\opengate\OpenGate\OpenGate\obj\Debug\OpenGate.csproj.CopyComplete
 C:\Users\rhern\OneDrive\Documentos\GitHub\opengate\OpenGate\OpenGate\obj\Debug\OpenGate.dll
 C:\Users\rhern\OneDrive\Documentos\GitHub\opengate\OpenGate\OpenGate\obj\Debug\OpenGate.pdb
-C:\Users\rhern\OneDrive\Documentos\GitHub\opengate\OpenGate\OpenGate\obj\Debug\OpenGate.csprojAssemblyReference.cache
