@@ -83,5 +83,13 @@ namespace OpenGate.Entidades
         public virtual DbSet<statusasignacion> statusasignacion { get; set; }
         public virtual DbSet<concentrado> concentrado { get; set; }
         public virtual DbSet<asignacionordenes> asignacionordenes { get; set; }
+        public virtual DbSet<skus> skus { get; set; }
+        public virtual DbSet<detkitskus> detkitskus { get; set; }
+        public virtual DbSet<detordenproductoshd> detordenproductoshd { get; set; }
+        public virtual DbSet<detusuariosordenes> detusuariosordenes { get; set; }
+        public virtual DbSet<erroresordenes> erroresordenes { get; set; }
+        public virtual DbSet<guias> guias { get; set; }
+        public virtual DbSet<kit> kit { get; set; }
+        public virtual DbSet<ordenes> ordenes { get; set; }
     }
 }

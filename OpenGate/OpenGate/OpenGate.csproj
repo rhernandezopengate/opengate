@@ -222,6 +222,7 @@
     <Compile Include="Controllers\contactoproveedorController.cs" />
     <Compile Include="Controllers\csrsController.cs" />
     <Compile Include="Controllers\cuentaordenantesController.cs" />
+    <Compile Include="Controllers\DashboardOrdenesController.cs" />
     <Compile Include="Controllers\empleadosController.cs" />
     <Compile Include="Controllers\EnviosController.cs" />
     <Compile Include="Controllers\equipomantenimientoesController.cs" />
@@ -251,6 +252,7 @@
     <Compile Include="Controllers\proveedorsController.cs" />
     <Compile Include="Controllers\puestoesController.cs" />
     <Compile Include="Controllers\serviciosController.cs" />
+    <Compile Include="Controllers\skusController.cs" />
     <Compile Include="Controllers\solicitantesController.cs" />
     <Compile Include="Controllers\statusasignacionsController.cs" />
     <Compile Include="Controllers\statuscomplementoesController.cs" />
@@ -317,6 +319,15 @@
     <Compile Include="Entidades\detalleordenproductos.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entidades\detkitskus.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\detordenproductoshd.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\detusuariosordenes.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entidades\empleado.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
@@ -328,6 +339,9 @@
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\equiposcomputo.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\erroresordenes.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\factura.cs">
@@ -344,10 +358,16 @@
     <Compile Include="Entidades\GourpMeses.cs" />
     <Compile Include="Entidades\Group.cs" />
     <Compile Include="Entidades\GroupDespacho.cs" />
+    <Compile Include="Entidades\guias.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entidades\guiasimpresas.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\informacionbancaria.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\kit.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\kpisdespacho.cs">
@@ -409,6 +429,9 @@
     <Compile Include="Entidades\ordencompra.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entidades\ordenes.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entidades\pago.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
@@ -431,6 +454,9 @@
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\serviciosTemp.cs" />
+    <Compile Include="Entidades\skus.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entidades\solicitante.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
@@ -5273,6 +5299,12 @@
     <Content Include="Views\asignacionordenes\AsignarOrdenes.cshtml" />
     <Content Include="Views\asignacionordenes\Edit.cshtml" />
     <Content Include="Views\asignacionordenes\DividirRegistros.cshtml" />
+    <Content Include="Views\skus\Create.cshtml" />
+    <Content Include="Views\skus\Delete.cshtml" />
+    <Content Include="Views\skus\Details.cshtml" />
+    <Content Include="Views\skus\Edit.cshtml" />
+    <Content Include="Views\skus\Index.cshtml" />
+    <Content Include="Views\DashboardOrdenes\Index.cshtml" />
     <None Include="Web.Debug.Config">
       <DependentUpon>Web.Config</DependentUpon>
     </None>

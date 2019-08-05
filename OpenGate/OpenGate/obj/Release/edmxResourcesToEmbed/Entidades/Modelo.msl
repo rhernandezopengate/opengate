@@ -795,5 +795,86 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="skus">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.skus">
+        <MappingFragment StoreEntitySet="skus">
+          <ScalarProperty Name="kit" ColumnName="kit" />
+          <ScalarProperty Name="qtymanual" ColumnName="qtymanual" />
+          <ScalarProperty Name="codigobidimensional" ColumnName="codigobidimensional" />
+          <ScalarProperty Name="codigobarras" ColumnName="codigobarras" />
+          <ScalarProperty Name="uom" ColumnName="uom" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Sku" ColumnName="Sku" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="detkitskus">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.detkitskus">
+        <MappingFragment StoreEntitySet="detkitskus">
+          <ScalarProperty Name="Skus_Id" ColumnName="Skus_Id" />
+          <ScalarProperty Name="Kit_Id" ColumnName="Kit_Id" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="detordenproductoshd">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.detordenproductoshd">
+        <MappingFragment StoreEntitySet="detordenproductoshd">
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="Skus_Id" ColumnName="Skus_Id" />
+          <ScalarProperty Name="Ordenes_Id" ColumnName="Ordenes_Id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="detusuariosordenes">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.detusuariosordenes">
+        <MappingFragment StoreEntitySet="detusuariosordenes">
+          <ScalarProperty Name="Ordenes_Id" ColumnName="Ordenes_Id" />
+          <ScalarProperty Name="Usuarios_Id" ColumnName="Usuarios_Id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="erroresordenes">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.erroresordenes">
+        <MappingFragment StoreEntitySet="erroresordenes">
+          <ScalarProperty Name="TipoError_Id" ColumnName="TipoError_Id" />
+          <ScalarProperty Name="Ordenes_Id" ColumnName="Ordenes_Id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="guias">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.guias">
+        <MappingFragment StoreEntitySet="guias">
+          <ScalarProperty Name="Ordenes_Id" ColumnName="Ordenes_Id" />
+          <ScalarProperty Name="Guia" ColumnName="Guia" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kit">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.kit">
+        <MappingFragment StoreEntitySet="kit">
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ordenes">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.ordenes">
+        <MappingFragment StoreEntitySet="ordenes">
+          <ScalarProperty Name="Picker" ColumnName="Picker" />
+          <ScalarProperty Name="StatusOrdenImpresa_Id" ColumnName="StatusOrdenImpresa_Id" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="Orden" ColumnName="Orden" />
+          <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

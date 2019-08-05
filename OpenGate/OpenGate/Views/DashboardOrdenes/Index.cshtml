@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutHD.cshtml";
+}
+
+
+<div class="row top_tiles">
+    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="tile-stats">
+            <div class="icon"><i class="fa fa-check-square-o"></i></div>
+            <div class="count">@ViewBag.ConteoOrdenesCerradas</div>
+            <h3>Ordenes Cerradas</h3>
+            <p>@DateTime.Now.ToShortDateString()</p>
+        </div>
+    </div>
+    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="tile-stats">
+            <div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
+            <div class="count">@ViewBag.ConteoOrdenes</div>
+            <h3>Total de Ordenes</h3>
+            <p>@DateTime.Now.ToShortDateString()</p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">            
+            <div class="x_content">
+                <div class="col-md-3 col-sm-12 col-xs-12">
+                    <div>
+                        <div class="x_title">
+                            <h2>Top Profiles</h2>                            
+                            <div class="clearfix"></div>
+                        </div>
+                        <ul class="list-unstyled top_profiles scroll-view">
+                            @foreach (var item in ViewBag.ListaPicker)
+                            {
+                                <li class="media event">
+                                    <a class="pull-left border-aero profile_thumb">
+                                        <i class="fa fa-user aero"></i>
+                                    </a>
+                                    <div class="media-body">
+                                        <a class="title" href="#">@item.Picker</a>
+                                        <p><strong>@item.Cantidad</strong> Ordenes Auditadas </p>                                        
+                                    </div>
+                                </li>                                
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

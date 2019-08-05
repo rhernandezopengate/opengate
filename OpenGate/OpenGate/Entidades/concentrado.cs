@@ -23,9 +23,8 @@ namespace OpenGate.Entidades
         public int id { get; set; }
         public Nullable<int> NTS_Id { get; set; }
         public Nullable<int> CSR_Id { get; set; }
-
-        public Nullable<int>GuiasImpresas_Id { get; set; }
-
+        public Nullable<int> GuiasImpresas_Id { get; set; }
+    
         public virtual csr csr { get; set; }
         public virtual guiasimpresas guiasimpresas { get; set; }
         public virtual nts nts { get; set; }

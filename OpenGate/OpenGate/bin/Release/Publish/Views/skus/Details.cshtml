@@ -1,0 +1,75 @@
+﻿@model OpenGate.Entidades.skus
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutHD.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>skus</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Sku)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sku)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.codigobarras)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codigobarras)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.codigobidimensional)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codigobidimensional)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qtymanual)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qtymanual)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kit)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

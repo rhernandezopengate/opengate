@@ -117,6 +117,21 @@
         <AssociationConnector Association="DB_A3F19C_OGModel.asignacionordenes_fecuenciadhl_fk" />
         <AssociationConnector Association="DB_A3F19C_OGModel.asignacionordenes_nomenclaturadhl_fk" />
         <AssociationConnector Association="DB_A3F19C_OGModel.asignacionordenes_statusasignacion_fk" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.skus" Width="1.5" PointX="18.875" PointY="14.75" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.detkitskus" Width="1.5" PointX="16.5" PointY="14.75" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.detordenproductoshd" Width="1.5" PointX="21.25" PointY="14.75" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.detusuariosordenes" Width="1.5" PointX="25.875" PointY="17.25" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.erroresordenes" Width="1.5" PointX="21.25" PointY="17.5" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.guias" Width="1.5" PointX="25.875" PointY="15" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.kit" Width="1.5" PointX="16.5" PointY="17.5" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.ordenes" Width="1.5" PointX="23.5" PointY="15.25" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.detkitskus_kit_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.detkitskus_skus_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.detordenesproductos_ordenes_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.detordenesproductos_skus_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.detusuariosordenes_ordenes_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.erroresordenes_ordenes_fk" />
+        <AssociationConnector Association="DB_A3F19C_OGModel.guias_ordenes_fk" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
