@@ -1,0 +1,141 @@
+﻿
+@{
+    ViewBag.Title = "ReportesSKUS";
+    Layout = "~/Views/Shared/_LayoutHD.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2> Surtido de Piezas <small>Index</small></h2> &nbsp;&nbsp;&nbsp;                
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="well" style="overflow: auto">
+                    <div class="col-sm-3">
+                        Fecha Ordenes
+                        <div class="form-group">
+                            <div class="input-group date">
+                                <input id="fechaOrdenes" name="fechaOrdenes" class="form-control" autocomplete="off" />
+                                <span class="input-group-addon">
+                                    <span class="fa fa-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <table id="table" class="table table-bordered" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Orden</th>
+                            <th>Cantidad</th>
+                            <th>Descripcion</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CSS Datatble -->
+<link href="~/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css" rel="stylesheet" />
+
+<!-- JQuery Datatble -->
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.4/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+<script src="~/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="~/build/js/custom.min.js"></script>
+
+<!-- JQuery -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<script>
+    $(document).ready(function () {
+        table = $('#table').DataTable({
+            "order": [[0, "desc"]],
+            "ordering": true,
+            "lengthMenu": [[10, -1], [10, "All"]],
+            "pagingType": "simple_numbers",
+            "dom": 'Blrtip', // Hides Default Search
+            "processing": true,
+            "serverSide": true,
+            "orderMulti": false,
+            "deferRender": true,
+            rowId: 'id',
+            select: true,
+            "ajax": {
+                "url": "/detalleordenproductos/ObtenerOrdenes",
+                "type": "POST",
+                "datatype": "json"
+            },
+            buttons: [
+
+                {
+                    extend: 'copyHtml5',
+                    text: '<i class="fa fa-files-o"></i>',
+                    titleAttr: 'COPIAR',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'print',
+                    text: '<i class="fa fa-print"></i>',
+                    titleAttr: 'IMPRIMIR',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'excel',
+                    text: '<i class="fa fa-file-excel-o"></i>',
+                    titleAttr: 'EXCEL',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'pdf',
+                    text: '<i class="fa fa-file-pdf-o"></i>',
+                    titleAttr: 'PDF',
+                    orientation: 'landscape',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                }
+            ],
+            "aoColumns": [
+                { "data": "FechaString", "autoWidth": true },
+                { "data": "OrdenString", "autoWidth": true },
+                { "data": "Cantidad", "autoWidth": true },
+                { "data": "SKUDescripcion", "autoWidth": true },
+            ]
+        });
+
+        $('#fechaOrdenes').on('change', function () {
+            table.columns(0).search(this.value).draw();
+        });
+    });
+
+    $(function () {
+        $("#fechaOrdenes").datepicker({
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            changeYear: true
+        });
+    });
+</script>

@@ -3,8 +3,15 @@
     Layout = "~/Views/Shared/_LayoutHD.cshtml";
 }
 
-
 <div class="row top_tiles">
+    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="tile-stats">
+            <div class="icon"><i class="fa fa-cube"></i></div>
+            <div class="count">@ViewBag.ConteoOrdenesAbiertas</div>
+            <h3>Ordenes Abiertas</h3>
+            <p>@DateTime.Now.ToShortDateString()</p>
+        </div>
+    </div>
     <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
         <div class="tile-stats">
             <div class="icon"><i class="fa fa-check-square-o"></i></div>
@@ -13,6 +20,15 @@
             <p>@DateTime.Now.ToShortDateString()</p>
         </div>
     </div>
+    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="tile-stats">
+            <div class="icon"><i class="fa fa-exclamation-circle"></i></div>
+            <div class="count">@ViewBag.ConteoOrdenesBackOrder</div>
+            <h3>Back Orders</h3>
+            <p>@DateTime.Now.ToShortDateString()</p>
+        </div>
+    </div>
+
     <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
         <div class="tile-stats">
             <div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
@@ -24,12 +40,12 @@
 </div>
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="x_panel">            
+        <div class="x_panel">
             <div class="x_content">
-                <div class="col-md-3 col-sm-12 col-xs-12">
+                <div class="col-md-3 col-sm-6 col-xs-12">
                     <div>
                         <div class="x_title">
-                            <h2>Top Profiles</h2>                            
+                            <h2>TOP PICKERS</h2>
                             <div class="clearfix"></div>
                         </div>
                         <ul class="list-unstyled top_profiles scroll-view">
@@ -40,17 +56,145 @@
                                         <i class="fa fa-user aero"></i>
                                     </a>
                                     <div class="media-body">
-                                        <a class="title" href="#">@item.Picker</a>
-                                        <p><strong>@item.Cantidad</strong> Ordenes Auditadas </p>                                        
+                                        <a class="title" href="#"> @item.Picker </a>
+                                        <p><strong>@item.CantidadPiezas</strong> Piezas Surtidas </p>
+                                        <p><strong>@item.Cantidad</strong> Ordenes Surtidas </p>
+                                        <p>
+                                            <strong>@item.CantidadErrores</strong> Errores Detectados
+                                            <span class="bnt btn-xs btn-success" onclick="Errores('@item.Picker')"><i class="fa fa-eye"></i></span>
+
+                                        </p>
+
                                     </div>
-                                </li>                                
+
+                                </li>
                             }
                         </ul>
                     </div>
                 </div>
+
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div>
+                        <div class="x_title">
+                            <h2>TOP AUDITORES</h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <ul class="list-unstyled top_profiles scroll-view">
+                            @foreach (var item in ViewBag.ListaAuditores)
+                            {
+                                <li class="media event">
+                                    <a class="pull-left border-aero profile_thumb">
+                                        <i class="fa fa-user aero"></i>
+                                    </a>
+                                    <div class="media-body">
+                                        <a class="title" href="#">@item.Auditor</a>
+                                        <p><strong>@item.Cantidad</strong> Ordenes Auditadas </p>
+                                        <p><strong>@item.CantidadPiezas</strong> Piezas Auditadas </p>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-12 col-xs-12">
+                    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
             </div>
         </div>
     </div>
 </div>
 
 
+<div id="MyModal" class="modal fade bs-example-modal-lg">
+    <div class="modal-dialog modal-lg" id="mdialTamanio">
+        <div class="modal-content">
+            <div id="MyModalContent"></div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="~/build/js/custom.min.js"></script>
+
+<script>
+    window.onload = function () {
+
+        var chart = new CanvasJS.Chart("chartContainer", {
+
+            title: {
+                text: "Productividad Por Picker"
+            },
+
+            axisY: {
+                title: "Piezas Surtidas"
+            },
+
+            data: [{
+                type: "column",
+                yValueFormatString: "#,##0 Piezas Surtidas",
+                indexLabel: "{y}",
+                dataPoints: @Html.Raw(ViewBag.DataPoints),
+            }]
+        });
+
+        function updateChart() {
+            var dps = chart.options.data[0].dataPoints;
+            chart.options.data[0].dataPoints = dps;
+            chart.render();
+        };
+
+        updateChart();
+        setTimeout(updateChart, 1000);
+    }
+
+
+    function ClickBoton() {
+        $click
+    }
+
+    function Errores(PK) {
+        $.ajax({
+            type: "POST",
+            url: "/DashboardOrdenes/DetalleErrores",        
+            data: {
+                'picker': PK,           
+            },
+            dataType: "html",
+            success: function (result, status, xhr) {
+                $("#MyModal").modal('show');
+                $("#MyModalContent").html(result);    
+            },
+            error: function (xhr, status, error) {
+                $("#mensaje").html("Result: " + status + " " + error + " " + xhr.status + " " + xhr.statusText);
+            }
+        });
+    }
+</script>
+
+@*<script>
+        $(document).ready(function(){
+            //Cada 10 segundos (10000 milisegundos) se ejecutará la función refrescar
+            setTimeout(updateChart, 10000);
+      });
+      //function refrescar(){
+      //  //Actualiza la página
+      //  location.reload();
+      //}
+    </script>*@

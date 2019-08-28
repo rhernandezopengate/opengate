@@ -92,6 +92,7 @@ namespace OpenGate.Controllers
             var FechaPagoFin = Request.Form.GetValues("columns[5][search][value]").FirstOrDefault();
             var RazonSocial = Request.Form.GetValues("columns[6][search][value]").FirstOrDefault();
             var Concepto = Request.Form.GetValues("columns[7][search][value]").FirstOrDefault();
+            var StatusFactura = Request.Form.GetValues("columns[8][search][value]").FirstOrDefault();
 
             int PageSize = Length != null ? Convert.ToInt32(Length) : 0;
             int Skip = Start != null ? Convert.ToInt32(Start) : 0;
@@ -105,7 +106,7 @@ namespace OpenGate.Controllers
                 {
                     con.Open();
 
-                    string sql = "exec [SP_FACTURAS_PARAMETROSOPCIONALES_CONTABILIDAD] @fechaFInicio, @fechaFFin, @numero, @fechaPInicio, @fechaPFin, @idproveedor, @concepto";
+                    string sql = "exec [SP_FACTURAS_PARAMETROSOPCIONALES_CONTABILIDAD] @fechaFInicio, @fechaFFin, @numero, @fechaPInicio, @fechaPFin, @idproveedor, @concepto, @idstatusfactura";
                     var query = new SqlCommand(sql, con);
 
                     if (FechaFactura != "")
@@ -185,6 +186,15 @@ namespace OpenGate.Controllers
                         query.Parameters.AddWithValue("@concepto", DBNull.Value);
                     }
 
+                    if (StatusFactura == "" || StatusFactura == "0")
+                    {
+                        query.Parameters.AddWithValue("@idstatusfactura", DBNull.Value);
+                    }
+                    else
+                    {
+                        query.Parameters.AddWithValue("@idstatusfactura", StatusFactura);
+                    }
+
                     using (var dr = query.ExecuteReader())
                     {
                         while (dr.Read())
@@ -196,8 +206,19 @@ namespace OpenGate.Controllers
                             facturas.Numero = dr["Numero"].ToString();
                             facturas.FechaFactura = Convert.ToDateTime(dr["FechaFactura"]);
                             facturas.FechaFacturaFin = Convert.ToDateTime(dr["FechaFactura"]);
-                            facturas.FechaPago = Convert.ToDateTime(dr["FechaPago"]);
-                            facturas.FechaPagoFin = Convert.ToDateTime(dr["FechaPago"]);
+
+                            if (dr["FechaPago"] != DBNull.Value)
+                            {
+                                facturas.FechaPagoString = Convert.ToDateTime(dr["FechaPago"].ToString()).Date.ToShortDateString();
+                                facturas.FechaPagoFinString = Convert.ToDateTime(dr["FechaPago"].ToString()).Date.ToShortDateString();
+                            }
+                            else
+                            {
+                                facturas.FechaPagoString = "";
+                                facturas.FechaPagoFinString = "";
+                            }
+
+                            //facturas.FechaPagoFin = Convert.ToDateTime(dr["FechaPago"]);
                             facturas.RazonSocial = dr["razonsocial"].ToString();
                             facturas.Concepto = dr["Concepto"].ToString();
                             facturas.Estado = dr["descripcion"].ToString();

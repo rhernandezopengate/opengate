@@ -1,0 +1,35 @@
+﻿@model OpenGate.Entidades.guias
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutHD.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>guias</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Guia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Guia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ordenes.Orden)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ordenes.Orden)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

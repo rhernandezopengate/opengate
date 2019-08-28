@@ -1,0 +1,59 @@
+﻿@model OpenGate.Entidades.ordenes
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutHD.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ordenes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaAlta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaAlta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Orden)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Orden)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusOrdenImpresa_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusOrdenImpresa_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Picker)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Picker)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

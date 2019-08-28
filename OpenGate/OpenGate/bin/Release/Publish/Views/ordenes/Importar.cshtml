@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Importar";
+    Layout = "~/Views/Shared/_LayoutHD.cshtml";
+}
+
+<h2>Importar</h2>
+
+@using (Html.BeginForm("Cargar", "ordenes", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2> Cargar Conciliador <small>Importar</small></h2> &nbsp;&nbsp;&nbsp;
+                    <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar en la base de datos</button>
+                    <a class="btn btn-danger" href="@Url.Action("Index")"> <i class="fa fa-reply"></i> Cancelar</a>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <input type="file" name="postedFileBase" class="form-control" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Custom Theme Scripts -->
+<script src="~/build/js/custom.min.js"></script>

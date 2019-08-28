@@ -98,6 +98,14 @@
     <Property Name="razonsocial" Type="varchar" MaxLength="500" />
     <Property Name="rfc" Type="varchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="codigoqrordenes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CodigoQR" Type="varchar" MaxLength="100" />
+    <Property Name="Ordenes_Id" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="complementosfacturas">
     <Key>
       <PropertyRef Name="id" />
@@ -741,6 +749,13 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="descripcion" Type="varchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="statusordenimpresa">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="statuspago">
     <Key>
       <PropertyRef Name="id" />
@@ -808,6 +823,23 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="descripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tipoerror">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="usuarios">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="usuario" Type="varchar" MaxLength="50" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+    <Property Name="tipousuario" Type="varchar" MaxLength="50" />
   </EntityType>
   <Association Name="asigancion_aspnetusers_fk">
     <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
@@ -878,6 +910,18 @@
       </Principal>
       <Dependent Role="asignacionordenes">
         <PropertyRef Name="StatusAsignacion_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="codigoqrordenes_ordenes_fk">
+    <End Role="ordenes" Type="Self.ordenes" Multiplicity="1" />
+    <End Role="codigoqrordenes" Type="Self.codigoqrordenes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ordenes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="codigoqrordenes">
+        <PropertyRef Name="Ordenes_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1073,6 +1117,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="detusuariosordenes_usuarios_fk">
+    <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+    <End Role="detusuariosordenes" Type="Self.detusuariosordenes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="detusuariosordenes">
+        <PropertyRef Name="Usuarios_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="empleado_area_fk">
     <End Role="area" Type="Self.area" Multiplicity="1" />
     <End Role="empleado" Type="Self.empleado" Multiplicity="*" />
@@ -1142,6 +1198,18 @@
       </Principal>
       <Dependent Role="erroresordenes">
         <PropertyRef Name="Ordenes_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="erroresordenes_tipoerror_fk">
+    <End Role="tipoerror" Type="Self.tipoerror" Multiplicity="1" />
+    <End Role="erroresordenes" Type="Self.erroresordenes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipoerror">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="erroresordenes">
+        <PropertyRef Name="TipoError_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1377,6 +1445,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="ordenes_statusordenimpresa_fk">
+    <End Role="statusordenimpresa" Type="Self.statusordenimpresa" Multiplicity="1" />
+    <End Role="ordenes" Type="Self.ordenes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="statusordenimpresa">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ordenes">
+        <PropertyRef Name="StatusOrdenImpresa_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="pago_aspnetusers_fk">
     <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
     <End Role="pago" Type="Self.pago" Multiplicity="*" />
@@ -1545,6 +1625,7 @@
     <EntitySet Name="categoriaproveedor" EntityType="Self.categoriaproveedor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="centrocostos" EntityType="Self.centrocostos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="clientes" EntityType="Self.clientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="codigoqrordenes" EntityType="Self.codigoqrordenes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="complementosfacturas" EntityType="Self.complementosfacturas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="concentrado" EntityType="Self.concentrado" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="contactoproveedor" EntityType="Self.contactoproveedor" Schema="dbo" store:Type="Tables" />
@@ -1593,6 +1674,7 @@
     <EntitySet Name="statusdireccion" EntityType="Self.statusdireccion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="statusfactura" EntityType="Self.statusfactura" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="statusfinanzas" EntityType="Self.statusfinanzas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="statusordenimpresa" EntityType="Self.statusordenimpresa" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="statuspago" EntityType="Self.statuspago" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="statusproveedor" EntityType="Self.statusproveedor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="statusproveedorvisible" EntityType="Self.statusproveedorvisible" Schema="dbo" store:Type="Tables" />
@@ -1601,6 +1683,8 @@
     <EntitySet Name="supervisor" EntityType="Self.supervisor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tareas" EntityType="Self.tareas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tipocompra" EntityType="Self.tipocompra" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tipoerror" EntityType="Self.tipoerror" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="asigancion_aspnetusers_fk" Association="Self.asigancion_aspnetusers_fk">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="asigancion" EntitySet="asigancion" />
@@ -1624,6 +1708,10 @@
     <AssociationSet Name="asignacionordenes_statusasignacion_fk" Association="Self.asignacionordenes_statusasignacion_fk">
       <End Role="statusasignacion" EntitySet="statusasignacion" />
       <End Role="asignacionordenes" EntitySet="asignacionordenes" />
+    </AssociationSet>
+    <AssociationSet Name="codigoqrordenes_ordenes_fk" Association="Self.codigoqrordenes_ordenes_fk">
+      <End Role="ordenes" EntitySet="ordenes" />
+      <End Role="codigoqrordenes" EntitySet="codigoqrordenes" />
     </AssociationSet>
     <AssociationSet Name="complementosfacturas_asigancion_fk" Association="Self.complementosfacturas_asigancion_fk">
       <End Role="asigancion" EntitySet="asigancion" />
@@ -1689,6 +1777,10 @@
       <End Role="ordenes" EntitySet="ordenes" />
       <End Role="detusuariosordenes" EntitySet="detusuariosordenes" />
     </AssociationSet>
+    <AssociationSet Name="detusuariosordenes_usuarios_fk" Association="Self.detusuariosordenes_usuarios_fk">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="detusuariosordenes" EntitySet="detusuariosordenes" />
+    </AssociationSet>
     <AssociationSet Name="empleado_area_fk" Association="Self.empleado_area_fk">
       <End Role="area" EntitySet="area" />
       <End Role="empleado" EntitySet="empleado" />
@@ -1711,6 +1803,10 @@
     </AssociationSet>
     <AssociationSet Name="erroresordenes_ordenes_fk" Association="Self.erroresordenes_ordenes_fk">
       <End Role="ordenes" EntitySet="ordenes" />
+      <End Role="erroresordenes" EntitySet="erroresordenes" />
+    </AssociationSet>
+    <AssociationSet Name="erroresordenes_tipoerror_fk" Association="Self.erroresordenes_tipoerror_fk">
+      <End Role="tipoerror" EntitySet="tipoerror" />
       <End Role="erroresordenes" EntitySet="erroresordenes" />
     </AssociationSet>
     <AssociationSet Name="factura_aspnetusers_fk" Association="Self.factura_aspnetusers_fk">
@@ -1788,6 +1884,10 @@
     <AssociationSet Name="ordencompra_tipocompra_fk" Association="Self.ordencompra_tipocompra_fk">
       <End Role="tipocompra" EntitySet="tipocompra" />
       <End Role="ordencompra" EntitySet="ordencompra" />
+    </AssociationSet>
+    <AssociationSet Name="ordenes_statusordenimpresa_fk" Association="Self.ordenes_statusordenimpresa_fk">
+      <End Role="statusordenimpresa" EntitySet="statusordenimpresa" />
+      <End Role="ordenes" EntitySet="ordenes" />
     </AssociationSet>
     <AssociationSet Name="pago_aspnetusers_fk" Association="Self.pago_aspnetusers_fk">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />

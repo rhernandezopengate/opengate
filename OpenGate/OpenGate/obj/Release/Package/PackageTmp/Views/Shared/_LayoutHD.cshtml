@@ -48,7 +48,46 @@
                             <ul class="nav side-menu">
                                 @if (User.IsInRole("admin"))
                                 {
-                                    <li><a href='@Url.Action("Index", "envios")'><i class="fa fa-globe"></i>Paquieterias HD Qro.</a></li>
+                                    <li><a href='@Url.Action("Index", "DashboardOrdenes")'><i class="fa fa-dashboard"></i>DASHBOARD HD</a></li>
+                                    <li><a href='@Url.Action("Index", "ordenes")'><i class="fa fa-print"></i>Ordenes Impresas</a></li>
+                                    <li><a href='@Url.Action("Index", "guias")'><i class="fa fa-map-marker"></i>Conciliador</a></li>
+                                    <li><a href='@Url.Action("Index", "codigoqrordenes")'><i class="fa fa-qrcode"></i>Codigos QR</a></li>
+
+                                    <li><a href='@Url.Action("Index", "envios")'><i class="fa fa-globe"></i>Paqueterias HD Qro.</a></li>
+                                    <li><a href='@Url.Action("Index", "asignacionordenes")'><i class="fa fa-share-alt"></i>Asignacion de Ordenes</a></li>
+                                    <li><a href='@Url.Action("Index", "concentradoguias")'><i class="fa fa-book"></i>Concentrado</a></li>
+                                    <li><a href='@Url.Action("Index", "csrs")'><i class="fa fa-list-alt"></i>CSR</a></li>
+                                    <li><a href='@Url.Action("Index", "nts")'><i class="fa fa-assistive-listening-systems"></i>NTS</a></li>
+                                    <li><a href='@Url.Action("Index", "guiasimpresas")'><i class="fa fa-print"></i>Ordenes Impresas</a></li>
+                                    <li>
+                                        <a><i class="fa fa-cogs"></i> Configuracion <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu" style="">
+                                            <li><a href='@Url.Action("Index", "skus")'>SKU</a></li>
+                                            <li><a href='@Url.Action("Index", "nomenclaturadhls")'>Nomenclatura DHL</a></li>
+                                            <li><a href='@Url.Action("Index", "fecuenciadhls")'>Frecuencia DHL</a></li>
+                                            <li><a href='@Url.Action("Index", "statusasignacions")'>Status Asignacion</a></li>
+                                        </ul>
+                                    </li>
+                                }
+
+                                @if (User.IsInRole("homedeliveryoperaciones"))
+                                {
+                                    <li><a href='@Url.Action("Index", "DashboardOrdenes")'><i class="fa fa-dashboard"></i>DASHBOARD HD</a></li>
+                                    <li><a href='@Url.Action("Index", "ordenes")'><i class="fa fa-print"></i>Ordenes Impresas</a></li>
+                                    <li><a href='@Url.Action("Index", "guias")'><i class="fa fa-map-marker"></i>Conciliador</a></li>
+                                    <li><a href='@Url.Action("Index", "codigoqrordenes")'><i class="fa fa-qrcode"></i>Codigos QR</a></li>
+                                    
+                                    <li>
+                                        <a><i class="fa fa-cogs"></i> Configuracion <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu" style="">
+                                            <li><a href='@Url.Action("Index", "skus")'>SKU</a></li>                                            
+                                        </ul>
+                                    </li>
+                                }
+
+                                @if (User.IsInRole("homedeliveryqro"))
+                                {
+                                    <li><a href='@Url.Action("Index", "envios")'><i class="fa fa-globe"></i>Paqueterias HD Qro.</a></li>
                                     <li><a href='@Url.Action("Index", "asignacionordenes")'><i class="fa fa-share-alt"></i>Asignacion de Ordenes</a></li>
                                     <li><a href='@Url.Action("Index", "concentradoguias")'><i class="fa fa-book"></i>Concentrado</a></li>
                                     <li><a href='@Url.Action("Index", "csrs")'><i class="fa fa-list-alt"></i>CSR</a></li>
@@ -67,12 +106,12 @@
 
                                 @if (User.IsInRole("homedeliveryherbalife"))
                                 {
-                                    <li><a href='@Url.Action("Index", "envios")'><i class="fa fa-globe"></i>Paquieterias HD Qro.</a></li>
+                                    <li><a href='@Url.Action("Index", "envios")'><i class="fa fa-globe"></i>Paqueterias HD Qro.</a></li>
                                 }
 
                                 @if (User.IsInRole("gerentegeneral"))
                                 {
-                                    <li><a href='@Url.Action("Index", "envios")'><i class="fa fa-globe"></i>Paquieterias HD Qro.</a></li>
+                                    <li><a href='@Url.Action("Index", "envios")'><i class="fa fa-globe"></i>Paqueterias HD Qro.</a></li>
                                     <li><a href='@Url.Action("Index", "asignacionordenes")'><i class="fa fa-share-alt"></i>Asignacion de Ordenes</a></li>
                                     <li><a href='@Url.Action("Index", "concentradoguias")'><i class="fa fa-book"></i>Concentrado</a></li>
                                     <li><a href='@Url.Action("Index", "csrs")'><i class="fa fa-list-alt"></i>CSR</a></li>

@@ -876,5 +876,41 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="usuarios">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.usuarios">
+        <MappingFragment StoreEntitySet="usuarios">
+          <ScalarProperty Name="tipousuario" ColumnName="tipousuario" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="codigoqrordenes">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.codigoqrordenes">
+        <MappingFragment StoreEntitySet="codigoqrordenes">
+          <ScalarProperty Name="Ordenes_Id" ColumnName="Ordenes_Id" />
+          <ScalarProperty Name="CodigoQR" ColumnName="CodigoQR" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="statusordenimpresa">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.statusordenimpresa">
+        <MappingFragment StoreEntitySet="statusordenimpresa">
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipoerror">
+      <EntityTypeMapping TypeName="DB_A3F19C_OGModel.tipoerror">
+        <MappingFragment StoreEntitySet="tipoerror">
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

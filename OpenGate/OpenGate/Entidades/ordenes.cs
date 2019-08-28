@@ -21,6 +21,7 @@ namespace OpenGate.Entidades
             this.detusuariosordenes = new HashSet<detusuariosordenes>();
             this.erroresordenes = new HashSet<erroresordenes>();
             this.guias = new HashSet<guias>();
+            this.codigoqrordenes = new HashSet<codigoqrordenes>();
         }
     
         public int id { get; set; }
@@ -29,9 +30,7 @@ namespace OpenGate.Entidades
         public string User { get; set; }
         public int StatusOrdenImpresa_Id { get; set; }
         public string Picker { get; set; }
-
-        public int Cantidad { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<detordenproductoshd> detordenproductoshd { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -40,5 +39,14 @@ namespace OpenGate.Entidades
         public virtual ICollection<erroresordenes> erroresordenes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<guias> guias { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<codigoqrordenes> codigoqrordenes { get; set; }
+        public virtual statusordenimpresa statusordenimpresa { get; set; }
+        public int CantidadErrores { get; internal set; }
+        public int CantidadPiezas { get; internal set; }
+        public int Cantidad { get; internal set; }
+        public string Auditor { get; internal set; }
+        public string FechaAltaString { get; internal set; }
+        public string StatusString { get; internal set; }
     }
 }

@@ -1,0 +1,68 @@
+﻿@model OpenGate.Entidades.ordenes
+
+@{
+    ViewBag.Title = "Ordenes Asociados - Details";
+    Layout = null;
+}
+
+
+    <div class="modal-content">
+        <div class="modal-header">
+            <center>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Orden de Asociado #: @Model.Orden</h4>
+            </center>
+        </div>
+        <div class="modal-body">
+            <div class="col-sm-12">
+                <div class="col-sm-3">
+                    <i class="fa fa-calendar-o"></i><a href="#">Fecha Alta: @Model.FechaAlta.Value.Date.ToShortDateString()</a>
+                </div>
+                <div class="col-sm-3">
+                    <i class="fa fa-flag"></i><a href="#">Status Orden: @Model.statusordenimpresa.descripcion</a>
+                </div>
+                <div class="col-sm-3">
+                    <i class="fa fa-cubes"></i><a href="#">Picker: @Model.Picker</a>
+                </div>
+                <div class="col-sm-3">
+                    <i class="fa fa-user"></i><a href="#">Auditor: @ViewBag.Auditor</a>
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+            <table class="table jambo_table">
+                <thead>
+                    <tr>
+                        <th>Cantidad</th>
+                        <th>SKU</th>
+                        <th>Descripcion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.Detalle)
+                    {
+                    <tr>
+                        <td>
+                            @item.cantidad
+                        </td>
+                        <td>
+                            @item.SKU
+                        </td>
+                        <td>
+                            @item.SKUDescripcion
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>        
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+    
+
+        

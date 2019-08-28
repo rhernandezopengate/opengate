@@ -206,6 +206,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\detalleordenproductosController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\archivoPlaneacionController.cs" />
     <Compile Include="Controllers\areasController.cs" />
@@ -217,6 +218,7 @@
     <Compile Include="Controllers\categoriaproveedorsController.cs" />
     <Compile Include="Controllers\centrocostosController.cs" />
     <Compile Include="Controllers\clientesController.cs" />
+    <Compile Include="Controllers\codigoqrordenesController.cs" />
     <Compile Include="Controllers\complementosfacturasController.cs" />
     <Compile Include="Controllers\concentradoguiasController.cs" />
     <Compile Include="Controllers\contactoproveedorController.cs" />
@@ -231,6 +233,7 @@
     <Compile Include="Controllers\facturasController.cs" />
     <Compile Include="Controllers\fecuenciadhlsController.cs" />
     <Compile Include="Controllers\formapagoesController.cs" />
+    <Compile Include="Controllers\guiasController.cs" />
     <Compile Include="Controllers\guiasimpresasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KpisController.cs" />
@@ -247,6 +250,7 @@
     <Compile Include="Controllers\ntsController.cs" />
     <Compile Include="Controllers\OperacionesController.cs" />
     <Compile Include="Controllers\ordencompraController.cs" />
+    <Compile Include="Controllers\ordenesController.cs" />
     <Compile Include="Controllers\pagoesController.cs" />
     <Compile Include="Controllers\productosController.cs" />
     <Compile Include="Controllers\proveedorsController.cs" />
@@ -296,6 +300,9 @@
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\clientes.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\codigoqrordenes.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\complementosfacturas.cs">
@@ -478,6 +485,9 @@
     <Compile Include="Entidades\statusfinanzas.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entidades\statusordenimpresa.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entidades\statuspago.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
@@ -501,6 +511,12 @@
     </Compile>
     <Compile Include="Entidades\tareasTemp.cs" />
     <Compile Include="Entidades\tipocompra.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\tipoerror.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\usuarios.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
@@ -5305,6 +5321,30 @@
     <Content Include="Views\skus\Edit.cshtml" />
     <Content Include="Views\skus\Index.cshtml" />
     <Content Include="Views\DashboardOrdenes\Index.cshtml" />
+    <Content Include="Views\guias\Create.cshtml" />
+    <Content Include="Views\guias\Delete.cshtml" />
+    <Content Include="Views\guias\Details.cshtml" />
+    <Content Include="Views\guias\Edit.cshtml" />
+    <Content Include="Views\guias\Index.cshtml" />
+    <Content Include="Views\ordenes\Create.cshtml" />
+    <Content Include="Views\ordenes\Delete.cshtml" />
+    <Content Include="Views\ordenes\Details.cshtml" />
+    <Content Include="Views\ordenes\Edit.cshtml" />
+    <Content Include="Views\ordenes\Index.cshtml" />
+    <Content Include="Views\codigoqrordenes\Create.cshtml" />
+    <Content Include="Views\codigoqrordenes\Delete.cshtml" />
+    <Content Include="Views\codigoqrordenes\Details.cshtml" />
+    <Content Include="Views\codigoqrordenes\Edit.cshtml" />
+    <Content Include="Views\codigoqrordenes\Index.cshtml" />
+    <Content Include="Views\guias\Importar.cshtml" />
+    <Content Include="Views\ordenes\Importar.cshtml" />
+    <Content Include="Views\DashboardOrdenes\DetalleErrores.cshtml" />
+    <Content Include="Views\detalleordenproductos\Create.cshtml" />
+    <Content Include="Views\detalleordenproductos\Delete.cshtml" />
+    <Content Include="Views\detalleordenproductos\Details.cshtml" />
+    <Content Include="Views\detalleordenproductos\Edit.cshtml" />
+    <Content Include="Views\detalleordenproductos\Index.cshtml" />
+    <Content Include="Views\detalleordenproductos\ReportesSKUS.cshtml" />
     <None Include="Web.Debug.Config">
       <DependentUpon>Web.Config</DependentUpon>
     </None>

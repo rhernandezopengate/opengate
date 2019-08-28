@@ -96,6 +96,19 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            Estado Factura
+                            <div class="input-group date">
+                                <select class="form-control" id="ddlStatusFactura"></select>
+                                <span class="input-group-addon">
+                                    <span class="fa fa-flag"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <table id="tblFacturastrafico" class="table table-bordered jambo_table" width="100%">
                     <thead>
@@ -228,7 +241,7 @@
                 //0
                 { "data": "id", "autoWidth": true, "visible": false },
                 //1
-                { "data": "Numero", "autoWidth": true },
+                { "data": "Numero", "autoWidth": true },                
                 //2
                 {
                     "data": "FechaFactura",
@@ -256,37 +269,40 @@
                     },
                     "autoWidth": true
                 },
+                { "data": "FechaPagoString", "autoWidth": true },
+                { "data": "FechaPagoFinString", "autoWidth": true, "visible": false },
                 //4
-                {
-                    "data": "FechaPago",
-                    "name": "FechaPago",
-                    "render": function (data, type, full) {
+                //{
+                //    "data": "FechaPago",
+                //    "name": "FechaPago",
+                //    "render": function (data, type, full) {
 
-                        var data1 = data.replace("/Date(", "").replace(")/", "");
-                        var date = new Date(parseInt(data1));
-                        var month = date.getMonth() + 1;
-                        return date.getDate() + "-" + (month.toString().length > 1 ? month : "0" + month) + "-" + date.getFullYear();
-                    },
-                    "autoWidth": true
-                },
+                //        var data1 = data.replace("/Date(", "").replace(")/", "");
+                //        var date = new Date(parseInt(data1));
+                //        var month = date.getMonth() + 1;
+                //        return date.getDate() + "-" + (month.toString().length > 1 ? month : "0" + month) + "-" + date.getFullYear();
+                //    },
+                //    "autoWidth": true
+                //},
                 //5
-                {
-                    "data": "FechaPagoFin",
-                    "name": "FechaPagoFin",
-                    "visible": false,
-                    "render": function (data, type, full) {
+                //{
+                //    "data": "FechaPagoFin",
+                //    "name": "FechaPagoFin",
+                //    "visible": false,
+                //    "render": function (data, type, full) {
 
-                        var data1 = data.replace("/Date(", "").replace(")/", "");
-                        var date = new Date(parseInt(data1));
-                        var month = date.getMonth() + 1;
-                        return date.getDate() + "-" + (month.toString().length > 1 ? month : "0" + month) + "-" + date.getFullYear();
-                    },
-                    "autoWidth": true
-                },
+                //        var data1 = data.replace("/Date(", "").replace(")/", "");
+                //        var date = new Date(parseInt(data1));
+                //        var month = date.getMonth() + 1;
+                //        return date.getDate() + "-" + (month.toString().length > 1 ? month : "0" + month) + "-" + date.getFullYear();
+                //    },
+                //    "autoWidth": true
+                //},
                 //6
                 { "data": "RazonSocial", "autoWidth": true },
                 //7
                 { "data": "Concepto", "autoWidth": true },
+                //8
                 { "data": "Estado", "autoWidth": true, "orderable": false },
                 { "data": "SubTotalString", "autoWidth": true, "orderable": false },
                 { "data": "IvaString", "autoWidth": true, "orderable": false },
@@ -356,6 +372,10 @@
         });
     });
 
+    $('#ddlStatusFactura').on('change', function () {
+            table.columns(8).search(this.value).draw();
+        });
+
     $(function () {
 
         $(function () {
@@ -394,4 +414,29 @@
     function limpiar() {
         location.href = "/facturas/ReporteDesglozado";
     }
+
+    $(function () {
+        var ddlStatusFactura = $("#ddlStatusFactura");
+        ddlStatusFactura.empty().append('<option selected="selected" value="0" disabled = "disabled">Loading ...</option>');
+        $.ajax({
+            type: "POST",
+            url: "/facturas/ListaStatus",
+            data: '{}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                ddlStatusFactura.empty().append('<option selected="selected" value="0">Seleccione una opcion...</option>');
+                $.each(response, function () {
+                    ddlStatusFactura.append($("<option></option>").val(this['Value']).html(this['Text']));
+                });
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    });
+       
 </script>

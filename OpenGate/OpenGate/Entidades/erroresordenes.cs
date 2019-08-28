@@ -19,5 +19,6 @@ namespace OpenGate.Entidades
         public int TipoError_Id { get; set; }
     
         public virtual ordenes ordenes { get; set; }
+        public virtual tipoerror tipoerror { get; set; }
     }
 }

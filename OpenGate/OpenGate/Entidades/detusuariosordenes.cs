@@ -19,5 +19,6 @@ namespace OpenGate.Entidades
         public int Ordenes_Id { get; set; }
     
         public virtual ordenes ordenes { get; set; }
+        public virtual usuarios usuarios { get; set; }
     }
 }

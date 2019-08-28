@@ -91,5 +91,9 @@ namespace OpenGate.Entidades
         public virtual DbSet<guias> guias { get; set; }
         public virtual DbSet<kit> kit { get; set; }
         public virtual DbSet<ordenes> ordenes { get; set; }
+        public virtual DbSet<usuarios> usuarios { get; set; }
+        public virtual DbSet<codigoqrordenes> codigoqrordenes { get; set; }
+        public virtual DbSet<statusordenimpresa> statusordenimpresa { get; set; }
+        public virtual DbSet<tipoerror> tipoerror { get; set; }
     }
 }

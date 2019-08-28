@@ -18,8 +18,12 @@ namespace OpenGate.Entidades
         public int Ordenes_Id { get; set; }
         public int Skus_Id { get; set; }
         public Nullable<int> cantidad { get; set; }
-    
+        public int Cantidad { get; internal set; }
         public virtual ordenes ordenes { get; set; }
         public virtual skus skus { get; set; }
+        public string SKU { get; internal set; }
+        public string SKUDescripcion { get; internal set; }
+        public string FechaString { get; internal set; }
+        public string OrdenString { get; internal set; }
     }
 }
