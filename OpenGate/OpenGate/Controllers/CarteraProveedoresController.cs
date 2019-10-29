@@ -133,7 +133,7 @@ namespace OpenGate.Controllers
                     db.SaveChanges();
 
                 }                
-                return RedirectToAction("Index");
+                return RedirectToAction("IndexView");
             }
             catch (Exception _ex)
             {

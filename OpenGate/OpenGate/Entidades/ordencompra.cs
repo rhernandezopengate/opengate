@@ -54,5 +54,6 @@ namespace OpenGate.Entidades
         public virtual statusfinanzas statusfinanzas { get; set; }
         public virtual subcentrocostos subcentrocostos { get; set; }
         public virtual tipocompra tipocompra { get; set; }
+        public decimal Total { get; internal set; }
     }
 }

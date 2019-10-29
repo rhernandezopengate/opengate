@@ -21,9 +21,10 @@ namespace OpenGate.Entidades
         public int Cantidad { get; internal set; }
         public virtual ordenes ordenes { get; set; }
         public virtual skus skus { get; set; }
-        public string SKU { get; internal set; }
-        public string SKUDescripcion { get; internal set; }
         public string FechaString { get; internal set; }
         public string OrdenString { get; internal set; }
+        public string OracleID { get; internal set; }
+        public string SKUDescripcion { get; internal set; }
+        public string SKU { get; internal set; }
     }
 }

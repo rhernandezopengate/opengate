@@ -42,11 +42,11 @@ namespace OpenGate.Entidades
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<codigoqrordenes> codigoqrordenes { get; set; }
         public virtual statusordenimpresa statusordenimpresa { get; set; }
-        public int CantidadErrores { get; internal set; }
         public int CantidadPiezas { get; internal set; }
+        public int CantidadErrores { get; internal set; }
         public int Cantidad { get; internal set; }
         public string Auditor { get; internal set; }
-        public string FechaAltaString { get; internal set; }
         public string StatusString { get; internal set; }
+        public string FechaAltaString { get; internal set; }
     }
 }

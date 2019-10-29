@@ -16,20 +16,24 @@
                 <thead>
                     <tr>
                         <th>Error</th>
-                        <th>Orden</th>                        
+                        <th>Orden</th>
+                        <th>Auditor</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in ViewBag.Errores)
                     {
-                        <tr>
-                            <td>
-                                @item.descripcion
-                            </td>
-                            <td>
-                                @item.OrdenString
-                            </td>                            
-                        </tr>
+                    <tr>
+                        <td>
+                            @item.descripcion
+                        </td>
+                        <td>
+                            @item.OrdenString
+                        </td>
+                        <td>
+                            @item.Auditor
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>

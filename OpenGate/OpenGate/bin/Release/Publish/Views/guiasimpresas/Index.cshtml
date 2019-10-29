@@ -9,16 +9,43 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
             <div class="x_title">
-                <h2> Ordenes Impresas <small>Index</small></h2> &nbsp;&nbsp;&nbsp;                
+                <h2> Ordenes Impresas <small>Index</small></h2> &nbsp;&nbsp;&nbsp;
                 <a class="btn btn-success" href="@Url.Action("Upload")"> <i class="fa fa-plus-circle"></i> Agregar Nuevo Registro</a>
+                <a class="btn btn-success" href="@Url.Action("CargaExtraordinarios")"> <i class="fa fa-plus-circle"></i> Cargar Extraordinarios</a>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
+                <div class="well" style="overflow: auto">
+                    <div class="col-sm-3">
+                        Orden
+                        <div class="form-group">
+                            <div class="input-group date">
+                                <input id="orden" name="orden" class="form-control" autocomplete="off" />
+                                <span class="input-group-addon">
+                                    <span class="fa fa-print"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        Guia
+                        <div class="form-group">
+                            <div class="input-group date">
+                                <input id="guias" name="guias" class="form-control" autocomplete="off" />
+                                <span class="input-group-addon">
+                                    <span class="fa fa-map-marker"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+
                 <table id="table" class="table table-striped table-bordered">
                     <thead>
                         <tr>
                             <th>
-                                Fecha
+                                id
                             </th>
                             <th>
                                 Orden
@@ -26,23 +53,11 @@
                             <th>
                                 Guia
                             </th>                            
+                            <th>
+                                Fecha
+                            </th>
                         </tr>
                     </thead>
-
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @item.fecha.Value.ToShortDateString()
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.orden)
-                            </td>
-                            <td>                                
-                                @Html.DisplayFor(modelItem => item.numero)
-                            </td>                            
-                        </tr>
-                    }
                 </table>
             </div>
         </div>
@@ -70,6 +85,88 @@
 
 <script>
     $(document).ready(function () {
-        table = $('#table').DataTable();
+        table = $('#table').DataTable({
+            "order": [[0, "desc"]],
+            "ordering": true,
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            "pagingType": "simple_numbers",
+            "dom": 'Blrtip', // Hides Default Search
+            "processing": true,
+            "serverSide": true,
+            "orderMulti": false,
+            "deferRender": true,
+            rowId: 'id',
+            select: true,
+            "ajax": {
+                "url": "/guiasimpresas/ObtenerGuiasImpresas",
+                "type": "POST",
+                "datatype": "json"
+            },
+            buttons: [
+
+                {
+                    extend: 'copyHtml5',
+                    text: '<i class="fa fa-files-o"></i>',
+                    titleAttr: 'COPIAR',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'print',
+                    text: '<i class="fa fa-print"></i>',
+                    titleAttr: 'IMPRIMIR',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'excel',
+                    text: '<i class="fa fa-file-excel-o"></i>',
+                    titleAttr: 'EXCEL',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'pdf',
+                    text: '<i class="fa fa-file-pdf-o"></i>',
+                    titleAttr: 'PDF',
+                    orientation: 'landscape',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                }
+
+            ],
+            "aoColumns": [
+                //0
+                { "data": "id", "autoWidth": true, "visible": false },
+                //1
+                { "data": "orden", "autoWidth": true },
+                //2
+                { "data": "numero", "autoWidth": true },
+                //3
+                {
+                    "data": "fecha",
+                    "name": "fecha",
+                    "render": function (data, type, full) {
+                        var data1 = data.replace("/Date(", "").replace(")/", "");
+                        var date = new Date(parseInt(data1));
+                        var month = date.getMonth() + 1;
+                        return date.getDate() + "-" + (month.toString().length > 1 ? month : "0" + month) + "-" + date.getFullYear();
+                    },
+                    "autoWidth": true
+                },
+            ]
+        });
+
+        $('#orden').on('keyup', function () {
+            table.columns(0).search(this.value).draw();
+        });
+
+        $('#guias').on('keyup', function () {
+            table.columns(1).search(this.value).draw();
+        });
     });
 </script>

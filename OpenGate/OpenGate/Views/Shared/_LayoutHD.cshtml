@@ -104,7 +104,7 @@
                                     <li>
                                         <a><i class="fa fa-cogs"></i> Configuracion <span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu" style="">
-                                            <li><a href='@Url.Action("Index", "skus")'>SKU</a></li>                                            
+                                            <li><a href='@Url.Action("Index", "skus")'>SKU</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -156,6 +156,17 @@
                                 <ul class="nav side-menu">
                                     <li><a href='@Url.Action("Index", "DashboardOrdenes")'><i class="fa fa-dashboard"></i>DASHBOARD HD</a></li>
                                     <li><a href='@Url.Action("Index", "envios")'><i class="fa fa-globe"></i>Paqueterias HD Qro.</a></li>
+                                </ul>
+                            </div>
+                        }
+
+                        @if (User.IsInRole("analistainventarios"))
+                        {
+                            <div class="menu_section">
+                                <h3>Home Delivery</h3>
+                                <ul class="nav side-menu">
+                                    <li><a href='@Url.Action("Index", "ordenes")'><i class="fa fa-print"></i>Ordenes Impresas</a></li>
+                                    <li><a href='@Url.Action("ReportesSKUS", "detalleordenproductos")'><i class="fa fa-cubes"></i>Piezas Surtidas</a></li>
                                 </ul>
                             </div>
                         }

@@ -428,7 +428,15 @@ namespace OpenGate.Controllers
 
                     if (numerocuenta.Contains("980550757"))
                     {
-                        if (referencia.Contains("2ZD") || referencia.Contains("2T") || referencia.Contains("50H") && origen.Contains("QRO"))
+                        if (referencia.Contains("2Z") || 
+                            referencia.Contains("2T") || 
+                            referencia.Contains("50H") ||
+                            referencia.Contains("BOWALDOS.") ||
+                            referencia.Contains("BOBENAVIDES.") ||
+                            referencia.Contains("BOMODATELAS.") ||
+                            referencia.Contains("EXTCV-") ||
+                            referencia.Contains("EXTMOD-") ||
+                            referencia.Contains("EXTWDS-") && origen.Contains("QRO"))
                         {
                             var csrTemp = (from csr in db.csr
                                            where csr.Referencia == referencia.Trim()

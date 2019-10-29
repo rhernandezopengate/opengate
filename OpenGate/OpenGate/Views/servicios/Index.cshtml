@@ -18,6 +18,9 @@
                     <thead>
                         <tr class="center">
                             <th>
+                                Folio
+                            </th>
+                            <th>
                                 @Html.DisplayNameFor(model => model.fecharegistro)
                             </th>
                             <th>
@@ -55,6 +58,9 @@
                     @foreach (var item in Model)
                     {
                         <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.id)
+                            </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.fecharegistro)
                             </td>
@@ -128,7 +134,8 @@
 <script>
     $(document).ready(function () {
         var table = $('#tblServicios').DataTable({
-            //order: [[0, 'desc']],
+            "lengthMenu": [[30, 60, 90], [30, 60, 90]],
+            "order": [[0, "desc"]],
             columnDefs: [{
                 orderable: false,
                 targets: [1, 2, 3, 4, 5, 6, 7, 10]

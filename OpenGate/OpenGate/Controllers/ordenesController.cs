@@ -11,6 +11,7 @@ using System.Web;
 using System.Web.Mvc;
 using OpenGate.Entidades;
 using System.Linq.Dynamic;
+using System.Globalization;
 
 namespace OpenGate.Controllers
 {
@@ -20,13 +21,13 @@ namespace OpenGate.Controllers
         private dbOpenGateLogisticsEntities db = new dbOpenGateLogisticsEntities();
 
         // GET: ordenes
-        [Authorize(Roles = "admin, homedeliveryoperaciones")]
+        [Authorize(Roles = "admin, homedeliveryoperaciones, analistainventarios")]
         public ActionResult Index()
         {
             return View(db.ordenes.ToList());
         }
 
-        [Authorize(Roles = "admin, homedeliveryoperaciones")]
+        [Authorize(Roles = "admin, homedeliveryoperaciones, analistainventarios")]
         public ActionResult ObtenerOrdenes()
         {
             try
@@ -119,8 +120,124 @@ namespace OpenGate.Controllers
             }
         }
 
+        public ActionResult EliminarOrden(string error)
+        {
+            ViewBag.Error = error;
+            return View();
+        }
+
+        public ActionResult EliminarCorte(string error)
+        {
+            ViewBag.Error = error;
+            ViewBag.UltimoCorte = db.ordenes.OrderByDescending(x => x.id).FirstOrDefault().FechaAlta;
+
+            return View();
+        }
+
+        public ActionResult ConfirmarEliminarCorte()
+        {
+            try
+            {
+                var orden = db.ordenes.OrderByDescending(x => x.id).FirstOrDefault();             
+                
+                var student = db.ordenes
+                 .SqlQuery("Select * from ordenes where FechaAlta=@fecha", new SqlParameter("@fecha", orden.FechaAlta))
+                 .ToList();
+
+                foreach (var item in student)
+                {
+                    var detalle = db.detordenproductoshd.Where(x => x.Ordenes_Id == item.id).ToList();
+                    var guias = db.guias.Where(x => x.Ordenes_Id == item.id).ToList();
+                    var detususario = db.detusuariosordenes.Where(x => x.Ordenes_Id == item.id).FirstOrDefault();
+                    var codigoqr = db.codigoqrordenes.Where(x => x.Ordenes_Id == item.id).ToList();
+                    var ordenDelete = db.ordenes.Where(x => x.Orden == item.Orden).FirstOrDefault();
+
+                    if (detalle != null)
+                    {
+                        db.detordenproductoshd.RemoveRange(detalle);
+                    }
+
+                    if (guias != null)
+                    {
+                        db.guias.RemoveRange(guias);
+                    }
+
+                    if (detususario != null)
+                    {
+                        db.detusuariosordenes.Remove(detususario);
+                    }
+
+                    if (codigoqr != null)
+                    {
+                        db.codigoqrordenes.RemoveRange(codigoqr);
+                    }
+
+                    db.ordenes.Remove(ordenDelete);
+
+                    //db.SaveChanges();
+                }
+
+                return Json("Correcto", JsonRequestBehavior.AllowGet);                
+            }
+            catch (Exception ex)
+            {
+                return Json("Error", JsonRequestBehavior.AllowGet);
+            }            
+        }
+        
+        public ActionResult ConfirmarEliminacionOrdenes(string orden)
+        {
+            try
+            {
+                var ordenTemp = db.ordenes.Where(x => x.Orden.Equals(orden)).FirstOrDefault();
+
+                if (ordenTemp != null)
+                {
+                    var detalle = db.detordenproductoshd.Where(x => x.Ordenes_Id == ordenTemp.id).ToList();
+                    var guias = db.guias.Where(x => x.Ordenes_Id == ordenTemp.id).ToList();
+                    var detususario = db.detusuariosordenes.Where(x => x.Ordenes_Id == ordenTemp.id).FirstOrDefault();
+                    var codigoqr = db.codigoqrordenes.Where(x => x.Ordenes_Id == ordenTemp.id).ToList();
+                    var ordenDelete = db.ordenes.Where(x => x.Orden == orden).FirstOrDefault();
+
+                    if (detalle != null)
+                    {
+                        db.detordenproductoshd.RemoveRange(detalle);
+                    }
+
+                    if (guias != null)
+                    {
+                        db.guias.RemoveRange(guias);
+                    }
+
+                    if (detususario != null)
+                    {
+                        db.detusuariosordenes.Remove(detususario);
+                    }
+
+                    if (codigoqr != null)
+                    {
+                        db.codigoqrordenes.RemoveRange(codigoqr);
+                    }
+                                
+                    db.ordenes.Remove(ordenDelete);
+
+                    db.SaveChanges();
+
+                    return RedirectToAction("EliminarOrden", new { error = "Correcto" });
+                }
+                else
+                {
+                    return RedirectToAction("EliminarOrden", new { error = "Error" });
+                }
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("EliminarOrden", new { error = "Cath" });
+            }
+        }
+        
         [HttpPost]
-        [Authorize(Roles = "admin, homedeliveryoperaciones")]
+        [Authorize(Roles = "admin, homedeliveryoperaciones, analistainventarios")]
         public JsonResult ListaStatus()
         {
             List<SelectListItem> liststatus = new List<SelectListItem>();
@@ -343,7 +460,7 @@ namespace OpenGate.Controllers
         }
 
         // GET: ordenes/Details/5
-        [Authorize(Roles = "admin, homedeliveryoperaciones")]
+        [Authorize(Roles = "admin, homedeliveryoperaciones, analistainventarios")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -407,15 +524,19 @@ namespace OpenGate.Controllers
         [Authorize(Roles = "admin, homedeliveryoperaciones")]
         public ActionResult Edit(int? id)
         {
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ordenes ordenes = db.ordenes.Find(id);
+            ViewBag.StatusOrdenImpresa_Id = new SelectList(db.statusordenimpresa, "id", "descripcion", ordenes.StatusOrdenImpresa_Id);
+
             if (ordenes == null)
             {
                 return HttpNotFound();
             }
+            
             return View(ordenes);
         }
 
@@ -425,15 +546,26 @@ namespace OpenGate.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "admin, homedeliveryoperaciones")]
-        public ActionResult Edit([Bind(Include = "id,FechaAlta,Orden,User,StatusOrdenImpresa_Id,Picker")] ordenes ordenes)
+        public ActionResult Edit(ordenes ordenes)
         {
-            if (ModelState.IsValid)
+            ordenes ordenes1 = db.ordenes.Find(ordenes.id);
+
+            if (ordenes1 != null)
             {
-                db.Entry(ordenes).State = EntityState.Modified;
+                ordenes1.StatusOrdenImpresa_Id = ordenes.StatusOrdenImpresa_Id;
+                ordenes1.FechaAlta = ordenes.FechaAlta;
+                ordenes1.Orden = ordenes.Orden;
+                //Oracle ID
+                ordenes1.User = ordenes.User;
+                ordenes1.Picker = ordenes.Picker;
+
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Json("Correcto", JsonRequestBehavior.AllowGet);
             }
-            return View(ordenes);
+            else
+            {
+                return View(ordenes);
+            }
         }
 
         // GET: ordenes/Delete/5

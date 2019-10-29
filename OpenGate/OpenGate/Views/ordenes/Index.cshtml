@@ -11,6 +11,8 @@
             <div class="x_title">
                 <h2> Ordenes Asociados <small>Index</small></h2> &nbsp;&nbsp;&nbsp;
                 <a class="btn btn-success" href="@Url.Action("Importar")"> <i class="fa fa-plus-circle"></i> Agregar Nuevos Registros</a>
+                <a class="btn btn-danger" href="@Url.Action("EliminarOrden", new { error = "" })"> <i class="fa fa-trash"></i> Eliminar Orden</a>
+                <a class="btn btn-dark" href="@Url.Action("EliminarCorte", new { error = "" })"> <i class="fa fa-times-circle"></i> Eliminar Ultimo Corte Completo</a>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
@@ -206,12 +208,13 @@
                     "data": null,
                     "targets": -1,
                     "render": function (data, type, full) {
-                        return "<a  onclick='Detalle(" + full['id'] + ")' id='btnEdit" + full['id'] + "' class='btn btn-success'><i class='glyphicon glyphicon-list-alt'></i></a>";
+                        return "<a  onclick='Detalle(" + full['id'] + ")' id='btnEdit" + full['id'] + "' class='btn btn-success'><i class='glyphicon glyphicon-list-alt'></i></a>" +
+                               " <button onclick='Editar(" + full['id'] + ")' class='btn btn-primary '><i class='fa fa-edit'></i></button>";;
                     },
                     "bSearchable": false,
                     "sortable": false,
                     "autoWidth": true,
-                    "sWidth": "50px"
+                    "sWidth": "100px"
                 }
             ]
         });
@@ -242,6 +245,20 @@
         return false;
     }
 
+
+    var Editar = function (ID) {
+        $.ajaxSetup({ cache: false });
+        var EditUrl = "/ordenes/Edit/" + ID;
+        $("#MyModalContent").load(EditUrl, function () {
+            $("#MyModal").modal({
+                //backdrop: 'static',
+                keyboard: false
+            }, 'show');
+            bindForm(this);
+        });
+        return false;
+    }
+
     function bindForm(dialog) {
         $('form', dialog).submit(function () {
             $.ajax({
@@ -249,14 +266,14 @@
                 type: this.method,
                 data: $(this).serialize(),
                 success: function (result) {
-                    if (result.success) {
+                    if (result === 'Correcto') {
                         $("#MyModal").modal('hide');
-                        toastr.success(result.message);
+                        toastr.success('Edicion Correcta.');
                         table.draw();
                     }
                     else {
                         $("#MyModal").modal('show');
-                        toastr.error(result.ErrorMessage);
+                        toastr.error('Ha ocurrido un error.');
                         bindForm(dialog);
                     }
                 },
@@ -267,7 +284,6 @@
             return false;
         });
     }
-
 
     $(function () {
         $("#fechaOrdenes").datepicker({

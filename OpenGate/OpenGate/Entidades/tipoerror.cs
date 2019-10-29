@@ -14,8 +14,6 @@ namespace OpenGate.Entidades
     
     public partial class tipoerror
     {
-        internal string Orden;
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tipoerror()
         {
@@ -28,5 +26,6 @@ namespace OpenGate.Entidades
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<erroresordenes> erroresordenes { get; set; }
         public string OrdenString { get; internal set; }
+        public string Auditor { get; internal set; }
     }
 }

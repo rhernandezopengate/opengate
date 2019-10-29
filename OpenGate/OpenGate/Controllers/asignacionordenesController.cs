@@ -28,16 +28,16 @@ namespace OpenGate.Controllers
 
             var query2 = from item in db.concentrado
                          join c in db.csr on item.CSR_Id equals c.id
-                        where !ids.Contains(item.id) && c.UltimoCheckpoint != "OK"
-                        select item;
+                         where !ids.Contains(item.id) && c.UltimoCheckpoint != "OK"
+                         select item;
 
 
             var query = from c in db.concentrado.Where(x => x.csr.UltimoCheckpoint != "OK")
-                        where !(from a in db.asignacionordenes select a.Concentrado_Id ).Contains(c.id)
+                        where !(from a in db.asignacionordenes select a.Concentrado_Id).Contains(c.id)
                         select c;
 
             ViewBag.ConteoSinAsignar = query2.Count() <= 0 ? 0 : query.Count();
-            
+
             return View();
         }
 
@@ -84,7 +84,7 @@ namespace OpenGate.Controllers
                         else
                         {
                             concentradoTemp.CSR_Id = 0;
-                        }                        
+                        }
                         contador++;
                         lista.Add(concentradoTemp);
                     }
@@ -92,7 +92,7 @@ namespace OpenGate.Controllers
                     if (cantidadOrdenes <= contador)
                     {
                         break;
-                    }                    
+                    }
                 }
 
                 //Se recorre la lista para asignar los valores para insertar a la BD
@@ -109,7 +109,7 @@ namespace OpenGate.Controllers
                     if (idCSR != 0)
                     {
                         string codigocsr = db.csr.Where(x => x.id == idCSR).FirstOrDefault().UltimoCheckpoint;
-                        var idNomenclatura = db.nomenclaturadhl.Where(x=> x.codigo == codigocsr).FirstOrDefault();     
+                        var idNomenclatura = db.nomenclaturadhl.Where(x => x.codigo == codigocsr).FirstOrDefault();
                         string codigopostal = db.csr.Where(x => x.id == idCSR).FirstOrDefault().CPDestinatario;
                         var idFrecuencia = db.fecuenciadhl.Where(x => x.postalcode == codigopostal).FirstOrDefault();
 
@@ -145,7 +145,7 @@ namespace OpenGate.Controllers
             catch (Exception)
             {
                 throw;
-            }      
+            }
 
             return RedirectToAction("Index");
         }
@@ -445,23 +445,26 @@ namespace OpenGate.Controllers
                     foreach (string row in item.Split(','))
                     {
                         string reemplazo = row.Replace("r", "").Replace("\\", "").Replace("[", "").Replace("]", "").Remove(0, 1).Remove(10, 1);
+
+                        int id = db.guiasimpresas.Where(x => x.numero.Contains(reemplazo)).FirstOrDefault().id;
+
                         var asignacionor = (from ao in db.asignacionordenes
                                                 join c in db.concentrado on ao.Concentrado_Id equals c.id
-                                                where c.GuiasImpresas_Id == (from o in db.guiasimpresas where o.numero == reemplazo select o.id).FirstOrDefault()
+                                                where c.GuiasImpresas_Id == id
                                                 select ao).FirstOrDefault();
 
                         asignacionor.StatusAsignacion_Id = 3;
-                        //db.SaveChanges();
+                        db.SaveChanges();
                     }                    
                 }
 
-                return Json(new { success = true, message = "Editado Correctamente." });
+                return Json("Correcto", JsonRequestBehavior.AllowGet);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return Json(new { success = false, message = "Editado Correctamente." });
-            }
-            
+                Console.WriteLine(ex.Message.ToString());
+                return Json("Error", JsonRequestBehavior.AllowGet);
+            }            
         }
 
         public ActionResult DividirRegistros()

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<OpenGate.Entidades.detalleordenproductos>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutHD.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.preciounitario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.monto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.productos.Codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ordencompra.NombreProyecto)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.cantidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.preciounitario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.monto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.productos.Codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ordencompra.NombreProyecto)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

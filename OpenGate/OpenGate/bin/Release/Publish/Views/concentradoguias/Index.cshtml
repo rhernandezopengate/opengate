@@ -8,7 +8,8 @@
         <div class="x_panel">
             <div class="x_title">
                 <h2>Concetrado <small>Index</small></h2> &nbsp;&nbsp;&nbsp;
-                <a class="btn btn-primary" onclick="CargarNTS()"> <i class="fa fa-refresh"></i> Actualizar Concentrado</a>
+                <a class="btn btn-success" onclick="CargarNTS()"> <i class="fa fa-check-circle-o"></i> Generar Concentrado</a>
+                <a class="btn btn-primary" onclick="ActualizarRegistros()"> <i class="fa fa-refresh"></i> Actualizar Informacion de Registros</a>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
@@ -159,6 +160,34 @@
         setTimeout(function () {
             $.ajax({
                 url: "/concentradoguias/CargarNTS/",
+                type: "GET",
+                //data: { id: ID },
+                success: function (result) {
+                    if (result === "Success") {
+                        location.reload();
+                    }
+                    else {
+                        toastr.error('Ha ocurrido un error.');
+                    }
+                },
+                error: function (error) {
+                    console.log(error);
+                    alert(error)
+                }
+            });
+
+        }, 1800);        
+    }
+
+    function ActualizarRegistros() {
+
+        var $modal = $("#processing-modal");
+
+        $modal.modal('show');
+
+        setTimeout(function () {
+            $.ajax({
+                url: "/concentradoguias/ActualizarConcentrado/",
                 type: "GET",
                 //data: { id: ID },
                 success: function (result) {

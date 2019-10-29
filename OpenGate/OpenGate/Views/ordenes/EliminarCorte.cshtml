@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "EliminarCorte";
+    Layout = "~/Views/Shared/_LayoutHD.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2> Orden de Asociado <small>Eliminar Corte Completo</small></h2> &nbsp;&nbsp;&nbsp;
+                <a class="btn btn-dark" href="@Url.Action("Index")"> <i class="glyphicon glyphicon-arrow-left"></i> Cancelar</a>
+                <button id="guardar" class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar Corte</button>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        Fecha / Hora de Ultimo Corte
+                        <div class="input-group date">
+                            <input type="text" id="fechahora" name="fechahora" value="@ViewBag.UltimoCorte" class="form-control" readonly />
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal-static fade" id="processing-modal" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="text-center">
+                    <img src="~/images/loading.gif" class="icon" />
+                    <h5><span class="modal-text">Procesando, Espere por favor... </span></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Toastr -->
+<script src="~/Scripts/toastr.js"></script>
+<link href="~/Content/toastr.css" rel="stylesheet" />
+
+<!-- PEticiones -->
+<script src="~/ScriptsDB/JSOrdenes.js"></script>
+<link href="~/Content/progress-modal.css" rel="stylesheet" />
+

@@ -385,7 +385,7 @@
     </div>
 }
 
-@if (User.IsInRole("homedeliveryherbalife") || User.IsInRole("homedeliveryqro"))
+@if (User.IsInRole("homedeliveryherbalife"))
 {
     <div class="col-md-3 col-sm-3 col-xs-12" style="text-align:center">
         <div class="x_panel tile fixed_height_320">
@@ -417,6 +417,23 @@
     </div>
 }
 
+@if (User.IsInRole("homedeliveryqro"))
+{
+    <div class="col-md-3 col-sm-3 col-xs-12" style="text-align:center">
+        <div class="x_panel tile fixed_height_320">
+            <div class="x_title">
+                <h2>Paqueterias HD Qro</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <br />
+                <a href='@Url.Action("Index", "asignacionordenes")'>
+                    <img src='@Url.Content("~/images/c7.jpg")' height="170" />
+                </a>
+            </div>
+        </div>
+    </div>
+}
 
 @if (User.IsInRole("homedeliveryoperaciones"))
 {
@@ -433,7 +450,25 @@
                 </a>
             </div>
         </div>
-    </div>    
+    </div>
+}
+
+@if (User.IsInRole("analistainventarios"))
+{
+    <div class="col-md-3 col-sm-3 col-xs-12" style="text-align:center">
+        <div class="x_panel tile fixed_height_320">
+            <div class="x_title">
+                <h2>Paqueterias HD Qro</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <br />
+                <a href='@Url.Action("Index", "ordenes")'>
+                    <img src='@Url.Content("~/images/c7.jpg")' height="170" />
+                </a>
+            </div>
+        </div>
+    </div>
 }
 
 <script src="~/vendors/bootstrap/dist/js/bootstrap.min.js"></script>

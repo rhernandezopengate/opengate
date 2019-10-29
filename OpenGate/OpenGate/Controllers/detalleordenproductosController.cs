@@ -18,6 +18,7 @@ namespace OpenGate.Controllers
     {
         private dbOpenGateLogisticsEntities db = new dbOpenGateLogisticsEntities();
 
+        [Authorize(Roles = "admin")]
         // GET: detalleordenproductos
         public ActionResult Index()
         {
@@ -27,13 +28,13 @@ namespace OpenGate.Controllers
             return View(detalleordenproductos.ToList());
         }
 
-        [Authorize(Roles = "admin, homedeliveryoperaciones")]
+        [Authorize(Roles = "admin, homedeliveryoperaciones, analistainventarios")]
         public ActionResult ReportesSKUS()
         {
             return View();
         }
 
-        [Authorize(Roles = "admin, homedeliveryoperaciones")]
+        [Authorize(Roles = "admin, homedeliveryoperaciones, analistainventarios")]
         public ActionResult ObtenerOrdenes()
         {
             try
@@ -79,6 +80,7 @@ namespace OpenGate.Controllers
 
                             detalle.FechaString = dr["FechaAlta"].ToString();
                             detalle.OrdenString = dr["Orden"].ToString();
+                            detalle.OracleID = dr["User"].ToString();
                             detalle.Cantidad = Convert.ToInt32(dr["cantidad"]);
                             detalle.SKUDescripcion = dr["Sku"].ToString();
 
@@ -105,6 +107,7 @@ namespace OpenGate.Controllers
         }
 
         // GET: detalleordenproductos/Details/5
+        [Authorize(Roles = "admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -120,6 +123,7 @@ namespace OpenGate.Controllers
         }
 
         // GET: detalleordenproductos/Create
+        [Authorize(Roles = "admin")]
         public ActionResult Create()
         {
             ViewBag.Productos_Id = new SelectList(db.productos, "id", "Codigo");
@@ -132,6 +136,7 @@ namespace OpenGate.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public ActionResult Create([Bind(Include = "id,OrdenCompra_Id,Productos_Id,cantidad,preciounitario,monto")] detalleordenproductos detalleordenproductos)
         {
             if (ModelState.IsValid)
@@ -146,6 +151,7 @@ namespace OpenGate.Controllers
             return View(detalleordenproductos);
         }
 
+        [Authorize(Roles = "admin")]
         // GET: detalleordenproductos/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -168,6 +174,7 @@ namespace OpenGate.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public ActionResult Edit([Bind(Include = "id,OrdenCompra_Id,Productos_Id,cantidad,preciounitario,monto")] detalleordenproductos detalleordenproductos)
         {
             if (ModelState.IsValid)
@@ -182,6 +189,7 @@ namespace OpenGate.Controllers
         }
 
         // GET: detalleordenproductos/Delete/5
+        [Authorize(Roles = "admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -198,6 +206,7 @@ namespace OpenGate.Controllers
 
         // POST: detalleordenproductos/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "admin")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

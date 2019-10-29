@@ -67,10 +67,13 @@
                         <label id="alerta" class="form-control"></label>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <button class="btn btn-primary" id="button"><i class="fa fa-print"></i> Obtener Guias</button>
-                    &nbsp;&nbsp;&nbsp;
-                    <button class="btn btn-primary" id="btncerrar"><i class="fa fa-print"></i> Cerrar Ordenes</button>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <button class="btn btn-default" id="button"><i class="fa fa-copy"></i> Obtener Guias</button>
+                        
+                        <button class="btn btn-success" id="btncerrar"><i class="fa fa-check-square-o"></i> Cerrar Ordenes</button>
+                    </div>
+                    
                 </div>
 
                 <table id="table" class="table table-bordered jambo_table" style="width: 100%">
@@ -397,8 +400,7 @@
     }
 
     var Cerrar = function (Dato) {
-
-        var mensaje;
+                
         var opcion = confirm("¿Desea Cerrar Estas Ordenes?");
         if (opcion == true) {
             $.ajax({
@@ -406,11 +408,12 @@
                 type: "POST",
                 data: { dato: JSON.stringify(Dato) },
                 success: function (success) {
-                    if (success) {
+
+                    if (success === "Correcto") {
                         toastr.success('Ordenes Cerrados Correctamente.');
                     }
                     else {
-                        toastr.error('Esta factura ya esta pagada');
+                        toastr.error('Error al cerrar orden.');
                     }
 
                     table.draw();

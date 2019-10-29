@@ -171,7 +171,7 @@ namespace OpenGate.Controllers
 
                 db.SaveChanges();
 
-                return ActualizarConcentrado() == true ? Json("Success", JsonRequestBehavior.AllowGet) : Json("Error", JsonRequestBehavior.AllowGet);
+                return Json("Success", JsonRequestBehavior.AllowGet);
             }
             catch (Exception _ex)
             {
@@ -180,13 +180,12 @@ namespace OpenGate.Controllers
             }            
         }
 
-        public bool ActualizarConcentrado()
+        public ActionResult ActualizarConcentrado()
         {
             try
             {
                 List<concentrado> listaTemp = new List<concentrado>();
-                List<csr> csrData = db.csr.ToList();
-                List<nts> ntsData = db.nts.ToList();
+               
                 List<concentrado> concentradoData = db.concentrado.ToList();
 
                 var concentradoactualizar = from c in db.concentrado
@@ -198,7 +197,9 @@ namespace OpenGate.Controllers
                                                 conentradoId = c.id,
                                                 referenciaCsr = d == null ? "NA" : d.Referencia,
                                                 statusCsr = d == null ? "NA" : d.UltimoCheckpoint
-                                            };                       
+                                            };
+
+                int cantidad = concentradoactualizar.Count();
                 
                 foreach (var item in concentradoactualizar)
                 {
@@ -208,10 +209,17 @@ namespace OpenGate.Controllers
                         concentrado.ReferenciaCSR = item.referenciaCsr;                
                         listaTemp.Add(concentrado);
                     }             
-                }              
+                }
+
+                int contador = 0;
+
+                List<csr> csrData = db.csr.ToList();
+                List<nts> ntsData = db.nts.ToList();
 
                 foreach (var item in listaTemp)
                 {
+                    contador++;
+
                     concentrado concentrado = concentradoData.Where(x => x.id == item.id).FirstOrDefault();
                     string orden = concentrado.guiasimpresas.orden.ToString();
 
@@ -232,17 +240,17 @@ namespace OpenGate.Controllers
                         {
                             concentrado.NTS_Id = nts.id;
                         }
-                    }
+                    }                   
+                }
 
-                    db.SaveChanges();
-                }    
-                
-                return true;
+                db.SaveChanges();
+
+                return Json("Success", JsonRequestBehavior.AllowGet);
             }
             catch (Exception _ex)
             {
                 Console.WriteLine(_ex.Message.ToString());
-                return false;
+                return Json("Error", JsonRequestBehavior.AllowGet);
             }
         }
     }

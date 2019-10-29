@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "EliminarOrden";
+    Layout = "~/Views/Shared/_LayoutHD.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2> Orden de Asociado <small>Eliminar</small></h2> &nbsp;&nbsp;&nbsp;                
+                <a class="btn btn-dark" href="@Url.Action("Index")"> <i class="glyphicon glyphicon-arrow-left"></i> Cancelar</a>                
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <form id="Delete" action="@Url.Action("ConfirmarEliminacionOrdenes")">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <input id="orden" name="orden" class="form-control" placeholder="Orden de Asociado" tabindex="1"/>
+                        </div>
+                        <div class="col-md-1">
+                            <button type="submit" class="btn btn-primary" tabindex="2">Eliminar</button>
+                        </div>
+                    </div>         
+                </form>
+
+                @if (ViewBag.Error == null)
+                {
+
+                }
+                else if (ViewBag.Error == "Correcto")
+                {
+                    <div class="alert alert-success">
+                        Eliminacion Correcta
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-danger">
+                        Ha ocurrido un error
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
