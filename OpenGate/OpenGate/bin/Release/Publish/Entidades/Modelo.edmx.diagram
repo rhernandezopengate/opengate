@@ -59,7 +59,7 @@
         <EntityTypeShape EntityType="DB_A3F19C_OGModel.equiposcomputo" Width="1.5" PointX="27" PointY="4.5" />
         <AssociationConnector Association="DB_A3F19C_OGModel.equiposcomputo_empleado_fk" />
         <AssociationConnector Association="DB_A3F19C_OGModel.equiposcomputo_equipomantenimiento_fk" />
-        <EntityTypeShape EntityType="DB_A3F19C_OGModel.mo" Width="1.5" PointX="6.75" PointY="0.5" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.mo" Width="1.5" PointX="6.375" PointY="0.5" />
         <EntityTypeShape EntityType="DB_A3F19C_OGModel.statusproveedor" Width="1.875" PointX="11.75" PointY="19.875" />
         <EntityTypeShape EntityType="DB_A3F19C_OGModel.statusproveedorvisible" Width="1.875" PointX="11.75" PointY="18.125" />
         <EntityTypeShape EntityType="DB_A3F19C_OGModel.contactoproveedor" Width="1.75" PointX="6.875" PointY="21.625" />
@@ -136,7 +136,7 @@
         <AssociationConnector Association="DB_A3F19C_OGModel.detusuariosordenes_usuarios_fk" />
         <EntityTypeShape EntityType="DB_A3F19C_OGModel.codigoqrordenes" Width="1.5" PointX="23.375" PointY="20" />
         <AssociationConnector Association="DB_A3F19C_OGModel.codigoqrordenes_ordenes_fk" />
-        <EntityTypeShape EntityType="DB_A3F19C_OGModel.statusordenimpresa" Width="1.5" PointX="30.75" PointY="16.125" />
+        <EntityTypeShape EntityType="DB_A3F19C_OGModel.statusordenimpresa" Width="1.75" PointX="30.75" PointY="16.125" />
         <EntityTypeShape EntityType="DB_A3F19C_OGModel.tipoerror" Width="1.5" PointX="18.875" PointY="17.875" />
         <AssociationConnector Association="DB_A3F19C_OGModel.erroresordenes_tipoerror_fk" />
         <AssociationConnector Association="DB_A3F19C_OGModel.ordenes_statusordenimpresa_fk" />

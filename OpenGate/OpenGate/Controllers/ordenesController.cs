@@ -151,7 +151,7 @@ namespace OpenGate.Controllers
                     var detususario = db.detusuariosordenes.Where(x => x.Ordenes_Id == item.id).FirstOrDefault();
                     var codigoqr = db.codigoqrordenes.Where(x => x.Ordenes_Id == item.id).ToList();
                     var ordenDelete = db.ordenes.Where(x => x.Orden == item.Orden).FirstOrDefault();
-
+                    
                     if (detalle != null)
                     {
                         db.detordenproductoshd.RemoveRange(detalle);
@@ -172,10 +172,10 @@ namespace OpenGate.Controllers
                         db.codigoqrordenes.RemoveRange(codigoqr);
                     }
 
-                    db.ordenes.Remove(ordenDelete);
-
-                    //db.SaveChanges();
+                    db.ordenes.Remove(ordenDelete);                    
                 }
+
+                db.SaveChanges();
 
                 return Json("Correcto", JsonRequestBehavior.AllowGet);                
             }

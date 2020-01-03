@@ -134,14 +134,18 @@ namespace OpenGate.Controllers
         }
 
 
-        public ActionResult ConteoMensual()
+        public ActionResult ConteoMensual(int month)
         {
-            DateTime fechaHoy = Convert.ToDateTime("2019/09/01");
+            DateTime fechaHoy = Convert.ToDateTime("2019/10/01");
 
-            var toppickers = db.ordenes.Where(x => x.StatusOrdenImpresa_Id > 1 || x.StatusOrdenImpresa_Id < 5 && x.FechaAlta.Value.Month == 9).GroupBy(x => x.Picker);
-            var topauditores = db.detusuariosordenes.Where(x => x.ordenes.StatusOrdenImpresa_Id > 1 && x.ordenes.FechaAlta.Value.Month == 9).GroupBy(x => x.usuarios.nombre);
-            var piezas = db.detordenproductoshd.Where(x => x.ordenes.FechaAlta.Value.Month == 9);
-            var errores = db.erroresordenes.Where(x => x.ordenes.FechaAlta.Value.Month == 9);
+            //Cambiar mes
+            var toppickers = db.ordenes.Where(x => (x.StatusOrdenImpresa_Id > 1 || x.StatusOrdenImpresa_Id < 5) && (x.FechaAlta.Value.Month == month)).GroupBy(x => x.Picker);
+            //Cambiar mes
+            var topauditores = db.detusuariosordenes.Where(x => (x.ordenes.StatusOrdenImpresa_Id > 1) && (x.ordenes.FechaAlta.Value.Month == month)).GroupBy(x => x.usuarios.nombre);
+            //Cambiar mes
+            var piezas = db.detordenproductoshd.Where(x => x.ordenes.FechaAlta.Value.Month == month);
+            //Cambiar mes
+            var errores = db.erroresordenes.Where(x => x.ordenes.FechaAlta.Value.Month == month);
 
             List<ordenes> listaPickers = new List<ordenes>();
             List<ordenes> listaAuditores = new List<ordenes>();
@@ -153,9 +157,17 @@ namespace OpenGate.Controllers
                 {
                     ordenes ordenes = new ordenes();
 
-                    decimal qty = (int)piezas.Where(x => x.ordenes.Picker.Contains(item.Key.ToUpper())).Sum(x => x.cantidad);
-                    var porcentajeRounded = Math.Round(qty, 2);
-                    ordenes.CantidadPiezas = (int)porcentajeRounded;
+                    var p = piezas.Where(x => x.ordenes.Picker.Contains(item.Key.ToUpper())).Sum(x => x.cantidad);
+
+                    if (p != null)
+                    {                        
+                        var porcentajeRounded = Math.Round((decimal)p, 2);
+                        ordenes.CantidadPiezas = (int)porcentajeRounded;
+                    }
+                    else
+                    {
+                        ordenes.CantidadPiezas = 0;
+                    }
 
                     if (errores != null)
                     {
@@ -199,7 +211,16 @@ namespace OpenGate.Controllers
             {
                 if (item.Key != null)
                 {
-                    dataPoints.Add(new DataPoint(item.Key, (int)piezas.Where(x => x.ordenes.Picker.Contains(item.Key.ToUpper())).Sum(x => x.cantidad) * -1));
+                    var p = piezas.Where(x => x.ordenes.Picker.Contains(item.Key.ToUpper())).Sum(x => x.cantidad);
+
+                    if (p != null)
+                    {
+                        dataPoints.Add(new DataPoint(item.Key, (int)piezas.Where(x => x.ordenes.Picker.Contains(item.Key.ToUpper())).Sum(x => x.cantidad) * -1));
+                    }
+                    else
+                    {
+                        dataPoints.Add(new DataPoint(item.Key, 0));
+                    }                    
                 }
             }
 

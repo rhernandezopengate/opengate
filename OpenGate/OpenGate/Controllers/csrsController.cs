@@ -430,13 +430,8 @@ namespace OpenGate.Controllers
                     {
                         if (referencia.Contains("2Z") || 
                             referencia.Contains("2T") || 
-                            referencia.Contains("50H") ||
-                            referencia.Contains("BOWALDOS.") ||
-                            referencia.Contains("BOBENAVIDES.") ||
-                            referencia.Contains("BOMODATELAS.") ||
-                            referencia.Contains("EXTCV-") ||
-                            referencia.Contains("EXTMOD-") ||
-                            referencia.Contains("EXTWDS-") && origen.Contains("QRO"))
+                            referencia.Contains("50H") 
+                             && origen.Contains("QRO"))
                         {
                             var csrTemp = (from csr in db.csr
                                            where csr.Referencia == referencia.Trim()
