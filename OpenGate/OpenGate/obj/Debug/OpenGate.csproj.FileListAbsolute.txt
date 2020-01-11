@@ -422,7 +422,6 @@ C:\Users\RubenHernandez\Documents\GitHub\opengate\OpenGate\OpenGate\bin\es\Micro
 C:\Users\RubenHernandez\Documents\GitHub\opengate\OpenGate\OpenGate\bin\es\Microsoft.Owin.Security.Twitter.resources.dll
 C:\Users\RubenHernandez\Documents\GitHub\opengate\OpenGate\OpenGate\bin\es\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
 C:\Users\RubenHernandez\Documents\GitHub\opengate\OpenGate\OpenGate\obj\Debug\OpenGate.csprojAssemblyReference.cache
-C:\Users\RubenHernandez\Documents\GitHub\opengate\OpenGate\OpenGate\obj\Debug\OpenGate.csproj.CoreCompileInputs.cache
 C:\Users\RubenHernandez\Documents\GitHub\opengate\OpenGate\OpenGate\obj\Debug\OpenGate.csproj.CopyComplete
 C:\Users\RubenHernandez\Documents\GitHub\opengate\OpenGate\OpenGate\obj\Debug\OpenGate.dll
 C:\Users\RubenHernandez\Documents\GitHub\opengate\OpenGate\OpenGate\obj\Debug\OpenGate.pdb

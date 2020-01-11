@@ -5355,6 +5355,7 @@
     <Content Include="Views\ordenes\EliminarOrden.cshtml" />
     <Content Include="Views\ordenes\EliminarCorte.cshtml" />
     <Content Include="Views\ordenes\Edit.cshtml" />
+    <Content Include="Views\facturas\ReporteFacturacionClientes.cshtml" />
     <None Include="Web.Debug.Config">
       <DependentUpon>Web.Config</DependentUpon>
     </None>
