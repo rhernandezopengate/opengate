@@ -14,6 +14,7 @@ using Microsoft.AspNet.Identity;
 using OpenGate.Entidades;
 using System.Linq.Dynamic;
 using System.Web.Security;
+using Newtonsoft.Json;
 
 namespace OpenGate.Controllers
 {
@@ -64,9 +65,47 @@ namespace OpenGate.Controllers
             ViewBag.Vencido = String.Format("{0:C}", vencido);
             ViewBag.Debe = String.Format("{0:C}", debe);
             ViewBag.Detenido = String.Format("{0:C}", detenido);
-                       
+                             
             return View();
-        }              
+        }
+
+
+        public ActionResult ReporteFacturacionClientes(string mes) 
+        {
+            try
+            {
+                List<DataPoint> dataPoints = new List<DataPoint>();
+                
+                int mesActual = int.Parse(mes);
+
+                var consulta = (from f in db.factura
+                                where f.FechaFactura.Value.Month.Equals(12) && f.FechaFactura.Value.Year.Equals(2019)
+                                select new { cliente = f.clientes.razonsocial, f.Total }).ToList();
+
+                foreach (var item in consulta.GroupBy(x => x.cliente))
+                {
+                    dataPoints.Add(new DataPoint(item.Key, (double)item.Sum(x => x.Total)));
+                }
+
+
+
+                var consultatabla = (from f in db.factura                                     
+                                     group f by new { f.clientes.razonsocial, f.FechaFactura.Value.Month } into g
+                                     select new Group<string, factura> {  });
+
+
+
+
+                ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
+
+                return PartialView();
+            }
+            catch (Exception)
+            {
+                return PartialView();
+            }        
+        }
+
 
         #region Vista Reporte Desglozado
 

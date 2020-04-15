@@ -1,0 +1,20 @@
+﻿
+<div id="chartEvalManiobras"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script type="text/javascript">
+    var chartEvaluacionManiobras = new CanvasJS.Chart("chartEvalManiobras",{
+        animationEnabled: true,
+        title: {
+            text: "Gastos Por Cliente De: " + "Diciembre"
+        },
+        data: [{
+            type: "doughnut",
+            startAngle: 140,
+            indexLabelFontSize: 12,
+            indexLabel: "{label}-${y}",
+            toolTipContent: "<b>{label}:</b> ${y}",
+            dataPoints: @Html.Raw(ViewBag.DataPoints),
+        }]
+    });
+    chartEvaluacionManiobras.render();
+</script>
